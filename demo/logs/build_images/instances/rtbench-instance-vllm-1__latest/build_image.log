@@ -1,0 +1,177 @@
+2026-01-23 19:40:36,339 - INFO - Building image rtbench-instance-vllm-1:latest
+Using dockerfile:
+# syntax=docker/dockerfile:1.4
+FROM --platform=linux/x86_64 rtbench-vllm:latest
+
+WORKDIR /workspace
+
+ENV PATH=/opt/miniconda3/bin:$PATH
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+RUN conda create -n testbed python=3.10 
+
+COPY replace_funcs.py /workspace/replace_funcs.py
+COPY specs.json /workspace/specs.json
+
+
+ARG PIP_CACHE_DIR=/root/.cache/pip
+
+RUN mkdir -p $PIP_CACHE_DIR
+
+# 在同一条 RUN 里调用环境的 Python
+RUN cd vllm-project/vllm && \
+    /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py \
+        --repo /workspace/vllm-project/vllm \
+        --base_commit f2718d2948e83319d83dbbade1883fef2302357e \
+        --head_commit 0f274b1f6790555269c1da93b6918217e0e6f7d0 \
+        --pull_number 25055 \
+        --specs /workspace/specs.json 
+
+WORKDIR /workspace/vllm-project/vllm
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 19:40:36,339 - INFO - Building docker image rtbench-instance-vllm-1:latest in logs/build_images/instances/rtbench-instance-vllm-1__latest with platform linux/x86_64
+2026-01-23 19:40:36,423 - INFO - Step 1/13 : FROM --platform=linux/x86_64 rtbench-vllm:latest
+2026-01-23 19:40:36,423 - INFO - 
+2026-01-23 19:40:36,424 - INFO - ---> 2305ba9d0999
+2026-01-23 19:40:36,424 - INFO - Step 2/13 : WORKDIR /workspace
+2026-01-23 19:40:36,424 - INFO - 
+2026-01-23 19:40:36,426 - INFO - ---> Using cache
+2026-01-23 19:40:36,426 - INFO - ---> e747518d1b92
+2026-01-23 19:40:36,426 - INFO - Step 3/13 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 19:40:36,426 - INFO - 
+2026-01-23 19:40:36,427 - INFO - ---> Using cache
+2026-01-23 19:40:36,427 - INFO - ---> e5991ef828f8
+2026-01-23 19:40:36,427 - INFO - Step 4/13 : ENV CUDA_HOME=/usr/local/cuda
+2026-01-23 19:40:36,427 - INFO - 
+2026-01-23 19:40:36,427 - INFO - ---> Using cache
+2026-01-23 19:40:36,427 - INFO - ---> 023b41248226
+2026-01-23 19:40:36,428 - INFO - Step 5/13 : ENV PATH=$CUDA_HOME/bin:$PATH
+2026-01-23 19:40:36,428 - INFO - 
+2026-01-23 19:40:36,428 - INFO - ---> Using cache
+2026-01-23 19:40:36,428 - INFO - ---> aef303189f12
+2026-01-23 19:40:36,428 - INFO - Step 6/13 : ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+2026-01-23 19:40:36,428 - INFO - 
+2026-01-23 19:40:36,429 - INFO - ---> Using cache
+2026-01-23 19:40:36,429 - INFO - ---> 8755a772bbfe
+2026-01-23 19:40:36,429 - INFO - Step 7/13 : RUN conda create -n testbed python=3.10
+2026-01-23 19:40:36,429 - INFO - 
+2026-01-23 19:40:36,430 - INFO - ---> Using cache
+2026-01-23 19:40:36,430 - INFO - ---> b2e188ff63fb
+2026-01-23 19:40:36,430 - INFO - Step 8/13 : COPY replace_funcs.py /workspace/replace_funcs.py
+2026-01-23 19:40:36,430 - INFO - 
+2026-01-23 19:40:36,433 - INFO - ---> Using cache
+2026-01-23 19:40:36,433 - INFO - ---> 5f74b3ba7130
+2026-01-23 19:40:36,433 - INFO - Step 9/13 : COPY specs.json /workspace/specs.json
+2026-01-23 19:40:36,433 - INFO - 
+2026-01-23 19:40:36,608 - INFO - ---> db7ba6359190
+2026-01-23 19:40:36,608 - INFO - Step 10/13 : ARG PIP_CACHE_DIR=/root/.cache/pip
+2026-01-23 19:40:36,608 - INFO - 
+2026-01-23 19:40:36,636 - INFO - ---> Running in 0e8df633495c
+2026-01-23 19:40:36,751 - INFO - Removing intermediate container 0e8df633495c
+2026-01-23 19:40:36,751 - INFO - ---> 5daf87312116
+2026-01-23 19:40:36,751 - INFO - Step 11/13 : RUN mkdir -p $PIP_CACHE_DIR
+2026-01-23 19:40:36,752 - INFO - 
+2026-01-23 19:40:36,780 - INFO - ---> Running in 149cec0966a6
+2026-01-23 19:40:37,118 - INFO - Removing intermediate container 149cec0966a6
+2026-01-23 19:40:37,119 - INFO - ---> 468f43ade8c8
+2026-01-23 19:40:37,119 - INFO - Step 12/13 : RUN cd vllm-project/vllm &&     /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py         --repo /workspace/vllm-project/vllm         --base_commit f2718d2948e83319d83dbbade1883fef2302357e         --head_commit 0f274b1f6790555269c1da93b6918217e0e6f7d0         --pull_number 25055         --specs /workspace/specs.json
+2026-01-23 19:40:37,119 - INFO - 
+2026-01-23 19:40:37,178 - INFO - ---> Running in 03fffe29ac4f
+2026-01-23 19:40:43,433 - INFO - [INFO] Command succeeded: git reset --hard
+HEAD is now at a8eb1182f [CI][Models] Add VLM Support for Sequence Classification Conversion (#32885)
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout f2718d2948e83319d83dbbade1883fef2302357e
+
+[INFO] Command succeeded: git fetch origin pull/25055/head:pr-25055
+
+[INFO] Command succeeded: git checkout pr-25055
+
+[INFO] Command succeeded: git reset --hard
+HEAD is now at 0f274b1f6 Merge branch 'main' into qwen3-vl-mrope
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 0f274b1f6790555269c1da93b6918217e0e6f7d0
+
+
+===== DIFF vllm/model_executor/layers/rotary_embedding/mrope.py =====
+--- a/vllm/model_executor/layers/rotary_embedding/mrope.py
++++ b/vllm/model_executor/layers/rotary_embedding/mrope.py
+@@ -15,7 +15,7 @@
+ 
+ 
+ @triton.jit
+-def _triton_mrope_forward(
++def _triton_qwen2vl_mrope_forward(
+     q_ptr,
+     k_ptr,
+     cos,
+@@ -30,14 +30,12 @@
+     pad_hd: tl.constexpr,
+     mrope_section_t: tl.constexpr,
+     mrope_section_h: tl.constexpr,
+-    mrope_section_w: tl.constexpr,
+-    is_interleaved: tl.constexpr,
+ ):
+     # Adapted from
+     # https://github.com/linkedin/Liger-Kernel/blob/main/src/liger_kernel/ops/qwen2vl_mrope.py
+     # This version supports flatten input tensors from vllm
+     # and supports cos and sin cache with shape (3, num_tokens, head_dim // 2)
+-    # instead of (3, bsz, seq_len, head_dim), also supports interleaved rotary
++    # instead of (3, bsz, seq_len, head_dim)
+     pid = tl.program_id(0)
+     # locate start address
+     q_ptr = q_ptr + pid * (n_qh * hd)
+@@ -48,6 +46,9 @@
+     # m of this program instance
+     # ####################################################################
+     # Note: cos and sin now have shape (3, num_tokens, head_dim // 2)
++
++    t_end = mrope_section_t
++    h_end = t_end + mrope_section_h
+ 
+     # Updated stride calculation for half head_dim
+     half_rd = rd // 2
+@@ -60,18 +61,9 @@
+ 
+     # Updated offsets for half head_dim
+     cos_offsets = tl.arange(0, pad_hd // 2)
+-    if is_interleaved:
+-        h_mask = (((cos_offsets % 3) == 1) &
+-                  (cos_offsets <= 3 * mrope_section_h))
+-        w_mask = (((cos_offsets % 3) == 2) &
+-                  (cos_offsets <= 3 * mrope_section_w))
+-        t_mask = ~(h_mask | w_mask)
+-    else:
+-        t_end = mrope_section_t
+-        h_end = t_end + mrope_section_h
+-        t_mask = cos_offsets < mrope_section_t
+-        h_mask = (t_end <= cos_offsets) & (cos_offsets < h_end)
+-        w_mask = (h_end <= cos_offsets) & (cos_offsets < half_rd)
++    t_mask = cos_offsets < t_end
++    h_mask = (t_end <= cos_offsets) & (cos_offsets < h_end)
++    w_mask = (h_end <= cos_offsets) & (cos_offsets < half_rd)
+ 
+     t_cos_row = tl.load(t_cos + cos_offsets, mask=t_mask, other=0)
+     h_cos_row = tl.load(h_cos + cos_offsets, mask=h_mask, other=0)
+
+[HEAD] Patched vllm/model_executor/layers/rotary_embedding/mrope.py
+
+Done. All files patched successfully.
+2026-01-23 19:40:44,654 - INFO - Removing intermediate container 03fffe29ac4f
+2026-01-23 19:40:44,655 - INFO - ---> d5eb598282c1
+2026-01-23 19:40:44,655 - INFO - Step 13/13 : WORKDIR /workspace/vllm-project/vllm
+2026-01-23 19:40:44,655 - INFO - 
+2026-01-23 19:40:44,682 - INFO - ---> Running in 85478a519614
+2026-01-23 19:40:44,778 - INFO - Removing intermediate container 85478a519614
+2026-01-23 19:40:44,778 - INFO - ---> e94e17756cfc
+2026-01-23 19:40:44,778 - INFO - Successfully built e94e17756cfc
+2026-01-23 19:40:44,784 - INFO - Successfully tagged rtbench-instance-vllm-1:latest
+2026-01-23 19:40:44,785 - INFO - Image built successfully!

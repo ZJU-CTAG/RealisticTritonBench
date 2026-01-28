@@ -1,0 +1,10 @@
+{
+  "vllm/lora/ops/triton_ops/kernel_utils.py": {
+    "source_func": {
+      "mm_k": "@triton.jit\ndef mm_k(\n    a_ptr,\n    b_ptr,\n    ak_stride,\n    bk_stride,\n    offset_k,\n    K: tl.constexpr,\n    BLOCK_M: tl.constexpr,\n    BLOCK_N: tl.constexpr,\n    BLOCK_K: tl.constexpr,\n    EVEN_K: tl.constexpr,\n    SPLIT_K: tl.constexpr,\n    CAST_TYPE: tl.constexpr,\n    b_dtype: tl.constexpr,\n    USE_GDC: tl.constexpr,\n):"
+    },
+    "target_func": {
+      "mm_k": "@triton.jit\ndef mm_k(\n    a_ptr,\n    b_ptr,\n    ak_stride,\n    bk_stride,\n    offset_k,\n    K: tl.constexpr,\n    BLOCK_M: tl.constexpr,\n    BLOCK_N: tl.constexpr,\n    BLOCK_K: tl.constexpr,\n    EVEN_K: tl.constexpr,\n    SPLIT_K: tl.constexpr,\n    CAST_TYPE: tl.constexpr,\n    b_dtype: tl.constexpr,\n    USE_GDC: tl.constexpr,\n    base_k,\n):"
+    }
+  }
+}

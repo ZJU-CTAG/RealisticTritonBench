@@ -1,0 +1,12 @@
+{
+  "vllm/model_executor/models/qwen3_next.py": {
+    "source_func": {
+      "fused_gdn_gating_kernel": "@triton.jit\ndef fused_gdn_gating_kernel(\n    g,\n    beta_output,\n    A_log,\n    a,\n    b,\n    dt_bias,\n    seq_len,\n    NUM_HEADS: tl.constexpr,\n    beta: tl.constexpr,\n    threshold: tl.constexpr,\n    BLK_HEADS: tl.constexpr,\n):",
+      "fused_gdn_gating": "def fused_gdn_gating(\n    A_log: torch.Tensor,\n    a: torch.Tensor,\n    b: torch.Tensor,\n    dt_bias: torch.Tensor,\n    beta: float = 1.0,\n    threshold: float = 20.0,\n) -> tuple[torch.Tensor, torch.Tensor]:"
+    },
+    "target_func": {
+      "fused_gdn_gating_kernel": "@triton.jit\ndef fused_gdn_gating_kernel(\n    g,\n    beta_output,\n    A_log,\n    a,\n    b,\n    dt_bias,\n    seq_len,\n    NUM_HEADS: tl.constexpr,\n    beta: tl.constexpr,\n    threshold: tl.constexpr,\n    BLK_HEADS: tl.constexpr,\n):",
+      "fused_gdn_gating": "def fused_gdn_gating(\n    A_log: torch.Tensor,\n    a: torch.Tensor,\n    b: torch.Tensor,\n    dt_bias: torch.Tensor,\n    beta: float = 1.0,\n    threshold: float = 20.0,\n) -> tuple[torch.Tensor, torch.Tensor]:"
+    }
+  }
+}

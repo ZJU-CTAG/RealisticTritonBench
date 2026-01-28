@@ -1,0 +1,186 @@
+2026-01-23 19:51:16,510 - INFO - Building image rtbench-instance-vllm-8:latest
+Using dockerfile:
+# syntax=docker/dockerfile:1.4
+FROM --platform=linux/x86_64 rtbench-vllm:latest
+
+WORKDIR /workspace
+
+ENV PATH=/opt/miniconda3/bin:$PATH
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+RUN conda create -n testbed python=3.10 
+
+COPY replace_funcs.py /workspace/replace_funcs.py
+COPY specs.json /workspace/specs.json
+
+
+ARG PIP_CACHE_DIR=/root/.cache/pip
+
+RUN mkdir -p $PIP_CACHE_DIR
+
+# 在同一条 RUN 里调用环境的 Python
+RUN cd vllm-project/vllm && \
+    /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py \
+        --repo /workspace/vllm-project/vllm \
+        --base_commit 0606bea2b63f6b5d49e5d04b4561f2e606cc7c45 \
+        --head_commit 26d4d50677f5799a7e71b48e4e2e6fddde51a6a2 \
+        --pull_number 28095 \
+        --specs /workspace/specs.json 
+
+WORKDIR /workspace/vllm-project/vllm
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 19:51:16,511 - INFO - Building docker image rtbench-instance-vllm-8:latest in logs/build_images/instances/rtbench-instance-vllm-8__latest with platform linux/x86_64
+2026-01-23 19:51:16,586 - INFO - Step 1/13 : FROM --platform=linux/x86_64 rtbench-vllm:latest
+2026-01-23 19:51:16,586 - INFO - 
+2026-01-23 19:51:16,587 - INFO - ---> 2305ba9d0999
+2026-01-23 19:51:16,587 - INFO - Step 2/13 : WORKDIR /workspace
+2026-01-23 19:51:16,587 - INFO - 
+2026-01-23 19:51:16,589 - INFO - ---> Using cache
+2026-01-23 19:51:16,590 - INFO - ---> e747518d1b92
+2026-01-23 19:51:16,590 - INFO - Step 3/13 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 19:51:16,590 - INFO - 
+2026-01-23 19:51:16,591 - INFO - ---> Using cache
+2026-01-23 19:51:16,591 - INFO - ---> e5991ef828f8
+2026-01-23 19:51:16,591 - INFO - Step 4/13 : ENV CUDA_HOME=/usr/local/cuda
+2026-01-23 19:51:16,591 - INFO - 
+2026-01-23 19:51:16,592 - INFO - ---> Using cache
+2026-01-23 19:51:16,593 - INFO - ---> 023b41248226
+2026-01-23 19:51:16,593 - INFO - Step 5/13 : ENV PATH=$CUDA_HOME/bin:$PATH
+2026-01-23 19:51:16,593 - INFO - 
+2026-01-23 19:51:16,594 - INFO - ---> Using cache
+2026-01-23 19:51:16,594 - INFO - ---> aef303189f12
+2026-01-23 19:51:16,594 - INFO - Step 6/13 : ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+2026-01-23 19:51:16,594 - INFO - 
+2026-01-23 19:51:16,596 - INFO - ---> Using cache
+2026-01-23 19:51:16,596 - INFO - ---> 8755a772bbfe
+2026-01-23 19:51:16,596 - INFO - Step 7/13 : RUN conda create -n testbed python=3.10
+2026-01-23 19:51:16,596 - INFO - 
+2026-01-23 19:51:16,598 - INFO - ---> Using cache
+2026-01-23 19:51:16,598 - INFO - ---> b2e188ff63fb
+2026-01-23 19:51:16,598 - INFO - Step 8/13 : COPY replace_funcs.py /workspace/replace_funcs.py
+2026-01-23 19:51:16,598 - INFO - 
+2026-01-23 19:51:16,601 - INFO - ---> Using cache
+2026-01-23 19:51:16,601 - INFO - ---> 5f74b3ba7130
+2026-01-23 19:51:16,601 - INFO - Step 9/13 : COPY specs.json /workspace/specs.json
+2026-01-23 19:51:16,602 - INFO - 
+2026-01-23 19:51:16,775 - INFO - ---> 883c2992ae30
+2026-01-23 19:51:16,775 - INFO - Step 10/13 : ARG PIP_CACHE_DIR=/root/.cache/pip
+2026-01-23 19:51:16,775 - INFO - 
+2026-01-23 19:51:16,802 - INFO - ---> Running in 6dab8336eb2e
+2026-01-23 19:51:16,890 - INFO - Removing intermediate container 6dab8336eb2e
+2026-01-23 19:51:16,890 - INFO - ---> cb2dbf946d13
+2026-01-23 19:51:16,890 - INFO - Step 11/13 : RUN mkdir -p $PIP_CACHE_DIR
+2026-01-23 19:51:16,891 - INFO - 
+2026-01-23 19:51:16,919 - INFO - ---> Running in ff1e1a5c2680
+2026-01-23 19:51:17,240 - INFO - Removing intermediate container ff1e1a5c2680
+2026-01-23 19:51:17,241 - INFO - ---> 7ed1cff8e250
+2026-01-23 19:51:17,241 - INFO - Step 12/13 : RUN cd vllm-project/vllm &&     /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py         --repo /workspace/vllm-project/vllm         --base_commit 0606bea2b63f6b5d49e5d04b4561f2e606cc7c45         --head_commit 26d4d50677f5799a7e71b48e4e2e6fddde51a6a2         --pull_number 28095         --specs /workspace/specs.json
+2026-01-23 19:51:17,241 - INFO - 
+2026-01-23 19:51:17,264 - INFO - ---> Running in 04989b280256
+2026-01-23 19:51:23,128 - INFO - [INFO] Command succeeded: git reset --hard
+HEAD is now at a8eb1182f [CI][Models] Add VLM Support for Sequence Classification Conversion (#32885)
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 0606bea2b63f6b5d49e5d04b4561f2e606cc7c45
+
+[INFO] Command succeeded: git fetch origin pull/28095/head:pr-28095
+
+[INFO] Command succeeded: git checkout pr-28095
+
+[INFO] Command succeeded: git reset --hard
+HEAD is now at 26d4d5067 Merge branch 'main' into fused_gdn_gating
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 26d4d50677f5799a7e71b48e4e2e6fddde51a6a2
+
+
+===== DIFF vllm/model_executor/models/qwen3_next.py =====
+--- a/vllm/model_executor/models/qwen3_next.py
++++ b/vllm/model_executor/models/qwen3_next.py
+@@ -1296,10 +1296,8 @@
+ @triton.jit
+ def fused_gdn_gating_kernel(
+     g,
+-    beta_output,
+     A_log,
+     a,
+-    b,
+     dt_bias,
+     seq_len,
+     NUM_HEADS: tl.constexpr,
+@@ -1313,7 +1311,6 @@
+     mask = head_off < NUM_HEADS
+     blk_A_log = tl.load(A_log + head_off, mask=mask)
+     blk_a = tl.load(a + off, mask=mask)
+-    blk_b = tl.load(b + off, mask=mask)
+     blk_bias = tl.load(dt_bias + head_off, mask=mask)
+     # If the model is loaded in fp16, without the .float() here, A might be -inf
+     x = blk_a.to(tl.float32) + blk_bias.to(tl.float32)
+@@ -1322,42 +1319,20 @@
+     )
+     blk_g = -tl.exp(blk_A_log.to(tl.float32)) * softplus_x
+     tl.store(g + off, blk_g.to(g.dtype.element_ty), mask=mask)
+-    # compute beta_output = sigmoid(b)
+-    blk_beta = 1.0 / (1.0 + tl.exp(-blk_b.to(tl.float32)))
+-    tl.store(beta_output + off, blk_beta.to(beta_output.dtype.element_ty), mask=mask)
+ 
+ 
+ def fused_gdn_gating(
+     A_log: torch.Tensor,
+     a: torch.Tensor,
+-    b: torch.Tensor,
+     dt_bias: torch.Tensor,
+     beta: float = 1.0,
+     threshold: float = 20.0,
+-) -> tuple[torch.Tensor, torch.Tensor]:
+-    """
+-    Fused computation of g and beta for Gated Delta Net.
+-    g = -self.A_log.float().exp() * F.softplus(a.float() + self.dt_bias)
+-    beta_output = b.sigmoid()
+-    TODO maybe use torch.compile to replace this triton kernel
+-    """
++) -> torch.Tensor:
+     batch, num_heads = a.shape
+     seq_len = 1
+     grid = (batch, seq_len, triton.cdiv(num_heads, 8))
+-    g = torch.empty(1, batch, num_heads, dtype=torch.float32, device=a.device)
+-    beta_output = torch.empty(1, batch, num_heads, dtype=torch.float32, device=b.device)
++    g = torch.empty_like(a, dtype=torch.float32)
+     fused_gdn_gating_kernel[grid](
+-        g,
+-        beta_output,
+-        A_log,
+-        a,
+-        b,
+-        dt_bias,
+-        seq_len,
+-        num_heads,
+-        beta,
+-        threshold,
+-        8,
+-        num_warps=1,
++        g, A_log, a, dt_bias, seq_len, num_heads, beta, threshold, 8, num_warps=1
+     )
+-    return g, beta_output
++    return g
+
+[HEAD] Patched vllm/model_executor/models/qwen3_next.py
+
+Done. All files patched successfully.
+2026-01-23 19:51:24,413 - INFO - Removing intermediate container 04989b280256
+2026-01-23 19:51:24,413 - INFO - ---> cff99223482f
+2026-01-23 19:51:24,413 - INFO - Step 13/13 : WORKDIR /workspace/vllm-project/vllm
+2026-01-23 19:51:24,413 - INFO - 
+2026-01-23 19:51:24,442 - INFO - ---> Running in 3ff2ce0b68fc
+2026-01-23 19:51:24,579 - INFO - Removing intermediate container 3ff2ce0b68fc
+2026-01-23 19:51:24,579 - INFO - ---> 078251ae0eab
+2026-01-23 19:51:24,580 - INFO - Successfully built 078251ae0eab
+2026-01-23 19:51:24,584 - INFO - Successfully tagged rtbench-instance-vllm-8:latest
+2026-01-23 19:51:24,584 - INFO - Image built successfully!

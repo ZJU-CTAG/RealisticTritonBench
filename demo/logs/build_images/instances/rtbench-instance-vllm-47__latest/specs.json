@@ -1,0 +1,10 @@
+{
+  "vllm/attention/ops/common.py": {
+    "source_func": {
+      "correct_attn_out": "def correct_attn_out(\n    out: torch.Tensor, lses: torch.Tensor, cp_rank: int, ctx: CPTritonContext\n) -> tuple[torch.Tensor, torch.Tensor]:"
+    },
+    "target_func": {
+      "correct_attn_out": "def correct_attn_out(\n    out: torch.Tensor, lses: torch.Tensor, cp_rank: int, ctx: CPTritonContext\n) -> tuple[torch.Tensor, torch.Tensor]:"
+    }
+  }
+}

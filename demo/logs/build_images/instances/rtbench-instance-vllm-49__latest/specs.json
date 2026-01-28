@@ -1,0 +1,12 @@
+{
+  "vllm/model_executor/layers/mamba/ops/causal_conv1d.py": {
+    "source_func": {
+      "causal_conv1d_fn": "def causal_conv1d_fn(\n    x: torch.Tensor,\n    weight: torch.Tensor,\n    bias: Union[torch.Tensor, None],\n    conv_states: torch.Tensor,\n    query_start_loc: torch.Tensor,\n    cache_indices: Optional[torch.Tensor] = None,\n    has_initial_state: Optional[torch.Tensor] = None,\n    activation: Optional[str] = \"silu\",\n    pad_slot_id: int = PAD_SLOT_ID,\n    metadata=None,\n    validate_data=False,\n):",
+      "causal_conv1d_update": "def causal_conv1d_update(\n    x: torch.Tensor,\n    conv_state: torch.Tensor,\n    weight: torch.Tensor,\n    bias: Optional[torch.Tensor] = None,\n    activation: Union[bool, str, None] = None,\n    cache_seqlens: Optional[torch.Tensor] = None,\n    conv_state_indices: Optional[torch.Tensor] = None,\n    num_accepted_tokens: Optional[torch.Tensor] = None,\n    query_start_loc: Optional[torch.Tensor] = None,\n    max_query_len: int = -1,\n    pad_slot_id: int = PAD_SLOT_ID,\n    metadata=None,\n    validate_data=False,\n):"
+    },
+    "target_func": {
+      "causal_conv1d_fn": "def causal_conv1d_fn(\n    x: torch.Tensor,\n    weight: torch.Tensor,\n    bias: Union[torch.Tensor, None],\n    conv_states: torch.Tensor,\n    query_start_loc: torch.Tensor,\n    cache_indices: Optional[torch.Tensor] = None,\n    has_initial_state: Optional[torch.Tensor] = None,\n    activation: Optional[str] = \"silu\",\n    pad_slot_id: int = PAD_SLOT_ID,\n    metadata=None,\n    validate_data=False,\n):",
+      "causal_conv1d_update": "def causal_conv1d_update(\n    x: torch.Tensor,\n    conv_state: torch.Tensor,\n    weight: torch.Tensor,\n    bias: Optional[torch.Tensor] = None,\n    activation: Union[bool, str, None] = None,\n    cache_seqlens: Optional[torch.Tensor] = None,\n    conv_state_indices: Optional[torch.Tensor] = None,\n    num_accepted_tokens: Optional[torch.Tensor] = None,\n    query_start_loc: Optional[torch.Tensor] = None,\n    max_query_len: int = -1,\n    pad_slot_id: int = PAD_SLOT_ID,\n    metadata=None,\n    validate_data=False,\n):"
+    }
+  }
+}

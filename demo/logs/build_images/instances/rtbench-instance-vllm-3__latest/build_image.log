@@ -1,0 +1,196 @@
+2026-01-23 19:40:52,961 - INFO - Building image rtbench-instance-vllm-3:latest
+Using dockerfile:
+# syntax=docker/dockerfile:1.4
+FROM --platform=linux/x86_64 rtbench-vllm:latest
+
+WORKDIR /workspace
+
+ENV PATH=/opt/miniconda3/bin:$PATH
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+RUN conda create -n testbed python=3.10 
+
+COPY replace_funcs.py /workspace/replace_funcs.py
+COPY specs.json /workspace/specs.json
+
+
+ARG PIP_CACHE_DIR=/root/.cache/pip
+
+RUN mkdir -p $PIP_CACHE_DIR
+
+# 在同一条 RUN 里调用环境的 Python
+RUN cd vllm-project/vllm && \
+    /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py \
+        --repo /workspace/vllm-project/vllm \
+        --base_commit 5aa9b090407d5fb9b89c05d28fab808623e3070c \
+        --head_commit c3a66b951c65fd1ba91b63d5ed9477ec605f619d \
+        --pull_number 29470 \
+        --specs /workspace/specs.json 
+
+WORKDIR /workspace/vllm-project/vllm
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 19:40:52,961 - INFO - Building docker image rtbench-instance-vllm-3:latest in logs/build_images/instances/rtbench-instance-vllm-3__latest with platform linux/x86_64
+2026-01-23 19:40:53,043 - INFO - Step 1/13 : FROM --platform=linux/x86_64 rtbench-vllm:latest
+2026-01-23 19:40:53,043 - INFO - 
+2026-01-23 19:40:53,044 - INFO - ---> 2305ba9d0999
+2026-01-23 19:40:53,044 - INFO - Step 2/13 : WORKDIR /workspace
+2026-01-23 19:40:53,044 - INFO - 
+2026-01-23 19:40:53,046 - INFO - ---> Using cache
+2026-01-23 19:40:53,047 - INFO - ---> e747518d1b92
+2026-01-23 19:40:53,047 - INFO - Step 3/13 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 19:40:53,047 - INFO - 
+2026-01-23 19:40:53,048 - INFO - ---> Using cache
+2026-01-23 19:40:53,048 - INFO - ---> e5991ef828f8
+2026-01-23 19:40:53,048 - INFO - Step 4/13 : ENV CUDA_HOME=/usr/local/cuda
+2026-01-23 19:40:53,048 - INFO - 
+2026-01-23 19:40:53,049 - INFO - ---> Using cache
+2026-01-23 19:40:53,049 - INFO - ---> 023b41248226
+2026-01-23 19:40:53,049 - INFO - Step 5/13 : ENV PATH=$CUDA_HOME/bin:$PATH
+2026-01-23 19:40:53,049 - INFO - 
+2026-01-23 19:40:53,050 - INFO - ---> Using cache
+2026-01-23 19:40:53,050 - INFO - ---> aef303189f12
+2026-01-23 19:40:53,051 - INFO - Step 6/13 : ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+2026-01-23 19:40:53,051 - INFO - 
+2026-01-23 19:40:53,052 - INFO - ---> Using cache
+2026-01-23 19:40:53,052 - INFO - ---> 8755a772bbfe
+2026-01-23 19:40:53,052 - INFO - Step 7/13 : RUN conda create -n testbed python=3.10
+2026-01-23 19:40:53,052 - INFO - 
+2026-01-23 19:40:53,054 - INFO - ---> Using cache
+2026-01-23 19:40:53,054 - INFO - ---> b2e188ff63fb
+2026-01-23 19:40:53,054 - INFO - Step 8/13 : COPY replace_funcs.py /workspace/replace_funcs.py
+2026-01-23 19:40:53,054 - INFO - 
+2026-01-23 19:40:53,057 - INFO - ---> Using cache
+2026-01-23 19:40:53,057 - INFO - ---> 5f74b3ba7130
+2026-01-23 19:40:53,057 - INFO - Step 9/13 : COPY specs.json /workspace/specs.json
+2026-01-23 19:40:53,057 - INFO - 
+2026-01-23 19:40:53,233 - INFO - ---> 15a58ff08f58
+2026-01-23 19:40:53,233 - INFO - Step 10/13 : ARG PIP_CACHE_DIR=/root/.cache/pip
+2026-01-23 19:40:53,233 - INFO - 
+2026-01-23 19:40:53,262 - INFO - ---> Running in 55d626df934b
+2026-01-23 19:40:53,366 - INFO - Removing intermediate container 55d626df934b
+2026-01-23 19:40:53,366 - INFO - ---> 85034378af96
+2026-01-23 19:40:53,367 - INFO - Step 11/13 : RUN mkdir -p $PIP_CACHE_DIR
+2026-01-23 19:40:53,367 - INFO - 
+2026-01-23 19:40:53,391 - INFO - ---> Running in 7a5365ba2774
+2026-01-23 19:40:53,726 - INFO - Removing intermediate container 7a5365ba2774
+2026-01-23 19:40:53,726 - INFO - ---> bbf49741faed
+2026-01-23 19:40:53,726 - INFO - Step 12/13 : RUN cd vllm-project/vllm &&     /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py         --repo /workspace/vllm-project/vllm         --base_commit 5aa9b090407d5fb9b89c05d28fab808623e3070c         --head_commit c3a66b951c65fd1ba91b63d5ed9477ec605f619d         --pull_number 29470         --specs /workspace/specs.json
+2026-01-23 19:40:53,726 - INFO - 
+2026-01-23 19:40:53,750 - INFO - ---> Running in b6bc02e5d597
+2026-01-23 19:40:59,327 - INFO - [INFO] Command succeeded: git reset --hard
+HEAD is now at a8eb1182f [CI][Models] Add VLM Support for Sequence Classification Conversion (#32885)
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 5aa9b090407d5fb9b89c05d28fab808623e3070c
+
+[INFO] Command succeeded: git fetch origin pull/29470/head:pr-29470
+
+[INFO] Command succeeded: git checkout pr-29470
+
+[INFO] Command succeeded: git reset --hard
+HEAD is now at c3a66b951 Merge branch 'main' into varun/fuse-prefill-act-mul-quant
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout c3a66b951c65fd1ba91b63d5ed9477ec605f619d
+
+
+===== DIFF vllm/model_executor/layers/quantization/utils/fp8_utils.py =====
+--- a/vllm/model_executor/layers/quantization/utils/fp8_utils.py
++++ b/vllm/model_executor/layers/quantization/utils/fp8_utils.py
+@@ -492,75 +492,6 @@
+     tl.store(y_s_ptr, y_s)
+ 
+ 
+-@triton.jit
+-def _silu_mul_per_token_group_quant_fp8_colmajor(
+-    y_ptr,  # [M, N]
+-    y_q_ptr,  # [M, N // 2]
+-    y_s_ptr,  # [M, (N // 2) // GROUP_SIZE]
+-    M,  # num tokens
+-    N,  # intermediate size
+-    # Stride
+-    y_s_col_stride: tl.int64,
+-    # Information for float8
+-    eps,
+-    fp8_min,
+-    fp8_max,
+-    use_ue8m0: tl.constexpr,
+-    # Meta-parameters
+-    GROUP_SIZE: tl.constexpr,
+-    BLOCK_M: tl.constexpr,
+-    BLOCK_N: tl.constexpr,
+-):
+-    # TODO(varun) : Add expert_ids so we may early-exit no-op thread blocks.
+-    """
+-    Each thread block (BLOCK_N) computes [BLOCK_M, GROUP_SIZE] act-mul outputs. Then
+-    the thread block quantizes the [BLOCK_M, GROUP_SIZE] block of values and fills
+-    the outputs tensors at the right positions.
+-    """
+-
+-    pid_m = tl.program_id(0)
+-    pid_n = tl.program_id(1)
+-    N_2 = N // 2
+-
+-    m_offset = pid_m * BLOCK_M
+-    n_offset = pid_n * BLOCK_N
+-    if m_offset >= M:
+-        return
+-
+-    offs_n = tl.arange(0, BLOCK_N).to(tl.int64)
+-    offs_m = tl.arange(0, BLOCK_M).to(tl.int64)
+-
+-    base_y_ptr = y_ptr + m_offset * N + n_offset
+-
+-    act_in_ptrs = base_y_ptr + offs_m[:, None] * N + offs_n[None, :]
+-
+-    act_in = tl.load(act_in_ptrs)
+-    mul_in = tl.load(act_in_ptrs + N_2)
+-
+-    # silu & mul
+-    act_in = act_in.to(tl.float32)
+-    one_f32 = tl.cast(1, tl.float32)
+-    silu_out = (act_in / (one_f32 + tl.exp(-act_in))).to(y_ptr.dtype.element_ty)
+-    y = (silu_out * mul_in).to(tl.float32)
+-
+-    # quant
+-    _absmax = tl.maximum(tl.max(tl.abs(y), axis=1), eps)
+-    scale_raw = _absmax / fp8_max
+-    y_s = tl.math.exp2(tl.ceil(tl.log2(scale_raw))) if use_ue8m0 else scale_raw
+-    y_s = tl.reshape(y_s, (BLOCK_M, 1))
+-    y_q = tl.clamp(y / y_s, fp8_min, fp8_max).to(y_q_ptr.dtype.element_ty)
+-
+-    # store y_q
+-    base_y_q_ptr = y_q_ptr + m_offset * N_2 + n_offset
+-    y_q_ptrs = base_y_q_ptr + offs_m[:, None] * N_2 + offs_n[None, :]
+-    tl.store(y_q_ptrs, y_q)
+-
+-    # store y_s
+-    group_id = n_offset // GROUP_SIZE
+-    base_y_s_ptr = y_s_ptr + group_id * y_s_col_stride + m_offset
+-    y_s_ptrs = base_y_s_ptr + offs_m
+-    y_s = tl.reshape(y_s, (BLOCK_M,))
+-    tl.store(y_s_ptrs, y_s)
+ 
+ 
+ def silu_mul_per_token_group_quant_fp8_colmajor(
+
+[HEAD] Patched vllm/model_executor/layers/quantization/utils/fp8_utils.py
+
+Done. All files patched successfully.
+2026-01-23 19:41:01,136 - INFO - Removing intermediate container b6bc02e5d597
+2026-01-23 19:41:01,136 - INFO - ---> 20ebd64423ef
+2026-01-23 19:41:01,137 - INFO - Step 13/13 : WORKDIR /workspace/vllm-project/vllm
+2026-01-23 19:41:01,137 - INFO - 
+2026-01-23 19:41:01,398 - INFO - ---> Running in 6b11b47c19ea
+2026-01-23 19:41:01,501 - INFO - Removing intermediate container 6b11b47c19ea
+2026-01-23 19:41:01,502 - INFO - ---> 08c1f02ef04f
+2026-01-23 19:41:01,502 - INFO - Successfully built 08c1f02ef04f
+2026-01-23 19:41:01,507 - INFO - Successfully tagged rtbench-instance-vllm-3:latest
+2026-01-23 19:41:01,507 - INFO - Image built successfully!

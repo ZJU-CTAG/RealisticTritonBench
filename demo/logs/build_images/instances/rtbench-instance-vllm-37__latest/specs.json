@@ -1,0 +1,9 @@
+{
+  "vllm/model_executor/layers/quantization/compressed_tensors/triton_scaled_mm.py": {
+    "source_func": {},
+    "target_func": {
+      "scaled_mm_kernel": "def scaled_mm_kernel(a_ptr, b_ptr, scale_a_ptr, scale_b_ptr, c_ptr, bias_ptr,\n                     M, N, K, stride_am, stride_ak, stride_bk, stride_bn,\n                     stride_cm, stride_cn, ACCUMULATOR_DTYPE: tl.constexpr,\n                     BLOCK_SIZE_M: tl.constexpr, BLOCK_SIZE_N: tl.constexpr,\n                     BLOCK_SIZE_K: tl.constexpr,\n                     BLOCK_SIZE_SCALE_A: tl.constexpr,\n                     BLOCK_SIZE_SCALE_B: tl.constexpr):",
+      "triton_scaled_mm": "def triton_scaled_mm(input: torch.Tensor,\n                     weight: torch.Tensor,\n                     scale_a: torch.Tensor,\n                     scale_b: torch.Tensor,\n                     out_dtype: Type[torch.dtype],\n                     bias: Optional[torch.Tensor] = None,\n                     block_size_m: int = 32,\n                     block_size_n: int = 32,\n                     block_size_k: int = 32) -> torch.Tensor:"
+    }
+  }
+}

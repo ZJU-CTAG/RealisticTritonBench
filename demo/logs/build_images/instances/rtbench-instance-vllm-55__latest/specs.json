@@ -1,0 +1,12 @@
+{
+  "vllm/model_executor/layers/mamba/ops/ssd_bmm.py": {
+    "source_func": {
+      "_bmm_chunk_fwd_kernel": "@triton.jit\ndef _bmm_chunk_fwd_kernel(\n    # Pointers to matrices\n    a_ptr,\n    b_ptr,\n    out_ptr,\n    seq_idx_ptr,\n    # Matrix dimensions\n    seqlen,\n    chunk_size,\n    K,\n    ngroups,\n    stride_a_batch,\n    stride_a_seqlen,\n    stride_a_head,\n    stride_ak,\n    stride_b_batch,\n    stride_b_seqlen,\n    stride_b_head,\n    stride_bk,\n    stride_out_batch,\n    stride_out_chunk,\n    stride_out_head,\n    stride_outm,\n    stride_outn,\n    stride_seq_idx_batch,\n    stride_seq_idx_seqlen,\n    # Meta-parameters\n    IS_CAUSAL: tl.constexpr,\n    dot_dtype: tl.constexpr,\n    HAS_SEQ_IDX: tl.constexpr,\n    BLOCK_SIZE_M: tl.constexpr,\n    BLOCK_SIZE_N: tl.constexpr,\n    BLOCK_SIZE_K: tl.constexpr,\n):",
+      "_bmm_chunk_fwd": "def _bmm_chunk_fwd(a, b, chunk_size, seq_idx, causal=False, output_dtype=None):"
+    },
+    "target_func": {
+      "_bmm_chunk_fwd_kernel": "@triton.jit\ndef _bmm_chunk_fwd_kernel(\n    # Pointers to matrices\n    a_ptr,\n    b_ptr,\n    out_ptr,\n    cu_chunk_seqlens_ptr,\n    # Matrix dimensions\n    seqlen,\n    chunk_size: tl.constexpr,\n    K: tl.constexpr,\n    ngroups: tl.constexpr,\n    stride_a_seqlen: tl.int64,\n    stride_a_head: tl.int64,\n    stride_ak: tl.constexpr,\n    stride_b_seqlen: tl.int64,\n    stride_b_head: tl.int64,\n    stride_bk: tl.constexpr,\n    stride_out_chunk: tl.int64,\n    stride_out_head: tl.int64,\n    stride_outm: tl.int64,\n    stride_outn: tl.constexpr,\n    # Meta-parameters\n    IS_CAUSAL: tl.constexpr,\n    dot_dtype: tl.constexpr,\n    BLOCK_SIZE_M: tl.constexpr,\n    BLOCK_SIZE_N: tl.constexpr,\n    BLOCK_SIZE_K: tl.constexpr,\n):",
+      "_bmm_chunk_fwd": "def _bmm_chunk_fwd(a,\n                   b,\n                   chunk_size,\n                   cu_chunk_seqlens,\n                   causal=False,\n                   output_dtype=None):"
+    }
+  }
+}

@@ -1,0 +1,274 @@
+2026-01-23 19:54:35,905 - INFO - Building image rtbench-instance-vllm-31:latest
+Using dockerfile:
+# syntax=docker/dockerfile:1.4
+FROM --platform=linux/x86_64 rtbench-vllm:latest
+
+WORKDIR /workspace
+
+ENV PATH=/opt/miniconda3/bin:$PATH
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+RUN conda create -n testbed python=3.10 
+
+COPY replace_funcs.py /workspace/replace_funcs.py
+COPY specs.json /workspace/specs.json
+
+
+ARG PIP_CACHE_DIR=/root/.cache/pip
+
+RUN mkdir -p $PIP_CACHE_DIR
+
+# 在同一条 RUN 里调用环境的 Python
+RUN cd vllm-project/vllm && \
+    /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py \
+        --repo /workspace/vllm-project/vllm \
+        --base_commit a454748544f67a7677a2bf71ab329da0600d34a6 \
+        --head_commit 2c1eaac2cc30e0678bcf5613c299bf973af2ebec \
+        --pull_number 16366 \
+        --specs /workspace/specs.json 
+
+WORKDIR /workspace/vllm-project/vllm
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 19:54:35,905 - INFO - Building docker image rtbench-instance-vllm-31:latest in logs/build_images/instances/rtbench-instance-vllm-31__latest with platform linux/x86_64
+2026-01-23 19:54:35,988 - INFO - Step 1/13 : FROM --platform=linux/x86_64 rtbench-vllm:latest
+2026-01-23 19:54:35,988 - INFO - 
+2026-01-23 19:54:35,989 - INFO - ---> 2305ba9d0999
+2026-01-23 19:54:35,989 - INFO - Step 2/13 : WORKDIR /workspace
+2026-01-23 19:54:35,989 - INFO - 
+2026-01-23 19:54:35,991 - INFO - ---> Using cache
+2026-01-23 19:54:35,992 - INFO - ---> e747518d1b92
+2026-01-23 19:54:35,992 - INFO - Step 3/13 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 19:54:35,992 - INFO - 
+2026-01-23 19:54:35,993 - INFO - ---> Using cache
+2026-01-23 19:54:35,993 - INFO - ---> e5991ef828f8
+2026-01-23 19:54:35,993 - INFO - Step 4/13 : ENV CUDA_HOME=/usr/local/cuda
+2026-01-23 19:54:35,993 - INFO - 
+2026-01-23 19:54:35,995 - INFO - ---> Using cache
+2026-01-23 19:54:35,995 - INFO - ---> 023b41248226
+2026-01-23 19:54:35,995 - INFO - Step 5/13 : ENV PATH=$CUDA_HOME/bin:$PATH
+2026-01-23 19:54:35,995 - INFO - 
+2026-01-23 19:54:35,996 - INFO - ---> Using cache
+2026-01-23 19:54:35,996 - INFO - ---> aef303189f12
+2026-01-23 19:54:35,996 - INFO - Step 6/13 : ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+2026-01-23 19:54:35,996 - INFO - 
+2026-01-23 19:54:35,998 - INFO - ---> Using cache
+2026-01-23 19:54:35,998 - INFO - ---> 8755a772bbfe
+2026-01-23 19:54:35,998 - INFO - Step 7/13 : RUN conda create -n testbed python=3.10
+2026-01-23 19:54:35,998 - INFO - 
+2026-01-23 19:54:35,999 - INFO - ---> Using cache
+2026-01-23 19:54:35,999 - INFO - ---> b2e188ff63fb
+2026-01-23 19:54:35,999 - INFO - Step 8/13 : COPY replace_funcs.py /workspace/replace_funcs.py
+2026-01-23 19:54:35,999 - INFO - 
+2026-01-23 19:54:36,002 - INFO - ---> Using cache
+2026-01-23 19:54:36,002 - INFO - ---> 5f74b3ba7130
+2026-01-23 19:54:36,002 - INFO - Step 9/13 : COPY specs.json /workspace/specs.json
+2026-01-23 19:54:36,002 - INFO - 
+2026-01-23 19:54:36,198 - INFO - ---> 96b3fa9a5249
+2026-01-23 19:54:36,198 - INFO - Step 10/13 : ARG PIP_CACHE_DIR=/root/.cache/pip
+2026-01-23 19:54:36,199 - INFO - 
+2026-01-23 19:54:36,229 - INFO - ---> Running in 745a8b94fe44
+2026-01-23 19:54:36,326 - INFO - Removing intermediate container 745a8b94fe44
+2026-01-23 19:54:36,327 - INFO - ---> 84b10cc7311f
+2026-01-23 19:54:36,327 - INFO - Step 11/13 : RUN mkdir -p $PIP_CACHE_DIR
+2026-01-23 19:54:36,327 - INFO - 
+2026-01-23 19:54:36,352 - INFO - ---> Running in 8cf5c1cf3230
+2026-01-23 19:54:36,674 - INFO - Removing intermediate container 8cf5c1cf3230
+2026-01-23 19:54:36,674 - INFO - ---> 136eae0f1cfb
+2026-01-23 19:54:36,674 - INFO - Step 12/13 : RUN cd vllm-project/vllm &&     /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py         --repo /workspace/vllm-project/vllm         --base_commit a454748544f67a7677a2bf71ab329da0600d34a6         --head_commit 2c1eaac2cc30e0678bcf5613c299bf973af2ebec         --pull_number 16366         --specs /workspace/specs.json
+2026-01-23 19:54:36,674 - INFO - 
+2026-01-23 19:54:36,763 - INFO - ---> Running in 3f9c1daf2a69
+2026-01-23 19:54:42,000 - INFO - [INFO] Command succeeded: git reset --hard
+HEAD is now at a8eb1182f [CI][Models] Add VLM Support for Sequence Classification Conversion (#32885)
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout a454748544f67a7677a2bf71ab329da0600d34a6
+
+[INFO] Command succeeded: git fetch origin pull/16366/head:pr-16366
+
+[INFO] Command succeeded: git checkout pr-16366
+
+[INFO] Command succeeded: git reset --hard
+HEAD is now at 2c1eaac2c Review comments
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 2c1eaac2cc30e0678bcf5613c299bf973af2ebec
+
+
+===== DIFF vllm/model_executor/layers/fused_moe/fused_moe.py =====
+--- a/vllm/model_executor/layers/fused_moe/fused_moe.py
++++ b/vllm/model_executor/layers/fused_moe/fused_moe.py
+@@ -254,53 +254,50 @@
+ 
+ @triton.jit
+ def fused_moe_kernel(
+-    # Pointers to matrices
+-    a_ptr,
+-    b_ptr,
+-    c_ptr,
+-    a_scale_ptr,
+-    b_scale_ptr,
+-    topk_weights_ptr,
+-    sorted_token_ids_ptr,
+-    expert_ids_ptr,
+-    num_tokens_post_padded_ptr,
+-    # Matrix dimensions
+-    N,
+-    K,
+-    EM,
+-    num_valid_tokens,
+-    # The stride variables represent how much to increase the ptr by when
+-    # moving by 1 element in a particular dimension. E.g. `stride_am` is
+-    # how much to increase `a_ptr` by to get the element one row down
+-    # (A has M rows).
+-    stride_am,
+-    stride_ak,
+-    stride_be,
+-    stride_bk,
+-    stride_bn,
+-    stride_cm,
+-    stride_cn,
+-    stride_asm,
+-    stride_ask,
+-    stride_bse,
+-    stride_bsk,
+-    stride_bsn,
+-    # Block size for block-wise quantization
+-    group_n: tl.constexpr,
+-    group_k: tl.constexpr,
+-    # Meta-parameters
+-    BLOCK_SIZE_M: tl.constexpr,
+-    BLOCK_SIZE_N: tl.constexpr,
+-    BLOCK_SIZE_K: tl.constexpr,
+-    GROUP_SIZE_M: tl.constexpr,
+-    MUL_ROUTED_WEIGHT: tl.constexpr,
+-    top_k: tl.constexpr,
+-    compute_type: tl.constexpr,
+-    use_fp8_w8a8: tl.constexpr,
+-    use_int8_w8a8: tl.constexpr,
+-    use_int8_w8a16: tl.constexpr,
+-    per_channel_quant: tl.constexpr,
+-):
++        # Pointers to matrices
++        a_ptr,
++        b_ptr,
++        c_ptr,
++        a_scale_ptr,
++        b_scale_ptr,
++        topk_weights_ptr,
++        sorted_token_ids_ptr,
++        expert_ids_ptr,
++        num_tokens_post_padded_ptr,
++        # Matrix dimensions
++        N,
++        K,
++        EM,
++        num_valid_tokens,
++        # The stride variables represent how much to increase the ptr by when
++        # moving by 1 element in a particular dimension. E.g. `stride_am` is
++        # how much to increase `a_ptr` by to get the element one row down
++        # (A has M rows).
++        stride_am,
++        stride_ak,
++        stride_be,
++        stride_bk,
++        stride_bn,
++        stride_cm,
++        stride_cn,
++        stride_asm,
++        stride_ask,
++        stride_bse,
++        stride_bsk,
++        stride_bsn,
++        # Block size for block-wise quantization
++        group_n: tl.constexpr,
++        group_k: tl.constexpr,
++        # Meta-parameters
++        BLOCK_SIZE_M: tl.constexpr,
++        BLOCK_SIZE_N: tl.constexpr,
++        BLOCK_SIZE_K: tl.constexpr,
++        GROUP_SIZE_M: tl.constexpr,
++        MUL_ROUTED_WEIGHT: tl.constexpr,
++        top_k: tl.constexpr,
++        compute_type: tl.constexpr,
++        use_fp8_w8a8: tl.constexpr,
++        use_int8_w8a16: tl.constexpr):
+     """
+     Implements the fused computation for a Mixture of Experts (MOE) using
+     token and expert matrices.
+@@ -377,23 +374,12 @@
+             None, :] * stride_bsn
+         b_scale = tl.load(b_scale_ptrs)
+ 
+-    if use_fp8_w8a8 or use_int8_w8a8:
+-        # block-wise
++    if use_fp8_w8a8:
+         if group_k > 0 and group_n > 0:
+             a_scale_ptrs = a_scale_ptr + (offs_token // top_k) * stride_asm
+             offs_bsn = offs_bn // group_n
+             b_scale_ptrs = (b_scale_ptr + off_experts * stride_bse +
+                             offs_bsn * stride_bsn)
+-        # channel-wise
+-        elif per_channel_quant:
+-            b_scale_ptrs = b_scale_ptr + off_experts * stride_bse + offs_bn[
+-                None, :] * stride_bsn
+-            b_scale = tl.load(b_scale_ptrs)
+-            # Load per-token scale for activations
+-            a_scale_ptrs = a_scale_ptr + (offs_token // top_k) * stride_asm
+-            a_scale = tl.load(a_scale_ptrs, mask=token_mask, other=0.0)[:,
+-                                                                        None]
+-        # tensor-wise
+         else:
+             a_scale = tl.load(a_scale_ptr)
+             b_scale = tl.load(b_scale_ptr + off_experts)
+@@ -417,7 +403,7 @@
+         # We accumulate along the K dimension.
+         if use_int8_w8a16:
+             accumulator = tl.dot(a, b.to(compute_type), acc=accumulator)
+-        elif use_fp8_w8a8 or use_int8_w8a8:
++        elif use_fp8_w8a8:
+             if group_k > 0 and group_n > 0:
+                 k_start = k * BLOCK_SIZE_K
+                 offs_ks = k_start // group_k
+@@ -429,11 +415,7 @@
+                 accumulator += tl.dot(a, b) * a_scale[:,
+                                                       None] * b_scale[None, :]
+             else:
+-                if use_fp8_w8a8:
+-                    # acc used to enable fp8_fast_accum
+-                    accumulator = tl.dot(a, b, acc=accumulator)
+-                else:
+-                    accumulator += tl.dot(a, b)
++                accumulator = tl.dot(a, b, acc=accumulator)
+         else:
+             accumulator += tl.dot(a, b)
+         # Advance the ptrs to the next K block.
+@@ -447,7 +429,7 @@
+         accumulator = accumulator * moe_weight[:, None]
+     if use_int8_w8a16:
+         accumulator = (accumulator * b_scale).to(compute_type)
+-    elif use_fp8_w8a8 or use_int8_w8a8:
++    elif use_fp8_w8a8:
+         if group_k > 0 and group_n > 0:
+             accumulator = accumulator.to(compute_type)
+         else:
+
+[HEAD] Patched vllm/model_executor/layers/fused_moe/fused_moe.py
+
+Done. All files patched successfully.
+2026-01-23 19:54:43,038 - INFO - Removing intermediate container 3f9c1daf2a69
+2026-01-23 19:54:43,038 - INFO - ---> 65548bd70be9
+2026-01-23 19:54:43,038 - INFO - Step 13/13 : WORKDIR /workspace/vllm-project/vllm
+2026-01-23 19:54:43,038 - INFO - 
+2026-01-23 19:54:43,071 - INFO - ---> Running in bc219c2bb279
+2026-01-23 19:54:43,168 - INFO - Removing intermediate container bc219c2bb279
+2026-01-23 19:54:43,168 - INFO - ---> 4a32a1acedf8
+2026-01-23 19:54:43,168 - INFO - Successfully built 4a32a1acedf8
+2026-01-23 19:54:43,172 - INFO - Successfully tagged rtbench-instance-vllm-31:latest
+2026-01-23 19:54:43,172 - INFO - Image built successfully!

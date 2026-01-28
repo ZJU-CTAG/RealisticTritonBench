@@ -1,0 +1,201 @@
+2026-01-23 20:10:49,252 - INFO - Building image rtbench-instance-vllm-44:latest
+Using dockerfile:
+# syntax=docker/dockerfile:1.4
+FROM --platform=linux/x86_64 rtbench-vllm:latest
+
+WORKDIR /workspace
+
+ENV PATH=/opt/miniconda3/bin:$PATH
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+RUN conda create -n testbed python=3.10 
+
+COPY replace_funcs.py /workspace/replace_funcs.py
+COPY specs.json /workspace/specs.json
+
+
+ARG PIP_CACHE_DIR=/root/.cache/pip
+
+RUN mkdir -p $PIP_CACHE_DIR
+
+# 在同一条 RUN 里调用环境的 Python
+RUN cd vllm-project/vllm && \
+    /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py \
+        --repo /workspace/vllm-project/vllm \
+        --base_commit 2d9ee28cab204b90aa304f60fd7083ea45204bd7 \
+        --head_commit 0e2feba9474b5c92cb7d7fbf26a2311fa82d8c26 \
+        --pull_number 29219 \
+        --specs /workspace/specs.json 
+
+WORKDIR /workspace/vllm-project/vllm
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 20:10:49,253 - INFO - Building docker image rtbench-instance-vllm-44:latest in logs/build_images/instances/rtbench-instance-vllm-44__latest with platform linux/x86_64
+2026-01-23 20:10:49,324 - INFO - Step 1/13 : FROM --platform=linux/x86_64 rtbench-vllm:latest
+2026-01-23 20:10:49,324 - INFO - 
+2026-01-23 20:10:49,325 - INFO - ---> 2305ba9d0999
+2026-01-23 20:10:49,325 - INFO - Step 2/13 : WORKDIR /workspace
+2026-01-23 20:10:49,325 - INFO - 
+2026-01-23 20:10:49,328 - INFO - ---> Using cache
+2026-01-23 20:10:49,328 - INFO - ---> e747518d1b92
+2026-01-23 20:10:49,328 - INFO - Step 3/13 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 20:10:49,328 - INFO - 
+2026-01-23 20:10:49,329 - INFO - ---> Using cache
+2026-01-23 20:10:49,329 - INFO - ---> e5991ef828f8
+2026-01-23 20:10:49,329 - INFO - Step 4/13 : ENV CUDA_HOME=/usr/local/cuda
+2026-01-23 20:10:49,329 - INFO - 
+2026-01-23 20:10:49,330 - INFO - ---> Using cache
+2026-01-23 20:10:49,330 - INFO - ---> 023b41248226
+2026-01-23 20:10:49,330 - INFO - Step 5/13 : ENV PATH=$CUDA_HOME/bin:$PATH
+2026-01-23 20:10:49,330 - INFO - 
+2026-01-23 20:10:49,331 - INFO - ---> Using cache
+2026-01-23 20:10:49,331 - INFO - ---> aef303189f12
+2026-01-23 20:10:49,331 - INFO - Step 6/13 : ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+2026-01-23 20:10:49,331 - INFO - 
+2026-01-23 20:10:49,332 - INFO - ---> Using cache
+2026-01-23 20:10:49,332 - INFO - ---> 8755a772bbfe
+2026-01-23 20:10:49,332 - INFO - Step 7/13 : RUN conda create -n testbed python=3.10
+2026-01-23 20:10:49,333 - INFO - 
+2026-01-23 20:10:49,334 - INFO - ---> Using cache
+2026-01-23 20:10:49,335 - INFO - ---> b2e188ff63fb
+2026-01-23 20:10:49,335 - INFO - Step 8/13 : COPY replace_funcs.py /workspace/replace_funcs.py
+2026-01-23 20:10:49,335 - INFO - 
+2026-01-23 20:10:49,341 - INFO - ---> Using cache
+2026-01-23 20:10:49,341 - INFO - ---> 2ef016a67ff1
+2026-01-23 20:10:49,341 - INFO - Step 9/13 : COPY specs.json /workspace/specs.json
+2026-01-23 20:10:49,341 - INFO - 
+2026-01-23 20:10:49,509 - INFO - ---> cd95f57bab57
+2026-01-23 20:10:49,509 - INFO - Step 10/13 : ARG PIP_CACHE_DIR=/root/.cache/pip
+2026-01-23 20:10:49,509 - INFO - 
+2026-01-23 20:10:49,533 - INFO - ---> Running in 231aa029b1d4
+2026-01-23 20:10:49,628 - INFO - Removing intermediate container 231aa029b1d4
+2026-01-23 20:10:49,628 - INFO - ---> 07db44d5eacc
+2026-01-23 20:10:49,628 - INFO - Step 11/13 : RUN mkdir -p $PIP_CACHE_DIR
+2026-01-23 20:10:49,628 - INFO - 
+2026-01-23 20:10:49,655 - INFO - ---> Running in 2c7c9e6d912d
+2026-01-23 20:10:49,958 - INFO - Removing intermediate container 2c7c9e6d912d
+2026-01-23 20:10:49,958 - INFO - ---> bf28873d90ee
+2026-01-23 20:10:49,958 - INFO - Step 12/13 : RUN cd vllm-project/vllm &&     /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py         --repo /workspace/vllm-project/vllm         --base_commit 2d9ee28cab204b90aa304f60fd7083ea45204bd7         --head_commit 0e2feba9474b5c92cb7d7fbf26a2311fa82d8c26         --pull_number 29219         --specs /workspace/specs.json
+2026-01-23 20:10:49,959 - INFO - 
+2026-01-23 20:10:49,989 - INFO - ---> Running in fb71bc98dcd0
+2026-01-23 20:10:55,349 - INFO - [INFO] Command succeeded: git reset --hard
+HEAD is now at a8eb1182f [CI][Models] Add VLM Support for Sequence Classification Conversion (#32885)
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 2d9ee28cab204b90aa304f60fd7083ea45204bd7
+
+[INFO] Command succeeded: git fetch origin pull/29219/head:pr-29219
+
+[INFO] Command succeeded: git checkout pr-29219
+
+[INFO] Command succeeded: git reset --hard
+HEAD is now at 0e2feba94 Review changes
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 0e2feba9474b5c92cb7d7fbf26a2311fa82d8c26
+
+
+===== DIFF vllm/model_executor/layers/fused_moe/gpt_oss_triton_kernels_moe.py =====
+--- a/vllm/model_executor/layers/fused_moe/gpt_oss_triton_kernels_moe.py
++++ b/vllm/model_executor/layers/fused_moe/gpt_oss_triton_kernels_moe.py
+@@ -118,7 +118,6 @@
+     routing_data,  # RoutingData
+     gather_indx,  # GatherIndx
+     scatter_indx,  # ScatterIndx
+-    topk: int,
+     activation: str = "silu",
+     quant_config: FusedMoEQuantConfig | None = None,
+     swiglu_alpha: float = 1.702,
+@@ -126,7 +125,6 @@
+     apply_router_weight_on_input: bool = False,
+     global_num_experts: int = -1,
+     expert_map: torch.Tensor | None = None,
+-    intermediate_cache: torch.Tensor | None = None,
+     a1q_scale: torch.Tensor | None = None,
+ ) -> torch.Tensor:
+     if quant_config is None:
+@@ -138,29 +136,13 @@
+     assert quant_config.w2_bias is None or quant_config.w2_bias.dtype == torch.float32
+ 
+     # Shape check, only check non-mxfp4
+-    assert hidden_states.ndim == 2
+     assert hidden_states.shape[-1] == w1.shape[-2]
+     assert w2.shape[-1] == w1.shape[1]
+ 
+-    batch_dim = 1
+-    M, K = hidden_states.shape[-2:]
+     E, _, N = w1.shape
+ 
+     if global_num_experts == -1:
+         global_num_experts = E
+-
+-    if intermediate_cache is None:
+-        intermediate_cache = torch.empty(
+-            (batch_dim, M * topk, N // 2),
+-            device=hidden_states.device,
+-            dtype=hidden_states.dtype,
+-        )
+-
+-    # Add batch_dim to output buffer because matmul_ogs expects 3D output
+-    intermediate_cache = _resize_cache(
+-        intermediate_cache, (batch_dim, M * topk, N // 2)
+-    )
+-    output_tensor = _resize_cache(output_tensor, (batch_dim, M, K))
+ 
+     act = FusedActivation(
+         FnSpecs("swiglu", triton_kernels.swiglu.swiglu_fn, ("alpha", "limit")),
+@@ -169,7 +151,7 @@
+     )
+     gammas = routing_data.gate_scal if routing_data else None
+ 
+-    matmul_ogs(
++    intermediate_cache1 = matmul_ogs(
+         hidden_states,
+         w1,
+         quant_config.w1_bias,
+@@ -178,11 +160,10 @@
+         precision_config=quant_config.w1_precision,
+         gammas=gammas if apply_router_weight_on_input else None,
+         fused_activation=act,
+-        y=intermediate_cache,
+-    )
+-
+-    matmul_ogs(
+-        intermediate_cache.view(M * topk, N // 2),
++    )
++
++    intermediate_cache3 = matmul_ogs(
++        intermediate_cache1,
+         w2,
+         quant_config.w2_bias,
+         routing_data,
+@@ -191,8 +172,7 @@
+         gammas=None if apply_router_weight_on_input else gammas,
+         y=output_tensor,
+     )
+-    output_tensor = output_tensor.view(M, K)
+-    return output_tensor
++    return intermediate_cache3
+ 
+ 
+ def make_routing_data(
+
+[HEAD] Patched vllm/model_executor/layers/fused_moe/gpt_oss_triton_kernels_moe.py
+
+Done. All files patched successfully.
+2026-01-23 20:10:57,268 - INFO - Removing intermediate container fb71bc98dcd0
+2026-01-23 20:10:57,269 - INFO - ---> 47a1cc648d30
+2026-01-23 20:10:57,269 - INFO - Step 13/13 : WORKDIR /workspace/vllm-project/vllm
+2026-01-23 20:10:57,269 - INFO - 
+2026-01-23 20:10:57,331 - INFO - ---> Running in 0a47bbe79479
+2026-01-23 20:10:57,427 - INFO - Removing intermediate container 0a47bbe79479
+2026-01-23 20:10:57,428 - INFO - ---> 5285c6aae518
+2026-01-23 20:10:57,428 - INFO - Successfully built 5285c6aae518
+2026-01-23 20:10:57,433 - INFO - Successfully tagged rtbench-instance-vllm-44:latest
+2026-01-23 20:10:57,433 - INFO - Image built successfully!

@@ -1,0 +1,8 @@
+{
+  "vllm/v1/attention/backends/flashinfer.py": {
+    "source_func": {},
+    "target_func": {
+      "_trtllm_prefill_attn_kvfp8_dequant": "@triton.jit\ndef _trtllm_prefill_attn_kvfp8_dequant(\n    kv_cache_ptr,\n    block_tables_prefill_ptr,\n    block_table_stride,\n    mock_kv_cache_ptr,\n    k_scale_ptr,\n    v_scale_ptr,\n    K_CACHE_STRIDE: tl.constexpr,\n    KV_CACHE_STRIDE: tl.constexpr,\n):"
+    }
+  }
+}

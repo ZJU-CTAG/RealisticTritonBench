@@ -1,0 +1,386 @@
+2026-01-23 20:13:10,199 - INFO - Building image rtbench-instance-vllm-48:latest
+Using dockerfile:
+# syntax=docker/dockerfile:1.4
+FROM --platform=linux/x86_64 rtbench-vllm:latest
+
+WORKDIR /workspace
+
+ENV PATH=/opt/miniconda3/bin:$PATH
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+RUN conda create -n testbed python=3.10 
+
+COPY replace_funcs.py /workspace/replace_funcs.py
+COPY specs.json /workspace/specs.json
+
+
+ARG PIP_CACHE_DIR=/root/.cache/pip
+
+RUN mkdir -p $PIP_CACHE_DIR
+
+# 在同一条 RUN 里调用环境的 Python
+RUN cd vllm-project/vllm && \
+    /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py \
+        --repo /workspace/vllm-project/vllm \
+        --base_commit 2b856970313e80a649a573879d94e9d3430ba018 \
+        --head_commit 1ddd9d9817b7ed3f1e341f409ab7ac449171b233 \
+        --pull_number 24957 \
+        --specs /workspace/specs.json 
+
+WORKDIR /workspace/vllm-project/vllm
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 20:13:10,199 - INFO - Building docker image rtbench-instance-vllm-48:latest in logs/build_images/instances/rtbench-instance-vllm-48__latest with platform linux/x86_64
+2026-01-23 20:13:10,283 - INFO - Step 1/13 : FROM --platform=linux/x86_64 rtbench-vllm:latest
+2026-01-23 20:13:10,283 - INFO - 
+2026-01-23 20:13:10,284 - INFO - ---> 2305ba9d0999
+2026-01-23 20:13:10,284 - INFO - Step 2/13 : WORKDIR /workspace
+2026-01-23 20:13:10,284 - INFO - 
+2026-01-23 20:13:10,287 - INFO - ---> Using cache
+2026-01-23 20:13:10,287 - INFO - ---> e747518d1b92
+2026-01-23 20:13:10,287 - INFO - Step 3/13 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 20:13:10,287 - INFO - 
+2026-01-23 20:13:10,288 - INFO - ---> Using cache
+2026-01-23 20:13:10,289 - INFO - ---> e5991ef828f8
+2026-01-23 20:13:10,289 - INFO - Step 4/13 : ENV CUDA_HOME=/usr/local/cuda
+2026-01-23 20:13:10,289 - INFO - 
+2026-01-23 20:13:10,290 - INFO - ---> Using cache
+2026-01-23 20:13:10,290 - INFO - ---> 023b41248226
+2026-01-23 20:13:10,290 - INFO - Step 5/13 : ENV PATH=$CUDA_HOME/bin:$PATH
+2026-01-23 20:13:10,290 - INFO - 
+2026-01-23 20:13:10,292 - INFO - ---> Using cache
+2026-01-23 20:13:10,292 - INFO - ---> aef303189f12
+2026-01-23 20:13:10,292 - INFO - Step 6/13 : ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+2026-01-23 20:13:10,292 - INFO - 
+2026-01-23 20:13:10,294 - INFO - ---> Using cache
+2026-01-23 20:13:10,294 - INFO - ---> 8755a772bbfe
+2026-01-23 20:13:10,294 - INFO - Step 7/13 : RUN conda create -n testbed python=3.10
+2026-01-23 20:13:10,294 - INFO - 
+2026-01-23 20:13:10,296 - INFO - ---> Using cache
+2026-01-23 20:13:10,296 - INFO - ---> b2e188ff63fb
+2026-01-23 20:13:10,296 - INFO - Step 8/13 : COPY replace_funcs.py /workspace/replace_funcs.py
+2026-01-23 20:13:10,296 - INFO - 
+2026-01-23 20:13:10,300 - INFO - ---> Using cache
+2026-01-23 20:13:10,300 - INFO - ---> 2ef016a67ff1
+2026-01-23 20:13:10,301 - INFO - Step 9/13 : COPY specs.json /workspace/specs.json
+2026-01-23 20:13:10,301 - INFO - 
+2026-01-23 20:13:10,463 - INFO - ---> 8f30567556f4
+2026-01-23 20:13:10,464 - INFO - Step 10/13 : ARG PIP_CACHE_DIR=/root/.cache/pip
+2026-01-23 20:13:10,464 - INFO - 
+2026-01-23 20:13:10,492 - INFO - ---> Running in 8cc9ea8894a4
+2026-01-23 20:13:10,577 - INFO - Removing intermediate container 8cc9ea8894a4
+2026-01-23 20:13:10,578 - INFO - ---> ca80ca7c8c1b
+2026-01-23 20:13:10,578 - INFO - Step 11/13 : RUN mkdir -p $PIP_CACHE_DIR
+2026-01-23 20:13:10,578 - INFO - 
+2026-01-23 20:13:10,600 - INFO - ---> Running in 5cc453c34b65
+2026-01-23 20:13:10,964 - INFO - Removing intermediate container 5cc453c34b65
+2026-01-23 20:13:10,964 - INFO - ---> 535c8b9d1171
+2026-01-23 20:13:10,964 - INFO - Step 12/13 : RUN cd vllm-project/vllm &&     /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py         --repo /workspace/vllm-project/vllm         --base_commit 2b856970313e80a649a573879d94e9d3430ba018         --head_commit 1ddd9d9817b7ed3f1e341f409ab7ac449171b233         --pull_number 24957         --specs /workspace/specs.json
+2026-01-23 20:13:10,964 - INFO - 
+2026-01-23 20:13:11,019 - INFO - ---> Running in 9043e86eff75
+2026-01-23 20:13:19,502 - INFO - [INFO] Command succeeded: git reset --hard
+HEAD is now at a8eb1182f [CI][Models] Add VLM Support for Sequence Classification Conversion (#32885)
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 2b856970313e80a649a573879d94e9d3430ba018
+
+[INFO] Command succeeded: git fetch origin pull/24957/head:pr-24957
+
+[INFO] Command succeeded: git checkout pr-24957
+
+[INFO] Command succeeded: git reset --hard
+HEAD is now at 1ddd9d981 Merge branch 'main' into fixes/qwen3-next-mtp
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 1ddd9d9817b7ed3f1e341f409ab7ac449171b233
+
+
+===== DIFF vllm/model_executor/layers/mamba/ops/causal_conv1d.py =====
+--- a/vllm/model_executor/layers/mamba/ops/causal_conv1d.py
++++ b/vllm/model_executor/layers/mamba/ops/causal_conv1d.py
+@@ -626,7 +626,6 @@
+     cache_seqlens_ptr,  # circular buffer
+     conv_state_indices_ptr,
+     num_accepted_tokens_ptr,
+-    query_start_loc_ptr,  # (batch + 1)
+     o_ptr,  # (batch, dim, seqlen)
+     # Matrix dimensions
+     batch: int,
+@@ -653,7 +652,6 @@
+     HAS_BIAS: tl.constexpr,
+     KERNEL_WIDTH: tl.constexpr,
+     SILU_ACTIVATION: tl.constexpr,
+-    IS_VARLEN: tl.constexpr,
+     IS_CONTINUOUS_BATCHING: tl.constexpr,
+     IS_SPEC_DECODING: tl.constexpr,
+     NP2_STATELEN: tl.constexpr,
+@@ -679,25 +677,6 @@
+         if conv_state_batch_coord == pad_slot_id:
+             # not processing as this is not the actual sequence
+             return
+-
+-    if IS_VARLEN:
+-        query_start_index = tl.load(query_start_loc_ptr + idx_seq).to(tl.int64)
+-        query_end_index = tl.load(query_start_loc_ptr + (idx_seq + 1)).to(
+-            tl.int64)
+-        # revise state_len and seqlen
+-        state_len = state_len - (seqlen -
+-                                 (query_end_index - query_start_index))
+-        seqlen = query_end_index - query_start_index
+-        x_offset = query_start_index * stride_x_token
+-        o_offset = query_start_index * stride_o_token
+-    else:
+-        query_start_index = idx_seq * seqlen
+-        query_end_index = query_start_index + seqlen
+-        x_offset = idx_seq * stride_x_seq
+-        o_offset = idx_seq * stride_o_seq
+-
+-    if query_start_index == query_end_index:
+-        return
+ 
+     if IS_SPEC_DECODING:
+         # The rolling of conv state:
+@@ -713,8 +692,8 @@
+         # - accept 1 tokens: [history2, ..., historyM, draft1]
+         # - accept 2 tokens: [history3, ..., historyM, draft1, draft2]
+         # - and so on.
+-        conv_state_token_offset = (
+-            tl.load(num_accepted_tokens_ptr + idx_seq).to(tl.int64) - 1)
++        conv_state_token_offset = (tl.load(num_accepted_tokens_ptr + idx_seq) -
++                                   1)
+     else:
+         conv_state_token_offset = 0
+ 
+@@ -734,12 +713,9 @@
+     if KERNEL_WIDTH >= 4:
+         conv_states_ptrs = prior_tokens + 2 * stride_conv_state_tok  # [BLOCK_N]
+         col2 = tl.load(conv_states_ptrs, mask_w, 0.0)
+-    if KERNEL_WIDTH >= 5:
++    if KERNEL_WIDTH == 5:
+         conv_states_ptrs = prior_tokens + 3 * stride_conv_state_tok  # [BLOCK_N]
+         col3 = tl.load(conv_states_ptrs, mask_w, 0.0)
+-    if KERNEL_WIDTH >= 6:
+-        conv_states_ptrs = prior_tokens + 4 * stride_conv_state_tok  # [BLOCK_N]
+-        col4 = tl.load(conv_states_ptrs, mask_w, 0.0)
+ 
+     # STEP 2: assume state_len > seqlen
+     idx_tokens = tl.arange(0, NP2_STATELEN)  # [BLOCK_M]
+@@ -759,7 +735,8 @@
+     conv_state = tl.load(conv_state_ptrs_source, mask, other=0.0)
+ 
+     VAL = state_len - seqlen
+-    x_base = x_ptr + x_offset + (idx_feats * stride_x_dim)  # [BLOCK_N]
++    x_base = x_ptr + (idx_seq * stride_x_seq) + (idx_feats * stride_x_dim
++                                                 )  # [BLOCK_N]
+ 
+     x_ptrs = x_base[None, :] + (
+         (idx_tokens - VAL) * stride_x_token)[:, None]  # [BLOCK_M, BLOCK_N]
+@@ -805,18 +782,12 @@
+     if KERNEL_WIDTH >= 4:
+         w_ptrs = w_base + (3 * stride_w_width)  # [BLOCK_N] tensor
+         w_col3 = tl.load(w_ptrs, mask_w, other=0.0)
+-    if KERNEL_WIDTH >= 5:
+-        w_ptrs = w_base + (4 * stride_w_width)  # [BLOCK_N] tensor
+-        w_col4 = tl.load(w_ptrs, mask_w, other=0.0)
+-    if KERNEL_WIDTH >= 6:
+-        w_ptrs = w_base + (5 * stride_w_width)  # [BLOCK_N] tensor
+-        w_col5 = tl.load(w_ptrs, mask_w, other=0.0)
+ 
+     x_base_1d = x_base  # starting of chunk [BLOCK_N]
+     mask_x_1d = idx_feats < dim
+ 
+     # STEP 5: compute each token
+-    for idx_token in tl.range(seqlen):
++    for idx_token in tl.static_range(seqlen):
+         acc = acc_preload
+ 
+         matrix_w = w_col0
+@@ -846,37 +817,6 @@
+                     matrix_w = w_col3
+                     x_ptrs_1d = x_base_1d + idx_token * stride_x_token  # [BLOCK_N]
+                     matrix_x = tl.load(x_ptrs_1d, mask=mask_x_1d)
+-            elif KERNEL_WIDTH == 5:
+-                if j == 1:
+-                    matrix_w = w_col1
+-                    matrix_x = col1
+-                elif j == 2:
+-                    matrix_w = w_col2
+-                    matrix_x = col2
+-                elif j == 3:
+-                    matrix_w = w_col3
+-                    matrix_x = col3
+-                elif j == 4:
+-                    matrix_w = w_col4
+-                    x_ptrs_1d = x_base_1d + idx_token * stride_x_token  # [BLOCK_N]
+-                    matrix_x = tl.load(x_ptrs_1d, mask=mask_x_1d)
+-            elif KERNEL_WIDTH == 6:
+-                if j == 1:
+-                    matrix_w = w_col1
+-                    matrix_x = col1
+-                elif j == 2:
+-                    matrix_w = w_col2
+-                    matrix_x = col2
+-                elif j == 3:
+-                    matrix_w = w_col3
+-                    matrix_x = col3
+-                elif j == 4:
+-                    matrix_w = w_col4
+-                    matrix_x = col4
+-                elif j == 5:
+-                    matrix_w = w_col5
+-                    x_ptrs_1d = x_base_1d + idx_token * stride_x_token  # [BLOCK_N]
+-                    matrix_x = tl.load(x_ptrs_1d, mask=mask_x_1d)
+ 
+             acc += matrix_x * matrix_w  # [BLOCK_N]
+ 
+@@ -889,24 +829,14 @@
+             col0 = col1
+             col1 = col2
+             col2 = matrix_x
+-        elif KERNEL_WIDTH == 5:
+-            col0 = col1
+-            col1 = col2
+-            col2 = col3
+-            col3 = matrix_x
+-        elif KERNEL_WIDTH == 6:
+-            col0 = col1
+-            col1 = col2
+-            col2 = col3
+-            col3 = col4
+-            col4 = matrix_x
+ 
+         if SILU_ACTIVATION:
+             acc = acc / (1 + tl.exp(-acc))
+         mask_1d = (idx_token < seqlen) & (idx_feats < dim
+                                           )  # token-index  # feature-index
+-        o_ptrs = o_ptr + o_offset + idx_token * stride_o_token + (idx_feats *
+-                                                                  stride_o_dim)
++        o_ptrs = o_ptr + (
++            idx_seq) * stride_o_seq + idx_token * stride_o_token + (
++                idx_feats * stride_o_dim)
+ 
+         tl.store(o_ptrs, acc, mask=mask_1d)
+ 
+@@ -920,18 +850,14 @@
+     cache_seqlens: Optional[torch.Tensor] = None,
+     conv_state_indices: Optional[torch.Tensor] = None,
+     num_accepted_tokens: Optional[torch.Tensor] = None,
+-    query_start_loc: Optional[torch.Tensor] = None,
+-    max_query_len: int = -1,
+     pad_slot_id: int = PAD_SLOT_ID,
+     metadata=None,
+     validate_data=False,
+ ):
+     """
+-    x: (batch, dim) or (batch, dim, seqlen) or (num_tokens, dim)
++    x: (batch, dim) or (batch, dim, seqlen)
+         [shape=2: single token prediction]
+         [shape=3: single or multiple tokens prediction]
+-        [shape=2 with num_tokens: continuous batching, where num_tokens is the
+-                                  total tokens of all sequences in that batch]
+     conv_state: (..., dim, state_len), where state_len >= width - 1
+     weight: (dim, width)
+     bias: (dim,)
+@@ -944,24 +870,13 @@
+         If not None, the conv_state is a larger tensor along the batch dim,
+         and we are selecting the batch coords specified by conv_state_indices.
+         Useful for a continuous batching scenario.
+-    num_accepted_tokens: (batch,), dtype int32
+-        If not None, it indicates the number of accepted tokens for each
+-        sequence in the batch.
+-        This is used in speculative decoding, where the conv_state is updated
+-        in a sliding window manner.
+-    query_start_loc: (batch + 1,) int32
+-        If not None, the inputs is given in a varlen fashion and this indicates
+-        the starting index of each sequence in the batch.
+-    max_query_len: int
+-        If query_start_loc is not None, this indicates the maximum query
+-        length in the batch.
+     pad_slot_id: int
+             if cache_indices is passed, lets the kernel identify padded
+             entries that will not be processed,
+             for example: cache_indices = [pad_slot_id, 1 ,20 ,pad_slot_id]
+             in this case, the kernel will not process entries at
+             indices 0 and 3
+-    out: (batch, dim) or (batch, dim, seqlen) or (num_tokens, dim), same shape as `x`
++    out: (batch, dim) or (batch, dim, seqlen)
+     """
+     if validate_data:
+         assert cache_seqlens is None  # not implemented yet - ok for vLLM
+@@ -971,17 +886,11 @@
+         activation = "silu" if activation is True else None
+     elif activation is not None:
+         assert activation in ["silu", "swish"]
+-    unsqueeze = query_start_loc is None and x.dim() == 2
++    unsqueeze = x.dim() == 2
+     if unsqueeze:
+         # make it (batch, dim, seqlen) with seqlen == 1
+         x = x.unsqueeze(-1)
+-    if query_start_loc is None:
+-        batch, dim, seqlen = x.shape
+-    else:
+-        assert conv_state_indices is not None
+-        batch = conv_state_indices.size(0)
+-        dim = x.size(1)
+-        seqlen = max_query_len
++    batch, dim, seqlen = x.shape
+     _, width = weight.shape
+     # conv_state: (..., dim, state_len), where state_len >= width - 1
+     num_cache_lines, _, state_len = conv_state.size()
+@@ -1007,17 +916,10 @@
+     out = x
+     stride_w_dim, stride_w_width = weight.stride()
+ 
+-    if query_start_loc is None:
+-        # X (batch, dim, seqlen)
+-        stride_x_seq, stride_x_dim, stride_x_token = x.stride()
+-        stride_o_seq, stride_o_dim, stride_o_token = out.stride()
+-    else:
+-        # X (dim, cu_seqlen)
+-        stride_x_token, stride_x_dim = x.stride()
+-        stride_x_seq = 0
+-        stride_o_token, stride_o_dim = out.stride()
+-        stride_o_seq = 0
+-
++    stride_x_seq, stride_x_dim, stride_x_token = x.stride(
++    )  # X (batch, dim, seqlen)
++
++    stride_o_seq, stride_o_dim, stride_o_token = out.stride()
+     stride_istate_seq, stride_istate_dim, stride_istate_token = conv_state.stride(
+     )
+     stride_state_indices = conv_state_indices.stride(
+@@ -1043,7 +945,6 @@
+         cache_seqlens,
+         conv_state_indices,
+         num_accepted_tokens,
+-        query_start_loc,
+         out,
+         # Matrix dimensions
+         batch,
+@@ -1070,7 +971,6 @@
+         HAS_BIAS=bias is not None,
+         KERNEL_WIDTH=width,
+         SILU_ACTIVATION=activation in ["silu", "swish"],
+-        IS_VARLEN=query_start_loc is not None,
+         IS_CONTINUOUS_BATCHING=conv_state_indices is not None,
+         IS_SPEC_DECODING=num_accepted_tokens is not None,
+         NP2_STATELEN=np2_statelen,
+2026-01-23 20:13:19,503 - INFO - [HEAD] Patched vllm/model_executor/layers/mamba/ops/causal_conv1d.py
+
+Done. All files patched successfully.
+2026-01-23 20:13:20,752 - INFO - Removing intermediate container 9043e86eff75
+2026-01-23 20:13:20,752 - INFO - ---> d78f940fa774
+2026-01-23 20:13:20,752 - INFO - Step 13/13 : WORKDIR /workspace/vllm-project/vllm
+2026-01-23 20:13:20,752 - INFO - 
+2026-01-23 20:13:20,781 - INFO - ---> Running in 1dde1cc2efba
+2026-01-23 20:13:20,877 - INFO - Removing intermediate container 1dde1cc2efba
+2026-01-23 20:13:20,877 - INFO - ---> c90f5c4f4aa8
+2026-01-23 20:13:20,877 - INFO - Successfully built c90f5c4f4aa8
+2026-01-23 20:13:20,883 - INFO - Successfully tagged rtbench-instance-vllm-48:latest
+2026-01-23 20:13:20,883 - INFO - Image built successfully!

@@ -1,0 +1,8 @@
+{
+  "vllm/model_executor/layers/fused_moe/fused_moe.py": {
+    "source_func": {},
+    "target_func": {
+      "fused_moe_kernel_gptq_awq": "@triton.jit\ndef fused_moe_kernel_gptq_awq(\n        # Pointers to matrices\n        a_ptr,\n        b_ptr,\n        c_ptr,\n        b_scale_ptr,\n        b_zp_ptr,\n        topk_weights_ptr,\n        sorted_token_ids_ptr,\n        expert_ids_ptr,\n        num_tokens_post_padded_ptr,\n        # Matrix dimensions\n        N: tl.constexpr,\n        K: tl.constexpr,\n        EM,\n        num_valid_tokens,\n        # The stride variables represent how much to increase the ptr by when\n        # moving by 1 element in a particular dimension. E.g. `stride_am` is\n        # how much to increase `a_ptr` by to get the element one row down\n        # (A has M rows).\n        stride_am,\n        stride_ak,\n        stride_be,\n        stride_bk,\n        stride_bn,\n        stride_cm,\n        stride_cn,\n        stride_bse,\n        stride_bsk,\n        stride_bsn,\n        stride_bze,\n        stride_bzk,\n        stride_bzn,\n        block_k_diviable: tl.constexpr,\n        group_size: tl.constexpr,\n        # Meta-parameters\n        BLOCK_SIZE_M: tl.constexpr,\n        BLOCK_SIZE_N: tl.constexpr,\n        BLOCK_SIZE_K: tl.constexpr,\n        GROUP_SIZE_M: tl.constexpr,\n        MUL_ROUTED_WEIGHT: tl.constexpr,\n        top_k: tl.constexpr,\n        compute_type: tl.constexpr,\n        has_zp: tl.constexpr,\n        use_int4_w4a16: tl.constexpr,\n        use_int8_w8a16: tl.constexpr):"
+    }
+  }
+}

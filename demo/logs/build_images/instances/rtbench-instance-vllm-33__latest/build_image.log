@@ -1,0 +1,235 @@
+2026-01-23 19:54:51,977 - INFO - Building image rtbench-instance-vllm-33:latest
+Using dockerfile:
+# syntax=docker/dockerfile:1.4
+FROM --platform=linux/x86_64 rtbench-vllm:latest
+
+WORKDIR /workspace
+
+ENV PATH=/opt/miniconda3/bin:$PATH
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+RUN conda create -n testbed python=3.10 
+
+COPY replace_funcs.py /workspace/replace_funcs.py
+COPY specs.json /workspace/specs.json
+
+
+ARG PIP_CACHE_DIR=/root/.cache/pip
+
+RUN mkdir -p $PIP_CACHE_DIR
+
+# 在同一条 RUN 里调用环境的 Python
+RUN cd vllm-project/vllm && \
+    /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py \
+        --repo /workspace/vllm-project/vllm \
+        --base_commit 5eeabc2a4400fde9b030f2f72746a2b03db059bd \
+        --head_commit 69c88b8baa5e6af17b3b5b30f95039d5f6a85784 \
+        --pull_number 14930 \
+        --specs /workspace/specs.json 
+
+WORKDIR /workspace/vllm-project/vllm
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 19:54:51,978 - INFO - Building docker image rtbench-instance-vllm-33:latest in logs/build_images/instances/rtbench-instance-vllm-33__latest with platform linux/x86_64
+2026-01-23 19:54:52,058 - INFO - Step 1/13 : FROM --platform=linux/x86_64 rtbench-vllm:latest
+2026-01-23 19:54:52,058 - INFO - 
+2026-01-23 19:54:52,059 - INFO - ---> 2305ba9d0999
+2026-01-23 19:54:52,059 - INFO - Step 2/13 : WORKDIR /workspace
+2026-01-23 19:54:52,059 - INFO - 
+2026-01-23 19:54:52,062 - INFO - ---> Using cache
+2026-01-23 19:54:52,062 - INFO - ---> e747518d1b92
+2026-01-23 19:54:52,062 - INFO - Step 3/13 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 19:54:52,062 - INFO - 
+2026-01-23 19:54:52,063 - INFO - ---> Using cache
+2026-01-23 19:54:52,063 - INFO - ---> e5991ef828f8
+2026-01-23 19:54:52,063 - INFO - Step 4/13 : ENV CUDA_HOME=/usr/local/cuda
+2026-01-23 19:54:52,063 - INFO - 
+2026-01-23 19:54:52,064 - INFO - ---> Using cache
+2026-01-23 19:54:52,064 - INFO - ---> 023b41248226
+2026-01-23 19:54:52,064 - INFO - Step 5/13 : ENV PATH=$CUDA_HOME/bin:$PATH
+2026-01-23 19:54:52,064 - INFO - 
+2026-01-23 19:54:52,065 - INFO - ---> Using cache
+2026-01-23 19:54:52,065 - INFO - ---> aef303189f12
+2026-01-23 19:54:52,065 - INFO - Step 6/13 : ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+2026-01-23 19:54:52,065 - INFO - 
+2026-01-23 19:54:52,066 - INFO - ---> Using cache
+2026-01-23 19:54:52,066 - INFO - ---> 8755a772bbfe
+2026-01-23 19:54:52,066 - INFO - Step 7/13 : RUN conda create -n testbed python=3.10
+2026-01-23 19:54:52,066 - INFO - 
+2026-01-23 19:54:52,068 - INFO - ---> Using cache
+2026-01-23 19:54:52,068 - INFO - ---> b2e188ff63fb
+2026-01-23 19:54:52,068 - INFO - Step 8/13 : COPY replace_funcs.py /workspace/replace_funcs.py
+2026-01-23 19:54:52,068 - INFO - 
+2026-01-23 19:54:52,072 - INFO - ---> Using cache
+2026-01-23 19:54:52,073 - INFO - ---> 5f74b3ba7130
+2026-01-23 19:54:52,073 - INFO - Step 9/13 : COPY specs.json /workspace/specs.json
+2026-01-23 19:54:52,073 - INFO - 
+2026-01-23 19:54:52,259 - INFO - ---> fe35c46b96f6
+2026-01-23 19:54:52,259 - INFO - Step 10/13 : ARG PIP_CACHE_DIR=/root/.cache/pip
+2026-01-23 19:54:52,259 - INFO - 
+2026-01-23 19:54:52,281 - INFO - ---> Running in eeb60874675f
+2026-01-23 19:54:52,368 - INFO - Removing intermediate container eeb60874675f
+2026-01-23 19:54:52,368 - INFO - ---> 82d732b617f0
+2026-01-23 19:54:52,368 - INFO - Step 11/13 : RUN mkdir -p $PIP_CACHE_DIR
+2026-01-23 19:54:52,368 - INFO - 
+2026-01-23 19:54:52,391 - INFO - ---> Running in 3ac2013dee71
+2026-01-23 19:54:52,722 - INFO - Removing intermediate container 3ac2013dee71
+2026-01-23 19:54:52,723 - INFO - ---> e33a0564d892
+2026-01-23 19:54:52,723 - INFO - Step 12/13 : RUN cd vllm-project/vllm &&     /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py         --repo /workspace/vllm-project/vllm         --base_commit 5eeabc2a4400fde9b030f2f72746a2b03db059bd         --head_commit 69c88b8baa5e6af17b3b5b30f95039d5f6a85784         --pull_number 14930         --specs /workspace/specs.json
+2026-01-23 19:54:52,723 - INFO - 
+2026-01-23 19:54:52,751 - INFO - ---> Running in abb1b85bc95d
+2026-01-23 19:55:00,452 - INFO - [INFO] Command succeeded: git reset --hard
+HEAD is now at a8eb1182f [CI][Models] Add VLM Support for Sequence Classification Conversion (#32885)
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 5eeabc2a4400fde9b030f2f72746a2b03db059bd
+
+[INFO] Command succeeded: git fetch origin pull/14930/head:pr-14930
+
+[INFO] Command succeeded: git checkout pr-14930
+
+[INFO] Command succeeded: git reset --hard
+HEAD is now at 69c88b8ba add comment
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 69c88b8baa5e6af17b3b5b30f95039d5f6a85784
+
+
+===== DIFF vllm/v1/sample/rejection_sampler.py =====
+--- a/vllm/v1/sample/rejection_sampler.py
++++ b/vllm/v1/sample/rejection_sampler.py
+@@ -359,114 +359,9 @@
+ 
+ 
+ # NOTE(woosuk): Avoid specialization to prevent unnecessary recompilation.
+-@triton.jit(do_not_specialize=["max_spec_len"])
+-def rejection_greedy_sample_kernel(
+-    output_token_ids_ptr,  # [batch_size, max_spec_len + 1]
+-    cu_num_draft_tokens_ptr,  # [batch_size]
+-    draft_token_ids_ptr,  # [num_tokens]
+-    target_argmax_ptr,  # [num_tokens]
+-    bonus_token_ids_ptr,  # [batch_size]
+-    is_greedy_ptr,  # [batch_size] or None
+-    max_spec_len,
+-):
+-    req_idx = tl.program_id(0)
+-    # FIXME(woosuk): Because is_greedy_ptr is not None at profiling run,
+-    # re-compilation may happen during runtime when is_greedy_ptr is None.
+-    if is_greedy_ptr is None:
+-        is_greedy = True
+-    else:
+-        is_greedy = tl.load(is_greedy_ptr + req_idx)
+-    if not is_greedy:
+-        # Early exit for non-greedy sampling requests.
+-        return
+-
+-    if req_idx == 0:
+-        start_idx = 0
+-    else:
+-        start_idx = tl.load(cu_num_draft_tokens_ptr + req_idx - 1)
+-    end_idx = tl.load(cu_num_draft_tokens_ptr + req_idx)
+-    num_draft_tokens = end_idx - start_idx
+-
+-    rejected = False
+-    for pos in range(num_draft_tokens):
+-        if not rejected:
+-            draft_token_id = tl.load(draft_token_ids_ptr + start_idx + pos)
+-            target_argmax_id = tl.load(target_argmax_ptr + start_idx + pos)
+-            tl.store(output_token_ids_ptr + req_idx * (max_spec_len + 1) + pos,
+-                     target_argmax_id)
+-            if draft_token_id != target_argmax_id:
+-                # Reject.
+-                rejected = True
+-
+-    if not rejected:
+-        # If all tokens are accepted, append the bonus token.
+-        bonus_token_id = tl.load(bonus_token_ids_ptr + req_idx)
+-        tl.store(
+-            output_token_ids_ptr + req_idx * (max_spec_len + 1) +
+-            num_draft_tokens, bonus_token_id)
+ 
+ 
+ # NOTE(woosuk): Avoid specialization to prevent unnecessary recompilation.
+-@triton.jit(do_not_specialize=["max_spec_len"])
+-def rejection_random_sample_kernel(
+-    output_token_ids_ptr,  # [batch_size, max_spec_len + 1]
+-    cu_num_draft_tokens_ptr,  # [batch_size]
+-    draft_token_ids_ptr,  # [num_tokens]
+-    draft_probs_ptr,  # [num_tokens, vocab_size] or None
+-    target_probs_ptr,  # [num_tokens, vocab_size]
+-    bonus_token_ids_ptr,  # [batch_size]
+-    recovered_token_ids_ptr,  # [num_tokens]
+-    uniform_probs_ptr,  # [num_tokens]
+-    is_greedy_ptr,  # [batch_size]
+-    max_spec_len,
+-    vocab_size,
+-    IS_NGRAM: tl.constexpr,
+-):
+-    req_idx = tl.program_id(0)
+-    is_greedy = tl.load(is_greedy_ptr + req_idx)
+-    if is_greedy:
+-        # Early exit for greedy sampling requests.
+-        return
+-
+-    if req_idx == 0:
+-        start_idx = 0
+-    else:
+-        start_idx = tl.load(cu_num_draft_tokens_ptr + req_idx - 1)
+-    end_idx = tl.load(cu_num_draft_tokens_ptr + req_idx)
+-    num_draft_tokens = end_idx - start_idx
+-
+-    rejected = False
+-    for pos in range(num_draft_tokens):
+-        if not rejected:
+-            draft_token_id = tl.load(draft_token_ids_ptr + start_idx + pos)
+-            if IS_NGRAM:
+-                draft_prob = 1
+-            else:
+-                draft_prob = tl.load(draft_probs_ptr +
+-                                     (start_idx + pos) * vocab_size +
+-                                     draft_token_id)
+-            target_prob = tl.load(target_probs_ptr +
+-                                  (start_idx + pos) * vocab_size +
+-                                  draft_token_id)
+-            uniform_prob = tl.load(uniform_probs_ptr + start_idx + pos)
+-            # NOTE(woosuk): While the draft probability should never be 0,
+-            # we check it to avoid NaNs. If it happens to be 0, we reject.
+-            if draft_prob > 0 and target_prob / draft_prob >= uniform_prob:
+-                # Accept.
+-                token_id = draft_token_id
+-            else:
+-                # Reject. Use recovered token.
+-                rejected = True
+-                token_id = tl.load(recovered_token_ids_ptr + start_idx + pos)
+-            tl.store(output_token_ids_ptr + req_idx * (max_spec_len + 1) + pos,
+-                     token_id)
+-
+-    if not rejected:
+-        # If all tokens are accepted, append the bonus token.
+-        bonus_token_id = tl.load(bonus_token_ids_ptr + req_idx)
+-        tl.store(
+-            output_token_ids_ptr + req_idx * (max_spec_len + 1) +
+-            num_draft_tokens, bonus_token_id)
+ 
+ 
+ # NOTE(woosuk): Avoid specialization to prevent unnecessary recompilation.
+
+[HEAD] Patched vllm/v1/sample/rejection_sampler.py
+
+Done. All files patched successfully.
+2026-01-23 19:55:01,798 - INFO - Removing intermediate container abb1b85bc95d
+2026-01-23 19:55:01,798 - INFO - ---> c38c5c6995a7
+2026-01-23 19:55:01,798 - INFO - Step 13/13 : WORKDIR /workspace/vllm-project/vllm
+2026-01-23 19:55:01,798 - INFO - 
+2026-01-23 19:55:01,917 - INFO - ---> Running in f063a06a9376
+2026-01-23 19:55:02,018 - INFO - Removing intermediate container f063a06a9376
+2026-01-23 19:55:02,018 - INFO - ---> 37688d012167
+2026-01-23 19:55:02,019 - INFO - Successfully built 37688d012167
+2026-01-23 19:55:02,024 - INFO - Successfully tagged rtbench-instance-vllm-33:latest
+2026-01-23 19:55:02,024 - INFO - Image built successfully!

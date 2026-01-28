@@ -1,0 +1,147 @@
+2026-01-23 19:41:01,609 - INFO - Building image rtbench-instance-vllm-4:latest
+Using dockerfile:
+# syntax=docker/dockerfile:1.4
+FROM --platform=linux/x86_64 rtbench-vllm:latest
+
+WORKDIR /workspace
+
+ENV PATH=/opt/miniconda3/bin:$PATH
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+RUN conda create -n testbed python=3.10 
+
+COPY replace_funcs.py /workspace/replace_funcs.py
+COPY specs.json /workspace/specs.json
+
+
+ARG PIP_CACHE_DIR=/root/.cache/pip
+
+RUN mkdir -p $PIP_CACHE_DIR
+
+# 在同一条 RUN 里调用环境的 Python
+RUN cd vllm-project/vllm && \
+    /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py \
+        --repo /workspace/vllm-project/vllm \
+        --base_commit 97ca4c3b60fee59850f5a0d83fc8d899ae4dd0e6 \
+        --head_commit a80b38a8b85bcaf39cdcf4130e6592f14f138a56 \
+        --pull_number 31676 \
+        --specs /workspace/specs.json 
+
+WORKDIR /workspace/vllm-project/vllm
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 19:41:01,610 - INFO - Building docker image rtbench-instance-vllm-4:latest in logs/build_images/instances/rtbench-instance-vllm-4__latest with platform linux/x86_64
+2026-01-23 19:41:01,690 - INFO - Step 1/13 : FROM --platform=linux/x86_64 rtbench-vllm:latest
+2026-01-23 19:41:01,690 - INFO - 
+2026-01-23 19:41:01,691 - INFO - ---> 2305ba9d0999
+2026-01-23 19:41:01,691 - INFO - Step 2/13 : WORKDIR /workspace
+2026-01-23 19:41:01,691 - INFO - 
+2026-01-23 19:41:01,694 - INFO - ---> Using cache
+2026-01-23 19:41:01,694 - INFO - ---> e747518d1b92
+2026-01-23 19:41:01,694 - INFO - Step 3/13 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 19:41:01,694 - INFO - 
+2026-01-23 19:41:01,695 - INFO - ---> Using cache
+2026-01-23 19:41:01,696 - INFO - ---> e5991ef828f8
+2026-01-23 19:41:01,696 - INFO - Step 4/13 : ENV CUDA_HOME=/usr/local/cuda
+2026-01-23 19:41:01,696 - INFO - 
+2026-01-23 19:41:01,697 - INFO - ---> Using cache
+2026-01-23 19:41:01,697 - INFO - ---> 023b41248226
+2026-01-23 19:41:01,697 - INFO - Step 5/13 : ENV PATH=$CUDA_HOME/bin:$PATH
+2026-01-23 19:41:01,697 - INFO - 
+2026-01-23 19:41:01,698 - INFO - ---> Using cache
+2026-01-23 19:41:01,698 - INFO - ---> aef303189f12
+2026-01-23 19:41:01,698 - INFO - Step 6/13 : ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+2026-01-23 19:41:01,699 - INFO - 
+2026-01-23 19:41:01,699 - INFO - ---> Using cache
+2026-01-23 19:41:01,699 - INFO - ---> 8755a772bbfe
+2026-01-23 19:41:01,699 - INFO - Step 7/13 : RUN conda create -n testbed python=3.10
+2026-01-23 19:41:01,699 - INFO - 
+2026-01-23 19:41:01,700 - INFO - ---> Using cache
+2026-01-23 19:41:01,701 - INFO - ---> b2e188ff63fb
+2026-01-23 19:41:01,701 - INFO - Step 8/13 : COPY replace_funcs.py /workspace/replace_funcs.py
+2026-01-23 19:41:01,701 - INFO - 
+2026-01-23 19:41:01,704 - INFO - ---> Using cache
+2026-01-23 19:41:01,704 - INFO - ---> 5f74b3ba7130
+2026-01-23 19:41:01,704 - INFO - Step 9/13 : COPY specs.json /workspace/specs.json
+2026-01-23 19:41:01,704 - INFO - 
+2026-01-23 19:41:01,867 - INFO - ---> a747d29aefee
+2026-01-23 19:41:01,867 - INFO - Step 10/13 : ARG PIP_CACHE_DIR=/root/.cache/pip
+2026-01-23 19:41:01,868 - INFO - 
+2026-01-23 19:41:01,894 - INFO - ---> Running in 2e2f0dc07857
+2026-01-23 19:41:01,989 - INFO - Removing intermediate container 2e2f0dc07857
+2026-01-23 19:41:01,990 - INFO - ---> 27f5c847f053
+2026-01-23 19:41:01,990 - INFO - Step 11/13 : RUN mkdir -p $PIP_CACHE_DIR
+2026-01-23 19:41:01,990 - INFO - 
+2026-01-23 19:41:02,017 - INFO - ---> Running in c9b297b6fa44
+2026-01-23 19:41:02,338 - INFO - Removing intermediate container c9b297b6fa44
+2026-01-23 19:41:02,339 - INFO - ---> a46411f002a4
+2026-01-23 19:41:02,339 - INFO - Step 12/13 : RUN cd vllm-project/vllm &&     /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py         --repo /workspace/vllm-project/vllm         --base_commit 97ca4c3b60fee59850f5a0d83fc8d899ae4dd0e6         --head_commit a80b38a8b85bcaf39cdcf4130e6592f14f138a56         --pull_number 31676         --specs /workspace/specs.json
+2026-01-23 19:41:02,339 - INFO - 
+2026-01-23 19:41:02,382 - INFO - ---> Running in 0f4e63d411ad
+2026-01-23 19:41:06,676 - INFO - [INFO] Command succeeded: git reset --hard
+HEAD is now at a8eb1182f [CI][Models] Add VLM Support for Sequence Classification Conversion (#32885)
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 97ca4c3b60fee59850f5a0d83fc8d899ae4dd0e6
+
+[INFO] Command succeeded: git fetch origin pull/31676/head:pr-31676
+
+[INFO] Command succeeded: git checkout pr-31676
+
+[INFO] Command succeeded: git reset --hard
+HEAD is now at a80b38a8b Merge remote-tracking branch 'origin/main' into xuebin_fix_triton_fused_moe_with_bias
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout a80b38a8b85bcaf39cdcf4130e6592f14f138a56
+
+
+===== DIFF vllm/model_executor/layers/fused_moe/fused_moe.py =====
+--- a/vllm/model_executor/layers/fused_moe/fused_moe.py
++++ b/vllm/model_executor/layers/fused_moe/fused_moe.py
+@@ -518,7 +518,11 @@
+         # Advance the ptrs to the next K block.
+         a_ptrs += BLOCK_SIZE_K * stride_ak
+         b_ptrs += BLOCK_SIZE_K * stride_bk
+-
++    if HAS_BIAS:
++        accumulator = accumulator + bias[None, :]
++    if MUL_ROUTED_WEIGHT:
++        moe_weight = tl.load(topk_weights_ptr + offs_token, mask=token_mask, other=0)
++        accumulator = accumulator * moe_weight[:, None]
+     if use_int8_w8a16:
+         accumulator = (accumulator * b_scale).to(compute_type)
+     elif use_fp8_w8a8 or use_int8_w8a8:
+@@ -528,13 +532,6 @@
+             accumulator = (accumulator * a_scale * b_scale).to(compute_type)
+     else:
+         accumulator = accumulator.to(compute_type)
+-
+-    # Since bias is typically not quantized, it's added after dequantization.
+-    if HAS_BIAS:
+-        accumulator = accumulator + bias[None, :]
+-    if MUL_ROUTED_WEIGHT:
+-        moe_weight = tl.load(topk_weights_ptr + offs_token, mask=token_mask, other=0)
+-        accumulator = accumulator * moe_weight[:, None]
+ 
+     # -----------------------------------------------------------
+     # Write back the block of the output
+
+[HEAD] Patched vllm/model_executor/layers/fused_moe/fused_moe.py
+
+Done. All files patched successfully.
+2026-01-23 19:41:08,124 - INFO - Removing intermediate container 0f4e63d411ad
+2026-01-23 19:41:08,124 - INFO - ---> 863f78c5779a
+2026-01-23 19:41:08,125 - INFO - Step 13/13 : WORKDIR /workspace/vllm-project/vllm
+2026-01-23 19:41:08,125 - INFO - 
+2026-01-23 19:41:08,153 - INFO - ---> Running in dc4a662105f3
+2026-01-23 19:41:08,242 - INFO - Removing intermediate container dc4a662105f3
+2026-01-23 19:41:08,243 - INFO - ---> 3a293a1f8412
+2026-01-23 19:41:08,243 - INFO - Successfully built 3a293a1f8412
+2026-01-23 19:41:08,247 - INFO - Successfully tagged rtbench-instance-vllm-4:latest
+2026-01-23 19:41:08,247 - INFO - Image built successfully!

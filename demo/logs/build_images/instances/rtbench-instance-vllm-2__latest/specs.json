@@ -1,0 +1,8 @@
+{
+  "vllm/attention/ops/triton_prefill_attention.py": {
+    "source_func": {},
+    "target_func": {
+      "_fwd_kernel": "@triton.jit\ndef _fwd_kernel(\n    Q,\n    K,\n    V,\n    sm_scale,\n    B_Start_Loc,\n    B_Seqlen,\n    Out,\n    stride_qbs,\n    stride_qh,\n    stride_kbs,\n    stride_kh,\n    stride_vbs,\n    stride_vh,\n    stride_obs,\n    stride_oh,\n    kv_group_num: tl.constexpr,\n    BLOCK_M: tl.constexpr,\n    BLOCK_DMODEL: tl.constexpr,\n    BLOCK_N: tl.constexpr,\n    IS_CAUSAL: tl.constexpr,\n    SLIDING_WINDOW_Q: tl.constexpr,\n    SLIDING_WINDOW_K: tl.constexpr,\n    Lk: tl.constexpr,\n):"
+    }
+  }
+}

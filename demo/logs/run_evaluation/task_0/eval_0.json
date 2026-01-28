@@ -1,0 +1,22 @@
+[
+  [
+    {
+      "test_id": "1",
+      "passed": 72,
+      "failed": 0
+    }
+  ],
+  {
+    "test_id": "2",
+    "dataset": "gsm8k",
+    "flexible-extract": 0.492,
+    "strict-match": 0.4913
+  },
+  {
+    "test_id": "3",
+    "ttft": 2032.24,
+    "tpot": 58.1,
+    "output_throughput": 420.87,
+    "total_throughput": 3784.57
+  }
+]

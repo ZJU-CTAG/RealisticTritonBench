@@ -1,0 +1,209 @@
+2026-01-23 19:40:28,204 - INFO - Building image rtbench-instance-vllm-0:latest
+Using dockerfile:
+# syntax=docker/dockerfile:1.4
+FROM --platform=linux/x86_64 rtbench-vllm:latest
+
+WORKDIR /workspace
+
+ENV PATH=/opt/miniconda3/bin:$PATH
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+RUN conda create -n testbed python=3.10 
+
+COPY replace_funcs.py /workspace/replace_funcs.py
+COPY specs.json /workspace/specs.json
+
+
+ARG PIP_CACHE_DIR=/root/.cache/pip
+
+RUN mkdir -p $PIP_CACHE_DIR
+
+# 在同一条 RUN 里调用环境的 Python
+RUN cd vllm-project/vllm && \
+    /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py \
+        --repo /workspace/vllm-project/vllm \
+        --base_commit 6afc0ffaf61b49599dec25c30b28596a390ad2d9 \
+        --head_commit d91fceb3bbf3866689c616ffbc3feaa043db1cdd \
+        --pull_number 29720 \
+        --specs /workspace/specs.json 
+
+WORKDIR /workspace/vllm-project/vllm
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 19:40:28,205 - INFO - Building docker image rtbench-instance-vllm-0:latest in logs/build_images/instances/rtbench-instance-vllm-0__latest with platform linux/x86_64
+2026-01-23 19:40:28,297 - INFO - Step 1/13 : FROM --platform=linux/x86_64 rtbench-vllm:latest
+2026-01-23 19:40:28,297 - INFO - 
+2026-01-23 19:40:28,298 - INFO - ---> 2305ba9d0999
+2026-01-23 19:40:28,298 - INFO - Step 2/13 : WORKDIR /workspace
+2026-01-23 19:40:28,298 - INFO - 
+2026-01-23 19:40:28,301 - INFO - ---> Using cache
+2026-01-23 19:40:28,301 - INFO - ---> e747518d1b92
+2026-01-23 19:40:28,301 - INFO - Step 3/13 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 19:40:28,301 - INFO - 
+2026-01-23 19:40:28,302 - INFO - ---> Using cache
+2026-01-23 19:40:28,302 - INFO - ---> e5991ef828f8
+2026-01-23 19:40:28,302 - INFO - Step 4/13 : ENV CUDA_HOME=/usr/local/cuda
+2026-01-23 19:40:28,302 - INFO - 
+2026-01-23 19:40:28,303 - INFO - ---> Using cache
+2026-01-23 19:40:28,303 - INFO - ---> 023b41248226
+2026-01-23 19:40:28,303 - INFO - Step 5/13 : ENV PATH=$CUDA_HOME/bin:$PATH
+2026-01-23 19:40:28,303 - INFO - 
+2026-01-23 19:40:28,303 - INFO - ---> Using cache
+2026-01-23 19:40:28,303 - INFO - ---> aef303189f12
+2026-01-23 19:40:28,304 - INFO - Step 6/13 : ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+2026-01-23 19:40:28,304 - INFO - 
+2026-01-23 19:40:28,304 - INFO - ---> Using cache
+2026-01-23 19:40:28,304 - INFO - ---> 8755a772bbfe
+2026-01-23 19:40:28,304 - INFO - Step 7/13 : RUN conda create -n testbed python=3.10
+2026-01-23 19:40:28,304 - INFO - 
+2026-01-23 19:40:28,306 - INFO - ---> Using cache
+2026-01-23 19:40:28,306 - INFO - ---> b2e188ff63fb
+2026-01-23 19:40:28,306 - INFO - Step 8/13 : COPY replace_funcs.py /workspace/replace_funcs.py
+2026-01-23 19:40:28,306 - INFO - 
+2026-01-23 19:40:28,595 - INFO - ---> 5f74b3ba7130
+2026-01-23 19:40:28,595 - INFO - Step 9/13 : COPY specs.json /workspace/specs.json
+2026-01-23 19:40:28,595 - INFO - 
+2026-01-23 19:40:28,802 - INFO - ---> 07da8d840012
+2026-01-23 19:40:28,802 - INFO - Step 10/13 : ARG PIP_CACHE_DIR=/root/.cache/pip
+2026-01-23 19:40:28,802 - INFO - 
+2026-01-23 19:40:28,833 - INFO - ---> Running in 1aebb4b97564
+2026-01-23 19:40:28,929 - INFO - Removing intermediate container 1aebb4b97564
+2026-01-23 19:40:28,929 - INFO - ---> 85e0ca4e7ffb
+2026-01-23 19:40:28,929 - INFO - Step 11/13 : RUN mkdir -p $PIP_CACHE_DIR
+2026-01-23 19:40:28,929 - INFO - 
+2026-01-23 19:40:28,951 - INFO - ---> Running in 9672a578e1fc
+2026-01-23 19:40:29,273 - INFO - Removing intermediate container 9672a578e1fc
+2026-01-23 19:40:29,274 - INFO - ---> dcd1e4c28791
+2026-01-23 19:40:29,274 - INFO - Step 12/13 : RUN cd vllm-project/vllm &&     /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py         --repo /workspace/vllm-project/vllm         --base_commit 6afc0ffaf61b49599dec25c30b28596a390ad2d9         --head_commit d91fceb3bbf3866689c616ffbc3feaa043db1cdd         --pull_number 29720         --specs /workspace/specs.json
+2026-01-23 19:40:29,274 - INFO - 
+2026-01-23 19:40:29,300 - INFO - ---> Running in 868c18e109e2
+2026-01-23 19:40:34,824 - INFO - [INFO] Command succeeded: git reset --hard
+HEAD is now at a8eb1182f [CI][Models] Add VLM Support for Sequence Classification Conversion (#32885)
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 6afc0ffaf61b49599dec25c30b28596a390ad2d9
+
+[INFO] Command succeeded: git fetch origin pull/29720/head:pr-29720
+
+[INFO] Command succeeded: git checkout pr-29720
+
+[INFO] Command succeeded: git reset --hard
+HEAD is now at d91fceb3b Fix
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout d91fceb3bbf3866689c616ffbc3feaa043db1cdd
+
+
+===== DIFF vllm/v1/worker/gpu/sample/penalties.py =====
+--- a/vllm/v1/worker/gpu/sample/penalties.py
++++ b/vllm/v1/worker/gpu/sample/penalties.py
+@@ -7,13 +7,12 @@
+ 
+ 
+ @triton.jit
+-def _penalties_and_temperature_kernel(
++def _penalties_kernel(
+     logits_ptr,
+     logits_stride,
+     repetition_penalty_ptr,
+     frequency_penalty_ptr,
+     presence_penalty_ptr,
+-    temperature_ptr,
+     idx_mapping_ptr,
+     prompt_bin_counts_ptr,
+     prompt_bin_counts_stride,
+@@ -26,16 +25,12 @@
+     rep_penalty = tl.load(repetition_penalty_ptr + batch_idx)
+     freq_penalty = tl.load(frequency_penalty_ptr + batch_idx)
+     pres_penalty = tl.load(presence_penalty_ptr + batch_idx)
+-    temperature = tl.load(temperature_ptr + batch_idx)
+-    temperature = tl.where(temperature == 0.0, 1.0, temperature)
+ 
+     use_rep_penalty = rep_penalty != 1.0
+     use_freq_penalty = freq_penalty != 0.0
+     use_pres_penalty = pres_penalty != 0.0
+-    use_penalty = use_rep_penalty or use_freq_penalty or use_pres_penalty
+-    use_temperature = temperature != 1.0
+-    if not (use_penalty or use_temperature):
+-        # Early return to avoid loading logits.
++    if not (use_rep_penalty or use_freq_penalty or use_pres_penalty):
++        # No penalties to apply. Early return.
+         return
+ 
+     block_idx = tl.program_id(1)
+@@ -44,36 +39,28 @@
+     logits = tl.load(logits_ptr + batch_idx * logits_stride + block, mask=mask)
+     logits = logits.to(tl.float32)
+ 
+-    if use_penalty:
+-        req_state_idx = tl.load(idx_mapping_ptr + batch_idx)
+-        output_bin_counts = tl.load(
+-            output_bin_counts_ptr + req_state_idx * output_bin_counts_stride + block,
++    req_state_idx = tl.load(idx_mapping_ptr + batch_idx)
++    output_bin_counts = tl.load(
++        output_bin_counts_ptr + req_state_idx * output_bin_counts_stride + block,
++        mask=mask,
++    )
++
++    # Apply repetition penalties.
++    if use_rep_penalty:
++        prompt_bin_counts = tl.load(
++            prompt_bin_counts_ptr + req_state_idx * prompt_bin_counts_stride + block,
+             mask=mask,
+         )
+-        output_bin_mask = output_bin_counts > 0
++        # If token appears in prompt or output, apply, otherwise use 1.0 for no-op.
++        scale = tl.where((prompt_bin_counts + output_bin_counts) > 0, rep_penalty, 1.0)
++        # If logits are positive, divide by penalty, otherwise multiply by penalty.
++        scale = tl.where(logits > 0, 1.0 / scale, scale)
++        logits *= scale
+ 
+-        # Apply repetition penalties.
+-        if use_rep_penalty:
+-            prompt_bin_counts = tl.load(
+-                prompt_bin_counts_ptr
+-                + req_state_idx * prompt_bin_counts_stride
+-                + block,
+-                mask=mask,
+-            )
+-            prompt_bin_mask = prompt_bin_counts > 0
+-            # If token appears in prompt or output, apply, otherwise use 1.0 for no-op.
+-            scale = tl.where(prompt_bin_mask | output_bin_mask, rep_penalty, 1.0)
+-            # If logits are positive, divide by penalty, otherwise multiply by penalty.
+-            logits *= tl.where(logits > 0, 1.0 / scale, scale)
+-
+-        # Apply frequency penalties.
+-        logits -= freq_penalty * output_bin_counts
+-        # Apply presence penalties.
+-        logits -= pres_penalty * output_bin_mask
+-
+-    # Apply temperature.
+-    logits = logits / temperature
+-
++    # Apply frequency penalties.
++    logits -= freq_penalty * output_bin_counts
++    # Apply presence penalties.
++    logits -= pres_penalty * (output_bin_counts > 0)
+     # Store back to logits.
+     tl.store(logits_ptr + batch_idx * logits_stride + block, logits, mask=mask)
+ 
+
+[HEAD] Patched vllm/v1/worker/gpu/sample/penalties.py
+
+Done. All files patched successfully.
+2026-01-23 19:40:36,102 - INFO - Removing intermediate container 868c18e109e2
+2026-01-23 19:40:36,102 - INFO - ---> 06f05af49c75
+2026-01-23 19:40:36,102 - INFO - Step 13/13 : WORKDIR /workspace/vllm-project/vllm
+2026-01-23 19:40:36,102 - INFO - 
+2026-01-23 19:40:36,132 - INFO - ---> Running in 68088de1f20a
+2026-01-23 19:40:36,230 - INFO - Removing intermediate container 68088de1f20a
+2026-01-23 19:40:36,230 - INFO - ---> 9334667f31a9
+2026-01-23 19:40:36,231 - INFO - Successfully built 9334667f31a9
+2026-01-23 19:40:36,235 - INFO - Successfully tagged rtbench-instance-vllm-0:latest
+2026-01-23 19:40:36,236 - INFO - Image built successfully!

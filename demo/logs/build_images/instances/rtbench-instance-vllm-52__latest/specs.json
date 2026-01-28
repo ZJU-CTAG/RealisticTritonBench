@@ -1,0 +1,9 @@
+{
+  "vllm/model_executor/layers/fused_moe/utils.py": {
+    "source_func": {},
+    "target_func": {
+      "_count_expert_num_tokens": "@triton.jit\ndef _count_expert_num_tokens(topk_ids_ptr, expert_num_tokens_ptr, num_experts,\n                             topk_numel, expert_map,\n                             HAS_EXPERT_MAP: tl.constexpr,\n                             BLOCK_SIZE: tl.constexpr):",
+      "count_expert_num_tokens": "def count_expert_num_tokens(\n        topk_ids: torch.Tensor, num_local_experts: int,\n        expert_map: Optional[torch.Tensor]) -> torch.Tensor:"
+    }
+  }
+}

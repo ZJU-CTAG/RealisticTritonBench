@@ -1,0 +1,181 @@
+2026-01-23 20:13:00,741 - INFO - Building image rtbench-instance-vllm-47:latest
+Using dockerfile:
+# syntax=docker/dockerfile:1.4
+FROM --platform=linux/x86_64 rtbench-vllm:latest
+
+WORKDIR /workspace
+
+ENV PATH=/opt/miniconda3/bin:$PATH
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+RUN conda create -n testbed python=3.10 
+
+COPY replace_funcs.py /workspace/replace_funcs.py
+COPY specs.json /workspace/specs.json
+
+
+ARG PIP_CACHE_DIR=/root/.cache/pip
+
+RUN mkdir -p $PIP_CACHE_DIR
+
+# 在同一条 RUN 里调用环境的 Python
+RUN cd vllm-project/vllm && \
+    /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py \
+        --repo /workspace/vllm-project/vllm \
+        --base_commit da4455609d9e29abebc15f6c598dfd772c2b6513 \
+        --head_commit 15e127384aa28fcb1e169da9a8599af30207a318 \
+        --pull_number 26509 \
+        --specs /workspace/specs.json 
+
+WORKDIR /workspace/vllm-project/vllm
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 20:13:00,742 - INFO - Building docker image rtbench-instance-vllm-47:latest in logs/build_images/instances/rtbench-instance-vllm-47__latest with platform linux/x86_64
+2026-01-23 20:13:00,821 - INFO - Step 1/13 : FROM --platform=linux/x86_64 rtbench-vllm:latest
+2026-01-23 20:13:00,821 - INFO - 
+2026-01-23 20:13:00,822 - INFO - ---> 2305ba9d0999
+2026-01-23 20:13:00,822 - INFO - Step 2/13 : WORKDIR /workspace
+2026-01-23 20:13:00,822 - INFO - 
+2026-01-23 20:13:00,823 - INFO - ---> Using cache
+2026-01-23 20:13:00,823 - INFO - ---> e747518d1b92
+2026-01-23 20:13:00,823 - INFO - Step 3/13 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 20:13:00,823 - INFO - 
+2026-01-23 20:13:00,824 - INFO - ---> Using cache
+2026-01-23 20:13:00,824 - INFO - ---> e5991ef828f8
+2026-01-23 20:13:00,824 - INFO - Step 4/13 : ENV CUDA_HOME=/usr/local/cuda
+2026-01-23 20:13:00,824 - INFO - 
+2026-01-23 20:13:00,824 - INFO - ---> Using cache
+2026-01-23 20:13:00,824 - INFO - ---> 023b41248226
+2026-01-23 20:13:00,824 - INFO - Step 5/13 : ENV PATH=$CUDA_HOME/bin:$PATH
+2026-01-23 20:13:00,824 - INFO - 
+2026-01-23 20:13:00,825 - INFO - ---> Using cache
+2026-01-23 20:13:00,825 - INFO - ---> aef303189f12
+2026-01-23 20:13:00,825 - INFO - Step 6/13 : ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+2026-01-23 20:13:00,825 - INFO - 
+2026-01-23 20:13:00,826 - INFO - ---> Using cache
+2026-01-23 20:13:00,826 - INFO - ---> 8755a772bbfe
+2026-01-23 20:13:00,826 - INFO - Step 7/13 : RUN conda create -n testbed python=3.10
+2026-01-23 20:13:00,826 - INFO - 
+2026-01-23 20:13:00,827 - INFO - ---> Using cache
+2026-01-23 20:13:00,828 - INFO - ---> b2e188ff63fb
+2026-01-23 20:13:00,828 - INFO - Step 8/13 : COPY replace_funcs.py /workspace/replace_funcs.py
+2026-01-23 20:13:00,828 - INFO - 
+2026-01-23 20:13:00,834 - INFO - ---> Using cache
+2026-01-23 20:13:00,834 - INFO - ---> 2ef016a67ff1
+2026-01-23 20:13:00,834 - INFO - Step 9/13 : COPY specs.json /workspace/specs.json
+2026-01-23 20:13:00,834 - INFO - 
+2026-01-23 20:13:01,003 - INFO - ---> d2df1cd08a22
+2026-01-23 20:13:01,003 - INFO - Step 10/13 : ARG PIP_CACHE_DIR=/root/.cache/pip
+2026-01-23 20:13:01,003 - INFO - 
+2026-01-23 20:13:01,036 - INFO - ---> Running in 3015e76735bc
+2026-01-23 20:13:01,134 - INFO - Removing intermediate container 3015e76735bc
+2026-01-23 20:13:01,134 - INFO - ---> 4ac41be06a48
+2026-01-23 20:13:01,134 - INFO - Step 11/13 : RUN mkdir -p $PIP_CACHE_DIR
+2026-01-23 20:13:01,135 - INFO - 
+2026-01-23 20:13:01,157 - INFO - ---> Running in 7d6200477b1d
+2026-01-23 20:13:01,483 - INFO - Removing intermediate container 7d6200477b1d
+2026-01-23 20:13:01,483 - INFO - ---> ec2ea9c6d35b
+2026-01-23 20:13:01,483 - INFO - Step 12/13 : RUN cd vllm-project/vllm &&     /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py         --repo /workspace/vllm-project/vllm         --base_commit da4455609d9e29abebc15f6c598dfd772c2b6513         --head_commit 15e127384aa28fcb1e169da9a8599af30207a318         --pull_number 26509         --specs /workspace/specs.json
+2026-01-23 20:13:01,484 - INFO - 
+2026-01-23 20:13:01,535 - INFO - ---> Running in bd398cad681d
+2026-01-23 20:13:08,322 - INFO - [INFO] Command succeeded: git reset --hard
+HEAD is now at a8eb1182f [CI][Models] Add VLM Support for Sequence Classification Conversion (#32885)
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout da4455609d9e29abebc15f6c598dfd772c2b6513
+
+[INFO] Command succeeded: git fetch origin pull/26509/head:pr-26509
+
+[INFO] Command succeeded: git checkout pr-26509
+
+[INFO] Command succeeded: git reset --hard
+HEAD is now at 15e127384 fix_correct_attn_out
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 15e127384aa28fcb1e169da9a8599af30207a318
+
+
+===== DIFF vllm/attention/ops/common.py =====
+--- a/vllm/attention/ops/common.py
++++ b/vllm/attention/ops/common.py
+@@ -117,52 +117,14 @@
+     if ctx is None:
+         ctx = CPTritonContext()
+ 
+-    # --- Normalize to 3D views ---
+-    if out.ndim == 4 and out.shape[1] == 1:
+-        out = out.squeeze(1)
+-    assert out.ndim == 3, f"expected out [B,H,D] or [B,1,H,D], got {tuple(out.shape)}"
+-
+-    if lses.ndim == 4 and lses.shape[-1] == 1:
+-        lses = lses.squeeze(-1)
+-    if lses.ndim == 4 and lses.shape[1] == 1:
+-        lses = lses.squeeze(1)
+-    assert lses.ndim == 3, (
+-        f"expected lses [N,B,H] (optionally with a 1-sized extra dim), "
+-        f"got {tuple(lses.shape)}"
+-    )
+-
+-    B, H, D = out.shape
+-    N = lses.shape[0]
+-
+-    # Strides after we normalized shapes to 3-D views.  The kernel computes
+-    # offsets for `vlse_ptr` using lses_stride_B/H, so the output buffer must
+-    # have the same B/H stride layout as a slice of `lses`.
+-    o_sB, o_sH, o_sD = out.stride()
+-    l_sN, l_sB, l_sH = lses.stride()
+-
+-    # Allocate LSE with the same B/H strides as `lses` so writes land correctly
+-    # even when `lses` is a non-contiguous view (e.g., 4-D to 3-D squeeze).
+-    lse = torch.empty_strided(
+-        (B, H), (l_sB, l_sH), device=lses.device, dtype=lses.dtype
+-    )
+-
+-    # Kernel launch config
+-    grid = (B, H, 1)
+-
+-    regular_args = (
+-        out,
+-        out,
+-        lses,
+-        lse,
+-        o_sB,
+-        o_sH,
+-        o_sD,
+-        l_sN,
+-        l_sB,
+-        l_sH,
+-        cp_rank,
+-    )
+-    const_args = {"HEAD_DIM": D, "N_ROUNDED": N}
++    lse = torch.empty_like(lses[0])
++
++    grid = (out.shape[0], out.shape[1], 1)
++    regular_args = (out, out, lses, lse, *out.stride(), *lses.stride(), cp_rank)
++    const_args = {
++        "HEAD_DIM": out.shape[-1],
++        "N_ROUNDED": lses.shape[0],
++    }
+ 
+     ctx.call_kernel(_correct_attn_cp_out_kernel, grid, *regular_args, **const_args)
+     return out, lse
+
+[HEAD] Patched vllm/attention/ops/common.py
+
+Done. All files patched successfully.
+2026-01-23 20:13:10,062 - INFO - Removing intermediate container bd398cad681d
+2026-01-23 20:13:10,063 - INFO - ---> d2a322eba9e3
+2026-01-23 20:13:10,063 - INFO - Step 13/13 : WORKDIR /workspace/vllm-project/vllm
+2026-01-23 20:13:10,063 - INFO - 
+2026-01-23 20:13:10,093 - INFO - ---> Running in 22380830b2ea
+2026-01-23 20:13:10,186 - INFO - Removing intermediate container 22380830b2ea
+2026-01-23 20:13:10,186 - INFO - ---> c01ad448ee7a
+2026-01-23 20:13:10,186 - INFO - Successfully built c01ad448ee7a
+2026-01-23 20:13:10,192 - INFO - Successfully tagged rtbench-instance-vllm-47:latest
+2026-01-23 20:13:10,192 - INFO - Image built successfully!

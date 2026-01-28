@@ -1,0 +1,8 @@
+{
+  "vllm/model_executor/layers/quantization/utils/fp8_utils.py": {
+    "source_func": {},
+    "target_func": {
+      "_silu_mul_per_token_group_quant_fp8_colmajor": "@triton.jit\ndef _silu_mul_per_token_group_quant_fp8_colmajor(\n    y_ptr,  # [M, N]\n    y_q_ptr,  # [M, N // 2]\n    y_s_ptr,  # [M, (N // 2) // GROUP_SIZE]\n    M,  # num tokens\n    N,  # intermediate size\n    # Stride\n    y_s_col_stride: tl.int64,\n    # Information for float8\n    eps,\n    fp8_min,\n    fp8_max,\n    use_ue8m0: tl.constexpr,\n    # Meta-parameters\n    GROUP_SIZE: tl.constexpr,\n    BLOCK_M: tl.constexpr,\n    BLOCK_N: tl.constexpr,\n):"
+    }
+  }
+}

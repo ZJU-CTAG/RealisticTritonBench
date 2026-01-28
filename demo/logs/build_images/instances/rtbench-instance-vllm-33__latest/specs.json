@@ -1,0 +1,9 @@
+{
+  "vllm/v1/sample/rejection_sampler.py": {
+    "source_func": {},
+    "target_func": {
+      "rejection_random_sample_kernel": "@triton.jit(do_not_specialize=[\"max_spec_len\"])\ndef rejection_random_sample_kernel(\n    output_token_ids_ptr,  # [batch_size, max_spec_len + 1]\n    cu_num_draft_tokens_ptr,  # [batch_size]\n    draft_token_ids_ptr,  # [num_tokens]\n    draft_probs_ptr,  # [num_tokens, vocab_size] or None\n    target_probs_ptr,  # [num_tokens, vocab_size]\n    bonus_token_ids_ptr,  # [batch_size]\n    recovered_token_ids_ptr,  # [num_tokens]\n    uniform_probs_ptr,  # [num_tokens]\n    is_greedy_ptr,  # [batch_size]\n    max_spec_len,\n    vocab_size,\n    IS_NGRAM: tl.constexpr,\n):",
+      "rejection_greedy_sample_kernel": "@triton.jit(do_not_specialize=[\"max_spec_len\"])\ndef rejection_greedy_sample_kernel(\n    output_token_ids_ptr,  # [batch_size, max_spec_len + 1]\n    cu_num_draft_tokens_ptr,  # [batch_size]\n    draft_token_ids_ptr,  # [num_tokens]\n    target_argmax_ptr,  # [num_tokens]\n    bonus_token_ids_ptr,  # [batch_size]\n    is_greedy_ptr,  # [batch_size] or None\n    max_spec_len,\n):"
+    }
+  }
+}

@@ -1,0 +1,234 @@
+2026-01-23 20:14:14,651 - INFO - Building image rtbench-instance-vllm-55:latest
+Using dockerfile:
+# syntax=docker/dockerfile:1.4
+FROM --platform=linux/x86_64 rtbench-vllm:latest
+
+WORKDIR /workspace
+
+ENV PATH=/opt/miniconda3/bin:$PATH
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+RUN conda create -n testbed python=3.10 
+
+COPY replace_funcs.py /workspace/replace_funcs.py
+COPY specs.json /workspace/specs.json
+
+
+ARG PIP_CACHE_DIR=/root/.cache/pip
+
+RUN mkdir -p $PIP_CACHE_DIR
+
+# 在同一条 RUN 里调用环境的 Python
+RUN cd vllm-project/vllm && \
+    /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py \
+        --repo /workspace/vllm-project/vllm \
+        --base_commit db1e42f627f75ab455a157a03c6ebde33c8cbb1c \
+        --head_commit 29b42ccb770e2d8cc0a0ad1958a4d407e84c7475 \
+        --pull_number 24683 \
+        --specs /workspace/specs.json 
+
+WORKDIR /workspace/vllm-project/vllm
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 20:14:14,651 - INFO - Building docker image rtbench-instance-vllm-55:latest in logs/build_images/instances/rtbench-instance-vllm-55__latest with platform linux/x86_64
+2026-01-23 20:14:14,733 - INFO - Step 1/13 : FROM --platform=linux/x86_64 rtbench-vllm:latest
+2026-01-23 20:14:14,733 - INFO - 
+2026-01-23 20:14:14,733 - INFO - ---> 2305ba9d0999
+2026-01-23 20:14:14,734 - INFO - Step 2/13 : WORKDIR /workspace
+2026-01-23 20:14:14,734 - INFO - 
+2026-01-23 20:14:14,736 - INFO - ---> Using cache
+2026-01-23 20:14:14,737 - INFO - ---> e747518d1b92
+2026-01-23 20:14:14,737 - INFO - Step 3/13 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 20:14:14,737 - INFO - 
+2026-01-23 20:14:14,738 - INFO - ---> Using cache
+2026-01-23 20:14:14,738 - INFO - ---> e5991ef828f8
+2026-01-23 20:14:14,738 - INFO - Step 4/13 : ENV CUDA_HOME=/usr/local/cuda
+2026-01-23 20:14:14,738 - INFO - 
+2026-01-23 20:14:14,738 - INFO - ---> Using cache
+2026-01-23 20:14:14,739 - INFO - ---> 023b41248226
+2026-01-23 20:14:14,739 - INFO - Step 5/13 : ENV PATH=$CUDA_HOME/bin:$PATH
+2026-01-23 20:14:14,739 - INFO - 
+2026-01-23 20:14:14,739 - INFO - ---> Using cache
+2026-01-23 20:14:14,739 - INFO - ---> aef303189f12
+2026-01-23 20:14:14,739 - INFO - Step 6/13 : ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+2026-01-23 20:14:14,739 - INFO - 
+2026-01-23 20:14:14,740 - INFO - ---> Using cache
+2026-01-23 20:14:14,740 - INFO - ---> 8755a772bbfe
+2026-01-23 20:14:14,740 - INFO - Step 7/13 : RUN conda create -n testbed python=3.10
+2026-01-23 20:14:14,740 - INFO - 
+2026-01-23 20:14:14,742 - INFO - ---> Using cache
+2026-01-23 20:14:14,742 - INFO - ---> b2e188ff63fb
+2026-01-23 20:14:14,742 - INFO - Step 8/13 : COPY replace_funcs.py /workspace/replace_funcs.py
+2026-01-23 20:14:14,742 - INFO - 
+2026-01-23 20:14:14,747 - INFO - ---> Using cache
+2026-01-23 20:14:14,748 - INFO - ---> 2ef016a67ff1
+2026-01-23 20:14:14,748 - INFO - Step 9/13 : COPY specs.json /workspace/specs.json
+2026-01-23 20:14:14,748 - INFO - 
+2026-01-23 20:14:14,926 - INFO - ---> b22a1f627b91
+2026-01-23 20:14:14,926 - INFO - Step 10/13 : ARG PIP_CACHE_DIR=/root/.cache/pip
+2026-01-23 20:14:14,926 - INFO - 
+2026-01-23 20:14:14,949 - INFO - ---> Running in 7bc6c1bcc250
+2026-01-23 20:14:15,047 - INFO - Removing intermediate container 7bc6c1bcc250
+2026-01-23 20:14:15,048 - INFO - ---> a8040fc2c54b
+2026-01-23 20:14:15,048 - INFO - Step 11/13 : RUN mkdir -p $PIP_CACHE_DIR
+2026-01-23 20:14:15,048 - INFO - 
+2026-01-23 20:14:15,073 - INFO - ---> Running in 66981fc496c1
+2026-01-23 20:14:15,413 - INFO - Removing intermediate container 66981fc496c1
+2026-01-23 20:14:15,413 - INFO - ---> 6172b990818c
+2026-01-23 20:14:15,413 - INFO - Step 12/13 : RUN cd vllm-project/vllm &&     /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py         --repo /workspace/vllm-project/vllm         --base_commit db1e42f627f75ab455a157a03c6ebde33c8cbb1c         --head_commit 29b42ccb770e2d8cc0a0ad1958a4d407e84c7475         --pull_number 24683         --specs /workspace/specs.json
+2026-01-23 20:14:15,413 - INFO - 
+2026-01-23 20:14:15,438 - INFO - ---> Running in c51be8a9e75b
+2026-01-23 20:14:20,916 - INFO - [INFO] Command succeeded: git reset --hard
+HEAD is now at a8eb1182f [CI][Models] Add VLM Support for Sequence Classification Conversion (#32885)
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout db1e42f627f75ab455a157a03c6ebde33c8cbb1c
+
+[INFO] Command succeeded: git fetch origin pull/24683/head:pr-24683
+
+[INFO] Command succeeded: git checkout pr-24683
+
+[INFO] Command succeeded: git reset --hard
+HEAD is now at 29b42ccb7 Fix plamo2 again
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 29b42ccb770e2d8cc0a0ad1958a4d407e84c7475
+
+
+===== DIFF vllm/model_executor/layers/mamba/ops/ssd_bmm.py =====
+--- a/vllm/model_executor/layers/mamba/ops/ssd_bmm.py
++++ b/vllm/model_executor/layers/mamba/ops/ssd_bmm.py
+@@ -94,7 +94,7 @@
+     a_ptr,
+     b_ptr,
+     out_ptr,
+-    cu_chunk_seqlens_ptr,
++    seq_idx_ptr,
+     # Matrix dimensions
+     seqlen,
+     chunk_size: tl.constexpr,
+@@ -110,6 +110,7 @@
+     stride_out_head: tl.int64,
+     stride_outm: tl.int64,
+     stride_outn: tl.constexpr,
++    stride_seq_idx_seqlen: tl.constexpr,
+     # Meta-parameters
+     IS_CAUSAL: tl.constexpr,
+     dot_dtype: tl.constexpr,
+@@ -126,12 +127,10 @@
+     if IS_CAUSAL:
+         if pid_n * BLOCK_SIZE_N >= (pid_m + 1) * BLOCK_SIZE_M:
+             return
+-
+-    chunk_seqlen_start = tl.load(cu_chunk_seqlens_ptr + pid_c)
+-    chunk_seqlen_end = tl.load(cu_chunk_seqlens_ptr + pid_c + 1)
+-
+-    a_ptr += chunk_seqlen_start * stride_a_seqlen + pid_h * stride_a_head
+-    b_ptr += chunk_seqlen_start * stride_b_seqlen + pid_h * stride_b_head
++    a_ptr += pid_c * chunk_size * stride_a_seqlen + pid_h * stride_a_head
++    b_ptr += pid_c * chunk_size * stride_b_seqlen + pid_h * stride_b_head
++
++    seq_idx_ptr += pid_c * chunk_size * stride_seq_idx_seqlen
+ 
+     offs_m = pid_m * BLOCK_SIZE_M + tl.arange(0, BLOCK_SIZE_M)
+     offs_n = pid_n * BLOCK_SIZE_N + tl.arange(0, BLOCK_SIZE_N)
+@@ -140,7 +139,7 @@
+                       offs_k[None, :] * stride_ak)
+     b_ptrs = b_ptr + (offs_k[:, None] * stride_bk +
+                       offs_n[None, :] * stride_b_seqlen)
+-    chunk_size_limit = chunk_seqlen_end - chunk_seqlen_start
++    chunk_size_limit = min(chunk_size, seqlen - pid_c * chunk_size)
+ 
+     acc = tl.zeros((BLOCK_SIZE_M, BLOCK_SIZE_N), dtype=tl.float32)
+ 
+@@ -161,6 +160,16 @@
+     offs_m = pid_m * BLOCK_SIZE_M + tl.arange(0, BLOCK_SIZE_M)
+     offs_n = pid_n * BLOCK_SIZE_N + tl.arange(0, BLOCK_SIZE_N)
+ 
++    # Zero out the results that are not from the same request
++    # in the varlen batch
++    seq_idx_m = tl.load(seq_idx_ptr + offs_m * stride_seq_idx_seqlen,
++                        mask=offs_m < chunk_size_limit,
++                        other=-1)
++    seq_idx_n = tl.load(seq_idx_ptr + offs_n * stride_seq_idx_seqlen,
++                        mask=offs_n < chunk_size_limit,
++                        other=-2)
++    acc = tl.where(seq_idx_m[:, None] == seq_idx_n[None, :], acc, 0.0)
++
+     out = acc.to(out_ptr.dtype.element_ty)
+     out_ptr += pid_c * stride_out_chunk + pid_h * stride_out_head
+     out_ptrs = out_ptr + (stride_outm * offs_m[:, None] +
+@@ -171,18 +180,12 @@
+              (offs_n[None, :] < chunk_size))
+ 
+ 
+-def _bmm_chunk_fwd(a,
+-                   b,
+-                   chunk_size,
+-                   cu_chunk_seqlens,
+-                   causal=False,
+-                   output_dtype=None):
++def _bmm_chunk_fwd(a, b, chunk_size, seq_idx, causal=False, output_dtype=None):
+     """
+     Argument:
+         a: (seqlen, ngroups, k)
+         b: (seqlen, ngroups, k)
+-        chunk_size: int
+-        cu_chunk_seq_lens: (nchunks+1,)
++        seq_idx: (seqlen,). out[i, j] for seq_idx[i] != seq_idx[j] will be zeroed out.
+         causal: if True, then out[i, j] for i > j will be arbitrary, only out[i, j] for i <= j are
+             guaranteed to be correct.
+     Return:
+@@ -190,12 +193,14 @@
+     """
+     seqlen, ngroups, k = a.shape
+     assert b.shape == a.shape
++    assert seq_idx is not None
++    assert seq_idx.shape == (seqlen, )
+     if a.stride(-1) != 1 and a.stride(0) != 1:
+         a = a.contiguous()
+     if b.stride(-1) != 1 and b.stride(0) != 1:
+         b = b.contiguous()
+ 
+-    nchunks = len(cu_chunk_seqlens) - 1
++    nchunks = math.ceil(seqlen / chunk_size)
+     # Allocates output.
+     out_dtype = a.dtype if output_dtype is None else output_dtype
+     out = torch.empty((nchunks, ngroups, chunk_size, chunk_size),
+@@ -213,7 +218,7 @@
+             a_ptr=a,
+             b_ptr=b,
+             out_ptr=out,
+-            cu_chunk_seqlens_ptr=cu_chunk_seqlens,
++            seq_idx_ptr=seq_idx,
+             seqlen=seqlen,
+             chunk_size=chunk_size,
+             K=k,
+@@ -228,6 +233,7 @@
+             stride_out_head=out.stride(1),
+             stride_outm=out.stride(-2),
+             stride_outn=out.stride(-1),
++            stride_seq_idx_seqlen=seq_idx.stride(0),
+             IS_CAUSAL=causal,
+             dot_dtype=dot_dtype,
+         )
+
+[HEAD] Patched vllm/model_executor/layers/mamba/ops/ssd_bmm.py
+
+Done. All files patched successfully.
+2026-01-23 20:14:22,167 - INFO - Removing intermediate container c51be8a9e75b
+2026-01-23 20:14:22,167 - INFO - ---> 4f1b93a388ed
+2026-01-23 20:14:22,167 - INFO - Step 13/13 : WORKDIR /workspace/vllm-project/vllm
+2026-01-23 20:14:22,167 - INFO - 
+2026-01-23 20:14:22,195 - INFO - ---> Running in 0f56cbf5fb7a
+2026-01-23 20:14:22,293 - INFO - Removing intermediate container 0f56cbf5fb7a
+2026-01-23 20:14:22,293 - INFO - ---> 1d68b0db07e9
+2026-01-23 20:14:22,294 - INFO - Successfully built 1d68b0db07e9
+2026-01-23 20:14:22,297 - INFO - Successfully tagged rtbench-instance-vllm-55:latest
+2026-01-23 20:14:22,298 - INFO - Image built successfully!

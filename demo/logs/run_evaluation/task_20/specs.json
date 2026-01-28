@@ -1,0 +1,19 @@
+{
+  "vllm/v1/spec_decode/utils.py": {
+    "source_func": {},
+    "target_func": {
+      "eagle_prepare_next_token_padded_kernel": "@triton.jit\ndef eagle_prepare_next_token_padded_kernel(\n    sampled_token_ids_ptr,  # [num_reqs, num_sampled_tokens_per_req]\n    discard_request_mask_ptr,  # [num_reqs]\n    backup_next_token_ids_ptr,  # [num_reqs]\n    next_token_ids_ptr,  # [num_reqs] (output)\n    valid_sampled_tokens_count_ptr,  # [num_reqs] (output)\n    vocab_size,  # tl.int32\n    num_sampled_tokens_per_req,  # tl.int32 (num_spec_tokens + 1)\n    num_reqs,  # tl.int32\n    stride_sampled_token_ids,  # tl.int32 (stride for dim 0)\n    BLOCK_SIZE_TOKENS: tl.constexpr,  # Power-of-2 >= num_sampled_tokens_per_req\n):\n):",
+      "eagle_prepare_inputs_padded_kernel": "@triton.jit\ndef eagle_prepare_inputs_padded_kernel(\n    cu_num_draft_tokens_ptr,  # [num_reqs]\n    valid_sampled_tokens_count_ptr,  # [num_reqs]\n    query_start_loc_gpu_ptr,  # [num_reqs + 1]\n    token_indices_to_sample_ptr,  # [num_reqs] (output)\n    num_reqs,  # tl.int32\n):\n"
+    }
+  },
+  "vllm/v1/spec_decode/eagle.py": {
+    "source_func": {
+      "prepare_next_token_ids_padded": "def prepare_next_token_ids_padded(\n    self,\n    common_attn_metadata: CommonAttentionMetadata,\n    sampled_token_ids: torch.Tensor,\n    requests: dict[str, CachedRequestState],\n    gpu_input_batch: InputBatch,\n    discard_request_indices: torch.Tensor,\n    num_discarded_requests: int,\n) -> tuple[torch.Tensor, torch.Tensor]:",
+      "prepare_inputs_padded": "def prepare_inputs_padded(\n    self,\n    common_attn_metadata: CommonAttentionMetadata,\n    spec_decode_metadata: SpecDecodeMetadata,\n    valid_sampled_tokens_count: torch.Tensor,\n) -> tuple[CommonAttentionMetadata, torch.Tensor, torch.Tensor]:"
+    },
+    "target_func": {
+      "prepare_next_token_ids_padded": "def prepare_next_token_ids_padded(\n        self,\n        common_attn_metadata: CommonAttentionMetadata,\n        sampled_token_ids: torch.Tensor,\n        requests: dict[str, CachedRequestState],\n        gpu_input_batch: InputBatch,\n        discard_request_mask: torch.Tensor,\n    ) -> tuple[torch.Tensor, torch.Tensor]:",
+      "prepare_inputs_padded": "def prepare_inputs_padded(\n        self,\n        common_attn_metadata: CommonAttentionMetadata,\n        spec_decode_metadata: SpecDecodeMetadata,\n        valid_sampled_tokens_count: torch.Tensor,\n    ) -> tuple[CommonAttentionMetadata, torch.Tensor]:"
+    }
+  }
+}

@@ -1,0 +1,403 @@
+2026-01-23 19:52:50,547 - INFO - Building image rtbench-instance-vllm-20:latest
+Using dockerfile:
+# syntax=docker/dockerfile:1.4
+FROM --platform=linux/x86_64 rtbench-vllm:latest
+
+WORKDIR /workspace
+
+ENV PATH=/opt/miniconda3/bin:$PATH
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+RUN conda create -n testbed python=3.10 
+
+COPY replace_funcs.py /workspace/replace_funcs.py
+COPY specs.json /workspace/specs.json
+
+
+ARG PIP_CACHE_DIR=/root/.cache/pip
+
+RUN mkdir -p $PIP_CACHE_DIR
+
+# 在同一条 RUN 里调用环境的 Python
+RUN cd vllm-project/vllm && \
+    /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py \
+        --repo /workspace/vllm-project/vllm \
+        --base_commit 9eec282cb5a6fe0b39449476dc4d14da0516984c \
+        --head_commit 342fa2f846d968c182f1c9805183ca419785cb34 \
+        --pull_number 28597 \
+        --specs /workspace/specs.json 
+
+WORKDIR /workspace/vllm-project/vllm
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 19:52:50,547 - INFO - Building docker image rtbench-instance-vllm-20:latest in logs/build_images/instances/rtbench-instance-vllm-20__latest with platform linux/x86_64
+2026-01-23 19:52:50,619 - INFO - Step 1/13 : FROM --platform=linux/x86_64 rtbench-vllm:latest
+2026-01-23 19:52:50,620 - INFO - 
+2026-01-23 19:52:50,620 - INFO - ---> 2305ba9d0999
+2026-01-23 19:52:50,620 - INFO - Step 2/13 : WORKDIR /workspace
+2026-01-23 19:52:50,620 - INFO - 
+2026-01-23 19:52:50,620 - INFO - ---> Using cache
+2026-01-23 19:52:50,620 - INFO - ---> e747518d1b92
+2026-01-23 19:52:50,621 - INFO - Step 3/13 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 19:52:50,621 - INFO - 
+2026-01-23 19:52:50,621 - INFO - ---> Using cache
+2026-01-23 19:52:50,621 - INFO - ---> e5991ef828f8
+2026-01-23 19:52:50,621 - INFO - Step 4/13 : ENV CUDA_HOME=/usr/local/cuda
+2026-01-23 19:52:50,621 - INFO - 
+2026-01-23 19:52:50,622 - INFO - ---> Using cache
+2026-01-23 19:52:50,622 - INFO - ---> 023b41248226
+2026-01-23 19:52:50,622 - INFO - Step 5/13 : ENV PATH=$CUDA_HOME/bin:$PATH
+2026-01-23 19:52:50,622 - INFO - 
+2026-01-23 19:52:50,623 - INFO - ---> Using cache
+2026-01-23 19:52:50,623 - INFO - ---> aef303189f12
+2026-01-23 19:52:50,623 - INFO - Step 6/13 : ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+2026-01-23 19:52:50,623 - INFO - 
+2026-01-23 19:52:50,623 - INFO - ---> Using cache
+2026-01-23 19:52:50,623 - INFO - ---> 8755a772bbfe
+2026-01-23 19:52:50,624 - INFO - Step 7/13 : RUN conda create -n testbed python=3.10
+2026-01-23 19:52:50,624 - INFO - 
+2026-01-23 19:52:50,625 - INFO - ---> Using cache
+2026-01-23 19:52:50,625 - INFO - ---> b2e188ff63fb
+2026-01-23 19:52:50,625 - INFO - Step 8/13 : COPY replace_funcs.py /workspace/replace_funcs.py
+2026-01-23 19:52:50,625 - INFO - 
+2026-01-23 19:52:50,629 - INFO - ---> Using cache
+2026-01-23 19:52:50,629 - INFO - ---> 5f74b3ba7130
+2026-01-23 19:52:50,629 - INFO - Step 9/13 : COPY specs.json /workspace/specs.json
+2026-01-23 19:52:50,629 - INFO - 
+2026-01-23 19:52:50,812 - INFO - ---> 1af296ed77a5
+2026-01-23 19:52:50,813 - INFO - Step 10/13 : ARG PIP_CACHE_DIR=/root/.cache/pip
+2026-01-23 19:52:50,813 - INFO - 
+2026-01-23 19:52:50,835 - INFO - ---> Running in b962c2ea25df
+2026-01-23 19:52:50,925 - INFO - Removing intermediate container b962c2ea25df
+2026-01-23 19:52:50,925 - INFO - ---> 39719bfe4beb
+2026-01-23 19:52:50,925 - INFO - Step 11/13 : RUN mkdir -p $PIP_CACHE_DIR
+2026-01-23 19:52:50,925 - INFO - 
+2026-01-23 19:52:51,057 - INFO - ---> Running in 5dc3d09e2e53
+2026-01-23 19:52:51,368 - INFO - Removing intermediate container 5dc3d09e2e53
+2026-01-23 19:52:51,369 - INFO - ---> 466496c0456e
+2026-01-23 19:52:51,369 - INFO - Step 12/13 : RUN cd vllm-project/vllm &&     /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py         --repo /workspace/vllm-project/vllm         --base_commit 9eec282cb5a6fe0b39449476dc4d14da0516984c         --head_commit 342fa2f846d968c182f1c9805183ca419785cb34         --pull_number 28597         --specs /workspace/specs.json
+2026-01-23 19:52:51,369 - INFO - 
+2026-01-23 19:52:51,400 - INFO - ---> Running in 4fb438bc968b
+2026-01-23 19:52:57,138 - INFO - [INFO] Command succeeded: git reset --hard
+HEAD is now at a8eb1182f [CI][Models] Add VLM Support for Sequence Classification Conversion (#32885)
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 9eec282cb5a6fe0b39449476dc4d14da0516984c
+
+[INFO] Command succeeded: git fetch origin pull/28597/head:pr-28597
+
+[INFO] Command succeeded: git checkout pr-28597
+
+[INFO] Command succeeded: git reset --hard
+HEAD is now at 342fa2f84 better test for eagle prepare_next_token_ids
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 342fa2f846d968c182f1c9805183ca419785cb34
+
+
+===== DIFF vllm/v1/spec_decode/utils.py =====
+--- a/vllm/v1/spec_decode/utils.py
++++ b/vllm/v1/spec_decode/utils.py
+@@ -17,105 +17,5 @@
+     )
+ 
+ 
+-@triton.jit
+-def eagle_prepare_inputs_padded_kernel(
+-    cu_num_draft_tokens_ptr,  # [num_reqs]
+-    valid_sampled_tokens_count_ptr,  # [num_reqs]
+-    query_start_loc_gpu_ptr,  # [num_reqs + 1]
+-    token_indices_to_sample_ptr,  # [num_reqs] (output)
+-    num_reqs,  # tl.int32
+-):
+-    """
+-    Fused kernel for Eagle prepare_input_padded. This kernel computes the
+-    token index to sample for each request, taking into account the number
+-    of draft tokens and the number of valid sampled tokens (which is one more than
+-    the number of accepted tokens).
+-    """
+-    req_idx = tl.program_id(axis=0)
+-    if req_idx >= num_reqs:
+-        return
+-
+-    # Calculate num_draft_tokens from cu_num_draft_tokens, which is an inclusive
+-    # cumulative sum (first entry is the first value, not zero).
+-    cu_draft_curr = tl.load(cu_num_draft_tokens_ptr + req_idx)
+-
+-    num_draft_tokens = 0
+-    if req_idx == 0:
+-        num_draft_tokens = cu_draft_curr
+-    else:
+-        cu_draft_prev = tl.load(cu_num_draft_tokens_ptr + req_idx - 1)
+-        num_draft_tokens = cu_draft_curr - cu_draft_prev
+-
+-    valid_count = tl.load(valid_sampled_tokens_count_ptr + req_idx)
+-    num_rejected_tokens = num_draft_tokens + 1 - valid_count
+-    num_rejected_tokens = tl.where(num_draft_tokens > 0, num_rejected_tokens, 0)
+-
+-    # query_start_loc[req_idx + 1] is the start position of the next request,
+-    # which is one past the last token of this request.
+-    q_last_tok_idx = tl.load(query_start_loc_gpu_ptr + req_idx + 1) - 1
+-
+-    index_to_sample = q_last_tok_idx - num_rejected_tokens
+-    tl.store(token_indices_to_sample_ptr + req_idx, index_to_sample)
+ 
+ 
+-@triton.jit
+-def eagle_prepare_next_token_padded_kernel(
+-    sampled_token_ids_ptr,  # [num_reqs, num_sampled_tokens_per_req]
+-    discard_request_mask_ptr,  # [num_reqs]
+-    backup_next_token_ids_ptr,  # [num_reqs]
+-    next_token_ids_ptr,  # [num_reqs] (output)
+-    valid_sampled_tokens_count_ptr,  # [num_reqs] (output)
+-    vocab_size,  # tl.int32
+-    num_sampled_tokens_per_req,  # tl.int32 (num_spec_tokens + 1)
+-    num_reqs,  # tl.int32
+-    stride_sampled_token_ids,  # tl.int32 (stride for dim 0)
+-    BLOCK_SIZE_TOKENS: tl.constexpr,  # Power-of-2 >= num_sampled_tokens_per_req
+-):
+-    """
+-    Fused kernel for Eagle prepare_next_token_ids_padded. This kernel computes the
+-    number of valid (1 + accepted) tokens for each request, and the corresponding
+-    "next" token id to sample from during speculative decoding. This is the
+-    "last accepted token" from the sampled tokens, or the backup token if no
+-    tokens were accepted or if the request is marked as discarded.
+-    """
+-    req_idx = tl.program_id(axis=0)
+-    if req_idx >= num_reqs:
+-        return
+-
+-    # Check if this request is discarded.
+-    is_discarded = tl.load(discard_request_mask_ptr + req_idx)
+-
+-    if is_discarded:
+-        backup_token = tl.load(backup_next_token_ids_ptr + req_idx)
+-        valid_count = tl.full((), 0, dtype=tl.uint32)
+-        tl.store(next_token_ids_ptr + req_idx, backup_token)
+-        tl.store(valid_sampled_tokens_count_ptr + req_idx, valid_count)
+-    else:
+-        # Count the number of valid tokens among the sampled tokens.
+-        token_offs = tl.arange(0, BLOCK_SIZE_TOKENS)
+-        token_mask = token_offs < num_sampled_tokens_per_req
+-
+-        row_ptr = sampled_token_ids_ptr + req_idx * stride_sampled_token_ids
+-        token_ids = tl.load(row_ptr + token_offs, mask=token_mask, other=-1)
+-
+-        # Rejected tokens are -1, valid tokens are in [0, vocab_size)
+-        is_valid_mask = (token_ids != -1) & (token_ids < vocab_size) & token_mask
+-        valid_count = tl.sum(is_valid_mask)
+-
+-        if valid_count > 0:
+-            # Guaranteed to be well-defined since
+-            # valid_count > 0 implies is_valid_mask is not empty
+-            last_valid_index = tl.max(tl.where(is_valid_mask, token_offs, -1))
+-
+-            # Select the token at that index, using a sum trick since
+-            # we don't want to load again to access token_ids[last_valid_index].
+-            last_valid_token = tl.sum(
+-                tl.where(token_offs == last_valid_index, token_ids, 0)
+-            )
+-            tl.store(next_token_ids_ptr + req_idx, last_valid_token)
+-        else:
+-            # No valid tokens found, use backup token
+-            backup_token = tl.load(backup_next_token_ids_ptr + req_idx)
+-            tl.store(next_token_ids_ptr + req_idx, backup_token)
+-
+-        tl.store(valid_sampled_tokens_count_ptr + req_idx, valid_count)
+
+[HEAD] Patched vllm/v1/spec_decode/utils.py
+
+===== DIFF vllm/v1/spec_decode/eagle.py =====
+--- a/vllm/v1/spec_decode/eagle.py
++++ b/vllm/v1/spec_decode/eagle.py
+@@ -560,15 +560,20 @@
+         sampled_token_ids: torch.Tensor,
+         requests: dict[str, CachedRequestState],
+         gpu_input_batch: InputBatch,
+-        discard_request_mask: torch.Tensor,
++        discard_request_indices: torch.Tensor,
++        num_discarded_requests: int,
+     ) -> tuple[torch.Tensor, torch.Tensor]:
+         """
+         This function is used to prepare the inputs for speculative decoding.
+         It calculates the next token ids and the number of valid sampled tokens
+         for each request, considering the "discarded" requests whose next token
+-        is not sampled and comes from `request.get_token_id()` instead. This is denoted
+-        the "backup" token id. It also counts rejected tokens via `sampled_token_ids`.
++        is not sampled and comes from `request.get_token_id()` instead.
++        It also accounts for the rejected tokens in `sampled_token_ids`.
++        This function must use device functions to operate on the inputs, and
++        should not introduce any blocking CPU-GPU synchronization.
+         """
++        # TODO(Ben): Combine this into a custom fused kernel
++
+         # Precompute get_token_id for when there is no valid next token
+         num_reqs = gpu_input_batch.num_reqs
+         self.backup_next_token_ids.np[:num_reqs] = np.array(
+@@ -577,39 +582,44 @@
+                     common_attn_metadata.seq_lens_cpu[i].item()
+                 )
+                 for i in range(num_reqs)
+-            ],
+-            dtype=np.int32,
++            ]
+         )
+         self.backup_next_token_ids.copy_to_gpu(num_reqs)
+-        backup_tokens_gpu = self.backup_next_token_ids.gpu
+-
+-        batch_size, num_tokens = sampled_token_ids.shape
+-        device = sampled_token_ids.device
+-
+-        assert discard_request_mask.dtype == torch.bool
+-        assert backup_tokens_gpu.dtype == torch.int32
+-
+-        next_token_ids = torch.empty((batch_size,), dtype=torch.int32, device=device)
+-        valid_sampled_tokens_count = torch.empty(
+-            (batch_size,), dtype=torch.int32, device=device
+-        )
+-
+-        # Kernel grid: one program per request (row)
+-        grid = (batch_size,)
+-
+-        # Find the next power of 2 for block sizes
+-        BLOCK_SIZE_TOKENS = triton.next_power_of_2(num_tokens)
+-        eagle_prepare_next_token_padded_kernel[grid](
+-            sampled_token_ids,
+-            discard_request_mask,
+-            backup_tokens_gpu,
+-            next_token_ids,
+-            valid_sampled_tokens_count,
+-            gpu_input_batch.vocab_size,
+-            num_tokens,
+-            batch_size,
+-            sampled_token_ids.stride(0),
+-            BLOCK_SIZE_TOKENS=BLOCK_SIZE_TOKENS,
++
++        # Mask out the sampled tokens indices that should not be sampled.
++        discard_sampled_tokens_req_indices = discard_request_indices[
++            :num_discarded_requests
++        ]
++
++        valid_sampled_token_ids_gpu = sampled_token_ids.clone()
++        valid_sampled_token_ids_gpu.index_fill_(
++            0, discard_sampled_tokens_req_indices, -1
++        )
++
++        # Generate a mask for all valid tokens within those requests
++        valid_mask = (valid_sampled_token_ids_gpu != -1) & (
++            valid_sampled_token_ids_gpu < gpu_input_batch.vocab_size
++        )
++
++        # Count the number of valid tokens in each request
++        valid_sampled_tokens_count = valid_mask.sum(dim=1)
++
++        # Get the rightmost valid index per row
++        last_valid_indices = valid_sampled_tokens_count - 1
++        last_valid_indices_safe = torch.clamp(last_valid_indices, min=0)
++
++        # Get last valid token from each row
++        # (assume undefined state where there is no valid token)
++        selected_tokens = torch.gather(
++            valid_sampled_token_ids_gpu, 1, last_valid_indices_safe.unsqueeze(1)
++        ).squeeze(1)
++
++        # Use last token if valid, pre-computed backup if not
++        batch_size = valid_sampled_token_ids_gpu.shape[0]
++        next_token_ids = torch.where(
++            last_valid_indices != -1,
++            selected_tokens,
++            self.backup_next_token_ids.gpu[:batch_size],
+         )
+ 
+         return next_token_ids, valid_sampled_tokens_count
+@@ -619,35 +629,35 @@
+         common_attn_metadata: CommonAttentionMetadata,
+         spec_decode_metadata: SpecDecodeMetadata,
+         valid_sampled_tokens_count: torch.Tensor,
+-    ) -> tuple[CommonAttentionMetadata, torch.Tensor]:
++    ) -> tuple[CommonAttentionMetadata, torch.Tensor, torch.Tensor]:
+         """
+         This function is used to prepare the inputs for speculative decoding
+         It updates the common_attn_metadata for speculative decoding,
+         but does not consider the rejected tokens. Instead, all tokens
+         are included as inputs to the speculator, with the rejected tokens
+         used as padding and filtered out later by `token_indices_to_sample`.
++        No blocking CPU operations should be introduced in this function.
+         """
+-        num_reqs = common_attn_metadata.num_reqs
+-        device = valid_sampled_tokens_count.device
+-
+-        token_indices_to_sample = torch.empty(
+-            (num_reqs,), dtype=torch.int32, device=device
+-        )
+-
+-        # Kernel grid: one program per request (row)
+-        grid = (num_reqs,)
+-        eagle_prepare_inputs_padded_kernel[grid](
+-            spec_decode_metadata.cu_num_draft_tokens,
+-            valid_sampled_tokens_count,
+-            common_attn_metadata.query_start_loc,
+-            token_indices_to_sample,
+-            num_reqs,
++        num_draft_tokens_gpu = torch.cat(
++            [
++                spec_decode_metadata.cu_num_draft_tokens[0:1],
++                spec_decode_metadata.cu_num_draft_tokens[1:]
++                - spec_decode_metadata.cu_num_draft_tokens[:-1],
++            ]
++        )
++
++        num_rejected_tokens_gpu = torch.where(
++            num_draft_tokens_gpu > 0,
++            num_draft_tokens_gpu + 1 - valid_sampled_tokens_count,
++            torch.zeros_like(num_draft_tokens_gpu),
+         )
+ 
+         query_start_loc_cpu = common_attn_metadata.query_start_loc_cpu
++
+         new_query_len_per_req = query_start_loc_cpu[1:] - query_start_loc_cpu[:-1]
+ 
+         total_num_tokens = query_start_loc_cpu[-1].item()
++        token_indices = self.arange[:total_num_tokens]
+ 
+         spec_common_attn_metadata = CommonAttentionMetadata(
+             query_start_loc=common_attn_metadata.query_start_loc,
+@@ -660,12 +670,16 @@
+             max_query_len=new_query_len_per_req.max().item(),
+             max_seq_len=common_attn_metadata.seq_lens_cpu.max().item(),
+             block_table_tensor=common_attn_metadata.block_table_tensor,
+-            slot_mapping=common_attn_metadata.slot_mapping[:total_num_tokens],
++            slot_mapping=common_attn_metadata.slot_mapping[token_indices],
+             causal=True,
+             dcp_local_seq_lens=common_attn_metadata.dcp_local_seq_lens,
+         )
+ 
+-        return spec_common_attn_metadata, token_indices_to_sample
++        token_indices_to_sample = (
++            common_attn_metadata.query_start_loc[1:] - 1 - num_rejected_tokens_gpu
++        )
++
++        return spec_common_attn_metadata, token_indices, token_indices_to_sample
+ 
+     def propose_tree(
+         self,
+
+[HEAD] Patched vllm/v1/spec_decode/eagle.py
+
+Done. All files patched successfully.
+2026-01-23 19:52:59,059 - INFO - Removing intermediate container 4fb438bc968b
+2026-01-23 19:52:59,059 - INFO - ---> d96187c924b1
+2026-01-23 19:52:59,060 - INFO - Step 13/13 : WORKDIR /workspace/vllm-project/vllm
+2026-01-23 19:52:59,060 - INFO - 
+2026-01-23 19:52:59,094 - INFO - ---> Running in b956d44eae22
+2026-01-23 19:52:59,198 - INFO - Removing intermediate container b956d44eae22
+2026-01-23 19:52:59,199 - INFO - ---> 7ec577e9691e
+2026-01-23 19:52:59,199 - INFO - Successfully built 7ec577e9691e
+2026-01-23 19:52:59,204 - INFO - Successfully tagged rtbench-instance-vllm-20:latest
+2026-01-23 19:52:59,204 - INFO - Image built successfully!

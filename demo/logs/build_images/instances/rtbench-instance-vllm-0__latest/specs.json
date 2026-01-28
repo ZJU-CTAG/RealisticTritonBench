@@ -1,0 +1,10 @@
+{
+  "vllm/v1/worker/gpu/sample/penalties.py": {
+    "source_func": {
+      "_penalties_kernel": "@triton.jit\ndef _penalties_kernel(\n    logits_ptr,\n    logits_stride,\n    repetition_penalty_ptr,\n    frequency_penalty_ptr,\n    presence_penalty_ptr,\n    idx_mapping_ptr,\n    prompt_bin_counts_ptr,\n    prompt_bin_counts_stride,\n    output_bin_counts_ptr,\n    output_bin_counts_stride,\n    vocab_size,\n    BLOCK_SIZE: tl.constexpr,\n):"
+    },
+    "target_func": {
+      "_penalties_and_temperature_kernel": "@triton.jit\ndef _penalties_and_temperature_kernel(\n    logits_ptr,\n    logits_stride,\n    repetition_penalty_ptr,\n    frequency_penalty_ptr,\n    presence_penalty_ptr,\n    temperature_ptr,\n    idx_mapping_ptr,\n    prompt_bin_counts_ptr,\n    prompt_bin_counts_stride,\n    output_bin_counts_ptr,\n    output_bin_counts_stride,\n    vocab_size,\n    BLOCK_SIZE: tl.constexpr,\n):"
+    }
+  }
+}

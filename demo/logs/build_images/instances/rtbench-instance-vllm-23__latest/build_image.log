@@ -1,0 +1,168 @@
+2026-01-23 19:53:16,080 - INFO - Building image rtbench-instance-vllm-23:latest
+Using dockerfile:
+# syntax=docker/dockerfile:1.4
+FROM --platform=linux/x86_64 rtbench-vllm:latest
+
+WORKDIR /workspace
+
+ENV PATH=/opt/miniconda3/bin:$PATH
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+RUN conda create -n testbed python=3.10 
+
+COPY replace_funcs.py /workspace/replace_funcs.py
+COPY specs.json /workspace/specs.json
+
+
+ARG PIP_CACHE_DIR=/root/.cache/pip
+
+RUN mkdir -p $PIP_CACHE_DIR
+
+# 在同一条 RUN 里调用环境的 Python
+RUN cd vllm-project/vllm && \
+    /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py \
+        --repo /workspace/vllm-project/vllm \
+        --base_commit 4aa23892d6dfdc3ec6de7ff74e982b833adf6c52 \
+        --head_commit 363a52f10996e1de613cacdaaa03c882b8b482b4 \
+        --pull_number 24197 \
+        --specs /workspace/specs.json 
+
+WORKDIR /workspace/vllm-project/vllm
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 19:53:16,080 - INFO - Building docker image rtbench-instance-vllm-23:latest in logs/build_images/instances/rtbench-instance-vllm-23__latest with platform linux/x86_64
+2026-01-23 19:53:16,150 - INFO - Step 1/13 : FROM --platform=linux/x86_64 rtbench-vllm:latest
+2026-01-23 19:53:16,151 - INFO - 
+2026-01-23 19:53:16,151 - INFO - ---> 2305ba9d0999
+2026-01-23 19:53:16,151 - INFO - Step 2/13 : WORKDIR /workspace
+2026-01-23 19:53:16,152 - INFO - 
+2026-01-23 19:53:16,154 - INFO - ---> Using cache
+2026-01-23 19:53:16,154 - INFO - ---> e747518d1b92
+2026-01-23 19:53:16,154 - INFO - Step 3/13 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 19:53:16,154 - INFO - 
+2026-01-23 19:53:16,156 - INFO - ---> Using cache
+2026-01-23 19:53:16,156 - INFO - ---> e5991ef828f8
+2026-01-23 19:53:16,156 - INFO - Step 4/13 : ENV CUDA_HOME=/usr/local/cuda
+2026-01-23 19:53:16,156 - INFO - 
+2026-01-23 19:53:16,157 - INFO - ---> Using cache
+2026-01-23 19:53:16,157 - INFO - ---> 023b41248226
+2026-01-23 19:53:16,157 - INFO - Step 5/13 : ENV PATH=$CUDA_HOME/bin:$PATH
+2026-01-23 19:53:16,157 - INFO - 
+2026-01-23 19:53:16,158 - INFO - ---> Using cache
+2026-01-23 19:53:16,158 - INFO - ---> aef303189f12
+2026-01-23 19:53:16,158 - INFO - Step 6/13 : ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+2026-01-23 19:53:16,158 - INFO - 
+2026-01-23 19:53:16,159 - INFO - ---> Using cache
+2026-01-23 19:53:16,159 - INFO - ---> 8755a772bbfe
+2026-01-23 19:53:16,159 - INFO - Step 7/13 : RUN conda create -n testbed python=3.10
+2026-01-23 19:53:16,159 - INFO - 
+2026-01-23 19:53:16,160 - INFO - ---> Using cache
+2026-01-23 19:53:16,160 - INFO - ---> b2e188ff63fb
+2026-01-23 19:53:16,160 - INFO - Step 8/13 : COPY replace_funcs.py /workspace/replace_funcs.py
+2026-01-23 19:53:16,160 - INFO - 
+2026-01-23 19:53:16,163 - INFO - ---> Using cache
+2026-01-23 19:53:16,164 - INFO - ---> 5f74b3ba7130
+2026-01-23 19:53:16,164 - INFO - Step 9/13 : COPY specs.json /workspace/specs.json
+2026-01-23 19:53:16,164 - INFO - 
+2026-01-23 19:53:16,347 - INFO - ---> 92426bd33357
+2026-01-23 19:53:16,347 - INFO - Step 10/13 : ARG PIP_CACHE_DIR=/root/.cache/pip
+2026-01-23 19:53:16,347 - INFO - 
+2026-01-23 19:53:16,376 - INFO - ---> Running in efa5c0ff2328
+2026-01-23 19:53:16,495 - INFO - Removing intermediate container efa5c0ff2328
+2026-01-23 19:53:16,495 - INFO - ---> a7a112907587
+2026-01-23 19:53:16,495 - INFO - Step 11/13 : RUN mkdir -p $PIP_CACHE_DIR
+2026-01-23 19:53:16,495 - INFO - 
+2026-01-23 19:53:16,519 - INFO - ---> Running in 139c55d60016
+2026-01-23 19:53:16,907 - INFO - Removing intermediate container 139c55d60016
+2026-01-23 19:53:16,908 - INFO - ---> 1be5c35c7918
+2026-01-23 19:53:16,908 - INFO - Step 12/13 : RUN cd vllm-project/vllm &&     /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py         --repo /workspace/vllm-project/vllm         --base_commit 4aa23892d6dfdc3ec6de7ff74e982b833adf6c52         --head_commit 363a52f10996e1de613cacdaaa03c882b8b482b4         --pull_number 24197         --specs /workspace/specs.json
+2026-01-23 19:53:16,908 - INFO - 
+2026-01-23 19:53:16,935 - INFO - ---> Running in 8be98d3ec597
+2026-01-23 19:53:22,689 - INFO - [INFO] Command succeeded: git reset --hard
+HEAD is now at a8eb1182f [CI][Models] Add VLM Support for Sequence Classification Conversion (#32885)
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 4aa23892d6dfdc3ec6de7ff74e982b833adf6c52
+
+[INFO] Command succeeded: git fetch origin pull/24197/head:pr-24197
+
+[INFO] Command succeeded: git checkout pr-24197
+
+[INFO] Command succeeded: git reset --hard
+HEAD is now at 363a52f10 Merge branch 'upstream-main' into export-D81623711
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 363a52f10996e1de613cacdaaa03c882b8b482b4
+
+
+===== DIFF vllm/v1/attention/backends/flashinfer.py =====
+--- a/vllm/v1/attention/backends/flashinfer.py
++++ b/vllm/v1/attention/backends/flashinfer.py
+@@ -49,47 +49,6 @@
+ logger = init_logger(__name__)
+ 
+ 
+-@triton.jit
+-def _trtllm_prefill_attn_kvfp8_dequant(
+-    kv_cache_ptr,
+-    block_tables_prefill_ptr,
+-    block_table_stride,
+-    mock_kv_cache_ptr,
+-    k_scale_ptr,
+-    v_scale_ptr,
+-    K_CACHE_STRIDE: tl.constexpr,
+-    KV_CACHE_STRIDE: tl.constexpr,
+-):
+-    batch_idx = tl.program_id(0).to(tl.int64)
+-    mock_block_table_idx = tl.program_id(1).to(tl.int64)
+-    orig_page_num = tl.load(block_tables_prefill_ptr +
+-                            batch_idx * block_table_stride +
+-                            mock_block_table_idx).to(tl.int64)
+-    if orig_page_num <= 0:
+-        return
+-    dequant_dtype = mock_kv_cache_ptr.dtype.element_ty
+-
+-    # Dequantize K
+-    k_scale_val = tl.load(k_scale_ptr)
+-    offset = orig_page_num * KV_CACHE_STRIDE + tl.arange(0, K_CACHE_STRIDE)
+-    fp8_vals = tl.load(kv_cache_ptr + offset)
+-    dequantized_vals = fp8_vals.to(tl.float32) * k_scale_val
+-    mock_cache_offset = (batch_idx * block_table_stride + mock_block_table_idx
+-                         + 1) * KV_CACHE_STRIDE + tl.arange(0, K_CACHE_STRIDE)
+-    dequantized_vals = dequantized_vals.to(dequant_dtype)
+-    tl.store(mock_kv_cache_ptr + mock_cache_offset, dequantized_vals)
+-
+-    # Dequantize V
+-    v_scale_val = tl.load(v_scale_ptr)
+-    offset = (orig_page_num * KV_CACHE_STRIDE + K_CACHE_STRIDE +
+-              tl.arange(0, K_CACHE_STRIDE))
+-    fp8_vals = tl.load(kv_cache_ptr + offset)
+-    dequantized_vals = fp8_vals.to(tl.float32) * v_scale_val
+-    mock_cache_offset = (
+-        (batch_idx * block_table_stride + mock_block_table_idx + 1) *
+-        KV_CACHE_STRIDE + K_CACHE_STRIDE + tl.arange(0, K_CACHE_STRIDE))
+-    dequantized_vals = dequantized_vals.to(dequant_dtype)
+-    tl.store(mock_kv_cache_ptr + mock_cache_offset, dequantized_vals)
+ 
+ 
+ def trtllm_prefill_attn_kvfp8_dequant(
+
+[HEAD] Patched vllm/v1/attention/backends/flashinfer.py
+
+Done. All files patched successfully.
+2026-01-23 19:53:23,922 - INFO - Removing intermediate container 8be98d3ec597
+2026-01-23 19:53:23,922 - INFO - ---> 41ce2d37f90e
+2026-01-23 19:53:23,923 - INFO - Step 13/13 : WORKDIR /workspace/vllm-project/vllm
+2026-01-23 19:53:23,923 - INFO - 
+2026-01-23 19:53:23,952 - INFO - ---> Running in f6a05b48e92e
+2026-01-23 19:53:24,045 - INFO - Removing intermediate container f6a05b48e92e
+2026-01-23 19:53:24,045 - INFO - ---> fa2f934a51dc
+2026-01-23 19:53:24,046 - INFO - Successfully built fa2f934a51dc
+2026-01-23 19:53:24,059 - INFO - Successfully tagged rtbench-instance-vllm-23:latest
+2026-01-23 19:53:24,059 - INFO - Image built successfully!

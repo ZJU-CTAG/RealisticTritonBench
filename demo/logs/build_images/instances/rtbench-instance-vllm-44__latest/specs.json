@@ -1,0 +1,10 @@
+{
+  "vllm/model_executor/layers/fused_moe/gpt_oss_triton_kernels_moe.py": {
+    "source_func": {
+      "triton_kernel_fused_experts": "def triton_kernel_fused_experts(\n    output_tensor: torch.Tensor,\n    hidden_states: torch.Tensor,\n    w1,  # Tensor or triton_kernels.Tensor\n    w2,  # Tensor or triton_kernels.Tensor\n    routing_data,  # RoutingData\n    gather_indx,  # GatherIndx\n    scatter_indx,  # ScatterIndx\n    topk: int,\n    activation: str = \"silu\",\n    quant_config: FusedMoEQuantConfig | None = None,\n    swiglu_alpha: float = 1.702,\n    swiglu_limit: float = 7.0,\n    apply_router_weight_on_input: bool = False,\n    global_num_experts: int = -1,\n    expert_map: torch.Tensor | None = None,\n    intermediate_cache: torch.Tensor | None = None,\n    a1q_scale: torch.Tensor | None = None,\n) -> torch.Tensor:"
+    },
+    "target_func": {
+      "triton_kernel_fused_experts": "def triton_kernel_fused_experts(\n    output_tensor: torch.Tensor,\n    hidden_states: torch.Tensor,\n    w1,  # Tensor or triton_kernels.Tensor\n    w2,  # Tensor or triton_kernels.Tensor\n    routing_data,  # RoutingData\n    gather_indx,  # GatherIndx\n    scatter_indx,  # ScatterIndx\n    topk: int,\n    activation: str = \"silu\",\n    quant_config: FusedMoEQuantConfig | None = None,\n    swiglu_alpha: float = 1.702,\n    swiglu_limit: float = 7.0,\n    apply_router_weight_on_input: bool = False,\n    global_num_experts: int = -1,\n    expert_map: torch.Tensor | None = None,\n    intermediate_cache: torch.Tensor | None = None,\n    a1q_scale: torch.Tensor | None = None,\n) -> torch.Tensor:"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "vllm/model_executor/layers/quantization/awq_triton.py": {
+    "source_func": {
+      "awq_gemm_kernel": "@triton.jit\ndef awq_gemm_kernel(a_ptr, b_ptr, c_ptr, zeros_ptr, scales_ptr, M, N, K,\n                    group_size, BLOCK_SIZE_M: tl.constexpr,\n                    BLOCK_SIZE_N: tl.constexpr, BLOCK_SIZE_K: tl.constexpr,\n                    SPLIT_K: tl.constexpr):"
+    },
+    "target_func": {
+      "awq_gemm_kernel": "@triton.jit\ndef awq_gemm_kernel(a_ptr, b_ptr, c_ptr, zeros_ptr, scales_ptr, M, N, K,\n                    group_size, BLOCK_SIZE_M: tl.constexpr,\n                    BLOCK_SIZE_N: tl.constexpr, BLOCK_SIZE_K: tl.constexpr,\n                    SPLIT_K: tl.constexpr):"
+    }
+  }
+}

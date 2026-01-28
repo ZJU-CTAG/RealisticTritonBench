@@ -1,0 +1,10 @@
+{
+  "vllm/lora/ops/triton_ops/fused_moe_lora_op.py": {
+    "source_func": {
+      "_fused_moe_lora_kernel": "def _fused_moe_lora_kernel(...):"
+    },
+    "target_func": {
+      "_fused_moe_lora_kernel": "def _fused_moe_lora_kernel(...):"
+    }
+  }
+}

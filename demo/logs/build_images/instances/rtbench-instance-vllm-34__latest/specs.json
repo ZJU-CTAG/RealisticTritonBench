@@ -1,0 +1,14 @@
+{
+  "vllm/lora/ops/triton_ops/v1/v1_expand.py": {
+    "source_func": {},
+    "target_func": {
+      "_v1_expand_kernel": "@triton.jit\ndef _v1_expand_kernel(\n        input_ptr,\n        lora_ptr,\n        out_ptr,\n        M,\n        N,\n        K,\n        token_indices_sorted_by_lora_ids,\n        num_tokens_per_lora,\n        lora_token_start_loc,\n        lora_ids,\n        slice_start_loc,\n        input_d0_stride,\n        input_d1_stride,\n        input_d2_stride,  # 1\n        ls_d0_ptr,\n        ls_d1_ptr,\n        ls_d2_ptr,  # 1\n        output_d0_stride,\n        output_d1_stride,  # 1\n        output_hs_ptr,\n        BLOCK_M: tl.constexpr,\n        BLOCK_N: tl.constexpr,\n        BLOCK_K: tl.constexpr,\n        EVEN_K: tl.constexpr,\n        ADD_INPUTS: tl.constexpr,\n        CAST_TYPE: tl.constexpr,\n        SLICE_NUM: tl.constexpr,\n        SAME_STRIDE: tl.constexpr):"
+    }
+  },
+  "vllm/lora/ops/triton_ops/v1/v1_shrink.py": {
+    "source_func": {},
+    "target_func": {
+      "_v1_shrink_kernel": "@triton.jit\ndef _v1_shrink_kernel(input_ptr, lora_ptr, out_ptr, M, N, K,\n                      token_indices_sorted_by_lora_ids, num_tokens_per_lora,\n                      lora_token_start_loc, lora_ids, scaling, input_d0_stride,\n                      input_d1_stride, lora_d0_stride, lora_d1_stride,\n                      lora_d2_stride, output_d0_stride, output_d1_stride,\n                      output_d2_stride, BLOCK_M: tl.constexpr,\n                      BLOCK_N: tl.constexpr, BLOCK_K: tl.constexpr,\n                      EVEN_K: tl.constexpr, SPLIT_K: tl.constexpr,\n                      SLICE_NUM: tl.constexpr):"
+    }
+  }
+}

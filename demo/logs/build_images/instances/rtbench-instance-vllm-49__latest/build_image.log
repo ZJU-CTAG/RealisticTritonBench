@@ -1,0 +1,155 @@
+2026-01-23 20:13:20,892 - INFO - Building image rtbench-instance-vllm-49:latest
+Using dockerfile:
+# syntax=docker/dockerfile:1.4
+FROM --platform=linux/x86_64 rtbench-vllm:latest
+
+WORKDIR /workspace
+
+ENV PATH=/opt/miniconda3/bin:$PATH
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+RUN conda create -n testbed python=3.10 
+
+COPY replace_funcs.py /workspace/replace_funcs.py
+COPY specs.json /workspace/specs.json
+
+
+ARG PIP_CACHE_DIR=/root/.cache/pip
+
+RUN mkdir -p $PIP_CACHE_DIR
+
+# 在同一条 RUN 里调用环境的 Python
+RUN cd vllm-project/vllm && \
+    /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py \
+        --repo /workspace/vllm-project/vllm \
+        --base_commit f4cd80f94404787859ba72dcddb5e818d8f0c9e7 \
+        --head_commit bfdaf6f617ce0355690c2fd2cbc4b1e352dbd75a \
+        --pull_number 24883 \
+        --specs /workspace/specs.json 
+
+WORKDIR /workspace/vllm-project/vllm
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 20:13:20,892 - INFO - Building docker image rtbench-instance-vllm-49:latest in logs/build_images/instances/rtbench-instance-vllm-49__latest with platform linux/x86_64
+2026-01-23 20:13:20,966 - INFO - Step 1/13 : FROM --platform=linux/x86_64 rtbench-vllm:latest
+2026-01-23 20:13:20,966 - INFO - 
+2026-01-23 20:13:20,967 - INFO - ---> 2305ba9d0999
+2026-01-23 20:13:20,967 - INFO - Step 2/13 : WORKDIR /workspace
+2026-01-23 20:13:20,967 - INFO - 
+2026-01-23 20:13:20,969 - INFO - ---> Using cache
+2026-01-23 20:13:20,969 - INFO - ---> e747518d1b92
+2026-01-23 20:13:20,969 - INFO - Step 3/13 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 20:13:20,969 - INFO - 
+2026-01-23 20:13:20,970 - INFO - ---> Using cache
+2026-01-23 20:13:20,970 - INFO - ---> e5991ef828f8
+2026-01-23 20:13:20,970 - INFO - Step 4/13 : ENV CUDA_HOME=/usr/local/cuda
+2026-01-23 20:13:20,970 - INFO - 
+2026-01-23 20:13:20,971 - INFO - ---> Using cache
+2026-01-23 20:13:20,971 - INFO - ---> 023b41248226
+2026-01-23 20:13:20,971 - INFO - Step 5/13 : ENV PATH=$CUDA_HOME/bin:$PATH
+2026-01-23 20:13:20,971 - INFO - 
+2026-01-23 20:13:20,972 - INFO - ---> Using cache
+2026-01-23 20:13:20,972 - INFO - ---> aef303189f12
+2026-01-23 20:13:20,972 - INFO - Step 6/13 : ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+2026-01-23 20:13:20,972 - INFO - 
+2026-01-23 20:13:20,973 - INFO - ---> Using cache
+2026-01-23 20:13:20,973 - INFO - ---> 8755a772bbfe
+2026-01-23 20:13:20,973 - INFO - Step 7/13 : RUN conda create -n testbed python=3.10
+2026-01-23 20:13:20,973 - INFO - 
+2026-01-23 20:13:20,975 - INFO - ---> Using cache
+2026-01-23 20:13:20,975 - INFO - ---> b2e188ff63fb
+2026-01-23 20:13:20,975 - INFO - Step 8/13 : COPY replace_funcs.py /workspace/replace_funcs.py
+2026-01-23 20:13:20,975 - INFO - 
+2026-01-23 20:13:20,981 - INFO - ---> Using cache
+2026-01-23 20:13:20,982 - INFO - ---> 2ef016a67ff1
+2026-01-23 20:13:20,982 - INFO - Step 9/13 : COPY specs.json /workspace/specs.json
+2026-01-23 20:13:20,982 - INFO - 
+2026-01-23 20:13:21,171 - INFO - ---> 1dad42fd9f79
+2026-01-23 20:13:21,172 - INFO - Step 10/13 : ARG PIP_CACHE_DIR=/root/.cache/pip
+2026-01-23 20:13:21,172 - INFO - 
+2026-01-23 20:13:21,193 - INFO - ---> Running in a3cbb280674c
+2026-01-23 20:13:21,293 - INFO - Removing intermediate container a3cbb280674c
+2026-01-23 20:13:21,293 - INFO - ---> 09d150735aa9
+2026-01-23 20:13:21,293 - INFO - Step 11/13 : RUN mkdir -p $PIP_CACHE_DIR
+2026-01-23 20:13:21,293 - INFO - 
+2026-01-23 20:13:21,318 - INFO - ---> Running in fe1e112bbfa4
+2026-01-23 20:13:21,732 - INFO - Removing intermediate container fe1e112bbfa4
+2026-01-23 20:13:21,732 - INFO - ---> 89f62f9d17fb
+2026-01-23 20:13:21,732 - INFO - Step 12/13 : RUN cd vllm-project/vllm &&     /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py         --repo /workspace/vllm-project/vllm         --base_commit f4cd80f94404787859ba72dcddb5e818d8f0c9e7         --head_commit bfdaf6f617ce0355690c2fd2cbc4b1e352dbd75a         --pull_number 24883         --specs /workspace/specs.json
+2026-01-23 20:13:21,733 - INFO - 
+2026-01-23 20:13:21,758 - INFO - ---> Running in 8b6183ed66e3
+2026-01-23 20:13:27,594 - INFO - [INFO] Command succeeded: git reset --hard
+HEAD is now at a8eb1182f [CI][Models] Add VLM Support for Sequence Classification Conversion (#32885)
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout f4cd80f94404787859ba72dcddb5e818d8f0c9e7
+
+[INFO] Command succeeded: git fetch origin pull/24883/head:pr-24883
+
+[INFO] Command succeeded: git checkout pr-24883
+
+[INFO] Command succeeded: git reset --hard
+HEAD is now at bfdaf6f61 Merge branch 'main' of https://github.com/vllm-project/vllm into fp32_conv_state
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout bfdaf6f617ce0355690c2fd2cbc4b1e352dbd75a
+
+
+===== DIFF vllm/model_executor/layers/mamba/ops/causal_conv1d.py =====
+--- a/vllm/model_executor/layers/mamba/ops/causal_conv1d.py
++++ b/vllm/model_executor/layers/mamba/ops/causal_conv1d.py
+@@ -415,9 +415,6 @@
+         activation = "silu"
+ 
+     args = None
+-    # Store original dtype to cast back at the end
+-    original_x_dtype = x.dtype
+-    x = x.to(conv_states.dtype)
+     out = torch.empty_like(x)
+     if metadata is not None:
+         cu_seqlen = metadata.cu_seqlen
+@@ -616,7 +613,7 @@
+         BLOCK_N=256,
+         num_stages=2,
+     )
+-    return out.to(original_x_dtype)
++    return out
+ 
+ 
+ @triton.jit()
+@@ -974,9 +971,6 @@
+         activation = "silu" if activation is True else None
+     elif activation is not None:
+         assert activation in ["silu", "swish"]
+-
+-    original_x_dtype = x.dtype
+-    x = x.to(conv_state.dtype)
+     unsqueeze = query_start_loc is None and x.dim() == 2
+     if unsqueeze:
+         # make it (batch, dim, seqlen) with seqlen == 1
+@@ -1085,4 +1079,4 @@
+     )
+     if unsqueeze:
+         out = out.squeeze(-1)
+-    return out.to(original_x_dtype)
++    return out
+
+[HEAD] Patched vllm/model_executor/layers/mamba/ops/causal_conv1d.py
+
+Done. All files patched successfully.
+2026-01-23 20:13:28,935 - INFO - Removing intermediate container 8b6183ed66e3
+2026-01-23 20:13:28,935 - INFO - ---> 56b8679d4287
+2026-01-23 20:13:28,935 - INFO - Step 13/13 : WORKDIR /workspace/vllm-project/vllm
+2026-01-23 20:13:28,936 - INFO - 
+2026-01-23 20:13:28,968 - INFO - ---> Running in e10022aaa31a
+2026-01-23 20:13:29,069 - INFO - Removing intermediate container e10022aaa31a
+2026-01-23 20:13:29,069 - INFO - ---> ce3016674d79
+2026-01-23 20:13:29,070 - INFO - Successfully built ce3016674d79
+2026-01-23 20:13:29,075 - INFO - Successfully tagged rtbench-instance-vllm-49:latest
+2026-01-23 20:13:29,075 - INFO - Image built successfully!

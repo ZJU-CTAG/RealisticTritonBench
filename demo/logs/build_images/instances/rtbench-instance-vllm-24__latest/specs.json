@@ -1,0 +1,9 @@
+{
+  "vllm/model_executor/layers/rotary_embedding/mrope.py": {
+    "source_func": {},
+    "target_func": {
+      "_triton_qwen2vl_mrope_forward": "@triton.jit\ndef _triton_qwen2vl_mrope_forward(\n    q_ptr,\n    k_ptr,\n    cos,\n    sin,\n    num_tokens,\n    n_qh: tl.constexpr,\n    n_kh: tl.constexpr,\n    hd: tl.constexpr,\n    pad_n_qh: tl.constexpr,\n    pad_n_kh: tl.constexpr,\n    pad_hd: tl.constexpr,\n    mrope_section_t: tl.constexpr,\n    mrope_section_h: tl.constexpr,\n):",
+      "triton_mrope": "def triton_mrope(\n    q: torch.Tensor,\n    k: torch.Tensor,\n    cos: torch.Tensor,\n    sin: torch.Tensor,\n    mrope_section: list[int],\n    head_size: int,\n) -> tuple[torch.Tensor, torch.Tensor]:"
+    }
+  }
+}

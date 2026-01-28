@@ -1,0 +1,10 @@
+{
+  "vllm/model_executor/layers/quantization/compressed_tensors/triton_scaled_mm.py": {
+    "source_func": {
+      "triton_scaled_mm": "def triton_scaled_mm(input: torch.Tensor,\n                     weight: torch.Tensor,\n                     scale_a: torch.Tensor,\n                     scale_b: torch.Tensor,\n                     out_dtype: Type[torch.dtype],\n                     bias: Optional[torch.Tensor] = None,\n                     block_size_m: int = 32,\n                     block_size_n: int = 32,\n                     block_size_k: int = 32)"
+    },
+    "target_func": {
+      "triton_scaled_mm": "def triton_scaled_mm(input: torch.Tensor,\n                     weight: torch.Tensor,\n                     scale_a: torch.Tensor,\n                     scale_b: torch.Tensor,\n                     out_dtype: Type[torch.dtype],\n                     bias: Optional[torch.Tensor] = None,\n                     block_size_m: int = 32,\n                     block_size_n: int = 32,\n                     block_size_k: int = 32,\n                     use_heuristic=True)"
+    }
+  }
+}

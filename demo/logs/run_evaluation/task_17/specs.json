@@ -1,0 +1,22 @@
+{
+  "vllm/lora/ops/sgmv_expand.py": {
+    "source_func": {
+      "_sgmv_expand_kernel": "@triton.jit\ndef _sgmv_expand_kernel(\n    input_ptr,\n    lora_ptr,\n    out_ptr,\n    N,\n    K,\n    b_seq_start_loc,\n    seq_lens,\n    lora_indices,\n    xm_stride,\n    xk_stride,  # 1\n    l0_stride,  # hidden_size*max_rank\n    lora_k_stride,\n    lora_n_stride,\n    cm_stride,\n    cn_stride,\n    BLOCK_M: tl.constexpr,\n    BLOCK_N: tl.constexpr,\n    BLOCK_K: tl.constexpr,\n    EVEN_K: tl.constexpr,\n    ADD_INPUTS: tl.constexpr,\n    CAST_TYPE: tl.constexpr,\n):",
+      "_sgmv_expand": "@torch.inference_mode()\ndef _sgmv_expand(\n    inputs: torch.Tensor,\n    lora_b_weights: torch.Tensor,\n    output_tensor: torch.Tensor,\n    b_seq_start_loc: torch.Tensor,\n    seq_len_tensor: torch.Tensor,\n    lora_indices_tensor: torch.Tensor,\n    batches: int,\n    max_seq_length: int,\n    token_nums: int,\n    add_inputs: bool = False,\n) -> None"
+    },
+    "target_func": {
+      "_sgmv_expand_kernel": "@triton.jit\ndef _sgmv_expand_kernel(\n        input_ptr,\n        lora_ptr,\n        out_ptr,\n        N,\n        K,\n        b_seq_start_loc,\n        seq_lens,\n        lora_indices,\n        slice_start_loc,\n        input_d0_stride,\n        input_d1_stride,\n        input_d2_stride,  # 1\n        ls_d0_ptr,\n        ls_d1_ptr,\n        ls_d2_ptr,  # 1\n        output_d0_stride,\n        output_d1_stride,  # 1\n        output_hs_ptr,\n        BLOCK_M: tl.constexpr,\n        BLOCK_N: tl.constexpr,\n        BLOCK_K: tl.constexpr,\n        EVEN_K: tl.constexpr,\n        ADD_INPUTS: tl.constexpr,\n        CAST_TYPE: tl.constexpr,\n        SLICE_NUM: tl.constexpr,\n        SAME_STRIDE: tl.constexpr):",
+      "_sgmv_expand": "@torch.inference_mode()\ndef _sgmv_expand(\n    inputs: torch.Tensor,\n    lora_b_weights: List[torch.Tensor],\n    output_tensor: torch.Tensor,\n    b_seq_start_loc: torch.Tensor,\n    seq_len_tensor: torch.Tensor,\n    lora_indices_tensor: torch.Tensor,\n    batches: int,\n    max_seq_length: int,\n    token_nums: int,\n    offset_start: int = 0,\n    add_inputs: bool = False,\n) -> None:"
+    }
+  },
+  "vllm/lora/ops/sgmv_shrink.py": {
+    "source_func": {
+      "_sgmv_shrink_kernel": "@triton.jit\ndef _sgmv_shrink_kernel(\n    input_ptr,\n    lora_ptr,\n    out_ptr,\n    N,\n    K,\n    b_seq_start_loc,\n    seq_lens,\n    lora_indices,\n    scaling,\n    xm_stride,  # hidden_size\n    xk_stride,  # 1\n    l0_stride,  # hidden_size*max_rank\n    lora_k_stride,\n    lora_n_stride,\n    cm_stride,\n    cn_stride,\n    BLOCK_M: tl.constexpr,\n    BLOCK_N: tl.constexpr,\n    BLOCK_K: tl.constexpr,\n    EVEN_K: tl.constexpr,\n    SPLIT_K: tl.constexpr,\n):",
+      "_sgmv_shrink": "@torch.inference_mode()\ndef _sgmv_shrink(\n    inputs: torch.Tensor,\n    lora_a_weights: torch.Tensor,\n    output_tensor: torch.Tensor,\n    b_seq_start_loc: torch.Tensor,\n    seq_len_tensor: torch.Tensor,\n    lora_indices_tensor: torch.Tensor,\n    batches: int,\n    max_seq_length: int,\n    token_nums: int,\n    scaling: float,\n) -> None:"
+    },
+    "target_func": {
+      "_sgmv_shrink_kernel": "@triton.jit\ndef _sgmv_shrink_kernel(\n        input_ptr,\n        lora_ptr,  #1-3\n        out_ptr,\n        N,\n        K,\n        b_seq_start_loc,\n        seq_lens,\n        lora_indices,\n        scaling,\n        input_d0_stride,\n        input_d1_stride,  # 1\n        lora_d0_stride,\n        lora_d1_stride,\n        lora_d2_stride,  # 1\n        output_d0_stride,\n        output_d1_stride,\n        output_d2_stride,  # 1 \n        BLOCK_M: tl.constexpr,\n        BLOCK_N: tl.constexpr,\n        BLOCK_K: tl.constexpr,\n        EVEN_K: tl.constexpr,\n        SPLIT_K: tl.constexpr,\n        SLICE_NUM: tl.constexpr):",
+      "_sgmv_shrink": "@torch.inference_mode()\ndef _sgmv_shrink(\n    inputs: torch.Tensor,\n    lora_a_weights: List[torch.Tensor],\n    output_tensor: torch.Tensor,\n    b_seq_start_loc: torch.Tensor,\n    seq_len_tensor: torch.Tensor,\n    lora_indices_tensor: torch.Tensor,\n    batches: int,\n    max_seq_length: int,\n    token_nums: int,\n    scaling: float,\n) -> None:"
+    }
+  }
+}

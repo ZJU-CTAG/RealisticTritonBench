@@ -1,0 +1,293 @@
+2026-01-23 19:55:28,180 - INFO - Building image rtbench-instance-vllm-37:latest
+Using dockerfile:
+# syntax=docker/dockerfile:1.4
+FROM --platform=linux/x86_64 rtbench-vllm:latest
+
+WORKDIR /workspace
+
+ENV PATH=/opt/miniconda3/bin:$PATH
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+RUN conda create -n testbed python=3.10 
+
+COPY replace_funcs.py /workspace/replace_funcs.py
+COPY specs.json /workspace/specs.json
+
+
+ARG PIP_CACHE_DIR=/root/.cache/pip
+
+RUN mkdir -p $PIP_CACHE_DIR
+
+# 在同一条 RUN 里调用环境的 Python
+RUN cd vllm-project/vllm && \
+    /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py \
+        --repo /workspace/vllm-project/vllm \
+        --base_commit f6778620a95baf925eb54694ab4666524d0d8584 \
+        --head_commit 69cd7a3980d68d586fbebdbd12fc56429a109f2d \
+        --pull_number 9857 \
+        --specs /workspace/specs.json 
+
+WORKDIR /workspace/vllm-project/vllm
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 19:55:28,180 - INFO - Building docker image rtbench-instance-vllm-37:latest in logs/build_images/instances/rtbench-instance-vllm-37__latest with platform linux/x86_64
+2026-01-23 19:55:28,256 - INFO - Step 1/13 : FROM --platform=linux/x86_64 rtbench-vllm:latest
+2026-01-23 19:55:28,256 - INFO - 
+2026-01-23 19:55:28,256 - INFO - ---> 2305ba9d0999
+2026-01-23 19:55:28,256 - INFO - Step 2/13 : WORKDIR /workspace
+2026-01-23 19:55:28,256 - INFO - 
+2026-01-23 19:55:28,258 - INFO - ---> Using cache
+2026-01-23 19:55:28,258 - INFO - ---> e747518d1b92
+2026-01-23 19:55:28,258 - INFO - Step 3/13 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 19:55:28,258 - INFO - 
+2026-01-23 19:55:28,259 - INFO - ---> Using cache
+2026-01-23 19:55:28,259 - INFO - ---> e5991ef828f8
+2026-01-23 19:55:28,259 - INFO - Step 4/13 : ENV CUDA_HOME=/usr/local/cuda
+2026-01-23 19:55:28,259 - INFO - 
+2026-01-23 19:55:28,260 - INFO - ---> Using cache
+2026-01-23 19:55:28,260 - INFO - ---> 023b41248226
+2026-01-23 19:55:28,260 - INFO - Step 5/13 : ENV PATH=$CUDA_HOME/bin:$PATH
+2026-01-23 19:55:28,260 - INFO - 
+2026-01-23 19:55:28,261 - INFO - ---> Using cache
+2026-01-23 19:55:28,261 - INFO - ---> aef303189f12
+2026-01-23 19:55:28,261 - INFO - Step 6/13 : ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+2026-01-23 19:55:28,261 - INFO - 
+2026-01-23 19:55:28,262 - INFO - ---> Using cache
+2026-01-23 19:55:28,262 - INFO - ---> 8755a772bbfe
+2026-01-23 19:55:28,262 - INFO - Step 7/13 : RUN conda create -n testbed python=3.10
+2026-01-23 19:55:28,262 - INFO - 
+2026-01-23 19:55:28,264 - INFO - ---> Using cache
+2026-01-23 19:55:28,264 - INFO - ---> b2e188ff63fb
+2026-01-23 19:55:28,264 - INFO - Step 8/13 : COPY replace_funcs.py /workspace/replace_funcs.py
+2026-01-23 19:55:28,264 - INFO - 
+2026-01-23 19:55:28,268 - INFO - ---> Using cache
+2026-01-23 19:55:28,268 - INFO - ---> 5f74b3ba7130
+2026-01-23 19:55:28,268 - INFO - Step 9/13 : COPY specs.json /workspace/specs.json
+2026-01-23 19:55:28,268 - INFO - 
+2026-01-23 19:55:28,456 - INFO - ---> 4d3a9304d1a8
+2026-01-23 19:55:28,456 - INFO - Step 10/13 : ARG PIP_CACHE_DIR=/root/.cache/pip
+2026-01-23 19:55:28,457 - INFO - 
+2026-01-23 19:55:28,482 - INFO - ---> Running in 7b6524c974ae
+2026-01-23 19:55:28,568 - INFO - Removing intermediate container 7b6524c974ae
+2026-01-23 19:55:28,569 - INFO - ---> cb9c7a0b1086
+2026-01-23 19:55:28,569 - INFO - Step 11/13 : RUN mkdir -p $PIP_CACHE_DIR
+2026-01-23 19:55:28,569 - INFO - 
+2026-01-23 19:55:28,595 - INFO - ---> Running in 794c6e01d572
+2026-01-23 19:55:28,906 - INFO - Removing intermediate container 794c6e01d572
+2026-01-23 19:55:28,906 - INFO - ---> af6a4ffff0eb
+2026-01-23 19:55:28,906 - INFO - Step 12/13 : RUN cd vllm-project/vllm &&     /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py         --repo /workspace/vllm-project/vllm         --base_commit f6778620a95baf925eb54694ab4666524d0d8584         --head_commit 69cd7a3980d68d586fbebdbd12fc56429a109f2d         --pull_number 9857         --specs /workspace/specs.json
+2026-01-23 19:55:28,906 - INFO - 
+2026-01-23 19:55:28,944 - INFO - ---> Running in 975d3c92f559
+2026-01-23 19:55:35,515 - INFO - [INFO] Command succeeded: git reset --hard
+HEAD is now at a8eb1182f [CI][Models] Add VLM Support for Sequence Classification Conversion (#32885)
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout f6778620a95baf925eb54694ab4666524d0d8584
+
+[INFO] Command succeeded: git fetch origin pull/9857/head:pr-9857
+
+[INFO] Command succeeded: git checkout pr-9857
+
+[INFO] Command succeeded: git reset --hard
+HEAD is now at 69cd7a398 Merge branch 'vllm-project:main' into ransmith_int8_triton
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 69cd7a3980d68d586fbebdbd12fc56429a109f2d
+
+
+===== DIFF vllm/model_executor/layers/quantization/compressed_tensors/triton_scaled_mm.py =====
+--- a/vllm/model_executor/layers/quantization/compressed_tensors/triton_scaled_mm.py
++++ b/vllm/model_executor/layers/quantization/compressed_tensors/triton_scaled_mm.py
+@@ -13,172 +13,7 @@
+     return is_transpose or is_not_transpose
+ 
+ 
+-@triton.jit
+-def scaled_mm_kernel(a_ptr, b_ptr, scale_a_ptr, scale_b_ptr, c_ptr, bias_ptr,
+-                     M, N, K, stride_am, stride_ak, stride_bk, stride_bn,
+-                     stride_cm, stride_cn, ACCUMULATOR_DTYPE: tl.constexpr,
+-                     BLOCK_SIZE_M: tl.constexpr, BLOCK_SIZE_N: tl.constexpr,
+-                     BLOCK_SIZE_K: tl.constexpr,
+-                     BLOCK_SIZE_SCALE_A: tl.constexpr,
+-                     BLOCK_SIZE_SCALE_B: tl.constexpr):
+-    pid = tl.program_id(axis=0)
+-
+-    num_pid_n = tl.cdiv(N, BLOCK_SIZE_N)
+-
+-    pid_m = pid // num_pid_n
+-    pid_n = pid % num_pid_n
+-
+-    accumulator_dtype = ACCUMULATOR_DTYPE
+-    accumulator = tl.zeros((BLOCK_SIZE_M, BLOCK_SIZE_N),
+-                           dtype=accumulator_dtype)
+-
+-    # NOTE: Some tensor inputs are so large, they will cause int32 overflow
+-    # so it is necessary to use tl.int64 for all the offsets, else SEGV will
+-    # eventually occur.
+-
+-    # Offsets and masks.
+-    offsets_am = pid_m * BLOCK_SIZE_M + tl.arange(0, BLOCK_SIZE_M).to(tl.int64)
+-    masks_am = offsets_am < M
+-
+-    offsets_bn = pid_n * BLOCK_SIZE_N + tl.arange(0, BLOCK_SIZE_N).to(tl.int64)
+-    masks_bn = offsets_bn < N
+-
+-    offsets_k = tl.arange(0, BLOCK_SIZE_K).to(tl.int64)
+-    offsets_a = (stride_am * offsets_am[:, None] +
+-                 stride_ak * offsets_k[None, :])
+-    offsets_b = (stride_bk * offsets_k[:, None] +
+-                 stride_bn * offsets_bn[None, :])
+-
+-    # NOTE: BLOCK_SIZE_SCALE_A could be 1 or BLOCK_SIZE_M, so need to create
+-    # appropriate offsets and masks for each case. Same goes for
+-    # BLOCK_SIZE_SCALE_B.
+-    offsets_scale_am = (tl.arange(0, BLOCK_SIZE_SCALE_A) +
+-                        (BLOCK_SIZE_SCALE_A > 1) * pid_m * BLOCK_SIZE_M)
+-    masks_scale_am = offsets_scale_am < M
+-
+-    offsets_scale_bn = (tl.arange(0, BLOCK_SIZE_SCALE_B) +
+-                        (BLOCK_SIZE_SCALE_B > 1) * pid_n * BLOCK_SIZE_N)
+-    masks_scale_bn = offsets_scale_bn < N
+-
+-    a_ptrs = a_ptr + offsets_a
+-    b_ptrs = b_ptr + offsets_b
+-
+-    scale_a_ptrs = scale_a_ptr + offsets_scale_am
+-    scale_b_ptrs = scale_b_ptr + offsets_scale_bn
+-
+-    for k in range(0, tl.cdiv(K, BLOCK_SIZE_K)):
+-        masks_k = offsets_k < K
+-        masks_a = masks_am[:, None] & masks_k[None, :]
+-        a = tl.load(a_ptrs, mask=masks_a)
+-
+-        masks_b = masks_k[:, None] & masks_bn[None, :]
+-        b = tl.load(b_ptrs, mask=masks_b)
+-
+-        # Accumulate results.
+-        accumulator = tl.dot(a, b, accumulator, out_dtype=accumulator_dtype)
+-
+-        offsets_k += BLOCK_SIZE_K
+-        a_ptrs += BLOCK_SIZE_K * stride_ak
+-        b_ptrs += BLOCK_SIZE_K * stride_bk
+-
+-    # Apply scale at end.
+-    masks_scale_a = masks_scale_am[:, None] & (tl.arange(0, 1) < 1)[:, None]
+-    scale_a = tl.load(scale_a_ptrs[:, None], masks_scale_a)
+-    # Need to broadcast to the appropriate size, if scale_a is already
+-    # (BLOCK_SIZE_M, 1) then it will broadcast to its own shape. Same goes
+-    # for scale_b below.
+-    scale_a = scale_a.broadcast_to((BLOCK_SIZE_M, 1))
+-    accumulator = scale_a * accumulator.to(tl.float32)
+-
+-    masks_scale_b = masks_scale_bn[:, None] & (tl.arange(0, 1) < 1)[None, :]
+-    scale_b = tl.load(scale_b_ptrs[:, None], masks_scale_b)
+-    scale_b = scale_b.broadcast_to((BLOCK_SIZE_N, 1))
+-    accumulator = scale_b.T * accumulator.to(tl.float32)
+-
+-    # Convert to output format.
+-    c = accumulator.to(c_ptr.type.element_ty)
+-
+-    # Add bias, it's already in output format, so add it after conversion.
+-    if bias_ptr:
+-        offsets_bias = offsets_bn
+-        bias_ptrs = bias_ptr + offsets_bias
+-        bias_mask = offsets_bias < N
+-        bias = tl.load(bias_ptrs, bias_mask)
+-        c += bias
+-
+-    # Save output
+-    offs_cm = pid_m * BLOCK_SIZE_M + tl.arange(0, BLOCK_SIZE_M).to(tl.int64)
+-    offs_cn = pid_n * BLOCK_SIZE_N + tl.arange(0, BLOCK_SIZE_N).to(tl.int64)
+-    offs_cm = offs_cm.to(tl.int64)
+-    offs_cn = offs_cn.to(tl.int64)
+-    c_ptrs = (c_ptr + stride_cm * offs_cm[:, None] +
+-              stride_cn * offs_cn[None, :])
+-    c_mask = (offs_cm[:, None] < M) & (offs_cn[None, :] < N)
+-
+-    tl.store(c_ptrs, c, mask=c_mask)
+ 
+ 
+ # input   - [M, K]
+ # weight - [K, N]
+-def triton_scaled_mm(input: torch.Tensor,
+-                     weight: torch.Tensor,
+-                     scale_a: torch.Tensor,
+-                     scale_b: torch.Tensor,
+-                     out_dtype: Type[torch.dtype],
+-                     bias: Optional[torch.Tensor] = None,
+-                     block_size_m: int = 32,
+-                     block_size_n: int = 32,
+-                     block_size_k: int = 32) -> torch.Tensor:
+-    M, K = input.shape
+-    N = weight.shape[1]
+-
+-    assert N > 0 and K > 0 and M > 0
+-    assert weight.shape[0] == K
+-    assert input.dtype == weight.dtype
+-    assert scale_a.dtype == scale_b.dtype and scale_a.is_floating_point()
+-    assert scale_a.shape == torch.Size([1, 1]) or scale_a.shape == torch.Size(
+-        [M, 1])
+-    assert scale_b.shape == torch.Size([1, 1]) or scale_b.shape == torch.Size(
+-        [N, 1])
+-    assert out_dtype.is_floating_point
+-    assert bias is None or bias.is_floating_point()
+-    assert is_weak_contiguous(input)
+-    assert is_weak_contiguous(weight)
+-
+-    grid = lambda META: (triton.cdiv(M, META['BLOCK_SIZE_M']) * triton.cdiv(
+-        N, META['BLOCK_SIZE_N']), )
+-
+-    result = torch.empty((M, N), dtype=out_dtype, device=input.device)
+-
+-    has_scalar = lambda x: x.shape[0] == 1 and x.shape[1] == 1
+-
+-    block_size_sa = 1 if has_scalar(scale_a) else block_size_m
+-    block_size_sb = 1 if has_scalar(scale_b) else block_size_n
+-
+-    accumulator_dtype = tl.float32 if input.is_floating_point() else tl.int32
+-
+-    # A = input, B = weight, C = result
+-    # A = M x K, B = K x N, C = M x N
+-    scaled_mm_kernel[grid](input,
+-                           weight,
+-                           scale_a,
+-                           scale_b,
+-                           result,
+-                           bias,
+-                           M,
+-                           N,
+-                           K,
+-                           input.stride(0),
+-                           input.stride(1),
+-                           weight.stride(0),
+-                           weight.stride(1),
+-                           result.stride(0),
+-                           result.stride(1),
+-                           accumulator_dtype,
+-                           BLOCK_SIZE_M=block_size_m,
+-                           BLOCK_SIZE_N=block_size_n,
+-                           BLOCK_SIZE_K=block_size_k,
+-                           BLOCK_SIZE_SCALE_A=block_size_sa,
+-                           BLOCK_SIZE_SCALE_B=block_size_sb)
+-
+-    return result.to(out_dtype)
+
+[HEAD] Patched vllm/model_executor/layers/quantization/compressed_tensors/triton_scaled_mm.py
+
+Done. All files patched successfully.
+2026-01-23 19:55:36,264 - INFO - Removing intermediate container 975d3c92f559
+2026-01-23 19:55:36,264 - INFO - ---> 5a2e3aa4b030
+2026-01-23 19:55:36,264 - INFO - Step 13/13 : WORKDIR /workspace/vllm-project/vllm
+2026-01-23 19:55:36,264 - INFO - 
+2026-01-23 19:55:36,294 - INFO - ---> Running in e0c4e7a2ab6a
+2026-01-23 19:55:36,390 - INFO - Removing intermediate container e0c4e7a2ab6a
+2026-01-23 19:55:36,390 - INFO - ---> db2bea8da839
+2026-01-23 19:55:36,390 - INFO - Successfully built db2bea8da839
+2026-01-23 19:55:36,394 - INFO - Successfully tagged rtbench-instance-vllm-37:latest
+2026-01-23 19:55:36,394 - INFO - Image built successfully!

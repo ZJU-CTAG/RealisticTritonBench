@@ -1,0 +1,227 @@
+2026-01-23 19:53:42,829 - INFO - Building image rtbench-instance-vllm-26:latest
+Using dockerfile:
+# syntax=docker/dockerfile:1.4
+FROM --platform=linux/x86_64 rtbench-vllm:latest
+
+WORKDIR /workspace
+
+ENV PATH=/opt/miniconda3/bin:$PATH
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+RUN conda create -n testbed python=3.10 
+
+COPY replace_funcs.py /workspace/replace_funcs.py
+COPY specs.json /workspace/specs.json
+
+
+ARG PIP_CACHE_DIR=/root/.cache/pip
+
+RUN mkdir -p $PIP_CACHE_DIR
+
+# 在同一条 RUN 里调用环境的 Python
+RUN cd vllm-project/vllm && \
+    /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py \
+        --repo /workspace/vllm-project/vllm \
+        --base_commit 66072b36dbf1707440ff43d57273d9e9974349d7 \
+        --head_commit 8da5f74363f453c18cf466c2e2a78ddc2b0031d8 \
+        --pull_number 21197 \
+        --specs /workspace/specs.json 
+
+WORKDIR /workspace/vllm-project/vllm
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 19:53:42,829 - INFO - Building docker image rtbench-instance-vllm-26:latest in logs/build_images/instances/rtbench-instance-vllm-26__latest with platform linux/x86_64
+2026-01-23 19:53:42,910 - INFO - Step 1/13 : FROM --platform=linux/x86_64 rtbench-vllm:latest
+2026-01-23 19:53:42,910 - INFO - 
+2026-01-23 19:53:42,911 - INFO - ---> 2305ba9d0999
+2026-01-23 19:53:42,911 - INFO - Step 2/13 : WORKDIR /workspace
+2026-01-23 19:53:42,911 - INFO - 
+2026-01-23 19:53:42,913 - INFO - ---> Using cache
+2026-01-23 19:53:42,914 - INFO - ---> e747518d1b92
+2026-01-23 19:53:42,914 - INFO - Step 3/13 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 19:53:42,914 - INFO - 
+2026-01-23 19:53:42,914 - INFO - ---> Using cache
+2026-01-23 19:53:42,914 - INFO - ---> e5991ef828f8
+2026-01-23 19:53:42,914 - INFO - Step 4/13 : ENV CUDA_HOME=/usr/local/cuda
+2026-01-23 19:53:42,915 - INFO - 
+2026-01-23 19:53:42,915 - INFO - ---> Using cache
+2026-01-23 19:53:42,915 - INFO - ---> 023b41248226
+2026-01-23 19:53:42,915 - INFO - Step 5/13 : ENV PATH=$CUDA_HOME/bin:$PATH
+2026-01-23 19:53:42,915 - INFO - 
+2026-01-23 19:53:42,916 - INFO - ---> Using cache
+2026-01-23 19:53:42,916 - INFO - ---> aef303189f12
+2026-01-23 19:53:42,916 - INFO - Step 6/13 : ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+2026-01-23 19:53:42,916 - INFO - 
+2026-01-23 19:53:42,917 - INFO - ---> Using cache
+2026-01-23 19:53:42,917 - INFO - ---> 8755a772bbfe
+2026-01-23 19:53:42,917 - INFO - Step 7/13 : RUN conda create -n testbed python=3.10
+2026-01-23 19:53:42,917 - INFO - 
+2026-01-23 19:53:42,918 - INFO - ---> Using cache
+2026-01-23 19:53:42,918 - INFO - ---> b2e188ff63fb
+2026-01-23 19:53:42,918 - INFO - Step 8/13 : COPY replace_funcs.py /workspace/replace_funcs.py
+2026-01-23 19:53:42,919 - INFO - 
+2026-01-23 19:53:42,922 - INFO - ---> Using cache
+2026-01-23 19:53:42,922 - INFO - ---> 5f74b3ba7130
+2026-01-23 19:53:42,922 - INFO - Step 9/13 : COPY specs.json /workspace/specs.json
+2026-01-23 19:53:42,922 - INFO - 
+2026-01-23 19:53:43,103 - INFO - ---> f94ae7ac8b25
+2026-01-23 19:53:43,104 - INFO - Step 10/13 : ARG PIP_CACHE_DIR=/root/.cache/pip
+2026-01-23 19:53:43,104 - INFO - 
+2026-01-23 19:53:43,127 - INFO - ---> Running in f5f37c1a2df7
+2026-01-23 19:53:43,221 - INFO - Removing intermediate container f5f37c1a2df7
+2026-01-23 19:53:43,221 - INFO - ---> 94fe70f9e079
+2026-01-23 19:53:43,222 - INFO - Step 11/13 : RUN mkdir -p $PIP_CACHE_DIR
+2026-01-23 19:53:43,222 - INFO - 
+2026-01-23 19:53:43,243 - INFO - ---> Running in ea5ab2687d86
+2026-01-23 19:53:43,590 - INFO - Removing intermediate container ea5ab2687d86
+2026-01-23 19:53:43,590 - INFO - ---> 93d2c21a59a7
+2026-01-23 19:53:43,590 - INFO - Step 12/13 : RUN cd vllm-project/vllm &&     /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py         --repo /workspace/vllm-project/vllm         --base_commit 66072b36dbf1707440ff43d57273d9e9974349d7         --head_commit 8da5f74363f453c18cf466c2e2a78ddc2b0031d8         --pull_number 21197         --specs /workspace/specs.json
+2026-01-23 19:53:43,590 - INFO - 
+2026-01-23 19:53:43,614 - INFO - ---> Running in 67e94252fb5b
+2026-01-23 19:53:50,613 - INFO - [INFO] Command succeeded: git reset --hard
+HEAD is now at a8eb1182f [CI][Models] Add VLM Support for Sequence Classification Conversion (#32885)
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 66072b36dbf1707440ff43d57273d9e9974349d7
+
+[INFO] Command succeeded: git fetch origin pull/21197/head:pr-21197
+
+[INFO] Command succeeded: git checkout pr-21197
+
+[INFO] Command succeeded: git reset --hard
+HEAD is now at 8da5f7436 Merge branch 'main' into jvl-hybrid-support
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 8da5f74363f453c18cf466c2e2a78ddc2b0031d8
+
+
+===== DIFF vllm/attention/ops/triton_unified_attention.py =====
+--- a/vllm/attention/ops/triton_unified_attention.py
++++ b/vllm/attention/ops/triton_unified_attention.py
+@@ -73,7 +73,6 @@
+     output_stride_1: tl.int64,  # int, should be equal to head_size
+     qq_bias_stride_0: tl.int64,  # int
+     BLOCK_SIZE: tl.constexpr,  # int
+-    TILE_SIZE: tl.constexpr,  # int must be power of 2
+     HEAD_SIZE: tl.constexpr,  # int
+     HEAD_SIZE_PADDED: tl.constexpr,  # int, must be power of 2
+     USE_ALIBI_SLOPES: tl.constexpr,  # bool
+@@ -119,7 +118,6 @@
+ 
+     offs_m = tl.arange(0, BLOCK_M)
+     offs_d = tl.arange(0, HEAD_SIZE_PADDED)
+-    offs_t = tl.arange(0, TILE_SIZE)
+     query_pos = q_block_local_idx * BLOCK_Q + offs_m // num_queries_per_kv
+ 
+     query_offset_0 = cur_batch_in_all_start_index + query_pos
+@@ -179,32 +177,31 @@
+     # actual sequence length
+     max_seq_prefix_len = tl.minimum(max_seq_prefix_len, seq_len)
+ 
+-    # calculate the number of tiles that need to be processed to
+-    # cover the longest sequence prefix (due to causal masking, tiles beyond
++    # calculate the number of tiles (blocks) that need to be processed to
++    # cover the longest sequence prefix (due to causal masking, blocks beyond
+     # this prefix can be skipped)
+-    num_tiles = cdiv_fn(max_seq_prefix_len, TILE_SIZE)
++    num_blocks = cdiv_fn(max_seq_prefix_len, BLOCK_SIZE)
+ 
+     # iterate through tiles
+-    for j in range(0, num_tiles):
+-        seq_offset = j * TILE_SIZE + offs_t
+-        tile_mask = seq_offset < max_seq_prefix_len
+-
+-        physical_block_idx = tl.load(block_tables_ptr + block_table_offset +
+-                                     seq_offset // BLOCK_SIZE).to(tl.int64)
+-
+-        v_offset = (physical_block_idx[:, None] * stride_v_cache_0 +
++    for j in range(0, num_blocks):
++
++        physical_block_idx = tl.load(block_tables_ptr + block_table_offset + j)
++
++        offs_n = tl.arange(0, BLOCK_SIZE)
++
++        v_offset = (physical_block_idx * stride_v_cache_0 +
+                     kv_head_idx * stride_v_cache_2 +
+                     offs_d[None, :] * stride_v_cache_3 +
+-                    (seq_offset % BLOCK_SIZE)[:, None] * stride_v_cache_1)
+-
+-        k_offset = (physical_block_idx[None, :] * stride_k_cache_0 +
++                    offs_n[:, None] * stride_v_cache_1)
++
++        k_offset = (physical_block_idx * stride_k_cache_0 +
+                     kv_head_idx * stride_k_cache_2 +
+                     offs_d[:, None] * stride_k_cache_3 +
+-                    (seq_offset % BLOCK_SIZE)[None, :] * stride_k_cache_1)
+-
+-        # K : (HEAD_SIZE, TILE_SIZE)
++                    offs_n[None, :] * stride_k_cache_1)
++
++        # K : (HEAD_SIZE, BLOCK_SIZE)
+         K_load = tl.load(key_cache_ptr + k_offset,
+-                         mask=dim_mask[:, None] & tile_mask[None, :],
++                         mask=dim_mask[:, None],
+                          other=0.0)
+ 
+         if K_load.dtype.is_fp8():
+@@ -215,9 +212,9 @@
+         else:
+             K = K_load
+ 
+-        # V : (TILE_SIZE, HEAD_SIZE)
++        # V : (BLOCK_SIZE, HEAD_SIZE)
+         V_load = tl.load(value_cache_ptr + v_offset,
+-                         mask=dim_mask[None, :] & tile_mask[:, None],
++                         mask=dim_mask[None, :],
+                          other=0.0)
+ 
+         if V_load.dtype.is_fp8():
+@@ -228,10 +225,12 @@
+         else:
+             V = V_load
+ 
++        seq_offset = j * BLOCK_SIZE + offs_n
++
+         seq_mask = seq_offset[None, :] < context_len + query_pos[:, None] + 1
+ 
+-        # S : (BLOCK_M, TILE_SIZE)
+-        S = tl.zeros(shape=(BLOCK_M, TILE_SIZE), dtype=tl.float32)
++        # S : (BLOCK_M, BLOCK_SIZE)
++        S = tl.zeros(shape=(BLOCK_M, BLOCK_SIZE), dtype=tl.float32)
+ 
+         S += scale * tl.dot(Q, K)
+ 
+@@ -263,12 +262,11 @@
+         # compute running maximum
+         # m_j : (BLOCK_M,)
+         m_j = tl.maximum(M, tl.max(S, axis=1))
+-
+         # For sliding window there's a chance the max is -inf due to masking of
+         # the entire row. In this case we need to set m_j 0 to avoid NaN
+         m_j = tl.where(m_j > float("-inf"), m_j, 0.0)
+ 
+-        # P : (BLOCK_M, TILE_SIZE)
++        # P : (BLOCK_M, BLOCK_SIZE)
+         P = tl.exp(S - m_j[:, None])
+ 
+         # l_j : (BLOCK_M,)
+
+[HEAD] Patched vllm/attention/ops/triton_unified_attention.py
+
+Done. All files patched successfully.
+2026-01-23 19:53:51,746 - INFO - Removing intermediate container 67e94252fb5b
+2026-01-23 19:53:51,746 - INFO - ---> 30f5e45b22e3
+2026-01-23 19:53:51,746 - INFO - Step 13/13 : WORKDIR /workspace/vllm-project/vllm
+2026-01-23 19:53:51,746 - INFO - 
+2026-01-23 19:53:51,777 - INFO - ---> Running in b2e137aa7262
+2026-01-23 19:53:51,877 - INFO - Removing intermediate container b2e137aa7262
+2026-01-23 19:53:51,878 - INFO - ---> d0d0395478b4
+2026-01-23 19:53:51,878 - INFO - Successfully built d0d0395478b4
+2026-01-23 19:53:51,884 - INFO - Successfully tagged rtbench-instance-vllm-26:latest
+2026-01-23 19:53:51,884 - INFO - Image built successfully!

@@ -1,0 +1,8 @@
+{
+  "vllm/model_executor/layers/fused_moe/gpt_oss_triton_kernels_moe.py": {
+    "source_func": {},
+    "target_func": {
+      "pack_bitmatrix": "@triton.jit\ndef pack_bitmatrix(\n    bitmatrix,\n    topk_ids,\n    n_rows,  # n_rows in bitmatrix / topk_ids \n    bm_cols: tl.constexpr,  # n int32_t bitpacks in bitmatrix\n    n_expts_act,  # num_topk \n    BLOCK_SIZE_M: tl.constexpr,\n    BLOCK_SIZE_K: tl.constexpr,\n):"
+    }
+  }
+}

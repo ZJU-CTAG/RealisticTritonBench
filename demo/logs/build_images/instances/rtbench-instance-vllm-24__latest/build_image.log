@@ -1,0 +1,287 @@
+2026-01-23 19:53:24,066 - INFO - Building image rtbench-instance-vllm-24:latest
+Using dockerfile:
+# syntax=docker/dockerfile:1.4
+FROM --platform=linux/x86_64 rtbench-vllm:latest
+
+WORKDIR /workspace
+
+ENV PATH=/opt/miniconda3/bin:$PATH
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+RUN conda create -n testbed python=3.10 
+
+COPY replace_funcs.py /workspace/replace_funcs.py
+COPY specs.json /workspace/specs.json
+
+
+ARG PIP_CACHE_DIR=/root/.cache/pip
+
+RUN mkdir -p $PIP_CACHE_DIR
+
+# 在同一条 RUN 里调用环境的 Python
+RUN cd vllm-project/vllm && \
+    /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py \
+        --repo /workspace/vllm-project/vllm \
+        --base_commit 1bf5e1f25b92423f5739ea7cbb9266f61af12b0b \
+        --head_commit 40d5032ca750199916c316dd74af1d7bb6892357 \
+        --pull_number 22375 \
+        --specs /workspace/specs.json 
+
+WORKDIR /workspace/vllm-project/vllm
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 19:53:24,066 - INFO - Building docker image rtbench-instance-vllm-24:latest in logs/build_images/instances/rtbench-instance-vllm-24__latest with platform linux/x86_64
+2026-01-23 19:53:24,136 - INFO - Step 1/13 : FROM --platform=linux/x86_64 rtbench-vllm:latest
+2026-01-23 19:53:24,136 - INFO - 
+2026-01-23 19:53:24,137 - INFO - ---> 2305ba9d0999
+2026-01-23 19:53:24,137 - INFO - Step 2/13 : WORKDIR /workspace
+2026-01-23 19:53:24,137 - INFO - 
+2026-01-23 19:53:24,140 - INFO - ---> Using cache
+2026-01-23 19:53:24,140 - INFO - ---> e747518d1b92
+2026-01-23 19:53:24,140 - INFO - Step 3/13 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 19:53:24,140 - INFO - 
+2026-01-23 19:53:24,141 - INFO - ---> Using cache
+2026-01-23 19:53:24,141 - INFO - ---> e5991ef828f8
+2026-01-23 19:53:24,141 - INFO - Step 4/13 : ENV CUDA_HOME=/usr/local/cuda
+2026-01-23 19:53:24,141 - INFO - 
+2026-01-23 19:53:24,143 - INFO - ---> Using cache
+2026-01-23 19:53:24,143 - INFO - ---> 023b41248226
+2026-01-23 19:53:24,143 - INFO - Step 5/13 : ENV PATH=$CUDA_HOME/bin:$PATH
+2026-01-23 19:53:24,143 - INFO - 
+2026-01-23 19:53:24,144 - INFO - ---> Using cache
+2026-01-23 19:53:24,144 - INFO - ---> aef303189f12
+2026-01-23 19:53:24,144 - INFO - Step 6/13 : ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+2026-01-23 19:53:24,145 - INFO - 
+2026-01-23 19:53:24,146 - INFO - ---> Using cache
+2026-01-23 19:53:24,146 - INFO - ---> 8755a772bbfe
+2026-01-23 19:53:24,146 - INFO - Step 7/13 : RUN conda create -n testbed python=3.10
+2026-01-23 19:53:24,146 - INFO - 
+2026-01-23 19:53:24,148 - INFO - ---> Using cache
+2026-01-23 19:53:24,148 - INFO - ---> b2e188ff63fb
+2026-01-23 19:53:24,148 - INFO - Step 8/13 : COPY replace_funcs.py /workspace/replace_funcs.py
+2026-01-23 19:53:24,148 - INFO - 
+2026-01-23 19:53:24,151 - INFO - ---> Using cache
+2026-01-23 19:53:24,151 - INFO - ---> 5f74b3ba7130
+2026-01-23 19:53:24,151 - INFO - Step 9/13 : COPY specs.json /workspace/specs.json
+2026-01-23 19:53:24,151 - INFO - 
+2026-01-23 19:53:24,336 - INFO - ---> 8a900c71c928
+2026-01-23 19:53:24,336 - INFO - Step 10/13 : ARG PIP_CACHE_DIR=/root/.cache/pip
+2026-01-23 19:53:24,337 - INFO - 
+2026-01-23 19:53:24,367 - INFO - ---> Running in 66f2fcf4d5b3
+2026-01-23 19:53:24,450 - INFO - Removing intermediate container 66f2fcf4d5b3
+2026-01-23 19:53:24,451 - INFO - ---> fc91f5c28d6f
+2026-01-23 19:53:24,451 - INFO - Step 11/13 : RUN mkdir -p $PIP_CACHE_DIR
+2026-01-23 19:53:24,451 - INFO - 
+2026-01-23 19:53:24,484 - INFO - ---> Running in 5ba6d20b19ca
+2026-01-23 19:53:24,800 - INFO - Removing intermediate container 5ba6d20b19ca
+2026-01-23 19:53:24,800 - INFO - ---> cc8332c8ee4c
+2026-01-23 19:53:24,800 - INFO - Step 12/13 : RUN cd vllm-project/vllm &&     /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py         --repo /workspace/vllm-project/vllm         --base_commit 1bf5e1f25b92423f5739ea7cbb9266f61af12b0b         --head_commit 40d5032ca750199916c316dd74af1d7bb6892357         --pull_number 22375         --specs /workspace/specs.json
+2026-01-23 19:53:24,800 - INFO - 
+2026-01-23 19:53:24,837 - INFO - ---> Running in 57c1bbbc7bb7
+2026-01-23 19:53:30,725 - INFO - [INFO] Command succeeded: git reset --hard
+HEAD is now at a8eb1182f [CI][Models] Add VLM Support for Sequence Classification Conversion (#32885)
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 1bf5e1f25b92423f5739ea7cbb9266f61af12b0b
+
+[INFO] Command succeeded: git fetch origin pull/22375/head:pr-22375
+
+[INFO] Command succeeded: git checkout pr-22375
+
+[INFO] Command succeeded: git reset --hard
+HEAD is now at 40d5032ca Merge remote-tracking branch 'origin/main' into triton_mrope
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 40d5032ca750199916c316dd74af1d7bb6892357
+
+
+===== DIFF vllm/model_executor/layers/rotary_embedding/mrope.py =====
+--- a/vllm/model_executor/layers/rotary_embedding/mrope.py
++++ b/vllm/model_executor/layers/rotary_embedding/mrope.py
+@@ -15,164 +15,8 @@
+ from .common import apply_rotary_emb_dispatch
+ 
+ 
+-@triton.jit
+-def _triton_qwen2vl_mrope_forward(
+-    q_ptr,
+-    k_ptr,
+-    cos,
+-    sin,
+-    num_tokens,
+-    n_qh: tl.constexpr,
+-    n_kh: tl.constexpr,
+-    hd: tl.constexpr,
+-    pad_n_qh: tl.constexpr,
+-    pad_n_kh: tl.constexpr,
+-    pad_hd: tl.constexpr,
+-    mrope_section_t: tl.constexpr,
+-    mrope_section_h: tl.constexpr,
+-):
+-    # Adapted from
+-    # https://github.com/linkedin/Liger-Kernel/blob/main/src/liger_kernel/ops/qwen2vl_mrope.py
+-    # This version supports flatten input tensors from vllm
+-    # and supports cos and sin cache with shape (3, num_tokens, head_dim // 2)
+-    # instead of (3, bsz, seq_len, head_dim)
+-    pid = tl.program_id(0)
+-    # locate start address
+-    q_ptr = q_ptr + pid * (n_qh * hd)
+-    k_ptr = k_ptr + pid * (n_kh * hd)
+-
+-    # ####################################################################
+-    # get the cos(mθ_{i...d/2}) and sin(mθ_{i...d/2}) for token position
+-    # m of this program instance
+-    # ####################################################################
+-    # Note: cos and sin now have shape (3, num_tokens, head_dim // 2)
+-
+-    t_end = mrope_section_t
+-    h_end = t_end + mrope_section_h
+-
+-    # Updated stride calculation for half head_dim
+-    half_hd = hd // 2
+-    t_cos = cos + pid * half_hd
+-    h_cos = t_cos + num_tokens * half_hd
+-    w_cos = h_cos + num_tokens * half_hd
+-    t_sin = sin + pid * half_hd
+-    h_sin = t_sin + num_tokens * half_hd
+-    w_sin = h_sin + num_tokens * half_hd
+-
+-    # Updated offsets for half head_dim
+-    cos_offsets = tl.arange(0, pad_hd // 2)
+-    t_mask = cos_offsets < t_end
+-    h_mask = (t_end <= cos_offsets) & (cos_offsets < h_end)
+-    w_mask = (h_end <= cos_offsets) & (cos_offsets < half_hd)
+-
+-    t_cos_row = tl.load(t_cos + cos_offsets, mask=t_mask, other=0)
+-    h_cos_row = tl.load(h_cos + cos_offsets, mask=h_mask, other=0)
+-    w_cos_row = tl.load(w_cos + cos_offsets, mask=w_mask, other=0)
+-    t_sin_row = tl.load(t_sin + cos_offsets, mask=t_mask, other=0)
+-    h_sin_row = tl.load(h_sin + cos_offsets, mask=h_mask, other=0)
+-    w_sin_row = tl.load(w_sin + cos_offsets, mask=w_mask, other=0)
+-
+-    cos_row = t_cos_row + h_cos_row + w_cos_row
+-    sin_row = t_sin_row + h_sin_row + w_sin_row
+-
+-    # ####################################################################
+-    # Load the left and right half of q and k for the current
+-    # program instance (i.e. for the current token) separately
+-    # ####################################################################
+-    # left half of the head
+-    first_half_q_offsets = tl.arange(0, pad_n_qh)[:, None] * hd + tl.arange(
+-        0, pad_hd // 2)[None, :]
+-    first_half_k_offsets = tl.arange(0, pad_n_kh)[:, None] * hd + tl.arange(
+-        0, pad_hd // 2)[None, :]
+-    first_q_mask = (tl.arange(0, pad_n_qh)[:, None] < n_qh) & (tl.arange(
+-        0, pad_hd // 2)[None, :] < hd // 2)
+-    first_k_mask = (tl.arange(0, pad_n_kh)[:, None] < n_kh) & (tl.arange(
+-        0, pad_hd // 2)[None, :] < hd // 2)
+-
+-    q_tile_1 = tl.load(q_ptr + first_half_q_offsets,
+-                       mask=first_q_mask,
+-                       other=0).to(sin_row.dtype)
+-    k_tile_1 = tl.load(k_ptr + first_half_k_offsets,
+-                       mask=first_k_mask,
+-                       other=0).to(sin_row.dtype)
+-
+-    # right half of the head
+-    second_half_q_offsets = first_half_q_offsets + (hd // 2)
+-    second_half_k_offsets = first_half_k_offsets + (hd // 2)
+-    second_q_mask = first_q_mask
+-    second_k_mask = first_k_mask
+-
+-    q_tile_2 = tl.load(q_ptr + second_half_q_offsets,
+-                       mask=second_q_mask,
+-                       other=0).to(sin_row.dtype)
+-    k_tile_2 = tl.load(k_ptr + second_half_k_offsets,
+-                       mask=second_k_mask,
+-                       other=0).to(sin_row.dtype)
+-
+-    # y = [x1, x2] * [cos, cos] + [-x2, x1] * [sin, sin]
+-    # Since cos and sin are now half-size,
+-    # we use the same cos_row and sin_row for both halves
+-    new_q_tile_1 = q_tile_1 * cos_row - q_tile_2 * sin_row
+-    tl.store(q_ptr + first_half_q_offsets, new_q_tile_1, mask=first_q_mask)
+-    new_q_tile_2 = q_tile_2 * cos_row + q_tile_1 * sin_row
+-    tl.store(q_ptr + second_half_q_offsets, new_q_tile_2, mask=second_q_mask)
+-
+-    new_k_tile_1 = k_tile_1 * cos_row - k_tile_2 * sin_row
+-    tl.store(k_ptr + first_half_k_offsets, new_k_tile_1, mask=first_k_mask)
+-    new_k_tile_2 = k_tile_2 * cos_row + k_tile_1 * sin_row
+-    tl.store(k_ptr + second_half_k_offsets, new_k_tile_2, mask=second_k_mask)
+-
+-
+-def triton_mrope(
+-    q: torch.Tensor,
+-    k: torch.Tensor,
+-    cos: torch.Tensor,
+-    sin: torch.Tensor,
+-    mrope_section: list[int],
+-    head_size: int,
+-) -> tuple[torch.Tensor, torch.Tensor]:
+-    """Qwen2VL mrope kernel.
+-
+-    Args:
+-        query: [num_tokens, num_heads * head_size]
+-        key: [num_tokens, num_kv_heads * head_size]
+-        cos: [3, num_tokens, head_size //2 ]
+-            (T/H/W positions with multimodal inputs)
+-        sin: [3, num_tokens, head_size //2 ]
+-            (T/H/W positions with multimodal inputs)
+-        mrope_section: [t, h, w]
+-        head_size: int
+-    """
+-    n_row, n_q_head_head_dim = q.shape
+-    n_q_head = n_q_head_head_dim // head_size
+-    n_kv_head = k.shape[1] // head_size
+-    pad_hd = triton.next_power_of_2(head_size)
+-    pad_n_q_head = triton.next_power_of_2(n_q_head)
+-    pad_n_kv_head = triton.next_power_of_2(n_kv_head)
+-
+-    # ensure tensors passed into the kernel are contiguous.
+-    # It will be no-op if they are already contiguous
+-    q = q.contiguous()
+-    k = k.contiguous()
+-    cos = cos.contiguous()
+-    sin = sin.contiguous()
+-
+-    _triton_qwen2vl_mrope_forward[(n_row, )](
+-        q,
+-        k,
+-        cos,
+-        sin,
+-        n_row,
+-        n_q_head,
+-        n_kv_head,
+-        head_size,
+-        pad_n_q_head,
+-        pad_n_kv_head,
+-        pad_hd,
+-        mrope_section[0],
+-        mrope_section[1],
+-    )
+-    return q, k
++
++
+ 
+ 
+ class MRotaryEmbedding(RotaryEmbedding):
+
+[HEAD] Patched vllm/model_executor/layers/rotary_embedding/mrope.py
+
+Done. All files patched successfully.
+2026-01-23 19:53:31,896 - INFO - Removing intermediate container 57c1bbbc7bb7
+2026-01-23 19:53:31,897 - INFO - ---> 85a5b5e3989e
+2026-01-23 19:53:31,897 - INFO - Step 13/13 : WORKDIR /workspace/vllm-project/vllm
+2026-01-23 19:53:31,897 - INFO - 
+2026-01-23 19:53:31,923 - INFO - ---> Running in 7449225f3c5b
+2026-01-23 19:53:32,019 - INFO - Removing intermediate container 7449225f3c5b
+2026-01-23 19:53:32,019 - INFO - ---> 95fb3dd4420d
+2026-01-23 19:53:32,020 - INFO - Successfully built 95fb3dd4420d
+2026-01-23 19:53:32,025 - INFO - Successfully tagged rtbench-instance-vllm-24:latest
+2026-01-23 19:53:32,025 - INFO - Image built successfully!

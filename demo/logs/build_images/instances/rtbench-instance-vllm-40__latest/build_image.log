@@ -1,0 +1,486 @@
+2026-01-23 20:10:17,008 - INFO - Building image rtbench-instance-vllm-40:latest
+Using dockerfile:
+# syntax=docker/dockerfile:1.4
+FROM --platform=linux/x86_64 rtbench-vllm:latest
+
+WORKDIR /workspace
+
+ENV PATH=/opt/miniconda3/bin:$PATH
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+RUN conda create -n testbed python=3.10 
+
+COPY replace_funcs.py /workspace/replace_funcs.py
+COPY specs.json /workspace/specs.json
+
+
+ARG PIP_CACHE_DIR=/root/.cache/pip
+
+RUN mkdir -p $PIP_CACHE_DIR
+
+# 在同一条 RUN 里调用环境的 Python
+RUN cd vllm-project/vllm && \
+    /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py \
+        --repo /workspace/vllm-project/vllm \
+        --base_commit f05840368335aa9c8184239d3c8bd986e44692f7 \
+        --head_commit 37c3cbd1678a88b33a8b7701f6f1d63b4e5bb4be \
+        --pull_number 5036 \
+        --specs /workspace/specs.json 
+
+WORKDIR /workspace/vllm-project/vllm
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 20:10:17,008 - INFO - Building docker image rtbench-instance-vllm-40:latest in logs/build_images/instances/rtbench-instance-vllm-40__latest with platform linux/x86_64
+2026-01-23 20:10:17,087 - INFO - Step 1/13 : FROM --platform=linux/x86_64 rtbench-vllm:latest
+2026-01-23 20:10:17,087 - INFO - 
+2026-01-23 20:10:17,088 - INFO - ---> 2305ba9d0999
+2026-01-23 20:10:17,088 - INFO - Step 2/13 : WORKDIR /workspace
+2026-01-23 20:10:17,088 - INFO - 
+2026-01-23 20:10:17,089 - INFO - ---> Using cache
+2026-01-23 20:10:17,089 - INFO - ---> e747518d1b92
+2026-01-23 20:10:17,089 - INFO - Step 3/13 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 20:10:17,089 - INFO - 
+2026-01-23 20:10:17,090 - INFO - ---> Using cache
+2026-01-23 20:10:17,090 - INFO - ---> e5991ef828f8
+2026-01-23 20:10:17,090 - INFO - Step 4/13 : ENV CUDA_HOME=/usr/local/cuda
+2026-01-23 20:10:17,090 - INFO - 
+2026-01-23 20:10:17,091 - INFO - ---> Using cache
+2026-01-23 20:10:17,091 - INFO - ---> 023b41248226
+2026-01-23 20:10:17,091 - INFO - Step 5/13 : ENV PATH=$CUDA_HOME/bin:$PATH
+2026-01-23 20:10:17,091 - INFO - 
+2026-01-23 20:10:17,093 - INFO - ---> Using cache
+2026-01-23 20:10:17,093 - INFO - ---> aef303189f12
+2026-01-23 20:10:17,093 - INFO - Step 6/13 : ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+2026-01-23 20:10:17,093 - INFO - 
+2026-01-23 20:10:17,094 - INFO - ---> Using cache
+2026-01-23 20:10:17,094 - INFO - ---> 8755a772bbfe
+2026-01-23 20:10:17,094 - INFO - Step 7/13 : RUN conda create -n testbed python=3.10
+2026-01-23 20:10:17,094 - INFO - 
+2026-01-23 20:10:17,096 - INFO - ---> Using cache
+2026-01-23 20:10:17,096 - INFO - ---> b2e188ff63fb
+2026-01-23 20:10:17,096 - INFO - Step 8/13 : COPY replace_funcs.py /workspace/replace_funcs.py
+2026-01-23 20:10:17,096 - INFO - 
+2026-01-23 20:10:17,269 - INFO - ---> 2ef016a67ff1
+2026-01-23 20:10:17,269 - INFO - Step 9/13 : COPY specs.json /workspace/specs.json
+2026-01-23 20:10:17,270 - INFO - 
+2026-01-23 20:10:17,435 - INFO - ---> 527eddb0f531
+2026-01-23 20:10:17,436 - INFO - Step 10/13 : ARG PIP_CACHE_DIR=/root/.cache/pip
+2026-01-23 20:10:17,436 - INFO - 
+2026-01-23 20:10:17,465 - INFO - ---> Running in 22154053227b
+2026-01-23 20:10:17,565 - INFO - Removing intermediate container 22154053227b
+2026-01-23 20:10:17,565 - INFO - ---> b157a7dc6732
+2026-01-23 20:10:17,565 - INFO - Step 11/13 : RUN mkdir -p $PIP_CACHE_DIR
+2026-01-23 20:10:17,565 - INFO - 
+2026-01-23 20:10:17,586 - INFO - ---> Running in c47b7558e4fa
+2026-01-23 20:10:17,943 - INFO - Removing intermediate container c47b7558e4fa
+2026-01-23 20:10:17,943 - INFO - ---> 310b58aa11bf
+2026-01-23 20:10:17,943 - INFO - Step 12/13 : RUN cd vllm-project/vllm &&     /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py         --repo /workspace/vllm-project/vllm         --base_commit f05840368335aa9c8184239d3c8bd986e44692f7         --head_commit 37c3cbd1678a88b33a8b7701f6f1d63b4e5bb4be         --pull_number 5036         --specs /workspace/specs.json
+2026-01-23 20:10:17,943 - INFO - 
+2026-01-23 20:10:17,967 - INFO - ---> Running in 98fcbab6cdd4
+2026-01-23 20:10:25,118 - INFO - [INFO] Command succeeded: git reset --hard
+HEAD is now at a8eb1182f [CI][Models] Add VLM Support for Sequence Classification Conversion (#32885)
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout f05840368335aa9c8184239d3c8bd986e44692f7
+
+[INFO] Command succeeded: git fetch origin pull/5036/head:pr-5036
+
+[INFO] Command succeeded: git checkout pr-5036
+
+[INFO] Command succeeded: git reset --hard
+HEAD is now at 37c3cbd16 Merge branch 'vllm-project:main' into refactor-punica-kernel
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 37c3cbd1678a88b33a8b7701f6f1d63b4e5bb4be
+
+
+===== DIFF vllm/lora/ops/sgmv_expand.py =====
+--- a/vllm/lora/ops/sgmv_expand.py
++++ b/vllm/lora/ops/sgmv_expand.py
+@@ -12,181 +12,5 @@
+ from vllm.triton_utils import libentry
+ 
+ 
+-@libentry()
+-@triton.jit
+-def _sgmv_expand_kernel(
+-    input_ptr,
+-    lora_ptr,
+-    out_ptr,
+-    N,
+-    K,
+-    b_seq_start_loc,
+-    seq_lens,
+-    lora_indices,
+-    xm_stride,
+-    xk_stride,  # 1
+-    l0_stride,  # hidden_size*max_rank
+-    lora_k_stride,
+-    lora_n_stride,
+-    cm_stride,
+-    cn_stride,
+-    BLOCK_M: tl.constexpr,
+-    BLOCK_N: tl.constexpr,
+-    BLOCK_K: tl.constexpr,
+-    EVEN_K: tl.constexpr,
+-    ADD_INPUTS: tl.constexpr,
+-    CAST_TYPE: tl.constexpr,
+-):
+-    """
+-    The sgmv's expand triton kernel is based on GroupGEMM.
+-    """
+-    pid = tl.program_id(axis=0)
+-    cur_batch = tl.program_id(axis=1)
+-    cta_n_num = tl.cdiv(N, BLOCK_N)
+-    pid_m = pid // cta_n_num
+-    pid_n = pid % cta_n_num
+-    M = tl.load(seq_lens + cur_batch)
+-    if pid_m * BLOCK_M > M:
+-        return
+-    lora_index = tl.load(lora_indices + cur_batch)
+-    if lora_index == -1:
+-        return
+-    cur_seq_start = tl.load(b_seq_start_loc + cur_batch)
+-    offset_m = tl.arange(0, BLOCK_M) + pid_m * BLOCK_M
+-    offset_n = tl.arange(0, BLOCK_N) + pid_n * BLOCK_N
+-    offset_k = tl.arange(0, BLOCK_K)
+-    ram = tl.max_contiguous(tl.multiple_of(offset_m % M, BLOCK_M), BLOCK_M)
+-    rbn = tl.max_contiguous(tl.multiple_of(offset_n % N, BLOCK_N), BLOCK_N)
+-
+-    a_ptr = (input_ptr + cur_seq_start * xm_stride + ram[:, None] * xm_stride +
+-             offset_k[None, :] * xk_stride, )
+-    b_ptr = (lora_ptr + l0_stride * lora_index +
+-             offset_k[:, None] * lora_n_stride + rbn[None, :] * lora_k_stride)
+-    accumulator = tl.zeros((BLOCK_M, BLOCK_N), dtype=tl.float32)
+-    for k in range(tl.cdiv(K, BLOCK_K)):
+-        if EVEN_K:
+-            tiled_a = tl.load(a_ptr)
+-            tiled_b = tl.load(b_ptr)
+-        else:
+-            tiled_a = tl.load(a_ptr,
+-                              mask=offset_k[None, :] < K - k * BLOCK_K,
+-                              other=0)
+-            tiled_b = tl.load(b_ptr,
+-                              mask=offset_k[:, None] < K - k * BLOCK_K,
+-                              other=0)
+-        if CAST_TYPE:
+-            tiled_a = tiled_a.to(lora_ptr.dtype.element_ty)
+-        accumulator += tl.dot(
+-            tiled_a,
+-            tiled_b,
+-        )
+-        a_ptr += BLOCK_K * xk_stride
+-        b_ptr += BLOCK_K * lora_n_stride
+-    tiled_c = accumulator.to(lora_ptr.dtype.element_ty)
+-    offset_cm = cur_seq_start + tl.arange(0, BLOCK_M) + pid_m * BLOCK_M
+-    offset_cn = tl.arange(0, BLOCK_N) + pid_n * BLOCK_N
+-    c_ptr = (out_ptr + offset_cm[:, None] * cm_stride +
+-             offset_cn[None, :] * cn_stride)
+-    M = tl.load(seq_lens + cur_batch)
+-    c_mask = (offset_cm[:, None] <
+-              (cur_seq_start + M)) & (offset_cn[None, :] < N)
+-    if ADD_INPUTS:
+-        tiled_out = tl.load(c_ptr, mask=c_mask)
+-        tiled_c += tiled_out
+-    tl.store(c_ptr, tiled_c, mask=c_mask)
+ 
+ 
+-@torch.inference_mode()
+-def sgmv_expand(
+-    inputs: torch.Tensor,
+-    lora_b_weights: torch.Tensor,
+-    output_tensor: torch.Tensor,
+-    b_seq_start_loc: torch.Tensor,
+-    seq_len_tensor: torch.Tensor,
+-    lora_indices_tensor: torch.Tensor,
+-    batches: int,
+-    max_seq_length: int,
+-    add_inputs: bool = False,
+-):
+-    """
+-    Args:
+-        inputs (torch.Tensor): input tensor
+-        lora_b_weights (torch.Tensor): lora'a weight
+-        output_tensor (torch.Tensor): output tensor
+-        b_seq_start_loc (torch.Tensor): (batch_size,). The cumulative
+-            sequence lengths of the sequences in the batch, used to index
+-            into sequence. E.g.,if the sequence length is [4, 6], it is
+-            [0, 4, 10].
+-        seq_len_tensor (torch.Tensor): (batch_size,). record the sequence
+-            length of the sequences  in the batch
+-        lora_indices_tensor (torch.Tensor): (batch_size,). The LoRA index
+-            corresponding to each batch. An index of -1 means no lora should be
+-            applied.
+-        batches (int): batch size
+-        max_seq_length (int):  The max sequence lengths of the sequences
+-            in the batch
+-        add_inputs (bool, optional):  Defaults to False. adds the final lora 
+-            results to the output.
+-    """
+-
+-    assert inputs.dtype in [torch.float16, torch.bfloat16, torch.float32]
+-    assert lora_b_weights.dtype in [
+-        torch.float16,
+-        torch.bfloat16,
+-    ]
+-    assert inputs.size(1) == lora_b_weights.size(-1)
+-    assert b_seq_start_loc.size(0) == batches
+-    assert lora_indices_tensor.size(0) == batches
+-    assert inputs.is_contiguous()
+-    assert output_tensor.is_contiguous()
+-
+-    if lora_b_weights.ndim == 4:  # shape:(lora_num,1,size,rank)
+-        assert lora_b_weights.size(1) == 1
+-        lora_b_weights = lora_b_weights.squeeze(dim=1)
+-    else:
+-        assert lora_b_weights.ndim == 3  # shape:(lora_num,size,rank)
+-
+-    assert lora_b_weights.is_contiguous()
+-
+-    # TODO tuning this config
+-
+-    N, K = lora_b_weights.shape[-2:]  # K= rank,N=hidden_size
+-    BLOCK_M = 32
+-    BLOCK_N = 32
+-    BLOCK_K = 16
+-    EVEN_K = K % BLOCK_K == 0
+-    ADD_INPUTS = add_inputs
+-    CAST_TYPE = False
+-    if inputs.dtype == torch.float32 and lora_b_weights.dtype in [
+-            torch.float16,
+-            torch.bfloat16,
+-    ]:
+-        CAST_TYPE = True
+-    grid = (
+-        triton.cdiv(max_seq_length, BLOCK_M) * triton.cdiv(N, BLOCK_N),
+-        batches,
+-    )
+-    _sgmv_expand_kernel[grid](
+-        inputs,
+-        lora_b_weights,
+-        output_tensor,
+-        N,
+-        K,
+-        b_seq_start_loc,
+-        seq_len_tensor,
+-        lora_indices_tensor,
+-        inputs.stride(0),
+-        inputs.stride(1),
+-        lora_b_weights.stride(0),
+-        lora_b_weights.stride(1),
+-        lora_b_weights.stride(2),
+-        output_tensor.stride(0),
+-        output_tensor.stride(1),
+-        BLOCK_M,
+-        BLOCK_N,
+-        BLOCK_K,
+-        EVEN_K,
+-        ADD_INPUTS,
+-        CAST_TYPE,
+-    )
+-    return
+
+[HEAD] Patched vllm/lora/ops/sgmv_expand.py
+
+===== DIFF vllm/lora/ops/sgmv_shrink.py =====
+2026-01-23 20:10:25,119 - INFO - --- a/vllm/lora/ops/sgmv_shrink.py
++++ b/vllm/lora/ops/sgmv_shrink.py
+@@ -12,178 +12,5 @@
+ from vllm.triton_utils import libentry
+ 
+ 
+-@libentry()
+-@triton.jit
+-def _sgmv_shrink_kernel(
+-    input_ptr,
+-    lora_ptr,
+-    out_ptr,
+-    N,
+-    K,
+-    b_seq_start_loc,
+-    seq_lens,
+-    lora_indices,
+-    scaling,
+-    xm_stride,  # hidden_size
+-    xk_stride,  # 1
+-    l0_stride,  # hidden_size*max_rank
+-    lora_k_stride,
+-    lora_n_stride,
+-    cm_stride,
+-    cn_stride,
+-    BLOCK_M: tl.constexpr,
+-    BLOCK_N: tl.constexpr,
+-    BLOCK_K: tl.constexpr,
+-    EVEN_K: tl.constexpr,
+-    SPLIT_K: tl.constexpr,
+-):
+-    """
+-    The sgmv's shrink triton kernel is based on GroupGEMM+SPLIT-K.
+-    The GEMM of Multi-LoRA can be considered as GroupGEMM. Additionally,
+-    introducing SPLIT-K can improve performance
+-    """
+-    pid = tl.program_id(axis=0)
+-    pid_sk = tl.program_id(axis=1)
+-    cur_batch = tl.program_id(axis=2)
+-    cta_n_num = tl.cdiv(N, BLOCK_N)
+-    pid_m = pid // cta_n_num
+-    pid_n = pid % cta_n_num
+-
+-    M = tl.load(seq_lens + cur_batch)
+-    if pid_m * BLOCK_M > M:
+-        return
+-    lora_index = tl.load(lora_indices + cur_batch)
+-    if lora_index == -1:
+-        return
+-    cur_seq_start = tl.load(b_seq_start_loc + cur_batch)
+-    offset_m = tl.arange(0, BLOCK_M) + pid_m * BLOCK_M
+-    offset_n = tl.arange(0, BLOCK_N) + pid_n * BLOCK_N
+-    offset_k = pid_sk * BLOCK_K + tl.arange(0, BLOCK_K)
+-
+-    ram = tl.max_contiguous(tl.multiple_of(offset_m % M, BLOCK_M), BLOCK_M)
+-    rbn = tl.max_contiguous(tl.multiple_of(offset_n % N, BLOCK_N), BLOCK_N)
+-
+-    a_ptr = (input_ptr + cur_seq_start * xm_stride + ram[:, None] * xm_stride +
+-             offset_k[None, :] * xk_stride)
+-    b_ptr = (lora_ptr + l0_stride * lora_index + rbn[None, :] * lora_k_stride +
+-             offset_k[:, None] * lora_n_stride)
+-
+-    accumulator = tl.zeros((BLOCK_M, BLOCK_N), dtype=tl.float32)
+-    for k in range(0, tl.cdiv(K, BLOCK_K * SPLIT_K)):
+-        if EVEN_K:
+-            tiled_a = tl.load(a_ptr)
+-            tiled_b = tl.load(b_ptr)
+-        else:
+-            k_remaining = K - k * (BLOCK_K * SPLIT_K)
+-            tiled_a = tl.load(a_ptr,
+-                              mask=offset_k[None, :] < k_remaining,
+-                              other=0.0)
+-            tiled_b = tl.load(b_ptr,
+-                              mask=offset_k[:, None] < k_remaining,
+-                              other=0.0)
+-        accumulator += tl.dot(tiled_a, tiled_b)
+-
+-        a_ptr += BLOCK_K * SPLIT_K * xk_stride
+-        b_ptr += BLOCK_K * SPLIT_K * lora_n_stride
+-    offset_cm = cur_seq_start + tl.arange(0, BLOCK_M) + pid_m * BLOCK_M
+-
+-    offset_cn = tl.arange(0, BLOCK_N) + pid_n * BLOCK_N
+-    c_ptr = (out_ptr + offset_cm[:, None] * cm_stride +
+-             offset_cn[None, :] * cn_stride)
+-    c_mask = (offset_cm[:, None] <
+-              (cur_seq_start + M)) & (offset_cn[None, :] < N)
+-    accumulator *= scaling
+-    # handles write-back with reduction-splitting
+-    if SPLIT_K == 1:
+-        tl.store(c_ptr, accumulator, mask=c_mask)
+-    else:
+-        tl.atomic_add(c_ptr, accumulator, mask=c_mask)
+ 
+ 
+-@torch.inference_mode()
+-def sgmv_shrink(
+-    inputs: torch.Tensor,
+-    lora_a_weights: torch.Tensor,
+-    output_tensor: torch.Tensor,
+-    b_seq_start_loc: torch.Tensor,
+-    seq_len_tensor: torch.Tensor,
+-    lora_indices_tensor: torch.Tensor,
+-    batches: int,
+-    max_seq_length: int,
+-    scaling: float,
+-):
+-    """
+-
+-    Args:
+-        inputs (torch.Tensor): input tensor
+-        lora_a_weights (torch.Tensor): lora'a weight
+-        output_tensor (torch.Tensor): output tensor
+-        b_seq_start_loc (torch.Tensor): (batch_size,). The cumulative
+-            sequence lengths of the sequences in the batch, used to index
+-            into sequence. E.g.,if the sequence length is [4, 6], it is
+-            [0, 4].
+-        seq_len_tensor (torch.Tensor): (batch_size,). record the sequence
+-            length of the sequences  in the batch
+-        lora_indices_tensor (torch.Tensor): (batch_size,). The LoRA index
+-            corresponding to each batch. An index of -1 means no lora should be
+-            applied.
+-        batches (int): batch size
+-        max_seq_length (int):  The max sequence lengths of the sequences
+-            in the batch
+-        scaling (float):  Scaling factor.
+-    """
+-    assert inputs.dtype == lora_a_weights.dtype
+-    assert inputs.dtype in [torch.float16, torch.bfloat16]
+-    assert lora_a_weights.dtype in [
+-        torch.float16,
+-        torch.bfloat16,
+-    ]
+-    assert inputs.size(1) == lora_a_weights.size(-1)
+-    assert b_seq_start_loc.size(0) == batches
+-    assert lora_indices_tensor.size(0) == batches
+-    assert inputs.is_contiguous()
+-
+-    if lora_a_weights.ndim == 4:  # shape:(lora_num,1,rank, size)
+-        assert lora_a_weights.size(1) == 1
+-        lora_a_weights = lora_a_weights.squeeze(dim=1)
+-    else:
+-        assert lora_a_weights.ndim == 3  # shape:(lora_num,rank, size)
+-    assert lora_a_weights.is_contiguous()
+-    assert output_tensor.is_contiguous()
+-    # TODO tuning this config
+-    N, K = lora_a_weights.shape[-2:]  # K=hidden_size,N=rank
+-    BLOCK_M = 32
+-    BLOCK_N = 16
+-    BLOCK_K = 32
+-    SPLIT_K = 8
+-    EVEN_K = K % (BLOCK_K * SPLIT_K) == 0
+-    grid = (
+-        triton.cdiv(max_seq_length, BLOCK_M) * triton.cdiv(N, BLOCK_N),
+-        SPLIT_K,
+-        batches,
+-    )
+-
+-    _sgmv_shrink_kernel[grid](
+-        inputs,
+-        lora_a_weights,
+-        output_tensor,
+-        N,
+-        K,
+-        b_seq_start_loc,
+-        seq_len_tensor,
+-        lora_indices_tensor,
+-        scaling,
+-        inputs.stride(0),
+-        inputs.stride(1),
+-        lora_a_weights.stride(0),
+-        lora_a_weights.stride(1),
+-        lora_a_weights.stride(2),
+-        output_tensor.stride(0),
+-        output_tensor.stride(1),
+-        BLOCK_M,
+-        BLOCK_N,
+-        BLOCK_K,
+-        EVEN_K,
+-        SPLIT_K,
+-    )
+-    return
+
+[HEAD] Patched vllm/lora/ops/sgmv_shrink.py
+
+Done. All files patched successfully.
+2026-01-23 20:10:25,672 - INFO - Removing intermediate container 98fcbab6cdd4
+2026-01-23 20:10:25,672 - INFO - ---> 11a8d0008990
+2026-01-23 20:10:25,672 - INFO - Step 13/13 : WORKDIR /workspace/vllm-project/vllm
+2026-01-23 20:10:25,672 - INFO - 
+2026-01-23 20:10:25,697 - INFO - ---> Running in a37b3b22dad6
+2026-01-23 20:10:25,790 - INFO - Removing intermediate container a37b3b22dad6
+2026-01-23 20:10:25,790 - INFO - ---> 4d486ae7b16c
+2026-01-23 20:10:25,790 - INFO - Successfully built 4d486ae7b16c
+2026-01-23 20:10:25,793 - INFO - Successfully tagged rtbench-instance-vllm-40:latest
+2026-01-23 20:10:25,794 - INFO - Image built successfully!

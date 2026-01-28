@@ -1,0 +1,12 @@
+{
+  "vllm/model_executor/layers/fla/ops/solve_tril.py": {
+    "source_func": {
+      "solve_tril_16x16_kernel": "@triton.jit(do_not_specialize=[\"T\"])\ndef solve_tril_16x16_kernel(\n    A,\n    Ad,\n    cu_seqlens,\n    chunk_indices,\n    T,\n    H: tl.constexpr,\n    BT: tl.constexpr,\n    IS_VARLEN: tl.constexpr,\n):",
+      "merge_16x16_to_32x32_inverse_kernel": "@triton.heuristics({\"IS_VARLEN\": lambda args: args[\"cu_seqlens\"] is not None})\n@triton.autotune(\n    configs=[\n        triton.Config({}, num_warps=num_warps, num_stages=num_stages)\n        for num_warps in [1, 2, 4, 8]\n        for num_stages in [2, 3, 4, 5]\n    ],\n    key=[\"H\", \"BT\", \"IS_VARLEN\"],\n)\n@triton.jit(do_not_specialize=[\"T\"])\ndef merge_16x16_to_32x32_inverse_kernel(\n    A,\n    Ai,\n    cu_seqlens,\n    chunk_indices,\n    T,\n    H: tl.constexpr,\n    BT: tl.constexpr,\n    USE_TMA: tl.constexpr,\n    IS_VARLEN: tl.constexpr,\n    DOT_PRECISION: tl.constexpr,\n):"
+    },
+    "target_func": {
+      "solve_tril_16x16_kernel": "@triton.jit(do_not_specialize=[\"T\"])\ndef solve_tril_16x16_kernel(\n    A,\n    Ad,\n    Ai,\n    cu_seqlens,\n    chunk_indices,\n    T,\n    H: tl.constexpr,\n    BT: tl.constexpr,\n    IS_VARLEN: tl.constexpr,):",
+      "merge_16x16_to_32x32_inverse_kernel": "@triton.heuristics({\"IS_VARLEN\": lambda args: args[\"cu_seqlens\"] is not None})\n@triton.autotune(\n    configs=[\n        triton.Config({}, num_warps=num_warps, num_stages=num_stages)\n        for num_warps in [1, 2, 4, 8]\n        for num_stages in [2, 3, 4, 5]\n    ],\n    key=[\"H\", \"BT\", \"IS_VARLEN\"],\n)\n@triton.jit(do_not_specialize=[\"T\"])\ndef merge_16x16_to_32x32_inverse_kernel(\n    A,\n    Ai,\n    cu_seqlens,\n    chunk_indices,\n    T,\n    H: tl.constexpr,\n    BT: tl.constexpr,\n    USE_TMA: tl.constexpr,\n    IS_VARLEN: tl.constexpr,\n    DOT_PRECISION: tl.constexpr,\n):"
+    }
+  }
+}

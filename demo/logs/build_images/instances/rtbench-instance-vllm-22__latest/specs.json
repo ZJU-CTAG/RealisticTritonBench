@@ -1,0 +1,8 @@
+{
+  "vllm/attention/ops/triton_reshape_and_cache_flash.py": {
+    "source_func": {},
+    "target_func": {
+      "reshape_and_cache_kernel_flash": "@triton.jit\ndef reshape_and_cache_kernel_flash(\n    key_ptr,  # [num_tokens, num_heads, head_size]\n    value_ptr,  # [num_tokens, num_heads, head_size]\n    key_cache_ptr,  # [num_blocks, block_size, num_heads, head_size]\n    value_cache_ptr,  # [num_blocks, block_size, num_heads, head_size]\n    slot_mapping_ptr,  # [num_tokens]\n    k_scale,  # float32\n    v_scale,  # float32\n    # strides\n    key_stride: tl.int64,\n    value_stride: tl.int64,\n    block_stride: tl.int64,\n    page_stride: tl.int64,\n    num_heads: tl.constexpr,\n    head_size: tl.constexpr,\n    block_size: tl.constexpr,\n    # FP8 flags\n    FP8_KV_CACHE: tl.constexpr,\n    # tune parameters\n    TILE_SIZE: tl.constexpr,\n):"
+    }
+  }
+}

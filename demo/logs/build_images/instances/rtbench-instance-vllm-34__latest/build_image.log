@@ -1,0 +1,321 @@
+2026-01-23 19:55:02,032 - INFO - Building image rtbench-instance-vllm-34:latest
+Using dockerfile:
+# syntax=docker/dockerfile:1.4
+FROM --platform=linux/x86_64 rtbench-vllm:latest
+
+WORKDIR /workspace
+
+ENV PATH=/opt/miniconda3/bin:$PATH
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+RUN conda create -n testbed python=3.10 
+
+COPY replace_funcs.py /workspace/replace_funcs.py
+COPY specs.json /workspace/specs.json
+
+
+ARG PIP_CACHE_DIR=/root/.cache/pip
+
+RUN mkdir -p $PIP_CACHE_DIR
+
+# 在同一条 RUN 里调用环境的 Python
+RUN cd vllm-project/vllm && \
+    /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py \
+        --repo /workspace/vllm-project/vllm \
+        --base_commit 001a9c7b0d513bbe018c5eb8eea2c4e678e52787 \
+        --head_commit a06640224cbb45a2815f24f29a70d84219f95f4f \
+        --pull_number 13096 \
+        --specs /workspace/specs.json 
+
+WORKDIR /workspace/vllm-project/vllm
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 19:55:02,033 - INFO - Building docker image rtbench-instance-vllm-34:latest in logs/build_images/instances/rtbench-instance-vllm-34__latest with platform linux/x86_64
+2026-01-23 19:55:02,107 - INFO - Step 1/13 : FROM --platform=linux/x86_64 rtbench-vllm:latest
+2026-01-23 19:55:02,107 - INFO - 
+2026-01-23 19:55:02,108 - INFO - ---> 2305ba9d0999
+2026-01-23 19:55:02,108 - INFO - Step 2/13 : WORKDIR /workspace
+2026-01-23 19:55:02,108 - INFO - 
+2026-01-23 19:55:02,111 - INFO - ---> Using cache
+2026-01-23 19:55:02,111 - INFO - ---> e747518d1b92
+2026-01-23 19:55:02,111 - INFO - Step 3/13 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 19:55:02,111 - INFO - 
+2026-01-23 19:55:02,113 - INFO - ---> Using cache
+2026-01-23 19:55:02,113 - INFO - ---> e5991ef828f8
+2026-01-23 19:55:02,113 - INFO - Step 4/13 : ENV CUDA_HOME=/usr/local/cuda
+2026-01-23 19:55:02,113 - INFO - 
+2026-01-23 19:55:02,114 - INFO - ---> Using cache
+2026-01-23 19:55:02,114 - INFO - ---> 023b41248226
+2026-01-23 19:55:02,114 - INFO - Step 5/13 : ENV PATH=$CUDA_HOME/bin:$PATH
+2026-01-23 19:55:02,114 - INFO - 
+2026-01-23 19:55:02,115 - INFO - ---> Using cache
+2026-01-23 19:55:02,116 - INFO - ---> aef303189f12
+2026-01-23 19:55:02,116 - INFO - Step 6/13 : ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+2026-01-23 19:55:02,116 - INFO - 
+2026-01-23 19:55:02,117 - INFO - ---> Using cache
+2026-01-23 19:55:02,117 - INFO - ---> 8755a772bbfe
+2026-01-23 19:55:02,117 - INFO - Step 7/13 : RUN conda create -n testbed python=3.10
+2026-01-23 19:55:02,117 - INFO - 
+2026-01-23 19:55:02,120 - INFO - ---> Using cache
+2026-01-23 19:55:02,120 - INFO - ---> b2e188ff63fb
+2026-01-23 19:55:02,120 - INFO - Step 8/13 : COPY replace_funcs.py /workspace/replace_funcs.py
+2026-01-23 19:55:02,120 - INFO - 
+2026-01-23 19:55:02,124 - INFO - ---> Using cache
+2026-01-23 19:55:02,124 - INFO - ---> 5f74b3ba7130
+2026-01-23 19:55:02,124 - INFO - Step 9/13 : COPY specs.json /workspace/specs.json
+2026-01-23 19:55:02,124 - INFO - 
+2026-01-23 19:55:02,311 - INFO - ---> 57a508f76409
+2026-01-23 19:55:02,312 - INFO - Step 10/13 : ARG PIP_CACHE_DIR=/root/.cache/pip
+2026-01-23 19:55:02,312 - INFO - 
+2026-01-23 19:55:02,339 - INFO - ---> Running in fa21003633ff
+2026-01-23 19:55:02,438 - INFO - Removing intermediate container fa21003633ff
+2026-01-23 19:55:02,438 - INFO - ---> 2b0bb5171571
+2026-01-23 19:55:02,438 - INFO - Step 11/13 : RUN mkdir -p $PIP_CACHE_DIR
+2026-01-23 19:55:02,438 - INFO - 
+2026-01-23 19:55:02,463 - INFO - ---> Running in f6cdf34c6979
+2026-01-23 19:55:02,796 - INFO - Removing intermediate container f6cdf34c6979
+2026-01-23 19:55:02,796 - INFO - ---> 2b4df4f56a66
+2026-01-23 19:55:02,797 - INFO - Step 12/13 : RUN cd vllm-project/vllm &&     /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py         --repo /workspace/vllm-project/vllm         --base_commit 001a9c7b0d513bbe018c5eb8eea2c4e678e52787         --head_commit a06640224cbb45a2815f24f29a70d84219f95f4f         --pull_number 13096         --specs /workspace/specs.json
+2026-01-23 19:55:02,797 - INFO - 
+2026-01-23 19:55:02,825 - INFO - ---> Running in a481aee8460a
+2026-01-23 19:55:08,639 - INFO - [INFO] Command succeeded: git reset --hard
+HEAD is now at a8eb1182f [CI][Models] Add VLM Support for Sequence Classification Conversion (#32885)
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 001a9c7b0d513bbe018c5eb8eea2c4e678e52787
+
+[INFO] Command succeeded: git fetch origin pull/13096/head:pr-13096
+
+[INFO] Command succeeded: git checkout pr-13096
+
+[INFO] Command succeeded: git reset --hard
+HEAD is now at a06640224 fixes
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout a06640224cbb45a2815f24f29a70d84219f95f4f
+
+
+===== DIFF vllm/lora/ops/triton_ops/v1/v1_expand.py =====
+--- a/vllm/lora/ops/triton_ops/v1/v1_expand.py
++++ b/vllm/lora/ops/triton_ops/v1/v1_expand.py
+@@ -17,111 +17,6 @@
+ from vllm.utils import direct_register_custom_op
+ 
+ 
+-@triton.jit
+-def _v1_expand_kernel(
+-        input_ptr,
+-        lora_ptr,
+-        out_ptr,
+-        M,
+-        N,
+-        K,
+-        token_indices_sorted_by_lora_ids,
+-        num_tokens_per_lora,
+-        lora_token_start_loc,
+-        lora_ids,
+-        slice_start_loc,
+-        input_d0_stride,
+-        input_d1_stride,
+-        input_d2_stride,  # 1
+-        ls_d0_ptr,
+-        ls_d1_ptr,
+-        ls_d2_ptr,  # 1
+-        output_d0_stride,
+-        output_d1_stride,  # 1
+-        output_hs_ptr,
+-        BLOCK_M: tl.constexpr,
+-        BLOCK_N: tl.constexpr,
+-        BLOCK_K: tl.constexpr,
+-        EVEN_K: tl.constexpr,
+-        ADD_INPUTS: tl.constexpr,
+-        CAST_TYPE: tl.constexpr,
+-        SLICE_NUM: tl.constexpr,
+-        SAME_STRIDE: tl.constexpr):
+-
+-    cta_n_num = tl.cdiv(N, BLOCK_N)
+-    cta_m_num = tl.cdiv(M, BLOCK_M)
+-
+-    pid_mn = tl.program_id(axis=0)
+-    pid_m = pid_mn % cta_m_num
+-    pid_n = (pid_mn // cta_m_num) % cta_n_num
+-
+-    slice_id = tl.program_id(axis=1)
+-    lora_idx = tl.program_id(axis=2)
+-
+-    lora_id = tl.load(lora_ids + lora_idx)
+-    if lora_id == -1:
+-        # Early exit for the no-lora case.
+-        return
+-
+-    lora_m_size = tl.load(num_tokens_per_lora + lora_idx)
+-
+-    cta_m_offset = pid_m * BLOCK_M
+-    if cta_m_offset >= lora_m_size:
+-        # Early exit CTA.
+-        return
+-
+-    # When the output dimensions of each slice are the same,cur_n=N, otherwise
+-    # cur_n=tl.load(output_hs_ptr + slice_id), this situation exists in GQA's
+-    # qkv linear.
+-    curr_N = N if SAME_STRIDE else tl.load(output_hs_ptr + slice_id)
+-    if pid_n * BLOCK_N >= curr_N:
+-        # Early exit CTA.
+-        return
+-
+-    # num rows this CTA should process.
+-    cta_m_len = min(BLOCK_M, lora_m_size - cta_m_offset)
+-
+-    # Identify all rows that this CTA should process.
+-    lora_m_indices_start = tl.load(lora_token_start_loc + lora_idx)
+-    cta_lora_seq_indices = (token_indices_sorted_by_lora_ids +
+-                            lora_m_indices_start + cta_m_offset)
+-
+-    # Load all relevant row indices.
+-    offset_m = tl.arange(0, BLOCK_M) % cta_m_len
+-    ram = tl.load(cta_lora_seq_indices + offset_m)
+-
+-    do_expand_kernel(
+-        pid_n,
+-        lora_id,
+-        slice_id,
+-        input_ptr,
+-        lora_ptr,
+-        out_ptr,
+-        curr_N,
+-        K,
+-        cta_m_len,
+-        ram,  # array identifying the rows of Input ptr to operate on
+-        slice_start_loc,
+-        # input ptr strides
+-        input_d0_stride,
+-        input_d1_stride,
+-        input_d2_stride,
+-        # lora ptr strides
+-        ls_d0_ptr,
+-        ls_d1_ptr,
+-        ls_d2_ptr,
+-        # out ptr strides
+-        output_d0_stride,
+-        output_d1_stride,
+-        # constants
+-        BLOCK_M,
+-        BLOCK_N,
+-        BLOCK_K,
+-        SAME_STRIDE,
+-        SLICE_NUM,
+-        EVEN_K,
+-        CAST_TYPE,
+-        ADD_INPUTS)
+ 
+ 
+ @torch.inference_mode()
+
+[HEAD] Patched vllm/lora/ops/triton_ops/v1/v1_expand.py
+
+===== DIFF vllm/lora/ops/triton_ops/v1/v1_shrink.py =====
+--- a/vllm/lora/ops/triton_ops/v1/v1_shrink.py
++++ b/vllm/lora/ops/triton_ops/v1/v1_shrink.py
+@@ -17,82 +17,6 @@
+ from vllm.utils import direct_register_custom_op
+ 
+ 
+-@triton.jit
+-def _v1_shrink_kernel(input_ptr, lora_ptr, out_ptr, M, N, K,
+-                      token_indices_sorted_by_lora_ids, num_tokens_per_lora,
+-                      lora_token_start_loc, lora_ids, scaling, input_d0_stride,
+-                      input_d1_stride, lora_d0_stride, lora_d1_stride,
+-                      lora_d2_stride, output_d0_stride, output_d1_stride,
+-                      output_d2_stride, BLOCK_M: tl.constexpr,
+-                      BLOCK_N: tl.constexpr, BLOCK_K: tl.constexpr,
+-                      EVEN_K: tl.constexpr, SPLIT_K: tl.constexpr,
+-                      SLICE_NUM: tl.constexpr):
+-
+-    cta_n_num = tl.cdiv(N, BLOCK_N)
+-    cta_m_num = tl.cdiv(M, BLOCK_M)
+-
+-    pid_sk_m_n = tl.program_id(axis=0)
+-    pid_sk = pid_sk_m_n % SPLIT_K
+-    pid_m = (pid_sk_m_n // SPLIT_K) % cta_m_num
+-    pid_n = pid_sk_m_n // (SPLIT_K * cta_m_num) % cta_n_num
+-
+-    slice_id = tl.program_id(axis=1)
+-    lora_idx = tl.program_id(axis=2)
+-
+-    lora_id = tl.load(lora_ids + lora_idx)
+-    if lora_id == -1:
+-        # Early exit for the no-lora case.
+-        return
+-
+-    lora_m_size = tl.load(num_tokens_per_lora + lora_idx)
+-
+-    cta_m_offset = pid_m * BLOCK_M
+-    if cta_m_offset >= lora_m_size:
+-        # Early exit CTA.
+-        return
+-
+-    # num rows this CTA should process.
+-    cta_m_len = min(BLOCK_M, lora_m_size - cta_m_offset)
+-
+-    # Identify all rows that this CTA should process.
+-    lora_m_indices_start = tl.load(lora_token_start_loc + lora_idx)
+-    cta_lora_seq_indices = (token_indices_sorted_by_lora_ids +
+-                            lora_m_indices_start + cta_m_offset)
+-
+-    # Load all relevant row indices.
+-    offset_m = tl.arange(0, BLOCK_M) % cta_m_len
+-    ram = tl.load(cta_lora_seq_indices + offset_m)
+-
+-    do_shrink_kernel(
+-        pid_n,
+-        pid_sk,
+-        slice_id,
+-        lora_id,
+-        input_ptr,
+-        lora_ptr,
+-        out_ptr,
+-        N,
+-        K,
+-        cta_m_len,
+-        ram,  # array identifying the rows of Input ptr to operate on
+-        # input strides
+-        input_d0_stride,
+-        input_d1_stride,
+-        # lora strides
+-        lora_d0_stride,
+-        lora_d1_stride,
+-        lora_d2_stride,
+-        # output strides
+-        output_d0_stride,
+-        output_d1_stride,
+-        output_d2_stride,
+-        scaling,
+-        BLOCK_M,
+-        BLOCK_N,
+-        BLOCK_K,
+-        EVEN_K,
+-        SPLIT_K,
+-        SLICE_NUM)
+ 
+ 
+ @torch.inference_mode()
+
+[HEAD] Patched vllm/lora/ops/triton_ops/v1/v1_shrink.py
+
+Done. All files patched successfully.
+2026-01-23 19:55:09,566 - INFO - Removing intermediate container a481aee8460a
+2026-01-23 19:55:09,566 - INFO - ---> 4e549f5b1222
+2026-01-23 19:55:09,567 - INFO - Step 13/13 : WORKDIR /workspace/vllm-project/vllm
+2026-01-23 19:55:09,567 - INFO - 
+2026-01-23 19:55:09,604 - INFO - ---> Running in 914fbbd7d6d4
+2026-01-23 19:55:09,712 - INFO - Removing intermediate container 914fbbd7d6d4
+2026-01-23 19:55:09,712 - INFO - ---> 142d0fcf6f6c
+2026-01-23 19:55:09,712 - INFO - Successfully built 142d0fcf6f6c
+2026-01-23 19:55:09,718 - INFO - Successfully tagged rtbench-instance-vllm-34:latest
+2026-01-23 19:55:09,718 - INFO - Image built successfully!

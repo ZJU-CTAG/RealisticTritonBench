@@ -1,0 +1,12 @@
+{
+  "vllm/model_executor/layers/quantization/awq_triton.py": {
+    "source_func": {
+      "awq_gemm_kernel": "@triton.jit\ndef awq_gemm_kernel(a_ptr, b_ptr, c_ptr, zeros_ptr, scales_ptr, M, N, K,\n                    group_size, BLOCK_SIZE_M: tl.constexpr,\n                    BLOCK_SIZE_N: tl.constexpr, BLOCK_SIZE_K: tl.constexpr,\n                    SPLIT_K: tl.constexpr):",
+      "awq_dequantize_kernel": "@triton.jit\ndef awq_dequantize_kernel(\n        qweight_ptr,  # quantized matrix\n        scales_ptr,  # scales, per group\n        zeros_ptr,  # zeros, per group\n        group_size,  # Should always be one of the supported group sizes\n        result_ptr,  # Output matrix\n        num_cols,  # input num cols in qweight\n        num_rows,  # input num rows in qweight\n        BLOCK_SIZE_X: tl.constexpr,\n        BLOCK_SIZE_Y: tl.constexpr):\n"
+    },
+    "target_func": {
+      "awq_gemm_kernel": "@triton.jit\ndef awq_gemm_kernel(a_ptr, b_ptr, c_ptr, zeros_ptr, scales_ptr, M, N, K,\n                    group_size, BLOCK_SIZE_M: tl.constexpr,\n                    BLOCK_SIZE_N: tl.constexpr, BLOCK_SIZE_K: tl.constexpr,\n                    SPLIT_K: tl.constexpr):",
+      "awq_dequantize_kernel": "@triton.jit\ndef awq_dequantize_kernel(\n        qweight_ptr,  # quantized matrix\n        scales_ptr,  # scales, per group\n        zeros_ptr,  # zeros, per group\n        group_size,  # Should always be one of the supported group sizes\n        result_ptr,  # Output matrix\n        num_cols,  # input num cols in qweight\n        num_rows,  # input num rows in qweight\n        BLOCK_SIZE_X: tl.constexpr,\n        BLOCK_SIZE_Y: tl.constexpr):\n"
+    }
+  }
+}

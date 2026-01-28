@@ -1,0 +1,88 @@
+2026-01-23 15:55:52,715 - INFO - Building image rtbench-base:latest
+Using dockerfile:
+
+FROM --platform=linux/x86_64 nvidia/cuda:12.0.1-runtime-ubuntu22.04
+
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Etc/UTC
+
+RUN apt update && apt install -y \
+wget \
+git \
+build-essential \
+libffi-dev \
+libtiff-dev \
+python3 \
+python3-pip \
+python-is-python3 \
+jq \
+curl \
+locales \
+locales-all \
+tzdata \
+&& rm -rf /var/lib/apt/lists/*
+
+# Download and install conda
+RUN wget 'https://repo.anaconda.com/archive/Anaconda3-2025.12-2-Linux-x86_64.sh' -O miniconda.sh && \ 
+    bash miniconda.sh -b -p /opt/miniconda3 && \
+    rm miniconda.sh
+# Add conda to PATH
+ENV PATH=/opt/miniconda3/bin:$PATH
+# Add conda to shell startup scripts like .bashrc (DO NOT REMOVE THIS)
+RUN conda init --all && \
+    conda config --append channels conda-forge 
+
+COPY condarc /root/.condarc
+
+RUN conda clean -i
+
+WORKDIR /workspace
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 15:55:52,715 - INFO - Building docker image rtbench-base:latest in logs/build_images/base/rtbench-base__latest with platform linux/x86_64
+2026-01-23 15:55:52,797 - INFO - Step 1/10 : FROM --platform=linux/x86_64 nvidia/cuda:12.0.1-runtime-ubuntu22.04
+2026-01-23 15:55:52,797 - INFO - 
+2026-01-23 15:55:52,797 - INFO - ---> b82fea2f4e89
+2026-01-23 15:55:52,797 - INFO - Step 2/10 : ARG DEBIAN_FRONTEND=noninteractive
+2026-01-23 15:55:52,798 - INFO - 
+2026-01-23 15:55:52,798 - INFO - ---> Using cache
+2026-01-23 15:55:52,798 - INFO - ---> 46cbc0437521
+2026-01-23 15:55:52,798 - INFO - Step 3/10 : ENV TZ=Etc/UTC
+2026-01-23 15:55:52,798 - INFO - 
+2026-01-23 15:55:52,799 - INFO - ---> Using cache
+2026-01-23 15:55:52,799 - INFO - ---> c18ce173cece
+2026-01-23 15:55:52,799 - INFO - Step 4/10 : RUN apt update && apt install -y wget git build-essential libffi-dev libtiff-dev python3 python3-pip python-is-python3 jq curl locales locales-all tzdata && rm -rf /var/lib/apt/lists/*
+2026-01-23 15:55:52,799 - INFO - 
+2026-01-23 15:55:52,800 - INFO - ---> Using cache
+2026-01-23 15:55:52,800 - INFO - ---> 5c49fff7a544
+2026-01-23 15:55:52,800 - INFO - Step 5/10 : RUN wget 'https://repo.anaconda.com/archive/Anaconda3-2025.12-2-Linux-x86_64.sh' -O miniconda.sh &&     bash miniconda.sh -b -p /opt/miniconda3 &&     rm miniconda.sh
+2026-01-23 15:55:52,800 - INFO - 
+2026-01-23 15:55:52,801 - INFO - ---> Using cache
+2026-01-23 15:55:52,801 - INFO - ---> 69205cd701dd
+2026-01-23 15:55:52,801 - INFO - Step 6/10 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 15:55:52,801 - INFO - 
+2026-01-23 15:55:52,802 - INFO - ---> Using cache
+2026-01-23 15:55:52,802 - INFO - ---> 34adf2008bf3
+2026-01-23 15:55:52,802 - INFO - Step 7/10 : RUN conda init --all &&     conda config --append channels conda-forge
+2026-01-23 15:55:52,802 - INFO - 
+2026-01-23 15:55:52,803 - INFO - ---> Using cache
+2026-01-23 15:55:52,803 - INFO - ---> 8770762b8695
+2026-01-23 15:55:52,803 - INFO - Step 8/10 : COPY condarc /root/.condarc
+2026-01-23 15:55:52,803 - INFO - 
+2026-01-23 15:55:52,999 - INFO - ---> 0a6b993a7122
+2026-01-23 15:55:53,000 - INFO - Step 9/10 : RUN conda clean -i
+2026-01-23 15:55:53,000 - INFO - 
+2026-01-23 15:55:53,044 - INFO - ---> Running in 8f12678f5914
+2026-01-23 15:55:53,749 - INFO - Will remove 1 index cache(s).
+Proceed ([y]/n)?
+2026-01-23 15:55:54,057 - INFO - Removing intermediate container 8f12678f5914
+2026-01-23 15:55:54,057 - INFO - ---> 5cb6d1a85f20
+2026-01-23 15:55:54,058 - INFO - Step 10/10 : WORKDIR /workspace
+2026-01-23 15:55:54,058 - INFO - 
+2026-01-23 15:55:54,107 - INFO - ---> Running in 2fca1f00d10a
+2026-01-23 15:55:54,226 - INFO - Removing intermediate container 2fca1f00d10a
+2026-01-23 15:55:54,227 - INFO - ---> aacd11aa4d7f
+2026-01-23 15:55:54,227 - INFO - Successfully built aacd11aa4d7f
+2026-01-23 15:55:54,232 - INFO - Successfully tagged rtbench-base:latest
+2026-01-23 15:55:54,232 - INFO - Image built successfully!

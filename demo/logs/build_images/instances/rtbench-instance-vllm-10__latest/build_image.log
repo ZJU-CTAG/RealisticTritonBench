@@ -1,0 +1,138 @@
+2026-01-23 19:51:32,462 - INFO - Building image rtbench-instance-vllm-10:latest
+Using dockerfile:
+# syntax=docker/dockerfile:1.4
+FROM --platform=linux/x86_64 rtbench-vllm:latest
+
+WORKDIR /workspace
+
+ENV PATH=/opt/miniconda3/bin:$PATH
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+RUN conda create -n testbed python=3.10 
+
+COPY replace_funcs.py /workspace/replace_funcs.py
+COPY specs.json /workspace/specs.json
+
+
+ARG PIP_CACHE_DIR=/root/.cache/pip
+
+RUN mkdir -p $PIP_CACHE_DIR
+
+# 在同一条 RUN 里调用环境的 Python
+RUN cd vllm-project/vllm && \
+    /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py \
+        --repo /workspace/vllm-project/vllm \
+        --base_commit 3567816932e674abce3f44ceb0aff03f73b5aaff \
+        --head_commit d9a39b481993133aef8e5bc574133aee5ee63d52 \
+        --pull_number 27468 \
+        --specs /workspace/specs.json 
+
+WORKDIR /workspace/vllm-project/vllm
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 19:51:32,463 - INFO - Building docker image rtbench-instance-vllm-10:latest in logs/build_images/instances/rtbench-instance-vllm-10__latest with platform linux/x86_64
+2026-01-23 19:51:32,545 - INFO - Step 1/13 : FROM --platform=linux/x86_64 rtbench-vllm:latest
+2026-01-23 19:51:32,545 - INFO - 
+2026-01-23 19:51:32,545 - INFO - ---> 2305ba9d0999
+2026-01-23 19:51:32,545 - INFO - Step 2/13 : WORKDIR /workspace
+2026-01-23 19:51:32,545 - INFO - 
+2026-01-23 19:51:32,547 - INFO - ---> Using cache
+2026-01-23 19:51:32,547 - INFO - ---> e747518d1b92
+2026-01-23 19:51:32,547 - INFO - Step 3/13 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 19:51:32,547 - INFO - 
+2026-01-23 19:51:32,547 - INFO - ---> Using cache
+2026-01-23 19:51:32,548 - INFO - ---> e5991ef828f8
+2026-01-23 19:51:32,548 - INFO - Step 4/13 : ENV CUDA_HOME=/usr/local/cuda
+2026-01-23 19:51:32,548 - INFO - 
+2026-01-23 19:51:32,548 - INFO - ---> Using cache
+2026-01-23 19:51:32,548 - INFO - ---> 023b41248226
+2026-01-23 19:51:32,549 - INFO - Step 5/13 : ENV PATH=$CUDA_HOME/bin:$PATH
+2026-01-23 19:51:32,549 - INFO - 
+2026-01-23 19:51:32,549 - INFO - ---> Using cache
+2026-01-23 19:51:32,549 - INFO - ---> aef303189f12
+2026-01-23 19:51:32,549 - INFO - Step 6/13 : ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+2026-01-23 19:51:32,550 - INFO - 
+2026-01-23 19:51:32,550 - INFO - ---> Using cache
+2026-01-23 19:51:32,550 - INFO - ---> 8755a772bbfe
+2026-01-23 19:51:32,550 - INFO - Step 7/13 : RUN conda create -n testbed python=3.10
+2026-01-23 19:51:32,551 - INFO - 
+2026-01-23 19:51:32,552 - INFO - ---> Using cache
+2026-01-23 19:51:32,552 - INFO - ---> b2e188ff63fb
+2026-01-23 19:51:32,553 - INFO - Step 8/13 : COPY replace_funcs.py /workspace/replace_funcs.py
+2026-01-23 19:51:32,553 - INFO - 
+2026-01-23 19:51:32,557 - INFO - ---> Using cache
+2026-01-23 19:51:32,558 - INFO - ---> 5f74b3ba7130
+2026-01-23 19:51:32,558 - INFO - Step 9/13 : COPY specs.json /workspace/specs.json
+2026-01-23 19:51:32,558 - INFO - 
+2026-01-23 19:51:32,912 - INFO - ---> 87a24ccb6f91
+2026-01-23 19:51:32,912 - INFO - Step 10/13 : ARG PIP_CACHE_DIR=/root/.cache/pip
+2026-01-23 19:51:32,912 - INFO - 
+2026-01-23 19:51:32,941 - INFO - ---> Running in ca01ad22f3f8
+2026-01-23 19:51:33,044 - INFO - Removing intermediate container ca01ad22f3f8
+2026-01-23 19:51:33,044 - INFO - ---> 9e6bd2f20b1a
+2026-01-23 19:51:33,044 - INFO - Step 11/13 : RUN mkdir -p $PIP_CACHE_DIR
+2026-01-23 19:51:33,044 - INFO - 
+2026-01-23 19:51:33,075 - INFO - ---> Running in 05817d981aea
+2026-01-23 19:51:33,376 - INFO - Removing intermediate container 05817d981aea
+2026-01-23 19:51:33,376 - INFO - ---> 1874deff507f
+2026-01-23 19:51:33,376 - INFO - Step 12/13 : RUN cd vllm-project/vllm &&     /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py         --repo /workspace/vllm-project/vllm         --base_commit 3567816932e674abce3f44ceb0aff03f73b5aaff         --head_commit d9a39b481993133aef8e5bc574133aee5ee63d52         --pull_number 27468         --specs /workspace/specs.json
+2026-01-23 19:51:33,376 - INFO - 
+2026-01-23 19:51:33,407 - INFO - ---> Running in 25662e7c70f2
+2026-01-23 19:51:38,885 - INFO - [INFO] Command succeeded: git reset --hard
+HEAD is now at a8eb1182f [CI][Models] Add VLM Support for Sequence Classification Conversion (#32885)
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 3567816932e674abce3f44ceb0aff03f73b5aaff
+
+[INFO] Command succeeded: git fetch origin pull/27468/head:pr-27468
+
+[INFO] Command succeeded: git checkout pr-27468
+
+[INFO] Command succeeded: git reset --hard
+HEAD is now at d9a39b481 Merge branch 'main' into fix-moe-lora-kernel
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout d9a39b481993133aef8e5bc574133aee5ee63d52
+
+
+===== DIFF vllm/lora/ops/triton_ops/fused_moe_lora_op.py =====
+--- a/vllm/lora/ops/triton_ops/fused_moe_lora_op.py
++++ b/vllm/lora/ops/triton_ops/fused_moe_lora_op.py
+@@ -98,7 +98,7 @@
+ 
+     # get a_ptr,b_ptr,c_ptr
+     cur_a_ptr = a_ptr + (slice_id % num_slice_a) * slice_a_size
+-    cur_b_ptr = tl.load(b_ptr + slice_id).to(tl.pointer_type(c_ptr.dtype.element_ty))
++    cur_b_ptr = tl.load(b_ptr + slice_id).to(tl.pointer_type(tl.bfloat16))
+     cur_c_ptr = c_ptr + (slice_id % num_slice_c) * slice_c_size
+ 
+     offs_bn = (pid_n * BLOCK_SIZE_N + tl.arange(0, BLOCK_SIZE_N).to(tl.int64)) % N
+@@ -141,7 +141,7 @@
+         moe_weight = tl.load(topk_weights_ptr + offs_token, mask=token_mask, other=0)
+         accumulator = accumulator * moe_weight[:, None]
+ 
+-    accumulator = accumulator.to(c_ptr.dtype.element_ty)
++    accumulator = accumulator.to(tl.bfloat16)
+     # Write back the block of the output
+     offs_cn = pid_n * BLOCK_SIZE_N + tl.arange(0, BLOCK_SIZE_N)
+     c_ptrs = cur_c_ptr + stride_cm * offs_token[:, None] + stride_cn * offs_cn[None, :]
+
+[HEAD] Patched vllm/lora/ops/triton_ops/fused_moe_lora_op.py
+
+Done. All files patched successfully.
+2026-01-23 19:51:41,208 - INFO - Removing intermediate container 25662e7c70f2
+2026-01-23 19:51:41,208 - INFO - ---> 70be3e49ed3d
+2026-01-23 19:51:41,208 - INFO - Step 13/13 : WORKDIR /workspace/vllm-project/vllm
+2026-01-23 19:51:41,209 - INFO - 
+2026-01-23 19:51:41,237 - INFO - ---> Running in 97c9ba416943
+2026-01-23 19:51:41,335 - INFO - Removing intermediate container 97c9ba416943
+2026-01-23 19:51:41,336 - INFO - ---> 0572dea96ea1
+2026-01-23 19:51:41,336 - INFO - Successfully built 0572dea96ea1
+2026-01-23 19:51:41,340 - INFO - Successfully tagged rtbench-instance-vllm-10:latest
+2026-01-23 19:51:41,341 - INFO - Image built successfully!

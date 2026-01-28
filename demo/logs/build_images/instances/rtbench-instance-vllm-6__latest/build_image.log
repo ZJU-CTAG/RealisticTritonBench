@@ -1,0 +1,253 @@
+2026-01-23 19:51:02,876 - INFO - Building image rtbench-instance-vllm-6:latest
+Using dockerfile:
+# syntax=docker/dockerfile:1.4
+FROM --platform=linux/x86_64 rtbench-vllm:latest
+
+WORKDIR /workspace
+
+ENV PATH=/opt/miniconda3/bin:$PATH
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+RUN conda create -n testbed python=3.10 
+
+COPY replace_funcs.py /workspace/replace_funcs.py
+COPY specs.json /workspace/specs.json
+
+
+ARG PIP_CACHE_DIR=/root/.cache/pip
+
+RUN mkdir -p $PIP_CACHE_DIR
+
+# 在同一条 RUN 里调用环境的 Python
+RUN cd vllm-project/vllm && \
+    /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py \
+        --repo /workspace/vllm-project/vllm \
+        --base_commit c6fa3895e90f6daef4d223188f6b4156311f40c9 \
+        --head_commit 1deb7d02c64e410f2e2473383725dc81ec3c2cce \
+        --pull_number 29210 \
+        --specs /workspace/specs.json 
+
+WORKDIR /workspace/vllm-project/vllm
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 19:51:02,876 - INFO - Building docker image rtbench-instance-vllm-6:latest in logs/build_images/instances/rtbench-instance-vllm-6__latest with platform linux/x86_64
+2026-01-23 19:51:02,958 - INFO - Step 1/13 : FROM --platform=linux/x86_64 rtbench-vllm:latest
+2026-01-23 19:51:02,959 - INFO - 
+2026-01-23 19:51:02,959 - INFO - ---> 2305ba9d0999
+2026-01-23 19:51:02,959 - INFO - Step 2/13 : WORKDIR /workspace
+2026-01-23 19:51:02,960 - INFO - 
+2026-01-23 19:51:02,962 - INFO - ---> Using cache
+2026-01-23 19:51:02,962 - INFO - ---> e747518d1b92
+2026-01-23 19:51:02,962 - INFO - Step 3/13 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 19:51:02,962 - INFO - 
+2026-01-23 19:51:02,963 - INFO - ---> Using cache
+2026-01-23 19:51:02,963 - INFO - ---> e5991ef828f8
+2026-01-23 19:51:02,963 - INFO - Step 4/13 : ENV CUDA_HOME=/usr/local/cuda
+2026-01-23 19:51:02,963 - INFO - 
+2026-01-23 19:51:02,964 - INFO - ---> Using cache
+2026-01-23 19:51:02,964 - INFO - ---> 023b41248226
+2026-01-23 19:51:02,964 - INFO - Step 5/13 : ENV PATH=$CUDA_HOME/bin:$PATH
+2026-01-23 19:51:02,964 - INFO - 
+2026-01-23 19:51:02,965 - INFO - ---> Using cache
+2026-01-23 19:51:02,965 - INFO - ---> aef303189f12
+2026-01-23 19:51:02,965 - INFO - Step 6/13 : ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+2026-01-23 19:51:02,965 - INFO - 
+2026-01-23 19:51:02,965 - INFO - ---> Using cache
+2026-01-23 19:51:02,966 - INFO - ---> 8755a772bbfe
+2026-01-23 19:51:02,966 - INFO - Step 7/13 : RUN conda create -n testbed python=3.10
+2026-01-23 19:51:02,966 - INFO - 
+2026-01-23 19:51:02,967 - INFO - ---> Using cache
+2026-01-23 19:51:02,967 - INFO - ---> b2e188ff63fb
+2026-01-23 19:51:02,967 - INFO - Step 8/13 : COPY replace_funcs.py /workspace/replace_funcs.py
+2026-01-23 19:51:02,967 - INFO - 
+2026-01-23 19:51:02,971 - INFO - ---> Using cache
+2026-01-23 19:51:02,971 - INFO - ---> 5f74b3ba7130
+2026-01-23 19:51:02,971 - INFO - Step 9/13 : COPY specs.json /workspace/specs.json
+2026-01-23 19:51:02,971 - INFO - 
+2026-01-23 19:51:03,145 - INFO - ---> a368f5925116
+2026-01-23 19:51:03,145 - INFO - Step 10/13 : ARG PIP_CACHE_DIR=/root/.cache/pip
+2026-01-23 19:51:03,145 - INFO - 
+2026-01-23 19:51:03,170 - INFO - ---> Running in 284fbaf3800e
+2026-01-23 19:51:03,321 - INFO - Removing intermediate container 284fbaf3800e
+2026-01-23 19:51:03,321 - INFO - ---> 2b8f1e732b19
+2026-01-23 19:51:03,321 - INFO - Step 11/13 : RUN mkdir -p $PIP_CACHE_DIR
+2026-01-23 19:51:03,321 - INFO - 
+2026-01-23 19:51:03,357 - INFO - ---> Running in 51137e26533c
+2026-01-23 19:51:03,714 - INFO - Removing intermediate container 51137e26533c
+2026-01-23 19:51:03,714 - INFO - ---> b71c0a458089
+2026-01-23 19:51:03,715 - INFO - Step 12/13 : RUN cd vllm-project/vllm &&     /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py         --repo /workspace/vllm-project/vllm         --base_commit c6fa3895e90f6daef4d223188f6b4156311f40c9         --head_commit 1deb7d02c64e410f2e2473383725dc81ec3c2cce         --pull_number 29210         --specs /workspace/specs.json
+2026-01-23 19:51:03,715 - INFO - 
+2026-01-23 19:51:03,743 - INFO - ---> Running in 2cc7fe44f0f9
+2026-01-23 19:51:08,182 - INFO - [INFO] Command succeeded: git reset --hard
+HEAD is now at a8eb1182f [CI][Models] Add VLM Support for Sequence Classification Conversion (#32885)
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout c6fa3895e90f6daef4d223188f6b4156311f40c9
+
+[INFO] Command succeeded: git fetch origin pull/29210/head:pr-29210
+
+[INFO] Command succeeded: git checkout pr-29210
+
+[INFO] Command succeeded: git reset --hard
+HEAD is now at 1deb7d02c BLOCK_SIZE
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 1deb7d02c64e410f2e2473383725dc81ec3c2cce
+
+
+===== DIFF vllm/v1/worker/gpu/sampler.py =====
+--- a/vllm/v1/worker/gpu/sampler.py
++++ b/vllm/v1/worker/gpu/sampler.py
+@@ -77,10 +77,7 @@
+ 
+ @triton.jit
+ def _gumbel_sample_kernel(
+-    local_argmax_ptr,
+-    local_argmax_stride,
+-    local_max_ptr,
+-    local_max_stride,
++    sampled_ptr,
+     logits_ptr,
+     logits_stride,
+     seeds_ptr,
+@@ -90,21 +87,40 @@
+     BLOCK_SIZE: tl.constexpr,
+ ):
+     req_idx = tl.program_id(0)
+-    block_idx = tl.program_id(1)
+-    block = block_idx * BLOCK_SIZE + tl.arange(0, BLOCK_SIZE)
+-    mask = block < vocab_size
+-    logits = tl.load(
+-        logits_ptr + req_idx * logits_stride + block,
+-        mask=mask,
+-        other=float("-inf"),
+-    )
+-
+     is_greedy = tl.load(is_greedy_ptr + req_idx)
+-    if not is_greedy:
+-        # Calculate the seed for gumbel noise.
+-        seed = tl.load(seeds_ptr + req_idx)
+-        pos = tl.load(pos_ptr + req_idx)
+-        gumbel_seed = tl.randint(seed, pos)
++
++    if is_greedy:
++        # Greedy sampling. Don't apply gumbel noise.
++        max_val = float("-inf")
++        max_idx = 0
++        for i in range(0, vocab_size, BLOCK_SIZE):
++            block = i + tl.arange(0, BLOCK_SIZE)
++            mask = block < vocab_size
++            logits = tl.load(
++                logits_ptr + req_idx * logits_stride + block,
++                mask=mask,
++                other=float("-inf"),
++            )
++
++            idx = tl.argmax(logits, axis=0)
++            value = tl.max(logits, axis=0)
++            is_greater = value > max_val
++            max_val = tl.where(is_greater, value, max_val)
++            max_idx = tl.where(is_greater, i + idx, max_idx)
++        tl.store(sampled_ptr + req_idx, max_idx)
++        return
++
++    # Random sampling.
++    # Calculate gumbel seed.
++    seed = tl.load(seeds_ptr + req_idx)
++    pos = tl.load(pos_ptr + req_idx)
++    gumbel_seed = tl.randint(seed, pos)
++
++    max_val = float("-inf")
++    max_idx = 0
++    for i in range(0, vocab_size, BLOCK_SIZE):
++        block = i + tl.arange(0, BLOCK_SIZE)
++        mask = block < vocab_size
+ 
+         # Generate gumbel noise.
+         r = tl.rand(gumbel_seed, block).to(tl.float64)
+@@ -112,13 +128,16 @@
+         gumbel_noise = gumbel_noise.to(tl.float32)
+ 
+         # Apply gumbel noise.
++        logits = tl.load(logits_ptr + req_idx * logits_stride + block, mask=mask)
+         logits = tl.where(mask, logits + gumbel_noise, float("-inf"))
+ 
+-    idx = tl.argmax(logits, axis=0)
+-    token_id = block_idx * BLOCK_SIZE + idx
+-    value = tl.max(logits, axis=0)
+-    tl.store(local_argmax_ptr + req_idx * local_argmax_stride + block_idx, token_id)
+-    tl.store(local_max_ptr + req_idx * local_max_stride + block_idx, value)
++        # Argmax to get the sampled token.
++        idx = tl.argmax(logits, axis=0)
++        value = tl.max(logits, axis=0)
++        is_greater = value > max_val
++        max_val = tl.where(is_greater, value, max_val)
++        max_idx = tl.where(is_greater, i + idx, max_idx)
++    tl.store(sampled_ptr + req_idx, max_idx)
+ 
+ 
+ def gumbel_sample(
+@@ -128,36 +147,23 @@
+     pos: torch.Tensor,  # [num_reqs]
+ ) -> torch.Tensor:
+     num_reqs, vocab_size = logits.shape
+-    BLOCK_SIZE = 1024
+-    num_blocks = triton.cdiv(vocab_size, BLOCK_SIZE)
+-    local_argmax = torch.empty(
++    # NOTE(woosuk): Use int64 for later indexing.
++    sampled = torch.empty(
+         num_reqs,
+-        num_blocks,
+         dtype=torch.int64,
+         device=logits.device,
+     )
+-    local_max = torch.empty(
+-        num_reqs,
+-        num_blocks,
+-        dtype=torch.float32,
+-        device=logits.device,
+-    )
+-    _gumbel_sample_kernel[(num_reqs, num_blocks)](
+-        local_argmax,
+-        local_argmax.stride(0),
+-        local_max,
+-        local_max.stride(0),
++    _gumbel_sample_kernel[(num_reqs,)](
++        sampled,
+         logits,
+         logits.stride(0),
+         seed,
+         pos,
+         is_greedy,
+         vocab_size,
+-        BLOCK_SIZE=BLOCK_SIZE,
+-    )
+-    # NOTE(woosuk): Use int64 for later indexing.
+-    max_block_idx = local_max.argmax(dim=-1, keepdim=True)
+-    sampled = local_argmax.gather(dim=-1, index=max_block_idx).view(-1)
++        num_warps=8,
++        BLOCK_SIZE=16384,  # type: ignore
++    )
+     return sampled
+ 
+ 
+
+[HEAD] Patched vllm/v1/worker/gpu/sampler.py
+
+Done. All files patched successfully.
+2026-01-23 19:51:09,779 - INFO - Removing intermediate container 2cc7fe44f0f9
+2026-01-23 19:51:09,780 - INFO - ---> 3da3075e5810
+2026-01-23 19:51:09,780 - INFO - Step 13/13 : WORKDIR /workspace/vllm-project/vllm
+2026-01-23 19:51:09,780 - INFO - 
+2026-01-23 19:51:09,811 - INFO - ---> Running in 291bd7405cb9
+2026-01-23 19:51:09,915 - INFO - Removing intermediate container 291bd7405cb9
+2026-01-23 19:51:09,915 - INFO - ---> 3bf3f4602991
+2026-01-23 19:51:09,915 - INFO - Successfully built 3bf3f4602991
+2026-01-23 19:51:09,920 - INFO - Successfully tagged rtbench-instance-vllm-6:latest
+2026-01-23 19:51:09,921 - INFO - Image built successfully!

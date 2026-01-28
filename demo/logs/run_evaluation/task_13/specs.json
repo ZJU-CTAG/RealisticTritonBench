@@ -1,0 +1,10 @@
+{
+  "vllm/attention/ops/triton_decode_attention.py": {
+    "source_func": {
+      "_fwd_kernel_stage2": "@triton.jit\ndef _fwd_kernel_stage2(\n    Mid_O,\n    o,\n    B_Seqlen,\n    stride_mid_ob,\n    stride_mid_oh,\n    stride_mid_os,\n    stride_obs,\n    stride_oh,\n    NUM_KV_SPLITS: tl.constexpr,\n    BLOCK_DV: tl.constexpr,\n    Lv: tl.constexpr,\n):"
+    },
+    "target_func": {
+      "_fwd_kernel_stage2": "@triton.jit\ndef _fwd_kernel_stage2(\n    Mid_O,\n    o,\n    lse,\n    B_Seqlen,\n    stride_mid_ob,\n    stride_mid_oh,\n    stride_mid_os,\n    stride_obs,\n    stride_oh,\n    stride_lse_bs,\n    NUM_KV_SPLITS: tl.constexpr,\n    BLOCK_DV: tl.constexpr,\n    Lv: tl.constexpr,\n):"
+    }
+  }
+}

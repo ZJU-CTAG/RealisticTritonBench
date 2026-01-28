@@ -1,0 +1,410 @@
+2026-01-23 19:53:32,071 - INFO - Building image rtbench-instance-vllm-25:latest
+Using dockerfile:
+# syntax=docker/dockerfile:1.4
+FROM --platform=linux/x86_64 rtbench-vllm:latest
+
+WORKDIR /workspace
+
+ENV PATH=/opt/miniconda3/bin:$PATH
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+RUN conda create -n testbed python=3.10 
+
+COPY replace_funcs.py /workspace/replace_funcs.py
+COPY specs.json /workspace/specs.json
+
+
+ARG PIP_CACHE_DIR=/root/.cache/pip
+
+RUN mkdir -p $PIP_CACHE_DIR
+
+# 在同一条 RUN 里调用环境的 Python
+RUN cd vllm-project/vllm && \
+    /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py \
+        --repo /workspace/vllm-project/vllm \
+        --base_commit 87778d5f00ab09f88d0b677c34ae7d33e6296ce2 \
+        --head_commit 6cba4c6799a89af40054a77d5e98023285de63cf \
+        --pull_number 21229 \
+        --specs /workspace/specs.json 
+
+WORKDIR /workspace/vllm-project/vllm
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 19:53:32,071 - INFO - Building docker image rtbench-instance-vllm-25:latest in logs/build_images/instances/rtbench-instance-vllm-25__latest with platform linux/x86_64
+2026-01-23 19:53:32,149 - INFO - Step 1/13 : FROM --platform=linux/x86_64 rtbench-vllm:latest
+2026-01-23 19:53:32,150 - INFO - 
+2026-01-23 19:53:32,150 - INFO - ---> 2305ba9d0999
+2026-01-23 19:53:32,150 - INFO - Step 2/13 : WORKDIR /workspace
+2026-01-23 19:53:32,150 - INFO - 
+2026-01-23 19:53:32,152 - INFO - ---> Using cache
+2026-01-23 19:53:32,152 - INFO - ---> e747518d1b92
+2026-01-23 19:53:32,153 - INFO - Step 3/13 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 19:53:32,153 - INFO - 
+2026-01-23 19:53:32,153 - INFO - ---> Using cache
+2026-01-23 19:53:32,154 - INFO - ---> e5991ef828f8
+2026-01-23 19:53:32,154 - INFO - Step 4/13 : ENV CUDA_HOME=/usr/local/cuda
+2026-01-23 19:53:32,154 - INFO - 
+2026-01-23 19:53:32,154 - INFO - ---> Using cache
+2026-01-23 19:53:32,154 - INFO - ---> 023b41248226
+2026-01-23 19:53:32,154 - INFO - Step 5/13 : ENV PATH=$CUDA_HOME/bin:$PATH
+2026-01-23 19:53:32,154 - INFO - 
+2026-01-23 19:53:32,155 - INFO - ---> Using cache
+2026-01-23 19:53:32,155 - INFO - ---> aef303189f12
+2026-01-23 19:53:32,155 - INFO - Step 6/13 : ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+2026-01-23 19:53:32,155 - INFO - 
+2026-01-23 19:53:32,156 - INFO - ---> Using cache
+2026-01-23 19:53:32,156 - INFO - ---> 8755a772bbfe
+2026-01-23 19:53:32,156 - INFO - Step 7/13 : RUN conda create -n testbed python=3.10
+2026-01-23 19:53:32,156 - INFO - 
+2026-01-23 19:53:32,157 - INFO - ---> Using cache
+2026-01-23 19:53:32,157 - INFO - ---> b2e188ff63fb
+2026-01-23 19:53:32,157 - INFO - Step 8/13 : COPY replace_funcs.py /workspace/replace_funcs.py
+2026-01-23 19:53:32,157 - INFO - 
+2026-01-23 19:53:32,160 - INFO - ---> Using cache
+2026-01-23 19:53:32,160 - INFO - ---> 5f74b3ba7130
+2026-01-23 19:53:32,161 - INFO - Step 9/13 : COPY specs.json /workspace/specs.json
+2026-01-23 19:53:32,161 - INFO - 
+2026-01-23 19:53:32,359 - INFO - ---> e05a8d8d118e
+2026-01-23 19:53:32,359 - INFO - Step 10/13 : ARG PIP_CACHE_DIR=/root/.cache/pip
+2026-01-23 19:53:32,359 - INFO - 
+2026-01-23 19:53:32,390 - INFO - ---> Running in f6e2646b6cc8
+2026-01-23 19:53:32,482 - INFO - Removing intermediate container f6e2646b6cc8
+2026-01-23 19:53:32,483 - INFO - ---> 3dd79ba37621
+2026-01-23 19:53:32,483 - INFO - Step 11/13 : RUN mkdir -p $PIP_CACHE_DIR
+2026-01-23 19:53:32,483 - INFO - 
+2026-01-23 19:53:32,511 - INFO - ---> Running in 6900b1d1fd37
+2026-01-23 19:53:32,811 - INFO - Removing intermediate container 6900b1d1fd37
+2026-01-23 19:53:32,812 - INFO - ---> 82698b69edb9
+2026-01-23 19:53:32,812 - INFO - Step 12/13 : RUN cd vllm-project/vllm &&     /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py         --repo /workspace/vllm-project/vllm         --base_commit 87778d5f00ab09f88d0b677c34ae7d33e6296ce2         --head_commit 6cba4c6799a89af40054a77d5e98023285de63cf         --pull_number 21229         --specs /workspace/specs.json
+2026-01-23 19:53:32,812 - INFO - 
+2026-01-23 19:53:32,837 - INFO - ---> Running in f222c46c879c
+2026-01-23 19:53:40,769 - INFO - [INFO] Command succeeded: git reset --hard
+HEAD is now at a8eb1182f [CI][Models] Add VLM Support for Sequence Classification Conversion (#32885)
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 87778d5f00ab09f88d0b677c34ae7d33e6296ce2
+
+[INFO] Command succeeded: git fetch origin pull/21229/head:pr-21229
+
+[INFO] Command succeeded: git checkout pr-21229
+
+[INFO] Command succeeded: git reset --hard
+HEAD is now at 6cba4c679 Merge branch 'main' into fused_moe_lora
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 6cba4c6799a89af40054a77d5e98023285de63cf
+
+
+===== DIFF vllm/lora/ops/triton_ops/fused_moe_lora_op.py =====
+--- a/vllm/lora/ops/triton_ops/fused_moe_lora_op.py
++++ b/vllm/lora/ops/triton_ops/fused_moe_lora_op.py
+@@ -31,290 +31,8 @@
+     return _LORA_PTR_DICT.get(key)
+ 
+ 
+-@triton.jit
+-def _fused_moe_lora_kernel(
+-    a_ptr,
+-    b_ptr,
+-    c_ptr,
+-    topk_weights_ptr,
+-    sorted_token_ids_ptr,
+-    expert_ids_ptr,
+-    num_tokens_post_padded_ptr,
+-    # Matrix dimensions
+-    N,
+-    K,
+-    EM,
+-    num_valid_tokens,
+-    num_experts,
+-    # The stride variables represent how much to increase the ptr by when
+-    # moving by 1 element in a particular dimension. E.g. `stride_am` is
+-    # how much to increase `a_ptr` by to get the element one row down
+-    # (A has M rows).
+-    stride_am,
+-    stride_ak,
+-    stride_bl,
+-    stride_be,
+-    stride_bk,
+-    stride_bn,
+-    stride_cm,
+-    stride_cn,
+-    stride_tl,
+-    stride_el,
+-    # Meta-parameters
+-    num_slice_a: tl.constexpr,
+-    num_slice_c: tl.constexpr,
+-    slice_a_size: tl.constexpr,
+-    slice_c_size: tl.constexpr,
+-    top_k: tl.constexpr,
+-    MUL_ROUTED_WEIGHT: tl.constexpr,
+-    BLOCK_SIZE_M: tl.constexpr,
+-    BLOCK_SIZE_N: tl.constexpr,
+-    BLOCK_SIZE_K: tl.constexpr,
+-    GROUP_SIZE_M: tl.constexpr,
+-):
+-    pid = tl.program_id(axis=0)
+-    slice_id = tl.program_id(axis=1)
+-    lora_idx = tl.program_id(axis=2)
+-    max_loras = tl.num_programs(axis=2)
+-
+-    # calculate pid_m,pid_n
+-    num_pid_m = tl.cdiv(EM, BLOCK_SIZE_M)
+-    num_pid_n = tl.cdiv(N, BLOCK_SIZE_N)
+-    num_pid_in_group = GROUP_SIZE_M * num_pid_n
+-    group_id = pid // num_pid_in_group
+-    first_pid_m = group_id * GROUP_SIZE_M
+-    group_size_m = min(num_pid_m - first_pid_m, GROUP_SIZE_M)
+-    pid_m = first_pid_m + ((pid % num_pid_in_group) % group_size_m)
+-    pid_n = (pid % num_pid_in_group) // group_size_m
+-
+-    num_tokens_post_padded = tl.load(num_tokens_post_padded_ptr + lora_idx)
+-    if pid_m * BLOCK_SIZE_M >= num_tokens_post_padded:
+-        return
+-
+-    # get the expert_id to process curr shard
+-    ind = lora_idx * stride_el + pid_m
+-    expert_id = tl.load(expert_ids_ptr + ind)
+-    if expert_id == -1:
+-        return
+-
+-    # get a_ptr,b_ptr,c_ptr
+-    cur_a_ptr = a_ptr + (slice_id % num_slice_a) * slice_a_size
+-    cur_b_ptr = tl.load(b_ptr + slice_id).to(tl.pointer_type(tl.bfloat16))
+-    cur_c_ptr = c_ptr + (slice_id % num_slice_c) * slice_c_size
+-
+-    offs_bn = (pid_n * BLOCK_SIZE_N + tl.arange(0, BLOCK_SIZE_N).to(tl.int64)) % N
+-    offs_k = tl.arange(0, BLOCK_SIZE_K)
+-
+-    offs_token_id = pid_m * BLOCK_SIZE_M + tl.arange(0, BLOCK_SIZE_M).to(tl.int64)
+-    token_ind = stride_tl * lora_idx + offs_token_id
+-    offs_token = tl.load(
+-        sorted_token_ids_ptr + token_ind, token_ind < max_loras * stride_tl, 0.0
+-    )
+-    token_mask = offs_token < num_valid_tokens
+-
+-    # get a_ptrs,b_ptrs
+-    a_ptrs = cur_a_ptr + (
+-        offs_token[:, None] // top_k * stride_am + offs_k[None, :] * stride_ak
+-    )
+-
+-    b_ptrs = (
+-        cur_b_ptr
+-        + lora_idx * stride_bl
+-        + expert_id * stride_be
+-        + (offs_k[:, None] * stride_bk + offs_bn[None, :] * stride_bn)
+-    )
+-
+-    # accumulator
+-    accumulator = tl.zeros((BLOCK_SIZE_M, BLOCK_SIZE_N), dtype=tl.float32)
+-    for k in range(0, tl.cdiv(K, BLOCK_SIZE_K)):
+-        a = tl.load(
+-            a_ptrs,
+-            mask=token_mask[:, None] & (offs_k[None, :] < K - k * BLOCK_SIZE_K),
+-            other=0.0,
+-        )
+-        b = tl.load(b_ptrs, mask=offs_k[:, None] < K - k * BLOCK_SIZE_K, other=0.0)
+-        accumulator += tl.dot(a, b)
+-        # Advance the ptrs to the next K block.
+-        a_ptrs += BLOCK_SIZE_K * stride_ak
+-        b_ptrs += BLOCK_SIZE_K * stride_bk
+-
+-    if MUL_ROUTED_WEIGHT:
+-        moe_weight = tl.load(topk_weights_ptr + offs_token, mask=token_mask, other=0)
+-        accumulator = accumulator * moe_weight[:, None]
+-
+-    accumulator = accumulator.to(tl.bfloat16)
+-    # Write back the block of the output
+-    offs_cn = pid_n * BLOCK_SIZE_N + tl.arange(0, BLOCK_SIZE_N)
+-    c_ptrs = cur_c_ptr + stride_cm * offs_token[:, None] + stride_cn * offs_cn[None, :]
+-    c_mask = token_mask[:, None] & (offs_cn[None, :] < N)
+-    tl.store(c_ptrs, accumulator, mask=c_mask)
+ 
+ 
+-@torch.inference_mode()
+-def _fused_moe_lora(
+-    output: torch.Tensor,  # (num_tokens, top_k_num, N*len(lora_a_stacked),)
+-    qcurr_hidden_states: torch.Tensor,  # (num_tokens, K,)
+-    lora_a_stacked: list[
+-        torch.Tensor
+-    ],  # [(max_loras, num_experts, max_lora_rank, K,),...]
+-    lora_b_stacked: list[
+-        torch.Tensor
+-    ],  # [(max_loras, num_experts, N, max_lora_rank,),...]
+-    topk_weights: torch.Tensor,  # (num_tokens, top_k_num)
+-    sorted_token_ids: torch.Tensor,  # (max_loras, _)
+-    expert_ids: torch.Tensor,  # (max_loras, _ ,)
+-    num_tokens_post_padded: torch.Tensor,  # (max_loras, )
+-    max_lora_rank: int,
+-    top_k_num: int,
+-    block_size_m: int,
+-    block_size_n: int,
+-    block_size_k: int,
+-    group_size_m: int,
+-    mul_routed_weight: bool = False,
+-) -> None:
+-    assert len(lora_a_stacked) == len(lora_b_stacked) > 0
+-    assert (
+-        sorted_token_ids.dim()
+-        == expert_ids.dim()
+-        == topk_weights.dim()
+-        == qcurr_hidden_states.dim()
+-        == 2
+-    )
+-    assert (
+-        sorted_token_ids.shape[0]
+-        == expert_ids.shape[0]
+-        == num_tokens_post_padded.shape[0]
+-    )
+-    assert len(lora_b_stacked) * lora_b_stacked[0].shape[-2] == output.shape[-1]
+-    assert output.shape[0] == topk_weights.shape[0]
+-    assert top_k_num == topk_weights.shape[1]
+-
+-    device = qcurr_hidden_states.device
+-    num_slices = len(lora_a_stacked)
+-
+-    config = {
+-        "BLOCK_SIZE_M": block_size_m,
+-        "BLOCK_SIZE_N": block_size_n,
+-        "BLOCK_SIZE_K": block_size_k,
+-        "GROUP_SIZE_M": group_size_m,
+-    }
+-
+-    w1_lora_a_stacked = lora_a_stacked[0]
+-    w1_lora_b_stacked = lora_b_stacked[0]
+-    num_experts = lora_a_stacked[0].shape[1]
+-
+-    N = max_lora_rank
+-    M = topk_weights.shape[0]
+-    EM = sorted_token_ids.shape[1]
+-    K = qcurr_hidden_states.shape[1]
+-    num_tokens = M * top_k_num
+-    w1_output_dim_size = w1_lora_b_stacked.shape[2]
+-
+-    lora_intermediate_cache1 = torch.zeros(
+-        (num_slices * M * top_k_num * (max_lora_rank + w1_output_dim_size)),
+-        dtype=torch.bfloat16,
+-        device=device,
+-    )
+-
+-    # slices
+-    a_intermediate_size = num_slices * M * top_k_num * max_lora_rank
+-    a_intermediate_cache1 = lora_intermediate_cache1[:a_intermediate_size].view(
+-        num_slices, M, top_k_num, max_lora_rank
+-    )
+-    b_intermediate_cache1 = lora_intermediate_cache1[a_intermediate_size:].view(
+-        num_slices, M, top_k_num, w1_output_dim_size
+-    )
+-
+-    b_ptr = _get_ptr(lora_a_stacked, device)
+-
+-    grid = lambda META: (
+-        triton.cdiv(EM, META["BLOCK_SIZE_M"]) * triton.cdiv(N, META["BLOCK_SIZE_N"]),
+-        len(lora_a_stacked),
+-        lora_a_stacked[0].shape[0],
+-    )
+-
+-    _fused_moe_lora_kernel[grid](
+-        qcurr_hidden_states,
+-        b_ptr,
+-        a_intermediate_cache1,
+-        topk_weights,
+-        sorted_token_ids,
+-        expert_ids,
+-        num_tokens_post_padded,
+-        N,
+-        K,
+-        EM,
+-        num_tokens,
+-        num_experts,
+-        qcurr_hidden_states.stride(0),
+-        qcurr_hidden_states.stride(1),
+-        w1_lora_a_stacked.stride(0),
+-        w1_lora_a_stacked.stride(1),
+-        w1_lora_a_stacked.stride(3),
+-        w1_lora_a_stacked.stride(2),
+-        a_intermediate_cache1.stride(2),
+-        a_intermediate_cache1.stride(3),
+-        sorted_token_ids.stride(0),
+-        expert_ids.stride(0),
+-        num_slice_a=1,
+-        num_slice_c=num_slices,
+-        slice_a_size=qcurr_hidden_states.numel(),
+-        slice_c_size=a_intermediate_cache1.numel() // num_slices,
+-        top_k=1 if mul_routed_weight else top_k_num,
+-        MUL_ROUTED_WEIGHT=False,
+-        **config,
+-    )
+-
+-    b_ptr = _get_ptr(lora_b_stacked, device)
+-    K = max_lora_rank
+-    N = w1_output_dim_size
+-
+-    # a_intermediate_cache1 = a_intermediate_cache1.view(
+-    #     M, -1, a_intermediate_cache1.shape[3]
+-    # )
+-
+-    a_intermediate_cache1 = a_intermediate_cache1.view(
+-        -1, a_intermediate_cache1.shape[3]
+-    )
+-
+-    grid = lambda META: (
+-        triton.cdiv(EM, META["BLOCK_SIZE_M"]) * triton.cdiv(N, META["BLOCK_SIZE_N"]),
+-        len(lora_b_stacked),
+-        lora_b_stacked[0].shape[0],
+-    )
+-    _fused_moe_lora_kernel[grid](
+-        a_intermediate_cache1,
+-        b_ptr,
+-        b_intermediate_cache1,
+-        topk_weights,
+-        sorted_token_ids,
+-        expert_ids,
+-        num_tokens_post_padded,
+-        N,
+-        K,
+-        EM,
+-        num_tokens,
+-        num_experts,
+-        a_intermediate_cache1.stride(0),
+-        a_intermediate_cache1.stride(1),
+-        w1_lora_b_stacked.stride(0),
+-        w1_lora_b_stacked.stride(1),
+-        w1_lora_b_stacked.stride(3),
+-        w1_lora_b_stacked.stride(2),
+-        b_intermediate_cache1.stride(2),
+-        b_intermediate_cache1.stride(3),
+-        sorted_token_ids.stride(0),
+-        expert_ids.stride(0),
+-        num_slice_a=num_slices,
+-        num_slice_c=num_slices,
+-        slice_a_size=a_intermediate_cache1.numel() // num_slices,
+-        slice_c_size=b_intermediate_cache1.numel() // num_slices,
+-        top_k=1,
+-        MUL_ROUTED_WEIGHT=mul_routed_weight,
+-        **config,
+-    )
+-    for i in range(num_slices):
+-        output[:, :, i * N : (i + 1) * N] += b_intermediate_cache1[i]
+ 
+ 
+ def _fused_moe_lora_fake(
+2026-01-23 19:53:40,769 - INFO - [HEAD] Patched vllm/lora/ops/triton_ops/fused_moe_lora_op.py
+
+Done. All files patched successfully.
+2026-01-23 19:53:42,676 - INFO - Removing intermediate container f222c46c879c
+2026-01-23 19:53:42,677 - INFO - ---> e8f8bebe9a5a
+2026-01-23 19:53:42,677 - INFO - Step 13/13 : WORKDIR /workspace/vllm-project/vllm
+2026-01-23 19:53:42,677 - INFO - 
+2026-01-23 19:53:42,706 - INFO - ---> Running in e4f6e94eb910
+2026-01-23 19:53:42,814 - INFO - Removing intermediate container e4f6e94eb910
+2026-01-23 19:53:42,814 - INFO - ---> 5efc6bf8ff66
+2026-01-23 19:53:42,814 - INFO - Successfully built 5efc6bf8ff66
+2026-01-23 19:53:42,820 - INFO - Successfully tagged rtbench-instance-vllm-25:latest
+2026-01-23 19:53:42,820 - INFO - Image built successfully!

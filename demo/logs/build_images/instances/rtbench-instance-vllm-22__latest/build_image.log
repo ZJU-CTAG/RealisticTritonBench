@@ -1,0 +1,205 @@
+2026-01-23 19:53:07,536 - INFO - Building image rtbench-instance-vllm-22:latest
+Using dockerfile:
+# syntax=docker/dockerfile:1.4
+FROM --platform=linux/x86_64 rtbench-vllm:latest
+
+WORKDIR /workspace
+
+ENV PATH=/opt/miniconda3/bin:$PATH
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+RUN conda create -n testbed python=3.10 
+
+COPY replace_funcs.py /workspace/replace_funcs.py
+COPY specs.json /workspace/specs.json
+
+
+ARG PIP_CACHE_DIR=/root/.cache/pip
+
+RUN mkdir -p $PIP_CACHE_DIR
+
+# 在同一条 RUN 里调用环境的 Python
+RUN cd vllm-project/vllm && \
+    /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py \
+        --repo /workspace/vllm-project/vllm \
+        --base_commit 1d7f95b85c9b1bdaa576a5275851995b75a9420d \
+        --head_commit 0b2c4d698e911a6b33e6f465ca63b3315b143036 \
+        --pull_number 24503 \
+        --specs /workspace/specs.json 
+
+WORKDIR /workspace/vllm-project/vllm
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 19:53:07,537 - INFO - Building docker image rtbench-instance-vllm-22:latest in logs/build_images/instances/rtbench-instance-vllm-22__latest with platform linux/x86_64
+2026-01-23 19:53:07,616 - INFO - Step 1/13 : FROM --platform=linux/x86_64 rtbench-vllm:latest
+2026-01-23 19:53:07,617 - INFO - 
+2026-01-23 19:53:07,617 - INFO - ---> 2305ba9d0999
+2026-01-23 19:53:07,618 - INFO - Step 2/13 : WORKDIR /workspace
+2026-01-23 19:53:07,618 - INFO - 
+2026-01-23 19:53:07,620 - INFO - ---> Using cache
+2026-01-23 19:53:07,620 - INFO - ---> e747518d1b92
+2026-01-23 19:53:07,620 - INFO - Step 3/13 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 19:53:07,621 - INFO - 
+2026-01-23 19:53:07,622 - INFO - ---> Using cache
+2026-01-23 19:53:07,622 - INFO - ---> e5991ef828f8
+2026-01-23 19:53:07,622 - INFO - Step 4/13 : ENV CUDA_HOME=/usr/local/cuda
+2026-01-23 19:53:07,622 - INFO - 
+2026-01-23 19:53:07,623 - INFO - ---> Using cache
+2026-01-23 19:53:07,623 - INFO - ---> 023b41248226
+2026-01-23 19:53:07,623 - INFO - Step 5/13 : ENV PATH=$CUDA_HOME/bin:$PATH
+2026-01-23 19:53:07,623 - INFO - 
+2026-01-23 19:53:07,624 - INFO - ---> Using cache
+2026-01-23 19:53:07,625 - INFO - ---> aef303189f12
+2026-01-23 19:53:07,625 - INFO - Step 6/13 : ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+2026-01-23 19:53:07,625 - INFO - 
+2026-01-23 19:53:07,626 - INFO - ---> Using cache
+2026-01-23 19:53:07,626 - INFO - ---> 8755a772bbfe
+2026-01-23 19:53:07,626 - INFO - Step 7/13 : RUN conda create -n testbed python=3.10
+2026-01-23 19:53:07,626 - INFO - 
+2026-01-23 19:53:07,627 - INFO - ---> Using cache
+2026-01-23 19:53:07,627 - INFO - ---> b2e188ff63fb
+2026-01-23 19:53:07,627 - INFO - Step 8/13 : COPY replace_funcs.py /workspace/replace_funcs.py
+2026-01-23 19:53:07,627 - INFO - 
+2026-01-23 19:53:07,630 - INFO - ---> Using cache
+2026-01-23 19:53:07,631 - INFO - ---> 5f74b3ba7130
+2026-01-23 19:53:07,631 - INFO - Step 9/13 : COPY specs.json /workspace/specs.json
+2026-01-23 19:53:07,631 - INFO - 
+2026-01-23 19:53:07,809 - INFO - ---> 90a5e0f59e95
+2026-01-23 19:53:07,809 - INFO - Step 10/13 : ARG PIP_CACHE_DIR=/root/.cache/pip
+2026-01-23 19:53:07,809 - INFO - 
+2026-01-23 19:53:07,832 - INFO - ---> Running in 246335d18fbc
+2026-01-23 19:53:07,923 - INFO - Removing intermediate container 246335d18fbc
+2026-01-23 19:53:07,923 - INFO - ---> 342b12f2cf85
+2026-01-23 19:53:07,924 - INFO - Step 11/13 : RUN mkdir -p $PIP_CACHE_DIR
+2026-01-23 19:53:07,924 - INFO - 
+2026-01-23 19:53:07,950 - INFO - ---> Running in 398dddbf7a40
+2026-01-23 19:53:08,264 - INFO - Removing intermediate container 398dddbf7a40
+2026-01-23 19:53:08,264 - INFO - ---> da9688b9b79a
+2026-01-23 19:53:08,264 - INFO - Step 12/13 : RUN cd vllm-project/vllm &&     /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py         --repo /workspace/vllm-project/vllm         --base_commit 1d7f95b85c9b1bdaa576a5275851995b75a9420d         --head_commit 0b2c4d698e911a6b33e6f465ca63b3315b143036         --pull_number 24503         --specs /workspace/specs.json
+2026-01-23 19:53:08,265 - INFO - 
+2026-01-23 19:53:08,292 - INFO - ---> Running in 9f6a1f8fd849
+2026-01-23 19:53:14,440 - INFO - [INFO] Command succeeded: git reset --hard
+HEAD is now at a8eb1182f [CI][Models] Add VLM Support for Sequence Classification Conversion (#32885)
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 1d7f95b85c9b1bdaa576a5275851995b75a9420d
+
+[INFO] Command succeeded: git fetch origin pull/24503/head:pr-24503
+
+[INFO] Command succeeded: git checkout pr-24503
+
+[INFO] Command succeeded: git reset --hard
+HEAD is now at 0b2c4d698 mute ruff false-positive
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 0b2c4d698e911a6b33e6f465ca63b3315b143036
+
+
+===== DIFF vllm/attention/ops/triton_reshape_and_cache_flash.py =====
+--- a/vllm/attention/ops/triton_reshape_and_cache_flash.py
++++ b/vllm/attention/ops/triton_reshape_and_cache_flash.py
+@@ -8,84 +8,6 @@
+ from vllm.platforms import current_platform
+ 
+ 
+-@triton.jit
+-def reshape_and_cache_kernel_flash(
+-    key_ptr,  # [num_tokens, num_heads, head_size]
+-    value_ptr,  # [num_tokens, num_heads, head_size]
+-    key_cache_ptr,  # [num_blocks, block_size, num_heads, head_size]
+-    value_cache_ptr,  # [num_blocks, block_size, num_heads, head_size]
+-    slot_mapping_ptr,  # [num_tokens]
+-    k_scale,  # float32
+-    v_scale,  # float32
+-    # strides
+-    key_stride: tl.int64,
+-    value_stride: tl.int64,
+-    block_stride: tl.int64,
+-    page_stride: tl.int64,
+-    num_heads: tl.constexpr,
+-    head_size: tl.constexpr,
+-    block_size: tl.constexpr,
+-    # FP8 flags
+-    FP8_KV_CACHE: tl.constexpr,
+-    # tune parameters
+-    TILE_SIZE: tl.constexpr,
+-):
+-
+-    token_idx = tl.program_id(axis=0)
+-    slot_idx = tl.load(slot_mapping_ptr + token_idx).to(tl.int64)
+-    if slot_idx < 0:
+-        # Padding token that should be ignored.
+-        return
+-
+-    tile_i = tl.program_id(axis=1)
+-    tile_offs = tl.arange(0, TILE_SIZE)
+-    tile_pos = tile_i * TILE_SIZE + tile_offs
+-
+-    block_idx = slot_idx // block_size
+-    block_offset = slot_idx % block_size
+-
+-    src_key_idx = token_idx * key_stride
+-    src_value_idx = token_idx * value_stride
+-
+-    tgt_idx = block_idx * block_stride + block_offset * page_stride
+-
+-    # [TILE_SIZE]
+-    key_load = tl.load(key_ptr + src_key_idx + tile_pos,
+-                       mask=tile_pos < (num_heads * head_size))
+-    if FP8_KV_CACHE:
+-        if key_load.dtype.is_fp8():
+-            key_tile = key_load
+-        else:
+-            # tl.store will do the correct implicit cast to fp8,
+-            #  based on the key_cache_ptr.dtype.element_ty
+-            key_tile = key_load / tl.load(k_scale)
+-    else:
+-        key_tile = key_load
+-
+-    # [TILE_SIZE]
+-    value_load = tl.load(value_ptr + src_value_idx + tile_pos,
+-                         mask=tile_pos < (num_heads * head_size))
+-    if FP8_KV_CACHE:
+-        if value_load.dtype.is_fp8():
+-            value_tile = value_load
+-        else:
+-            # tl.store will do the correct implicit cast to fp8,
+-            #  based on the value_cache_ptr.dtype.element_ty
+-            value_tile = value_load / tl.load(v_scale)
+-    else:
+-        value_tile = value_load
+-
+-    tl.store(
+-        key_cache_ptr + tgt_idx + tile_pos,
+-        key_tile,
+-        mask=tile_pos < (num_heads * head_size),
+-    )
+-    tl.store(
+-        value_cache_ptr + tgt_idx + tile_pos,
+-        value_tile,
+-        mask=tile_pos < (num_heads * head_size),
+-    )
+-    return
+ 
+ 
+ def triton_reshape_and_cache_flash(
+
+[HEAD] Patched vllm/attention/ops/triton_reshape_and_cache_flash.py
+
+Done. All files patched successfully.
+2026-01-23 19:53:15,939 - INFO - Removing intermediate container 9f6a1f8fd849
+2026-01-23 19:53:15,940 - INFO - ---> 01939e23fe4a
+2026-01-23 19:53:15,940 - INFO - Step 13/13 : WORKDIR /workspace/vllm-project/vllm
+2026-01-23 19:53:15,940 - INFO - 
+2026-01-23 19:53:15,962 - INFO - ---> Running in ce4d2a010963
+2026-01-23 19:53:16,066 - INFO - Removing intermediate container ce4d2a010963
+2026-01-23 19:53:16,066 - INFO - ---> 7c6e02757f1a
+2026-01-23 19:53:16,067 - INFO - Successfully built 7c6e02757f1a
+2026-01-23 19:53:16,072 - INFO - Successfully tagged rtbench-instance-vllm-22:latest
+2026-01-23 19:53:16,072 - INFO - Image built successfully!

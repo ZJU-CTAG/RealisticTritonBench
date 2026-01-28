@@ -1,0 +1,307 @@
+2026-01-23 19:54:43,182 - INFO - Building image rtbench-instance-vllm-32:latest
+Using dockerfile:
+# syntax=docker/dockerfile:1.4
+FROM --platform=linux/x86_64 rtbench-vllm:latest
+
+WORKDIR /workspace
+
+ENV PATH=/opt/miniconda3/bin:$PATH
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=$CUDA_HOME/bin:$PATH
+ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+RUN conda create -n testbed python=3.10 
+
+COPY replace_funcs.py /workspace/replace_funcs.py
+COPY specs.json /workspace/specs.json
+
+
+ARG PIP_CACHE_DIR=/root/.cache/pip
+
+RUN mkdir -p $PIP_CACHE_DIR
+
+# 在同一条 RUN 里调用环境的 Python
+RUN cd vllm-project/vllm && \
+    /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py \
+        --repo /workspace/vllm-project/vllm \
+        --base_commit a454748544f67a7677a2bf71ab329da0600d34a6 \
+        --head_commit 2c1eaac2cc30e0678bcf5613c299bf973af2ebec \
+        --pull_number 16366 \
+        --specs /workspace/specs.json 
+
+WORKDIR /workspace/vllm-project/vllm
+
+
+Adding (0) setup scripts to image build repo
+2026-01-23 19:54:43,182 - INFO - Building docker image rtbench-instance-vllm-32:latest in logs/build_images/instances/rtbench-instance-vllm-32__latest with platform linux/x86_64
+2026-01-23 19:54:43,256 - INFO - Step 1/13 : FROM --platform=linux/x86_64 rtbench-vllm:latest
+2026-01-23 19:54:43,256 - INFO - 
+2026-01-23 19:54:43,257 - INFO - ---> 2305ba9d0999
+2026-01-23 19:54:43,257 - INFO - Step 2/13 : WORKDIR /workspace
+2026-01-23 19:54:43,257 - INFO - 
+2026-01-23 19:54:43,258 - INFO - ---> Using cache
+2026-01-23 19:54:43,258 - INFO - ---> e747518d1b92
+2026-01-23 19:54:43,258 - INFO - Step 3/13 : ENV PATH=/opt/miniconda3/bin:$PATH
+2026-01-23 19:54:43,258 - INFO - 
+2026-01-23 19:54:43,259 - INFO - ---> Using cache
+2026-01-23 19:54:43,259 - INFO - ---> e5991ef828f8
+2026-01-23 19:54:43,259 - INFO - Step 4/13 : ENV CUDA_HOME=/usr/local/cuda
+2026-01-23 19:54:43,259 - INFO - 
+2026-01-23 19:54:43,260 - INFO - ---> Using cache
+2026-01-23 19:54:43,260 - INFO - ---> 023b41248226
+2026-01-23 19:54:43,260 - INFO - Step 5/13 : ENV PATH=$CUDA_HOME/bin:$PATH
+2026-01-23 19:54:43,260 - INFO - 
+2026-01-23 19:54:43,261 - INFO - ---> Using cache
+2026-01-23 19:54:43,261 - INFO - ---> aef303189f12
+2026-01-23 19:54:43,261 - INFO - Step 6/13 : ENV LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+2026-01-23 19:54:43,261 - INFO - 
+2026-01-23 19:54:43,262 - INFO - ---> Using cache
+2026-01-23 19:54:43,262 - INFO - ---> 8755a772bbfe
+2026-01-23 19:54:43,262 - INFO - Step 7/13 : RUN conda create -n testbed python=3.10
+2026-01-23 19:54:43,262 - INFO - 
+2026-01-23 19:54:43,263 - INFO - ---> Using cache
+2026-01-23 19:54:43,264 - INFO - ---> b2e188ff63fb
+2026-01-23 19:54:43,264 - INFO - Step 8/13 : COPY replace_funcs.py /workspace/replace_funcs.py
+2026-01-23 19:54:43,264 - INFO - 
+2026-01-23 19:54:43,267 - INFO - ---> Using cache
+2026-01-23 19:54:43,267 - INFO - ---> 5f74b3ba7130
+2026-01-23 19:54:43,267 - INFO - Step 9/13 : COPY specs.json /workspace/specs.json
+2026-01-23 19:54:43,268 - INFO - 
+2026-01-23 19:54:43,467 - INFO - ---> 2f5987f1085e
+2026-01-23 19:54:43,467 - INFO - Step 10/13 : ARG PIP_CACHE_DIR=/root/.cache/pip
+2026-01-23 19:54:43,467 - INFO - 
+2026-01-23 19:54:43,499 - INFO - ---> Running in 77e2cd9a40b3
+2026-01-23 19:54:43,604 - INFO - Removing intermediate container 77e2cd9a40b3
+2026-01-23 19:54:43,605 - INFO - ---> d371ebc63274
+2026-01-23 19:54:43,605 - INFO - Step 11/13 : RUN mkdir -p $PIP_CACHE_DIR
+2026-01-23 19:54:43,605 - INFO - 
+2026-01-23 19:54:43,631 - INFO - ---> Running in 34c273cf7a59
+2026-01-23 19:54:43,946 - INFO - Removing intermediate container 34c273cf7a59
+2026-01-23 19:54:43,947 - INFO - ---> 16c7247ca2bb
+2026-01-23 19:54:43,947 - INFO - Step 12/13 : RUN cd vllm-project/vllm &&     /opt/miniconda3/envs/testbed/bin/python /workspace/replace_funcs.py         --repo /workspace/vllm-project/vllm         --base_commit a454748544f67a7677a2bf71ab329da0600d34a6         --head_commit 2c1eaac2cc30e0678bcf5613c299bf973af2ebec         --pull_number 16366         --specs /workspace/specs.json
+2026-01-23 19:54:43,947 - INFO - 
+2026-01-23 19:54:43,971 - INFO - ---> Running in 4ec78564355c
+2026-01-23 19:54:50,805 - INFO - [INFO] Command succeeded: git reset --hard
+HEAD is now at a8eb1182f [CI][Models] Add VLM Support for Sequence Classification Conversion (#32885)
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout a454748544f67a7677a2bf71ab329da0600d34a6
+
+[INFO] Command succeeded: git fetch origin pull/16366/head:pr-16366
+
+[INFO] Command succeeded: git checkout pr-16366
+
+[INFO] Command succeeded: git reset --hard
+HEAD is now at 2c1eaac2c Review comments
+
+[INFO] Command succeeded: git clean -fd
+
+[INFO] Command succeeded: git checkout 2c1eaac2cc30e0678bcf5613c299bf973af2ebec
+
+
+===== DIFF vllm/model_executor/layers/quantization/utils/int8_utils.py =====
+--- a/vllm/model_executor/layers/quantization/utils/int8_utils.py
++++ b/vllm/model_executor/layers/quantization/utils/int8_utils.py
+@@ -241,94 +241,6 @@
+     return x_q, x_s
+ 
+ 
+-@triton.jit
+-def _w8a8_block_int8_matmul(
+-    # Pointers to inputs and output
+-    A,
+-    B,
+-    C,
+-    As,
+-    Bs,
+-    # Shape for matmul
+-    M,
+-    N,
+-    K,
+-    # Block size for block-wise quantization
+-    group_n,
+-    group_k,
+-    # Stride for inputs and output
+-    stride_am,
+-    stride_ak,
+-    stride_bk,
+-    stride_bn,
+-    stride_cm,
+-    stride_cn,
+-    stride_As_m,
+-    stride_As_k,
+-    stride_Bs_k,
+-    stride_Bs_n,
+-    # Meta-parameters
+-    BLOCK_SIZE_M: tl.constexpr,
+-    BLOCK_SIZE_N: tl.constexpr,
+-    BLOCK_SIZE_K: tl.constexpr,
+-    GROUP_SIZE_M: tl.constexpr,
+-):
+-    """Triton-accelerated function used to perform linear operations (dot
+-    product) on input tensors `A` and `B` with block-wise quantization, and
+-    store the result in output tensor `C`.
+-    """
+-
+-    pid = tl.program_id(axis=0)
+-    num_pid_m = tl.cdiv(M, BLOCK_SIZE_M)
+-    num_pid_n = tl.cdiv(N, BLOCK_SIZE_N)
+-    num_pid_in_group = GROUP_SIZE_M * num_pid_n
+-    group_id = pid // num_pid_in_group
+-    first_pid_m = group_id * GROUP_SIZE_M
+-    group_size_m = min(num_pid_m - first_pid_m, GROUP_SIZE_M)
+-    pid_m = first_pid_m + (pid % group_size_m)
+-    pid_n = (pid % num_pid_in_group) // group_size_m
+-
+-    offs_am = (pid_m * BLOCK_SIZE_M + tl.arange(0, BLOCK_SIZE_M)) % M
+-    offs_bn = (pid_n * BLOCK_SIZE_N + tl.arange(0, BLOCK_SIZE_N)) % N
+-    offs_k = tl.arange(0, BLOCK_SIZE_K)
+-    a_ptrs = A + (offs_am[:, None] * stride_am + offs_k[None, :] * stride_ak)
+-    b_ptrs = B + (offs_k[:, None] * stride_bk + offs_bn[None, :] * stride_bn)
+-
+-    As_ptrs = As + offs_am * stride_As_m
+-    offs_bsn = offs_bn // group_n
+-    Bs_ptrs = Bs + offs_bsn * stride_Bs_n
+-
+-    accumulator = tl.zeros((BLOCK_SIZE_M, BLOCK_SIZE_N), dtype=tl.float32)
+-    for k in range(0, tl.cdiv(K, BLOCK_SIZE_K)):
+-        a = tl.load(a_ptrs,
+-                    mask=offs_k[None, :] < K - k * BLOCK_SIZE_K,
+-                    other=0.0)
+-        b = tl.load(b_ptrs,
+-                    mask=offs_k[:, None] < K - k * BLOCK_SIZE_K,
+-                    other=0.0)
+-
+-        k_start = k * BLOCK_SIZE_K
+-        offs_ks = k_start // group_k
+-        a_s = tl.load(As_ptrs + offs_ks * stride_As_k)
+-        b_s = tl.load(Bs_ptrs + offs_ks * stride_Bs_k)
+-
+-        accumulator += tl.dot(a, b).to(tl.float32) * a_s[:,
+-                                                         None] * b_s[None, :]
+-        a_ptrs += BLOCK_SIZE_K * stride_ak
+-        b_ptrs += BLOCK_SIZE_K * stride_bk
+-
+-    if C.dtype.element_ty == tl.bfloat16:
+-        c = accumulator.to(tl.bfloat16)
+-    elif C.dtype.element_ty == tl.float16:
+-        c = accumulator.to(tl.float16)
+-    else:
+-        c = accumulator.to(tl.float32)
+-
+-    offs_cm = pid_m * BLOCK_SIZE_M + tl.arange(0, BLOCK_SIZE_M)
+-    offs_cn = pid_n * BLOCK_SIZE_N + tl.arange(0, BLOCK_SIZE_N)
+-    c_ptrs = C + stride_cm * offs_cm[:, None] + stride_cn * offs_cn[None, :]
+-    c_mask = (offs_cm[:, None] < M) & (offs_cn[None, :] < N)
+-    tl.store(c_ptrs, c, mask=c_mask)
+ 
+ 
+ @functools.lru_cache
+@@ -369,91 +281,3 @@
+     return None
+ 
+ 
+-def w8a8_block_int8_matmul(
+-    A: torch.Tensor,
+-    B: torch.Tensor,
+-    As: torch.Tensor,
+-    Bs: torch.Tensor,
+-    block_size: List[int],
+-    output_dtype: torch.dtype = torch.float16,
+-) -> torch.Tensor:
+-    """This function performs matrix multiplication with block-wise
+-    quantization.
+-
+-    It takes two input tensors `A` and `B` with scales `As` and `Bs`.
+-    The output is returned in the specified `output_dtype`.
+-
+-    Args:
+-        A: The input tensor, e.g., activation.
+-        B: The input tensor, e.g., weight.
+-        As: The per-token-group quantization scale for `A`.
+-        Bs: The per-block quantization scale for `B`.
+-        block_size: The block size for per-block quantization. It should be
+-            2-dim, e.g., [128, 128].
+-        output_dytpe: The dtype of the returned tensor.
+-
+-    Returns:
+-        torch.Tensor: The result of matmul.
+-    """
+-    assert len(block_size) == 2
+-    block_n, block_k = block_size[0], block_size[1]
+-
+-    assert A.shape[-1] == B.shape[-1]
+-    assert A.shape[:-1] == As.shape[:-1] and A.is_contiguous()
+-    assert triton.cdiv(A.shape[-1], block_k) == As.shape[-1]
+-    M = A.numel() // A.shape[-1]
+-
+-    assert B.ndim == 2 and B.is_contiguous() and Bs.ndim == 2
+-    N, K = B.shape
+-    assert triton.cdiv(N, block_n) == Bs.shape[0]
+-    assert triton.cdiv(K, block_k) == Bs.shape[1]
+-
+-    C_shape = A.shape[:-1] + (N, )
+-    C = A.new_empty(C_shape, dtype=output_dtype)
+-
+-    configs = get_w8a8_block_int8_configs(N, K, block_size[0], block_size[1])
+-    if configs:
+-        # If an optimal configuration map has been found, look up the
+-        # optimal config
+-        config = configs[min(configs.keys(), key=lambda x: abs(x - M))]
+-    else:
+-        # Default config
+-        # Block-wise quant: BLOCK_SIZE_K must be divisible by block_size[1]
+-        config = {
+-            "BLOCK_SIZE_M": 64,
+-            "BLOCK_SIZE_N": block_size[0],
+-            "BLOCK_SIZE_K": block_size[1],
+-            "GROUP_SIZE_M": 32,
+-            "num_warps": 4,
+-            "num_stages": 3,
+-        }
+-
+-    def grid(META):
+-        return (triton.cdiv(M, META["BLOCK_SIZE_M"]) *
+-                triton.cdiv(N, META["BLOCK_SIZE_N"]), )
+-
+-    _w8a8_block_int8_matmul[grid](
+-        A,
+-        B,
+-        C,
+-        As,
+-        Bs,
+-        M,
+-        N,
+-        K,
+-        block_n,
+-        block_k,
+-        A.stride(-2),
+-        A.stride(-1),
+-        B.stride(1),
+-        B.stride(0),
+-        C.stride(-2),
+-        C.stride(-1),
+-        As.stride(-2),
+-        As.stride(-1),
+-        Bs.stride(1),
+-        Bs.stride(0),
+-        **config,
+-    )
+-
+-    return C
+
+[HEAD] Patched vllm/model_executor/layers/quantization/utils/int8_utils.py
+
+Done. All files patched successfully.
+2026-01-23 19:54:51,835 - INFO - Removing intermediate container 4ec78564355c
+2026-01-23 19:54:51,835 - INFO - ---> 543aa5277246
+2026-01-23 19:54:51,835 - INFO - Step 13/13 : WORKDIR /workspace/vllm-project/vllm
+2026-01-23 19:54:51,835 - INFO - 
+2026-01-23 19:54:51,865 - INFO - ---> Running in 8b82344fb601
+2026-01-23 19:54:51,961 - INFO - Removing intermediate container 8b82344fb601
+2026-01-23 19:54:51,961 - INFO - ---> 46f3d621680a
+2026-01-23 19:54:51,961 - INFO - Successfully built 46f3d621680a
+2026-01-23 19:54:51,967 - INFO - Successfully tagged rtbench-instance-vllm-32:latest
+2026-01-23 19:54:51,968 - INFO - Image built successfully!
