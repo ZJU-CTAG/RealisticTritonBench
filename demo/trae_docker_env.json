@@ -1,0 +1,10 @@
+{
+  "preparation_env": {
+    "HTTP_PROXY": "http://127.0.0.1:9091",
+    "HTTPS_PROXY": "http://127.0.0.1:9091",
+    "http_proxy": "http://127.0.0.1:9091",
+    "https_proxy": "http://127.0.0.1:9091"
+  },
+  "experiment_env": {
+  }
+}

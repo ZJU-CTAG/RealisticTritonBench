@@ -1,0 +1,9 @@
+instances_by_exit_status:
+    AuthenticationError:
+    - '18'
+    - '16'
+    - '15'
+    - '14'
+    CalledProcessError:
+    - '19'
+    - '13'

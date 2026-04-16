@@ -1,0 +1,140 @@
+2026-03-15 00:55:49,821 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-15 00:55:49,821 - minisweagent - INFO - Running on 1 instances...
+2026-03-15 00:55:49,822 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench_gpt.yaml']
+2026-03-15 00:55:52,690 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-5d8d5587 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-0:v1 sleep 2h
+2026-03-15 00:55:53,760 - minisweagent.environment - INFO - Started container minisweagent-5d8d5587 with ID aa3725a9b2b793afabec720a0e5924c4c24897ed0f2d070f907814e36930cdde
+2026-03-15 00:57:20,290 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/0/0.traj.json'
+2026-03-15 00:58:10,375 - minisweagent - INFO - Instance filter: 56 -> 32 instances
+2026-03-15 00:58:10,376 - minisweagent - INFO - Skipping 1 existing instances
+2026-03-15 00:58:10,377 - minisweagent - INFO - Running on 31 instances...
+2026-03-15 00:58:10,377 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench_gpt.yaml']
+2026-03-15 00:58:13,641 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-a28b09db -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-1:v1 sleep 2h
+2026-03-15 00:58:13,644 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-22960ba4 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-10:v1 sleep 2h
+2026-03-15 00:58:13,646 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-29089665 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-7:v1 sleep 2h
+2026-03-15 00:58:13,646 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-3a38a595 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-6:v1 sleep 2h
+2026-03-15 00:58:13,647 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-81932271 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-9:v1 sleep 2h
+2026-03-15 00:58:13,647 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-e456ed5c -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-2:v1 sleep 2h
+2026-03-15 00:58:14,888 - minisweagent.environment - INFO - Started container minisweagent-e456ed5c with ID d79dedb4f7256ec284ba8bc52366ed50edbfd26249f6387dec552e06811fa6d8
+2026-03-15 00:58:14,904 - minisweagent.environment - INFO - Started container minisweagent-22960ba4 with ID 77e6fda94b73519ae1820f7abd0f81622c32d19a7556e545022086678570525a
+2026-03-15 00:58:15,195 - minisweagent.environment - INFO - Started container minisweagent-81932271 with ID 34b955fd0831ab22ff07f8aee8eba281505354117194cab75205a6dc33edd8d0
+2026-03-15 00:58:15,256 - minisweagent.environment - INFO - Started container minisweagent-3a38a595 with ID 48d560cfed2b456c4037dd8fd50db533034158a30bb322be034d0a9f48163051
+2026-03-15 00:58:15,299 - minisweagent.environment - INFO - Started container minisweagent-29089665 with ID c30c228179b83d909c6c9c8d458cdd2064280e1c9e38b58ced88ff43a82865f5
+2026-03-15 00:58:15,311 - minisweagent.environment - INFO - Started container minisweagent-a28b09db with ID 3759f651f440c39a3f117f2cf3c901fefa45c594dace3d1760a966b4c884ebfd
+2026-03-15 00:58:15,663 - minisweagent - INFO - Cancelling all pending jobs. Press ^C again to exit immediately.
+2026-03-15 00:58:26,555 - minisweagent - INFO - Instance filter: 56 -> 32 instances
+2026-03-15 00:58:26,556 - minisweagent - INFO - Skipping 1 existing instances
+2026-03-15 00:58:26,556 - minisweagent - INFO - Running on 31 instances...
+2026-03-15 00:58:26,557 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench_gpt.yaml']
+2026-03-15 00:58:30,208 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-4dec9f24 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-1:v1 sleep 2h
+2026-03-15 00:58:30,211 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-ff850951 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-2:v1 sleep 2h
+2026-03-15 00:58:30,211 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-cabd90ec -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-6:v1 sleep 2h
+2026-03-15 00:58:30,865 - minisweagent.environment - INFO - Started container minisweagent-cabd90ec with ID 7204f163bc3b6f7c9837b7b13c415f9a97da1748c9ac7d0ff1d7252c99a09178
+2026-03-15 00:58:30,991 - minisweagent.environment - INFO - Started container minisweagent-ff850951 with ID 9c854e453b528a383d9dc0905d37aeac78a81b176276eb4964688893f0b45c55
+2026-03-15 00:58:31,003 - minisweagent.environment - INFO - Started container minisweagent-4dec9f24 with ID 4ee7ca8163569987317e08ea4a403d5b143b4bb6c13abb0ad4a9d00b3eb79973
+2026-03-15 00:59:08,092 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/2/2.traj.json'
+2026-03-15 00:59:08,098 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-67573d2c -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-7:v1 sleep 2h
+2026-03-15 00:59:08,611 - minisweagent.environment - INFO - Started container minisweagent-67573d2c with ID 058c10d707152f4a9702e971d41a1b344ac0bc1e03fbf30ee735c37fb4941136
+2026-03-15 01:00:35,198 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/6/6.traj.json'
+2026-03-15 01:00:35,208 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-fea304a2 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-9:v1 sleep 2h
+2026-03-15 01:00:35,860 - minisweagent.environment - INFO - Started container minisweagent-fea304a2 with ID ff846a839551c4e72dae54075933139cdd8c0320f88ddf5d3f80eb2710cb7f24
+2026-03-15 01:00:37,415 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/1/1.traj.json'
+2026-03-15 01:00:37,425 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-337c166b -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-10:v1 sleep 2h
+2026-03-15 01:00:37,916 - minisweagent.environment - INFO - Started container minisweagent-337c166b with ID 3c493c5a14ecaf4b497de9293ba685a492a3772ac3c5d9f7076413ce77b63637
+2026-03-15 01:00:45,352 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/7/7.traj.json'
+2026-03-15 01:00:45,359 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-2828b16d -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-11:v1 sleep 2h
+2026-03-15 01:00:46,140 - minisweagent.environment - INFO - Started container minisweagent-2828b16d with ID a96752dca1205be4b695ce27c6c5b67c2d67bec9c39df446515e70b7273846b6
+2026-03-15 01:02:43,319 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/10/10.traj.json'
+2026-03-15 01:02:43,333 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-07a9dc66 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-13:v1 sleep 2h
+2026-03-15 01:02:44,841 - minisweagent.environment - INFO - Started container minisweagent-07a9dc66 with ID 5e4b4b211cfca75703c9f2d4145f0cd06dd63cb7c29c18e291a23ee93a6ecc43
+2026-03-15 01:02:54,150 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/9/9.traj.json'
+2026-03-15 01:02:54,159 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-fe83cca9 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-14:v1 sleep 2h
+2026-03-15 01:02:54,658 - minisweagent.environment - INFO - Started container minisweagent-fe83cca9 with ID 9ed3769d824bc85b4603c38b1906b941e21715aa1a6e487003225829cddd9f1e
+2026-03-15 01:03:21,091 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/11/11.traj.json'
+2026-03-15 01:03:21,100 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-fe75ec20 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-15:v1 sleep 2h
+2026-03-15 01:03:21,745 - minisweagent.environment - INFO - Started container minisweagent-fe75ec20 with ID e308646a86b4e0e23a9a1edb8aabf24ef673daff7cb1b105a760a59a92254ea9
+2026-03-15 01:03:33,709 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/13/13.traj.json'
+2026-03-15 01:03:33,716 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-7db8b8f5 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-16:v1 sleep 2h
+2026-03-15 01:03:34,257 - minisweagent.environment - INFO - Started container minisweagent-7db8b8f5 with ID 8d5647ff2a2acb7b7ff9640f0e2b58ac9b9bcab5e1361f2b052dc7144ea02c29
+2026-03-15 01:03:36,528 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/14/14.traj.json'
+2026-03-15 01:03:36,536 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-b75dc969 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-17:v1 sleep 2h
+2026-03-15 01:03:37,091 - minisweagent.environment - INFO - Started container minisweagent-b75dc969 with ID d99de2bb133cb8de8f526f7c4d56c9b01cf25c2da1bf699cd17440b11c21dd45
+2026-03-15 01:04:04,146 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/16/16.traj.json'
+2026-03-15 01:04:04,156 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-2293a10c -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-18:v1 sleep 2h
+2026-03-15 01:04:04,875 - minisweagent.environment - INFO - Started container minisweagent-2293a10c with ID 5f2cf11f3efe5bbbc0b1dd67a5c5e2a3e591422b4b334e2b32fc5a48f7ef7ec7
+2026-03-15 01:04:14,589 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/15/15.traj.json'
+2026-03-15 01:04:14,596 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-29b7fa01 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-19:v1 sleep 2h
+2026-03-15 01:04:15,422 - minisweagent.environment - INFO - Started container minisweagent-29b7fa01 with ID 26c4a22339530f8585a93bc0989a32e2bb70e02f06d8f4c00376e37de056953a
+2026-03-15 01:04:35,436 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/18/18.traj.json'
+2026-03-15 01:04:35,446 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-c8b1cadc -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-20:v1 sleep 2h
+2026-03-15 01:04:36,192 - minisweagent.environment - INFO - Started container minisweagent-c8b1cadc with ID 333b5f1607c6df1ae6ef6af76c1496bf08ff8e6d54cb09864aa39ec7b91f76be
+2026-03-15 01:05:01,798 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/19/19.traj.json'
+2026-03-15 01:05:01,812 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-bbacf389 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-22:v1 sleep 2h
+2026-03-15 01:05:03,202 - minisweagent.environment - INFO - Started container minisweagent-bbacf389 with ID 542622ccd26929d9c4ee05bd34d3850d918ebaa3d6f151af9b29cc282cc75311
+2026-03-15 01:05:31,053 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/17/17.traj.json'
+2026-03-15 01:05:31,066 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-049c5c3d -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-25:v1 sleep 2h
+2026-03-15 01:05:32,812 - minisweagent.environment - INFO - Started container minisweagent-049c5c3d with ID 73d9252e0f2ddea8f90ea8dd269da78112973ec4b866d66cace75ace5822fed2
+2026-03-15 01:06:50,922 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/20/20.traj.json'
+2026-03-15 01:06:50,931 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-eae65bc6 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-26:v1 sleep 2h
+2026-03-15 01:06:52,247 - minisweagent.environment - INFO - Started container minisweagent-eae65bc6 with ID 41ad65eb7527c1a4e764a44e6b161b6f3201644fbc0b667b128b662dfba74172
+2026-03-15 01:07:29,634 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/22/22.traj.json'
+2026-03-15 01:07:29,652 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-95bc8bf1 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-27:v1 sleep 2h
+2026-03-15 01:07:30,472 - minisweagent.environment - INFO - Started container minisweagent-95bc8bf1 with ID c41a1c9f1f3ffe8b6db362fa38b5f24b2a16bd6756cdf5676c821249fc3d1ab3
+2026-03-15 01:07:53,558 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/25/25.traj.json'
+2026-03-15 01:07:53,568 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-1341279e -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-28:v1 sleep 2h
+2026-03-15 01:07:54,470 - minisweagent.environment - INFO - Started container minisweagent-1341279e with ID 8f90f68b1d982ab8b7185eee706f1e026044f7547f618f936648c67eec4b84ed
+2026-03-15 01:07:54,856 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/26/26.traj.json'
+2026-03-15 01:07:54,869 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-2697114c -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-29:v1 sleep 2h
+2026-03-15 01:07:55,669 - minisweagent.environment - INFO - Started container minisweagent-2697114c with ID 1bc17fd4d1247a45cca2ddfbb564888427d8336a527952113a29838417dc0938
+2026-03-15 01:08:52,948 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/27/27.traj.json'
+2026-03-15 01:08:52,960 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-4f5759b2 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-30:v1 sleep 2h
+2026-03-15 01:08:54,291 - minisweagent.environment - INFO - Started container minisweagent-4f5759b2 with ID b5bfc7c0ff52b48d9fc04079cae640d17d1904a847e35b74d49c4c93553b3488
+2026-03-15 01:09:51,225 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/28/28.traj.json'
+2026-03-15 01:09:51,236 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-70f2eab7 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-33:v1 sleep 2h
+2026-03-15 01:09:52,091 - minisweagent.environment - INFO - Started container minisweagent-70f2eab7 with ID 13b6aba4ee0cf3f20feb61caa4baeaee9119257d773b1e9580c1c1b679e2d21f
+2026-03-15 01:10:30,684 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/29/29.traj.json'
+2026-03-15 01:10:30,701 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-9a5eeb9e -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-34:v1 sleep 2h
+2026-03-15 01:10:31,329 - minisweagent.environment - INFO - Started container minisweagent-9a5eeb9e with ID 5874db2ea018ab65d5d4149188880bd203b0dc0bbebf6c5d3717ac257b4520d6
+2026-03-15 01:11:11,619 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/33/33.traj.json'
+2026-03-15 01:11:11,632 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-c3365005 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-36:v1 sleep 2h
+2026-03-15 01:11:12,796 - minisweagent.environment - INFO - Started container minisweagent-c3365005 with ID d51b5be9d533bf1898e525aebc100c083023d7cdd1640f528222218ad0b44c96
+2026-03-15 01:11:52,891 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/30/30.traj.json'
+2026-03-15 01:11:52,900 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-28b58ff8 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-39:v1 sleep 2h
+2026-03-15 01:11:53,754 - minisweagent.environment - INFO - Started container minisweagent-28b58ff8 with ID d29aa7646ad2bde875f1ba486d07a69dbf6277dade4ccaec4292b88e23c9b6a2
+2026-03-15 01:12:07,995 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/34/34.traj.json'
+2026-03-15 01:12:08,005 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-b46e6bcd -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-44:v1 sleep 2h
+2026-03-15 01:12:08,854 - minisweagent.environment - INFO - Started container minisweagent-b46e6bcd with ID 5a2aab19e456f14b2cb5dc4c0212bed6f13412ab426985e6feb3889af251b22d
+2026-03-15 01:12:15,849 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/36/36.traj.json'
+2026-03-15 01:12:15,863 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-b6102dbb -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-49:v1 sleep 2h
+2026-03-15 01:12:16,602 - minisweagent.environment - INFO - Started container minisweagent-b6102dbb with ID 4191da86f517ce6ca9e7eb77658ea8ff5272fff1f6e993e5b3f8df987658ffc1
+2026-03-15 01:12:52,492 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/39/39.traj.json'
+2026-03-15 01:12:52,502 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-744c73bc -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-50:v1 sleep 2h
+2026-03-15 01:12:53,143 - minisweagent.environment - INFO - Started container minisweagent-744c73bc with ID a57e8f60b55f09d394a0245604313cbd61b3ffb4bb90dd06b575cac070c2ab46
+2026-03-15 01:13:16,857 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/44/44.traj.json'
+2026-03-15 01:13:16,866 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-1a991d4d -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-53:v1 sleep 2h
+2026-03-15 01:13:17,688 - minisweagent.environment - INFO - Started container minisweagent-1a991d4d with ID 21443c6a95a3f076f4a054388fee90e4db6ddeba9e4715f8c29a27363d9082d5
+2026-03-15 01:13:29,168 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/49/49.traj.json'
+2026-03-15 01:13:29,178 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-749e3143 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-54:v1 sleep 2h
+2026-03-15 01:13:35,493 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/53/53.traj.json'
+2026-03-15 01:13:39,223 - minisweagent - ERROR - Error processing instance 54: Command '['docker', 'run', '-d', '--name', 'minisweagent-749e3143', '-w', '/workspace/vllm-project/vllm', '--rm', 'rtbench-instance-vllm-54:v1', 'sleep', '2h']' returned non-zero exit status 125.
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 165, in process_instance
+    env = get_sb_environment(config, instance)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 107, in get_sb_environment
+    env = get_environment(env_config)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/environments/__init__.py", line 33, in get_environment
+    return get_environment_class(environment_class)(**config)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/environments/docker.py", line 59, in __init__
+    self._start_container()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/environments/docker.py", line 91, in _start_container
+    result = subprocess.run(
+        cmd,
+    ...<3 lines>...
+        check=True,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['docker', 'run', '-d', '--name', 'minisweagent-749e3143', '-w', '/workspace/vllm-project/vllm', '--rm', 'rtbench-instance-vllm-54:v1', 'sleep', '2h']' returned non-zero exit status 125.
+2026-03-15 01:14:25,197 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gpt-5.4_minisweagent/50/50.traj.json'

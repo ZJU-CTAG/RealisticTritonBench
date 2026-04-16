@@ -1,0 +1,386 @@
+2026-03-06 15:29:47,677 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-06 15:30:21,356 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-06 15:30:21,358 - minisweagent - INFO - Running on 1 instances...
+2026-03-06 15:30:21,359 - minisweagent - INFO - Building agent config from specs: config/swebench.yaml
+2026-03-06 15:34:37,487 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-06 15:34:37,488 - minisweagent - INFO - Running on 1 instances...
+2026-03-06 15:34:37,489 - minisweagent - INFO - Building agent config from specs: config/swebench.yaml
+2026-03-06 15:37:01,238 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-06 15:37:01,239 - minisweagent - INFO - Running on 1 instances...
+2026-03-06 15:37:01,240 - minisweagent - INFO - Building agent config from specs: config/swebench.yaml
+2026-03-06 15:39:13,751 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-06 15:39:13,753 - minisweagent - INFO - Running on 1 instances...
+2026-03-06 15:39:13,754 - minisweagent - INFO - Building agent config from specs: /home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml
+2026-03-06 15:41:27,681 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-06 15:41:27,683 - minisweagent - INFO - Running on 1 instances...
+2026-03-06 15:41:55,887 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-06 15:41:55,889 - minisweagent - INFO - Running on 1 instances...
+2026-03-06 15:41:55,890 - minisweagent - INFO - Building agent config from specs: /home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml
+2026-03-06 15:42:38,900 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-06 15:42:38,901 - minisweagent - INFO - Running on 1 instances...
+2026-03-06 15:42:38,902 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-06 15:42:43,557 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-d7a0129d -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-0:v1 sleep 2h
+2026-03-06 15:42:44,553 - minisweagent.environment - INFO - Started container minisweagent-d7a0129d with ID 9812937c0c4022564b5d8a3aee43a366d46cabe8692b562883ab0b3b4859f87d
+2026-03-06 15:50:56,049 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/0/0.traj.json'
+2026-03-06 15:59:33,166 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-06 15:59:33,168 - minisweagent - INFO - Skipping 1 existing instances
+2026-03-06 15:59:33,168 - minisweagent - INFO - Running on 0 instances...
+2026-03-06 15:59:33,169 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-06 16:04:24,887 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-06 16:04:24,888 - minisweagent - INFO - Skipping 1 existing instances
+2026-03-06 16:04:24,889 - minisweagent - INFO - Running on 0 instances...
+2026-03-06 16:04:24,889 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-06 16:04:54,923 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-06 16:04:54,925 - minisweagent - INFO - Running on 1 instances...
+2026-03-06 16:04:54,926 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-06 16:04:58,980 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-8d6d26ca -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-0:v1 sleep 2h
+2026-03-06 16:04:59,765 - minisweagent.environment - INFO - Started container minisweagent-8d6d26ca with ID 24e7e97c398ca9cb579826e863c403c70fb984234407c1f23f2360338c908444
+2026-03-06 16:12:01,524 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/0/0.traj.json'
+2026-03-06 16:23:00,780 - minisweagent - INFO - Instance filter: 56 -> 2 instances
+2026-03-06 16:23:00,781 - minisweagent - INFO - Skipping 1 existing instances
+2026-03-06 16:23:00,782 - minisweagent - INFO - Running on 2 instances...
+2026-03-06 16:23:00,782 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-06 16:23:04,674 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-e3d711b9 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-1:v1 sleep 2h
+2026-03-06 16:23:05,429 - minisweagent.environment - INFO - Started container minisweagent-e3d711b9 with ID abad9f675bbb5f0316903cdf0a9c6d943f580a843f58e84877e65191de18eee3
+2026-03-06 16:40:03,554 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/1/1.traj.json'
+2026-03-06 16:40:03,563 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-d3283b0d -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-2:v1 sleep 2h
+2026-03-06 16:40:04,323 - minisweagent.environment - INFO - Started container minisweagent-d3283b0d with ID 94743bb12a32026518004efcbd437f675385d4a0a20812a5ca741266b2a3c762
+2026-03-06 16:53:15,950 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/2/2.traj.json'
+2026-03-06 16:55:21,780 - minisweagent - INFO - Instance filter: 56 -> 29 instances
+2026-03-06 16:55:21,781 - minisweagent - INFO - Skipping 3 existing instances
+2026-03-06 16:55:21,782 - minisweagent - INFO - Running on 29 instances...
+2026-03-06 16:55:21,782 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-06 16:55:25,663 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-91cb6ade -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-6:v1 sleep 2h
+2026-03-06 16:55:25,665 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-751db3d8 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-9:v1 sleep 2h
+2026-03-06 16:55:25,670 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-6095bdd9 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-11:v1 sleep 2h
+2026-03-06 16:55:25,670 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-0229b86a -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-10:v1 sleep 2h
+2026-03-06 16:55:25,671 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-38fc358c -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-13:v1 sleep 2h
+2026-03-06 16:55:25,671 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-dfbb6dab -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-7:v1 sleep 2h
+2026-03-06 16:55:27,050 - minisweagent.environment - INFO - Started container minisweagent-751db3d8 with ID f480982a541e399c24be2408d68a0a8e047dbe51f47d7b1c4688f9a0b223f48c
+2026-03-06 16:55:27,272 - minisweagent.environment - INFO - Started container minisweagent-6095bdd9 with ID b3bf08dc1364e3fa512c34c4ff3ffb933134397874bb54329d2bc4c33f90f3b3
+2026-03-06 16:55:27,972 - minisweagent.environment - INFO - Started container minisweagent-91cb6ade with ID a21f6d57dfbd6d45ac2f0c7e98210ca8b128cd2649c4153eeb7c6521e861d15d
+2026-03-06 16:55:27,981 - minisweagent.environment - INFO - Started container minisweagent-dfbb6dab with ID a3081d09d9a24145dca62139914dd2adaad0a677851078a82493fa9c429e5842
+2026-03-06 16:55:27,991 - minisweagent.environment - INFO - Started container minisweagent-38fc358c with ID 28fca3ee1f09d4d958ce582d63d4e8fc5df0d4d195b51da20ad1e8d7cc161bfc
+2026-03-06 16:55:28,003 - minisweagent.environment - INFO - Started container minisweagent-0229b86a with ID 54aa485e5dbb2bc8dd1d5e1b9fa13c4da3669151b89b14ea3c11385e057c8934
+2026-03-06 17:00:35,711 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/11/11.traj.json'
+2026-03-06 17:00:35,720 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-efd2c880 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-14:v1 sleep 2h
+2026-03-06 17:00:36,421 - minisweagent.environment - INFO - Started container minisweagent-efd2c880 with ID 37eb6e4e5f17e571d5a0d3b48b5f45714d92a407093c9520bb9750ae28b23128
+2026-03-06 17:01:39,069 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/6/6.traj.json'
+2026-03-06 17:01:39,079 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-cfb4c74c -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-15:v1 sleep 2h
+2026-03-06 17:01:39,828 - minisweagent.environment - INFO - Started container minisweagent-cfb4c74c with ID 6a808b867f78529b779c996c8471304f28d1ee842245d599235d9561255cec98
+2026-03-06 17:02:24,162 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/10/10.traj.json'
+2026-03-06 17:02:24,171 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-cf120264 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-16:v1 sleep 2h
+2026-03-06 17:02:24,833 - minisweagent.environment - INFO - Started container minisweagent-cf120264 with ID 223e63dcfdf5f28e91a6b93ae6197db34fb438e3e41e38145258d699405d5376
+2026-03-06 17:04:05,011 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/9/9.traj.json'
+2026-03-06 17:04:05,018 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-beace44d -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-17:v1 sleep 2h
+2026-03-06 17:04:05,821 - minisweagent.environment - INFO - Started container minisweagent-beace44d with ID 5d344b1da8dcdecde475014f8acb8cf7bc41cd980ab9dda51a4dada202d67c25
+2026-03-06 17:04:30,119 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/13/13.traj.json'
+2026-03-06 17:04:30,129 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-b25dd26f -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-18:v1 sleep 2h
+2026-03-06 17:04:30,874 - minisweagent.environment - INFO - Started container minisweagent-b25dd26f with ID a73ce8c67bf1705a536cde27a10d8abf3aa2821deab2bc2ad03aeedef6971a39
+2026-03-06 17:05:27,853 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/7/7.traj.json'
+2026-03-06 17:05:27,862 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-1fcadc09 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-19:v1 sleep 2h
+2026-03-06 17:05:28,518 - minisweagent.environment - INFO - Started container minisweagent-1fcadc09 with ID 3a3ff669aa8373ae39576bc309a56ad7482a80be0c54964c7e46d87b81af2ecb
+2026-03-06 17:07:18,235 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/16/16.traj.json'
+2026-03-06 17:07:18,246 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-c4aa027f -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-20:v1 sleep 2h
+2026-03-06 17:07:19,185 - minisweagent.environment - INFO - Started container minisweagent-c4aa027f with ID 19490d59dedbdee2c6c588fad4daf20e7d9ebcc76d34bd192a572e73c26cd75a
+2026-03-06 17:11:33,871 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/15/15.traj.json'
+2026-03-06 17:11:33,883 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-a440c20a -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-21:v1 sleep 2h
+2026-03-06 17:11:34,688 - minisweagent.environment - INFO - Started container minisweagent-a440c20a with ID 51cb5bb3a6d1cf69d47caa10cbfb768ad007d1a3036232622c00346f1ee67806
+2026-03-06 17:12:08,993 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/18/18.traj.json'
+2026-03-06 17:12:09,003 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-7d9a080e -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-22:v1 sleep 2h
+2026-03-06 17:12:09,654 - minisweagent.environment - INFO - Started container minisweagent-7d9a080e with ID f370e1e318e5008639cef4c8ae1b5031972d0f10d122bf4bd7c2518537d1bcb5
+2026-03-06 17:13:19,935 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/17/17.traj.json'
+2026-03-06 17:13:19,945 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-9017b2ae -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-25:v1 sleep 2h
+2026-03-06 17:13:20,717 - minisweagent.environment - INFO - Started container minisweagent-9017b2ae with ID 2080700b4d905c6e5242b9c605de902e5bd760307917ffaac39ec2f4f72e4e68
+2026-03-06 17:14:02,578 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/20/20.traj.json'
+2026-03-06 17:14:02,589 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-ef0b7673 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-26:v1 sleep 2h
+2026-03-06 17:14:03,302 - minisweagent.environment - INFO - Started container minisweagent-ef0b7673 with ID 08d028dab55d204ae7de72e5e2d1ad33e00c8fa275d334e20b9edf786682c01a
+2026-03-06 17:22:24,161 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/26/26.traj.json'
+2026-03-06 17:22:24,173 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-882d49af -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-27:v1 sleep 2h
+2026-03-06 17:22:24,966 - minisweagent.environment - INFO - Started container minisweagent-882d49af with ID db615be032797542b81a3cf1eb8aa8013401117f7097fcc8db4f03d56cdf2c62
+2026-03-06 17:23:49,750 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/19/19.traj.json'
+2026-03-06 17:23:49,765 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-b1443066 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-28:v1 sleep 2h
+2026-03-06 17:23:50,630 - minisweagent.environment - INFO - Started container minisweagent-b1443066 with ID b87945735e57e799d6433e9bb2092f98fe768d1b4301efac84b0e1933714fe51
+2026-03-06 17:24:17,854 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/22/22.traj.json'
+2026-03-06 17:24:17,868 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-50d87f0a -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-29:v1 sleep 2h
+2026-03-06 17:24:18,720 - minisweagent.environment - INFO - Started container minisweagent-50d87f0a with ID f9a97f21927b1c793832dff55e59066da40ee3cea0d3f79fd49c7e1ea080559b
+2026-03-06 17:24:37,528 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/21/21.traj.json'
+2026-03-06 17:24:37,538 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-114a1558 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-30:v1 sleep 2h
+2026-03-06 17:24:38,530 - minisweagent.environment - INFO - Started container minisweagent-114a1558 with ID da3961076326f867678a1da92b18f6a2653adf1e24f5d3c71fdd2808df99b02f
+2026-03-06 17:26:32,120 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/14/14.traj.json'
+2026-03-06 17:26:32,131 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-23738808 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-33:v1 sleep 2h
+2026-03-06 17:26:33,742 - minisweagent.environment - INFO - Started container minisweagent-23738808 with ID 2a30e987530dd32f98288d84b7c3bb8dce8bdfd17e8838de8245033dd8ad3891
+2026-03-06 17:28:52,436 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/25/25.traj.json'
+2026-03-06 17:28:52,446 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-eec9b3c4 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-34:v1 sleep 2h
+2026-03-06 17:28:55,012 - minisweagent.environment - INFO - Started container minisweagent-eec9b3c4 with ID b0114859654f5a2b53db9ab26d8b5841d7a9227c60af1eef1dc08cf99e0fe755
+2026-03-06 17:32:15,346 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/27/27.traj.json'
+2026-03-06 17:32:15,359 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-db4b7ff6 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-36:v1 sleep 2h
+2026-03-06 17:32:22,184 - minisweagent.environment - INFO - Started container minisweagent-db4b7ff6 with ID ba24ae27e7e4a9603fe3b2eb66dada807ac985047f519faa2678150371ebb624
+2026-03-06 17:34:09,289 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/29/29.traj.json'
+2026-03-06 17:34:09,304 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-fb421257 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-39:v1 sleep 2h
+2026-03-06 17:34:10,272 - minisweagent.environment - INFO - Started container minisweagent-fb421257 with ID 157bf1b4b49730ff9d49be2014d5251ff0d725bea618bd3215d79068b738ae2d
+2026-03-06 17:37:41,961 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/33/33.traj.json'
+2026-03-06 17:37:41,976 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-4989cd4a -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-44:v1 sleep 2h
+2026-03-06 17:37:42,843 - minisweagent.environment - INFO - Started container minisweagent-4989cd4a with ID 68c9be81599bec03e4eb0f57c38430b1f45c45c56e9dceb3541a9228db56f683
+2026-03-06 17:39:10,371 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/34/34.traj.json'
+2026-03-06 17:39:10,383 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-25d48095 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-49:v1 sleep 2h
+2026-03-06 17:39:11,205 - minisweagent.environment - INFO - Started container minisweagent-25d48095 with ID 51ee0bfbacb3218865d347ced74a5e6df92558ff575befe88b07e5de39914e76
+2026-03-06 17:41:56,052 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/36/36.traj.json'
+2026-03-06 17:41:56,063 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-e0d78c26 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-50:v1 sleep 2h
+2026-03-06 17:41:56,798 - minisweagent.environment - INFO - Started container minisweagent-e0d78c26 with ID e0eb699488820992431cc368841ba8ede5eb3341854c2b16f9b9ce7b0537000a
+2026-03-06 17:42:32,851 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/39/39.traj.json'
+2026-03-06 17:42:32,861 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-088dcf2c -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-53:v1 sleep 2h
+2026-03-06 17:42:33,577 - minisweagent.environment - INFO - Started container minisweagent-088dcf2c with ID a882bcca2621a0daccc101777453afd695ce2e4d4aac64b81479c97acc182ff8
+2026-03-06 17:45:42,665 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/44/44.traj.json'
+2026-03-06 17:46:13,994 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/28/28.traj.json'
+2026-03-06 17:49:08,410 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/53/53.traj.json'
+2026-03-06 17:50:37,592 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/30/30.traj.json'
+2026-03-06 17:54:25,059 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/50/50.traj.json'
+2026-03-06 19:00:56,644 - minisweagent - ERROR - Error processing instance 49: litellm.InternalServerError: InternalServerError: DeepseekException - [Errno 111] Connection refused
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/httpcore/_sync/http_proxy.py", line 288, in handle_request
+    connect_response = self._connection.handle_request(
+        connect_request
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/custom_httpx/llm_http_handler.py", line 217, in _make_common_sync_call
+    response = sync_httpx_client.post(
+        url=api_base,
+    ...<8 lines>...
+        logging_obj=logging_obj,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/custom_httpx/http_handler.py", line 981, in post
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/custom_httpx/http_handler.py", line 960, in post
+    response = self.client.send(req, stream=stream)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 1751, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 1724, in completion
+    response = base_llm_http_handler.completion(
+        model=model,
+    ...<15 lines>...
+        provider_config=provider_config,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/custom_httpx/llm_http_handler.py", line 520, in completion
+    response = self._make_common_sync_call(
+        sync_httpx_client=sync_httpx_client,
+    ...<7 lines>...
+        logging_obj=logging_obj,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/custom_httpx/llm_http_handler.py", line 244, in _make_common_sync_call
+    raise self._handle_error(e=e, provider_config=provider_config)
+          ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/custom_httpx/llm_http_handler.py", line 3617, in _handle_error
+    raise provider_config.get_error_class(
+    ...<3 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 173, in process_instance
+    info = agent.run(task)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 87, in run
+    self.step()
+    ~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 73, in step
+    return super().step()
+           ~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 101, in step
+    return self.execute_actions(self.query())
+                                ~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 114, in query
+    message = self.model.query(self.messages)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 81, in query
+    for attempt in retry(logger=logger, abort_exceptions=self.abort_exceptions):
+                   ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 438, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 83, in query
+    response = self._query(self._prepare_messages_for_api(messages), **kwargs)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 65, in _query
+    return litellm.completion(
+           ~~~~~~~~~~~~~~~~~~^
+        model=self.config.model_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **(self.config.model_kwargs | kwargs),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 4080, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 539, in exception_type
+    raise InternalServerError(
+    ...<5 lines>...
+    )
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: DeepseekException - [Errno 111] Connection refused
+2026-03-06 19:00:56,858 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/49/49.traj.json'
+2026-03-10 17:49:59,583 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-10 17:49:59,586 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-10 17:49:59,587 - minisweagent - INFO - Running on 1 instances...
+2026-03-10 17:49:59,588 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-10 17:50:04,179 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-fc6ce187 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-49:v1 sleep 2h
+2026-03-10 17:50:05,325 - minisweagent.environment - INFO - Started container minisweagent-fc6ce187 with ID 29ecb9a43c5a800c837f566f0297beab10f5799703900fa29f7f56fb7d45a592
+2026-03-10 18:09:46,866 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/49/49.traj.json'
+2026-03-13 16:57:41,755 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 16:57:41,757 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 16:57:41,758 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 16:57:41,758 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench_ds.yaml']
+2026-03-13 16:57:48,596 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-a67ba76a -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-34:v1 sleep 2h
+2026-03-13 16:57:49,112 - minisweagent.environment - INFO - Started container minisweagent-a67ba76a with ID 87b2e4f4289e0f1ea899ea0d6602a83fb7f258aa7e9c77b9108dfe92cca04b37
+2026-03-13 16:57:53,132 - minisweagent - INFO - Cancelling all pending jobs. Press ^C again to exit immediately.
+2026-03-13 16:58:39,454 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 16:58:39,455 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 16:58:39,456 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 16:58:39,456 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench_ds.yaml']
+2026-03-13 16:58:42,157 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-5ebc4568 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-34:v1 sleep 2h
+2026-03-13 16:58:42,652 - minisweagent.environment - INFO - Started container minisweagent-5ebc4568 with ID dcecec8f0808ea76442bb69e60a556a29b20cd0e2fed57be261f63dd14213142
+2026-03-13 17:00:49,213 - minisweagent - INFO - Cancelling all pending jobs. Press ^C again to exit immediately.
+2026-03-13 17:00:57,538 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 17:00:57,539 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 17:00:57,540 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 17:00:57,540 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench_ds.yaml']
+2026-03-13 17:01:01,515 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-e098f0b7 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-34:v1 sleep 2h
+2026-03-13 17:01:01,991 - minisweagent.environment - INFO - Started container minisweagent-e098f0b7 with ID 6163c2cbf1d1d7d15488de47c310dcdb3c2af5ba130625a40d8f286266e6a78c
+2026-03-13 17:15:04,738 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/34/34.traj.json'
+2026-03-13 17:43:07,002 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 17:43:07,004 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 17:43:07,004 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 17:43:07,005 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench_ds.yaml']
+2026-03-13 17:43:13,682 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-33bb57f6 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-20:v1 sleep 2h
+2026-03-13 17:43:14,135 - minisweagent.environment - INFO - Started container minisweagent-33bb57f6 with ID aac33f2b3e0286c51713ef283cbd4f125e66a37e84e0917c3c2e97acb6d5e23f
+2026-03-13 17:51:50,012 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/20/20.traj.json'
+2026-03-13 18:10:58,772 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 18:10:58,773 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 18:10:58,774 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 18:10:58,775 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench_ds.yaml']
+2026-03-13 18:12:51,586 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 18:12:51,588 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 18:12:51,589 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 18:12:51,589 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench_ds.yaml']
+2026-03-13 18:12:54,807 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-f824f688 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-34:v1 sleep 2h
+2026-03-13 18:12:55,345 - minisweagent.environment - INFO - Started container minisweagent-f824f688 with ID 00b961b615ac5e12ea470530c9d74abc0b303fd5dd902bfe6a86e7d1e68e8f62
+2026-03-13 18:23:17,519 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/34/34.traj.json'
+2026-03-13 18:23:56,342 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 18:23:56,344 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 18:23:56,344 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 18:23:56,345 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench_ds.yaml']
+2026-03-13 18:24:03,060 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-40ede09e -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-20:v1 sleep 2h
+2026-03-13 18:24:03,591 - minisweagent.environment - INFO - Started container minisweagent-40ede09e with ID 9e872aa2aab5988a64be2e76384d20238f47696dfabeec612b399f08b71b1fb4
+2026-03-13 18:31:08,699 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/20/20.traj.json'
+2026-03-13 18:33:58,770 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 18:33:58,772 - minisweagent - INFO - Skipping 32 existing instances
+2026-03-13 18:33:58,772 - minisweagent - INFO - Running on 0 instances...
+2026-03-13 18:33:58,772 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench_ds.yaml']
+2026-03-13 18:34:17,067 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 18:34:17,068 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 18:34:17,069 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 18:34:17,069 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench_ds.yaml']
+2026-03-13 18:35:24,141 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 18:35:24,143 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 18:35:24,143 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 18:35:24,144 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench_ds.yaml']
+2026-03-13 18:36:08,334 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 18:36:08,336 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 18:36:08,337 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 18:36:08,338 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench_ds.yaml']
+2026-03-13 18:37:23,049 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 18:37:23,051 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 18:37:23,052 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 18:37:23,052 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench_ds.yaml']
+2026-03-13 18:37:25,650 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-7fc6e7ec -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-20:v1 sleep 2h
+2026-03-13 18:37:26,135 - minisweagent.environment - INFO - Started container minisweagent-7fc6e7ec with ID 790e8cdcf51c2be886d6b6b07c07809f40d3e0fe45620d68bf8231389fab1e43
+2026-03-13 18:46:31,535 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/20/20.traj.json'
+2026-03-13 19:45:34,145 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 19:45:34,147 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 19:45:34,147 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 19:45:34,148 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench_ds.yaml']
+2026-03-13 19:45:36,791 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-df8ac8dc -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-20:v1 sleep 2h
+2026-03-13 19:45:37,414 - minisweagent.environment - INFO - Started container minisweagent-df8ac8dc with ID 3cc7a02df2e04f54de123e5f5edd7afbe407c39fcd2e108c28882eb2296a3b66
+2026-03-13 19:51:26,416 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-chat_minisweagent/20/20.traj.json'

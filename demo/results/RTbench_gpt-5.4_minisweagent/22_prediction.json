@@ -1,0 +1,5 @@
+{
+  "vllm/attention/ops/triton_reshape_and_cache_flash.py": {
+    "reshape_and_cache_kernel_flash": "    token_idx = tl.program_id(0)\n    tile_idx = tl.program_id(1)\n\n    slot_idx = tl.load(slot_mapping_ptr + token_idx)\n    if slot_idx < 0:\n        return\n\n    block_idx = slot_idx // block_size\n    block_offset = slot_idx % block_size\n\n    n = num_heads * head_size\n    offs = tile_idx * TILE_SIZE + tl.arange(0, TILE_SIZE)\n    mask = offs < n\n\n    src_k_ptrs = key_ptr + token_idx * key_stride + offs\n    src_v_ptrs = value_ptr + token_idx * value_stride + offs\n\n    dst_base = block_idx * block_stride + block_offset * page_stride\n    dst_k_ptrs = key_cache_ptr + dst_base + offs\n    dst_v_ptrs = value_cache_ptr + dst_base + offs\n\n    k = tl.load(src_k_ptrs, mask=mask)\n    v = tl.load(src_v_ptrs, mask=mask)\n\n    if FP8_KV_CACHE:\n        k = k / k_scale\n        v = v / v_scale\n\n    tl.store(dst_k_ptrs, k, mask=mask)\n    tl.store(dst_v_ptrs, v, mask=mask)"
+  }
+}

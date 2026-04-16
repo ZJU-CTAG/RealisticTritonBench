@@ -1,0 +1,930 @@
+2026-03-09 14:49:08,313 - minisweagent - INFO - Instance filter: 56 -> 32 instances
+2026-03-09 14:49:08,314 - minisweagent - INFO - Running on 32 instances...
+2026-03-09 14:49:08,314 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-09 14:49:12,342 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-3af26851 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-0:v1 sleep 2h
+2026-03-09 14:49:12,346 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-05d4221f -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-1:v1 sleep 2h
+2026-03-09 14:49:12,346 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-57d0170c -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-9:v1 sleep 2h
+2026-03-09 14:49:12,347 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-906921dd -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-2:v1 sleep 2h
+2026-03-09 14:49:12,347 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-10b912e5 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-6:v1 sleep 2h
+2026-03-09 14:49:12,347 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-4c7a826b -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-7:v1 sleep 2h
+2026-03-09 14:49:14,265 - minisweagent.environment - INFO - Started container minisweagent-4c7a826b with ID d759da4591858da4762fed07f7544d8a7d95b874aa13b0a77bb5af98d29e433d
+2026-03-09 14:49:14,464 - minisweagent.environment - INFO - Started container minisweagent-3af26851 with ID 809cd521f199b636f111e9a109359dd99a0ed6653592628703825ae530762fa2
+2026-03-09 14:49:14,584 - minisweagent.environment - INFO - Started container minisweagent-10b912e5 with ID fdba5141181f691eec8d49fa1b8b8ed51e836a87a89c7bf0fb0642ce04e0aeb1
+2026-03-09 14:49:14,680 - minisweagent.environment - INFO - Started container minisweagent-05d4221f with ID c47a142f7f0b99dd2f198db1a83d54660f4b6c625392a6d5f10ffcaefb2a2bd9
+2026-03-09 14:49:14,691 - minisweagent.environment - INFO - Started container minisweagent-57d0170c with ID 76587b73ceec345da8cfd71a63afa1d6e8c5a5d018ff4ebdcc0cdcec8c72d103
+2026-03-09 14:49:14,903 - minisweagent.environment - INFO - Started container minisweagent-906921dd with ID 75b553f5b6085ec1e5de82214aeada6f233c0cd5d553b0a816fe7726bd7627ff
+2026-03-09 14:58:25,751 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/6/6.traj.json'
+2026-03-09 14:58:25,759 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-47c31a04 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-10:v1 sleep 2h
+2026-03-09 14:58:26,730 - minisweagent.environment - INFO - Started container minisweagent-47c31a04 with ID 0f076a70a2551d26442d6ec7e09db5dc3efff597076110a504cb4bcab8f7347c
+2026-03-09 15:00:08,024 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/0/0.traj.json'
+2026-03-09 15:00:08,035 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-5b3f8cdf -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-11:v1 sleep 2h
+2026-03-09 15:00:10,387 - minisweagent.environment - INFO - Started container minisweagent-5b3f8cdf with ID ce1c2dd6ce5665c2ad540a35046709ec14fde07ddf33e73b7398586f6d556bb9
+2026-03-09 15:05:25,467 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/9/9.traj.json'
+2026-03-09 15:05:25,478 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-2e169a52 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-13:v1 sleep 2h
+2026-03-09 15:05:26,493 - minisweagent.environment - INFO - Started container minisweagent-2e169a52 with ID 778b7539179ed8b52715595e7e952419d59d9c400f89938345d42b9c879c8cd0
+2026-03-09 15:07:57,028 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/7/7.traj.json'
+2026-03-09 15:07:57,037 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-77ffab9d -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-14:v1 sleep 2h
+2026-03-09 15:07:57,848 - minisweagent.environment - INFO - Started container minisweagent-77ffab9d with ID e565a8b25eea887483f28cc083eaff8f82ce4b45ea37c15667e25e0d34313153
+2026-03-09 15:10:25,766 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/11/11.traj.json'
+2026-03-09 15:10:25,775 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-baae2441 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-15:v1 sleep 2h
+2026-03-09 15:10:26,616 - minisweagent.environment - INFO - Started container minisweagent-baae2441 with ID c376e807f159bb928463b8d5f02fa4791c72dfbd1c98508c5f0b09bf86a49a08
+2026-03-09 15:12:03,887 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/2/2.traj.json'
+2026-03-09 15:12:03,898 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-0d367df3 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-16:v1 sleep 2h
+2026-03-09 15:12:04,639 - minisweagent.environment - INFO - Started container minisweagent-0d367df3 with ID a3dc0d118b736643fbb8a634b9881acf81782be44f2c6087cd55283dc7952245
+2026-03-09 15:14:47,173 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/10/10.traj.json'
+2026-03-09 15:14:47,182 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-39935059 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-17:v1 sleep 2h
+2026-03-09 15:14:47,991 - minisweagent.environment - INFO - Started container minisweagent-39935059 with ID 1870e290596c8f5f6fb5d674c5d8160d9340967ed29eaa916348c36931104432
+2026-03-09 15:17:28,561 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/13/13.traj.json'
+2026-03-09 15:17:28,571 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-74842899 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-18:v1 sleep 2h
+2026-03-09 15:17:29,393 - minisweagent.environment - INFO - Started container minisweagent-74842899 with ID c40f7bfd07f733805900974a7895fa4fa8101cb25eb849602226b64040e2d50f
+2026-03-09 15:20:23,732 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/1/1.traj.json'
+2026-03-09 15:20:23,739 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-911140cc -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-19:v1 sleep 2h
+2026-03-09 15:20:24,527 - minisweagent.environment - INFO - Started container minisweagent-911140cc with ID 6e96e3e6ba22367602c029d255827e6c53c0782dbbff750f409d2953a44e8e13
+2026-03-09 15:26:03,807 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/18/18.traj.json'
+2026-03-09 15:26:03,819 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-d01b47f0 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-20:v1 sleep 2h
+2026-03-09 15:26:04,496 - minisweagent.environment - INFO - Started container minisweagent-d01b47f0 with ID e2cba2570a3f0df6f7a5ecce772d7f3ec59029eddc462ce9077e4a102f8ade58
+2026-03-09 15:26:39,883 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/16/16.traj.json'
+2026-03-09 15:26:39,893 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-7b16bbda -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-21:v1 sleep 2h
+2026-03-09 15:26:40,604 - minisweagent.environment - INFO - Started container minisweagent-7b16bbda with ID a4b934d6a5dc65573a02c6c5c64cff8464b1005be81a00b1115df395224ddf56
+2026-03-09 15:28:58,915 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/14/14.traj.json'
+2026-03-09 15:28:58,931 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-adc6cc4f -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-22:v1 sleep 2h
+2026-03-09 15:28:59,686 - minisweagent.environment - INFO - Started container minisweagent-adc6cc4f with ID 4ca70b33af36472cf725674527ffa2f2d6f741eb0e68d80a4660e9aaabe06081
+2026-03-09 15:34:02,459 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/19/19.traj.json'
+2026-03-09 15:34:02,468 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-7918eb74 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-25:v1 sleep 2h
+2026-03-09 15:34:03,271 - minisweagent.environment - INFO - Started container minisweagent-7918eb74 with ID 697dcdb841d2346c19940b087e562e0bf98d522bc82559c60ebe77a085c7c389
+2026-03-09 15:37:57,959 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/15/15.traj.json'
+2026-03-09 15:37:57,969 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-a9a4eb96 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-26:v1 sleep 2h
+2026-03-09 15:37:58,856 - minisweagent.environment - INFO - Started container minisweagent-a9a4eb96 with ID 2c3e00560532f044f74e552e312831d6ad985b2adededaea5fa4a65edfe78eaa
+2026-03-09 15:39:09,883 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/21/21.traj.json'
+2026-03-09 15:39:09,893 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-a2a3c3d2 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-27:v1 sleep 2h
+2026-03-09 15:39:10,587 - minisweagent.environment - INFO - Started container minisweagent-a2a3c3d2 with ID f4eda53be36f19818d70628bfda25d6c6e5a7ace4cec6c6db8ecbeba1f313365
+2026-03-09 15:39:31,476 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/17/17.traj.json'
+2026-03-09 15:39:31,487 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-687a8ef9 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-28:v1 sleep 2h
+2026-03-09 15:39:32,396 - minisweagent.environment - INFO - Started container minisweagent-687a8ef9 with ID b9cda79c709ae28f8b788a15b4d28e019c32a0752ba50cb00c26dd5a34b969da
+2026-03-09 15:42:41,324 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/20/20.traj.json'
+2026-03-09 15:42:41,336 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-f6deb2f7 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-29:v1 sleep 2h
+2026-03-09 15:42:42,374 - minisweagent.environment - INFO - Started container minisweagent-f6deb2f7 with ID 143cbcacd73d564541f529b9c46fc600988c239826d9462429865c1e0b51013e
+2026-03-09 15:42:53,409 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/22/22.traj.json'
+2026-03-09 15:42:53,424 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-3e19b839 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-30:v1 sleep 2h
+2026-03-09 15:42:54,441 - minisweagent.environment - INFO - Started container minisweagent-3e19b839 with ID 74d26ebc934faca0d99748e598ec0747afd3108ef90969d52d5863d4d6c091c0
+2026-03-09 15:47:25,719 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/26/26.traj.json'
+2026-03-09 15:47:25,731 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-000a0f47 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-33:v1 sleep 2h
+2026-03-09 15:47:26,589 - minisweagent.environment - INFO - Started container minisweagent-000a0f47 with ID c45c0d2c19b8e59accdc024cdd4182e0395a52752d03e2de5b832307fc07c44d
+2026-03-09 15:50:58,623 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/29/29.traj.json'
+2026-03-09 15:50:58,633 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-7fc1a704 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-34:v1 sleep 2h
+2026-03-09 15:50:59,233 - minisweagent.environment - INFO - Started container minisweagent-7fc1a704 with ID 2c4a3ccdabee8bcee435f8da9e0db1f9feb1d0ab142ea0f32b37bfe6e592374b
+2026-03-09 15:56:28,691 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/27/27.traj.json'
+2026-03-09 15:56:28,704 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-284b21dc -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-36:v1 sleep 2h
+2026-03-09 15:56:30,149 - minisweagent.environment - INFO - Started container minisweagent-284b21dc with ID e5bf6cdf2b9edd1aeda838c16ca40dbe7a04310c4d0fc127ed382be40fcdb89f
+2026-03-09 15:58:53,083 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/25/25.traj.json'
+2026-03-09 15:58:53,096 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-fecbcb79 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-39:v1 sleep 2h
+2026-03-09 15:58:53,830 - minisweagent.environment - INFO - Started container minisweagent-fecbcb79 with ID bedaf96190308a0699b6c6b6a3ac8177e0390b47621092169fc2bd52e9ecd763
+2026-03-09 16:02:59,184 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/33/33.traj.json'
+2026-03-09 16:02:59,199 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-387b4b48 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-44:v1 sleep 2h
+2026-03-09 16:03:00,276 - minisweagent.environment - INFO - Started container minisweagent-387b4b48 with ID 87c28a60ca9bb119ff8b96b1bf26efa1972e808e52d1f1ae6799f8e08460697b
+2026-03-09 16:05:51,414 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/28/28.traj.json'
+2026-03-09 16:05:51,426 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-da66a631 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-49:v1 sleep 2h
+2026-03-09 16:05:52,317 - minisweagent.environment - INFO - Started container minisweagent-da66a631 with ID e88ca6947c6d09011a259a67ee1afb7dbb55bbf74a2e5822f43d40834222523b
+2026-03-09 16:11:24,566 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/34/34.traj.json'
+2026-03-09 16:11:24,579 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-f695a366 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-50:v1 sleep 2h
+2026-03-09 16:11:25,319 - minisweagent.environment - INFO - Started container minisweagent-f695a366 with ID 9dc63f9ef4fdf2a7324f17dbec01f7a081904725189eaf68cd1a08fb87a42326
+2026-03-09 16:12:14,035 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/30/30.traj.json'
+2026-03-09 16:12:14,046 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-dc95c074 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-53:v1 sleep 2h
+2026-03-09 16:12:14,872 - minisweagent.environment - INFO - Started container minisweagent-dc95c074 with ID 3ba682dabe009a6ccaeb84c8a89037e16e3e65cda3585b8f84068ab91374c8ee
+2026-03-09 16:17:18,913 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/39/39.traj.json'
+2026-03-09 16:17:23,079 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/49/49.traj.json'
+2026-03-09 16:20:07,532 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/53/53.traj.json'
+2026-03-09 16:20:41,206 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/36/36.traj.json'
+2026-03-09 16:23:27,225 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/44/44.traj.json'
+2026-03-09 16:37:36,254 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/50/50.traj.json'
+2026-03-13 11:48:04,518 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 11:48:04,521 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 11:48:04,522 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 11:48:04,522 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-13 11:49:16,147 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 11:49:16,148 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 11:49:16,149 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 11:49:16,149 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-13 11:50:17,666 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 11:50:17,668 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 11:50:17,668 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 11:50:17,669 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-13 11:51:04,919 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 11:51:04,921 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 11:51:04,921 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 11:51:04,922 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-13 11:51:43,108 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 11:51:43,109 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 11:51:43,110 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 11:51:43,110 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-13 11:53:39,233 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 11:53:39,234 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 11:53:39,235 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 11:53:39,235 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-13 11:56:40,976 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 11:56:40,977 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 11:56:40,978 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 11:56:40,978 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-13 11:57:04,759 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 11:57:04,761 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 11:57:04,762 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 11:57:04,762 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-13 11:57:11,408 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-129558b6 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-34:v1 sleep 2h
+2026-03-13 11:57:11,971 - minisweagent.environment - INFO - Started container minisweagent-129558b6 with ID fe0b5ca7d49844bd79314f215930187faa32c29a6e5fef72c8f6247c4d4a730a
+2026-03-13 11:57:12,418 - minisweagent - ERROR - Error processing instance 34: litellm.NotFoundError: OpenAIException - The model `deepseek-reasoner` does not exist or you do not have access to it.
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 762, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 690, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        openai_client=openai_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        logging_obj=logging_obj,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+        **data, timeout=timeout
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1204, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.NotFoundError: Error code: 404 - {'error': {'message': 'The model `deepseek-reasoner` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}, 'request_id': '79f6d6fe-52a9-90bb-8e63-5612aa8a5362'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2369, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2341, in completion
+    response = openai_chat_completions.completion(
+        model=model,
+    ...<16 lines>...
+        shared_session=shared_session,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 773, in completion
+    raise OpenAIError(
+    ...<4 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: Error code: 404 - {'error': {'message': 'The model `deepseek-reasoner` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}, 'request_id': '79f6d6fe-52a9-90bb-8e63-5612aa8a5362'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 173, in process_instance
+    info = agent.run(task)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 87, in run
+    self.step()
+    ~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 73, in step
+    return super().step()
+           ~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 101, in step
+    return self.execute_actions(self.query())
+                                ~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 114, in query
+    message = self.model.query(self.messages)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 81, in query
+    for attempt in retry(logger=logger, abort_exceptions=self.abort_exceptions):
+                   ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 438, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 83, in query
+    response = self._query(self._prepare_messages_for_api(messages), **kwargs)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 65, in _query
+    return litellm.completion(
+           ~~~~~~~~~~~~~~~~~~^
+        model=self.config.model_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **(self.config.model_kwargs | kwargs),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 4080, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 387, in exception_type
+    raise NotFoundError(
+    ...<5 lines>...
+    )
+litellm.exceptions.NotFoundError: litellm.NotFoundError: OpenAIException - The model `deepseek-reasoner` does not exist or you do not have access to it.
+2026-03-13 11:57:12,461 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/34/34.traj.json'
+2026-03-13 11:58:33,304 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 11:58:33,305 - minisweagent - INFO - Skipping 32 existing instances
+2026-03-13 11:58:33,306 - minisweagent - INFO - Running on 0 instances...
+2026-03-13 11:58:33,306 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-13 11:59:07,288 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 11:59:07,290 - minisweagent - INFO - Skipping 32 existing instances
+2026-03-13 11:59:07,290 - minisweagent - INFO - Running on 0 instances...
+2026-03-13 11:59:07,291 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-13 11:59:38,124 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 11:59:38,125 - minisweagent - INFO - Skipping 32 existing instances
+2026-03-13 11:59:38,126 - minisweagent - INFO - Running on 0 instances...
+2026-03-13 11:59:38,126 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-13 12:00:00,567 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 12:00:00,568 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 12:00:00,569 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 12:00:00,569 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-13 12:00:03,222 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-c291036c -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-34:v1 sleep 2h
+2026-03-13 12:00:03,698 - minisweagent.environment - INFO - Started container minisweagent-c291036c with ID 40829e635397a1871bc21e0cdf57fd38fe27b836d7046e2c10eb865218989869
+2026-03-13 12:00:04,151 - minisweagent - ERROR - Error processing instance 34: litellm.NotFoundError: OpenAIException - The model `deepseek/deepseek-reasoner` does not exist or you do not have access to it.
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 762, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 690, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        openai_client=openai_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        logging_obj=logging_obj,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+        **data, timeout=timeout
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1204, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.NotFoundError: Error code: 404 - {'error': {'message': 'The model `deepseek/deepseek-reasoner` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}, 'request_id': '37127a86-2910-90e7-8762-bc0db039ee88'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2369, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2341, in completion
+    response = openai_chat_completions.completion(
+        model=model,
+    ...<16 lines>...
+        shared_session=shared_session,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 773, in completion
+    raise OpenAIError(
+    ...<4 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: Error code: 404 - {'error': {'message': 'The model `deepseek/deepseek-reasoner` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}, 'request_id': '37127a86-2910-90e7-8762-bc0db039ee88'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 173, in process_instance
+    info = agent.run(task)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 87, in run
+    self.step()
+    ~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 73, in step
+    return super().step()
+           ~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 101, in step
+    return self.execute_actions(self.query())
+                                ~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 114, in query
+    message = self.model.query(self.messages)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 81, in query
+    for attempt in retry(logger=logger, abort_exceptions=self.abort_exceptions):
+                   ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 438, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 83, in query
+    response = self._query(self._prepare_messages_for_api(messages), **kwargs)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 65, in _query
+    return litellm.completion(
+           ~~~~~~~~~~~~~~~~~~^
+        model=self.config.model_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **(self.config.model_kwargs | kwargs),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 4080, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 387, in exception_type
+    raise NotFoundError(
+    ...<5 lines>...
+    )
+litellm.exceptions.NotFoundError: litellm.NotFoundError: OpenAIException - The model `deepseek/deepseek-reasoner` does not exist or you do not have access to it.
+2026-03-13 12:00:04,186 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/34/34.traj.json'
+2026-03-13 12:02:07,239 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 12:02:07,240 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 12:02:07,241 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 12:02:07,241 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-13 12:02:09,908 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-94874dc6 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-34:v1 sleep 2h
+2026-03-13 12:02:10,403 - minisweagent.environment - INFO - Started container minisweagent-94874dc6 with ID 1b7d100719a66de0f8d253db529fce5f730947012c973640418dd445952fe0e8
+2026-03-13 12:02:11,308 - minisweagent - ERROR - Error processing instance 34: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided: sk-67487***********************2974. You can find your API key at https://platform.openai.com/account/api-keys. You can permanently set your API key with `mini-extra config set KEY VALUE`.
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 762, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 690, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        openai_client=openai_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        logging_obj=logging_obj,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+        **data, timeout=timeout
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1204, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-67487***********************2974. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2369, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2341, in completion
+    response = openai_chat_completions.completion(
+        model=model,
+    ...<16 lines>...
+        shared_session=shared_session,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 773, in completion
+    raise OpenAIError(
+    ...<4 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-67487***********************2974. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 173, in process_instance
+    info = agent.run(task)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 87, in run
+    self.step()
+    ~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 73, in step
+    return super().step()
+           ~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 101, in step
+    return self.execute_actions(self.query())
+                                ~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 114, in query
+    message = self.model.query(self.messages)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 81, in query
+    for attempt in retry(logger=logger, abort_exceptions=self.abort_exceptions):
+                   ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 438, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 83, in query
+    response = self._query(self._prepare_messages_for_api(messages), **kwargs)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 73, in _query
+    raise e
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 65, in _query
+    return litellm.completion(
+           ~~~~~~~~~~~~~~~~~~^
+        model=self.config.model_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **(self.config.model_kwargs | kwargs),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 4080, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 494, in exception_type
+    raise AuthenticationError(
+    ...<5 lines>...
+    )
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided: sk-67487***********************2974. You can find your API key at https://platform.openai.com/account/api-keys. You can permanently set your API key with `mini-extra config set KEY VALUE`.
+2026-03-13 12:02:11,352 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/34/34.traj.json'
+2026-03-13 12:03:10,452 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 12:03:10,454 - minisweagent - INFO - Skipping 32 existing instances
+2026-03-13 12:03:10,454 - minisweagent - INFO - Running on 0 instances...
+2026-03-13 12:03:10,455 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-13 13:55:10,261 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 13:55:10,262 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 13:55:10,263 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 13:55:10,263 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-13 13:55:16,032 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-81822cea -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-34:v1 sleep 2h
+2026-03-13 13:55:16,546 - minisweagent.environment - INFO - Started container minisweagent-81822cea with ID b61f22d7125e99936343af978bc2b9c1ee35e354b777600cd5782a10601d686f
+2026-03-13 13:55:16,608 - minisweagent - ERROR - Error processing instance 34: litellm.AuthenticationError: AuthenticationError: OpenAIException - The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable You can permanently set your API key with `mini-extra config set KEY VALUE`.
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 762, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 664, in completion
+    openai_client: OpenAI = self._get_openai_client(  # type: ignore
+                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+        is_async=False,
+        ^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        client=client,
+        ^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 396, in _get_openai_client
+    _new_client = OpenAI(
+        api_key=api_key,
+    ...<4 lines>...
+        organization=organization,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_client.py", line 139, in __init__
+    raise OpenAIError(
+        "The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable"
+    )
+openai.OpenAIError: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2369, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2341, in completion
+    response = openai_chat_completions.completion(
+        model=model,
+    ...<16 lines>...
+        shared_session=shared_session,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 773, in completion
+    raise OpenAIError(
+    ...<4 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 173, in process_instance
+    info = agent.run(task)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 87, in run
+    self.step()
+    ~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 73, in step
+    return super().step()
+           ~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 101, in step
+    return self.execute_actions(self.query())
+                                ~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 114, in query
+    message = self.model.query(self.messages)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 81, in query
+    for attempt in retry(logger=logger, abort_exceptions=self.abort_exceptions):
+                   ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 438, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 83, in query
+    response = self._query(self._prepare_messages_for_api(messages), **kwargs)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 73, in _query
+    raise e
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 65, in _query
+    return litellm.completion(
+           ~~~~~~~~~~~~~~~~~~^
+        model=self.config.model_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **(self.config.model_kwargs | kwargs),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 4080, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 461, in exception_type
+    raise AuthenticationError(
+    ...<5 lines>...
+    )
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenAIException - The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable You can permanently set your API key with `mini-extra config set KEY VALUE`.
+2026-03-13 13:55:16,640 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/34/34.traj.json'
+2026-03-13 13:55:43,905 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 13:55:43,906 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 13:55:43,907 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 13:55:43,907 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-13 13:55:47,089 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-c0deceea -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-34:v1 sleep 2h
+2026-03-13 13:55:47,584 - minisweagent.environment - INFO - Started container minisweagent-c0deceea with ID 8c14979d8cd6bea10e2c6eaecbdae049ebc5d5517dd5452ac04ecf2156816fa4
+2026-03-13 13:56:10,122 - minisweagent - INFO - Cancelling all pending jobs. Press ^C again to exit immediately.
+2026-03-13 13:57:54,139 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 13:57:54,140 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 13:57:54,141 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 13:57:54,141 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-13 13:57:57,228 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-02e91981 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-34:v1 sleep 2h
+2026-03-13 13:57:57,784 - minisweagent.environment - INFO - Started container minisweagent-02e91981 with ID fc7eda87aebd6b674225dd46a8459d96e9abee8f9871409568a038671a16e490
+2026-03-13 13:57:57,846 - minisweagent - ERROR - Error processing instance 34: litellm.AuthenticationError: AuthenticationError: OpenAIException - The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable You can permanently set your API key with `mini-extra config set KEY VALUE`.
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 762, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 664, in completion
+    openai_client: OpenAI = self._get_openai_client(  # type: ignore
+                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+        is_async=False,
+        ^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        client=client,
+        ^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 396, in _get_openai_client
+    _new_client = OpenAI(
+        api_key=api_key,
+    ...<4 lines>...
+        organization=organization,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_client.py", line 139, in __init__
+    raise OpenAIError(
+        "The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable"
+    )
+openai.OpenAIError: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2369, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2341, in completion
+    response = openai_chat_completions.completion(
+        model=model,
+    ...<16 lines>...
+        shared_session=shared_session,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 773, in completion
+    raise OpenAIError(
+    ...<4 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 173, in process_instance
+    info = agent.run(task)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 87, in run
+    self.step()
+    ~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 73, in step
+    return super().step()
+           ~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 101, in step
+    return self.execute_actions(self.query())
+                                ~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 114, in query
+    message = self.model.query(self.messages)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 81, in query
+    for attempt in retry(logger=logger, abort_exceptions=self.abort_exceptions):
+                   ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 438, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 83, in query
+    response = self._query(self._prepare_messages_for_api(messages), **kwargs)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 73, in _query
+    raise e
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 65, in _query
+    return litellm.completion(
+           ~~~~~~~~~~~~~~~~~~^
+        model=self.config.model_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **(self.config.model_kwargs | kwargs),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 4080, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 461, in exception_type
+    raise AuthenticationError(
+    ...<5 lines>...
+    )
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenAIException - The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable You can permanently set your API key with `mini-extra config set KEY VALUE`.
+2026-03-13 13:57:57,876 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/34/34.traj.json'
+2026-03-13 13:58:17,168 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 13:58:17,169 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 13:58:17,170 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 13:58:17,170 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-13 13:58:20,186 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-f6fb9815 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-34:v1 sleep 2h
+2026-03-13 13:58:20,705 - minisweagent.environment - INFO - Started container minisweagent-f6fb9815 with ID bcc267c9125da778a20f75ad7c312e613eac7cceb1cd374f91425ca60a7012bb
+2026-03-13 13:58:20,795 - minisweagent - ERROR - Error processing instance 34: litellm.AuthenticationError: AuthenticationError: OpenAIException - The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable You can permanently set your API key with `mini-extra config set KEY VALUE`.
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 762, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 664, in completion
+    openai_client: OpenAI = self._get_openai_client(  # type: ignore
+                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+        is_async=False,
+        ^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        client=client,
+        ^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 396, in _get_openai_client
+    _new_client = OpenAI(
+        api_key=api_key,
+    ...<4 lines>...
+        organization=organization,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_client.py", line 139, in __init__
+    raise OpenAIError(
+        "The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable"
+    )
+openai.OpenAIError: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2369, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2341, in completion
+    response = openai_chat_completions.completion(
+        model=model,
+    ...<16 lines>...
+        shared_session=shared_session,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 773, in completion
+    raise OpenAIError(
+    ...<4 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 173, in process_instance
+    info = agent.run(task)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 87, in run
+    self.step()
+    ~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 73, in step
+    return super().step()
+           ~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 101, in step
+    return self.execute_actions(self.query())
+                                ~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 114, in query
+    message = self.model.query(self.messages)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 81, in query
+    for attempt in retry(logger=logger, abort_exceptions=self.abort_exceptions):
+                   ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 438, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 83, in query
+    response = self._query(self._prepare_messages_for_api(messages), **kwargs)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 73, in _query
+    raise e
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 65, in _query
+    return litellm.completion(
+           ~~~~~~~~~~~~~~~~~~^
+        model=self.config.model_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **(self.config.model_kwargs | kwargs),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 4080, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 461, in exception_type
+    raise AuthenticationError(
+    ...<5 lines>...
+    )
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenAIException - The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable You can permanently set your API key with `mini-extra config set KEY VALUE`.
+2026-03-13 13:58:20,834 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/34/34.traj.json'
+2026-03-13 13:59:14,162 - minisweagent - INFO - Instance filter: 56 -> 1 instances
+2026-03-13 13:59:14,163 - minisweagent - INFO - Skipping 31 existing instances
+2026-03-13 13:59:14,164 - minisweagent - INFO - Running on 1 instances...
+2026-03-13 13:59:14,164 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench.yaml']
+2026-03-13 13:59:17,020 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-0110007a -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-34:v1 sleep 2h
+2026-03-13 13:59:17,547 - minisweagent.environment - INFO - Started container minisweagent-0110007a with ID 80a699448b74da704f3b6c47bfa95dbf8932771f81df6e214880762cb4d64499
+2026-03-13 14:16:04,305 - minisweagent - INFO - Saved trajectory to 'results/RTbench_deepseek-reasoner_minisweagent/34/34.traj.json'
+2026-03-16 14:47:07,813 - minisweagent - INFO - Instance filter: 56 -> 32 instances
+2026-03-16 14:47:07,818 - minisweagent - INFO - Skipping 32 existing instances
+2026-03-16 14:47:07,819 - minisweagent - INFO - Running on 1 instances...
+2026-03-16 14:47:07,819 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench_ds_free.yaml']
+2026-03-16 14:47:11,223 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-10ddbcd1 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-54:v1 sleep 2h
+2026-03-16 14:47:18,024 - minisweagent - ERROR - Error processing instance 54: Command '['docker', 'run', '-d', '--name', 'minisweagent-10ddbcd1', '-w', '/workspace/vllm-project/vllm', '--rm', 'rtbench-instance-vllm-54:v1', 'sleep', '2h']' returned non-zero exit status 125.
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe_free.py", line 165, in process_instance
+    env = get_sb_environment(config, instance)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe_free.py", line 107, in get_sb_environment
+    env = get_environment(env_config)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/environments/__init__.py", line 33, in get_environment
+    return get_environment_class(environment_class)(**config)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/environments/docker.py", line 59, in __init__
+    self._start_container()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/environments/docker.py", line 91, in _start_container
+    result = subprocess.run(
+        cmd,
+    ...<3 lines>...
+        check=True,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['docker', 'run', '-d', '--name', 'minisweagent-10ddbcd1', '-w', '/workspace/vllm-project/vllm', '--rm', 'rtbench-instance-vllm-54:v1', 'sleep', '2h']' returned non-zero exit status 125.

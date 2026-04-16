@@ -1,0 +1,1765 @@
+2026-03-16 10:26:20,058 - minisweagent - INFO - Instance filter: 56 -> 32 instances
+2026-03-16 10:26:20,059 - minisweagent - INFO - Running on 32 instances...
+2026-03-16 10:26:20,060 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench_qwen.yaml']
+2026-03-16 10:26:22,803 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-8b4c070c -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-0:v1 sleep 2h
+2026-03-16 10:26:22,807 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-633491df -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-9:v1 sleep 2h
+2026-03-16 10:26:22,808 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-0039b144 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-6:v1 sleep 2h
+2026-03-16 10:26:22,808 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-b8b713f3 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-7:v1 sleep 2h
+2026-03-16 10:26:22,808 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-74a8d87e -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-1:v1 sleep 2h
+2026-03-16 10:26:22,809 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-1a8a09d1 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-2:v1 sleep 2h
+2026-03-16 10:26:23,615 - minisweagent.environment - INFO - Started container minisweagent-633491df with ID 16c3e7152478d301c3622a5a92979877d5e3b3493b7912729305844cb32a862c
+2026-03-16 10:26:23,909 - minisweagent.environment - INFO - Started container minisweagent-8b4c070c with ID 18b8b7ae8685a400f7030f63a33efabdc0f34f492481365cb7d3bbdc7014b441
+2026-03-16 10:26:24,054 - minisweagent.environment - INFO - Started container minisweagent-b8b713f3 with ID 93bf145acfbc437def627995de85f426b259a89f477b1c9593aecf0fb1fda8f3
+2026-03-16 10:26:24,096 - minisweagent.environment - INFO - Started container minisweagent-74a8d87e with ID 6fffa1d7300308b7e775150d2c3341140c79d3b90b3ce69ce8ed9eb1fcc5240a
+2026-03-16 10:26:24,103 - minisweagent.environment - INFO - Started container minisweagent-0039b144 with ID 4dbd601b5764235cad15735c67cf26e68be1be9c7298453268bc5fc66fc32071
+2026-03-16 10:26:24,154 - minisweagent.environment - INFO - Started container minisweagent-1a8a09d1 with ID bbaa1d795b14c4c3d389cd1a4e3a5dc0d15272582dd313dcd4719a82586ddf45
+2026-03-16 10:26:24,191 - minisweagent - ERROR - Error processing instance 9: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error You can permanently set your API key with `mini-extra config set KEY VALUE`.
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 762, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 690, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        openai_client=openai_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        logging_obj=logging_obj,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+        **data, timeout=timeout
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1204, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': 'e4bed4bc-deaf-9d35-8ce3-4c69973084a4'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2369, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2341, in completion
+    response = openai_chat_completions.completion(
+        model=model,
+    ...<16 lines>...
+        shared_session=shared_session,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 773, in completion
+    raise OpenAIError(
+    ...<4 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': 'e4bed4bc-deaf-9d35-8ce3-4c69973084a4'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 173, in process_instance
+    info = agent.run(task)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 87, in run
+    self.step()
+    ~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 73, in step
+    return super().step()
+           ~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 101, in step
+    return self.execute_actions(self.query())
+                                ~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 114, in query
+    message = self.model.query(self.messages)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 81, in query
+    for attempt in retry(logger=logger, abort_exceptions=self.abort_exceptions):
+                   ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 438, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 83, in query
+    response = self._query(self._prepare_messages_for_api(messages), **kwargs)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 73, in _query
+    raise e
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 65, in _query
+    return litellm.completion(
+           ~~~~~~~~~~~~~~~~~~^
+        model=self.config.model_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **(self.config.model_kwargs | kwargs),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 4080, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 494, in exception_type
+    raise AuthenticationError(
+    ...<5 lines>...
+    )
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error You can permanently set your API key with `mini-extra config set KEY VALUE`.
+2026-03-16 10:26:24,388 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/9/9.traj.json'
+2026-03-16 10:26:24,436 - minisweagent - ERROR - Error processing instance 0: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error You can permanently set your API key with `mini-extra config set KEY VALUE`.
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 762, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 690, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        openai_client=openai_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        logging_obj=logging_obj,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+        **data, timeout=timeout
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1204, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': 'fe154c7e-8a7c-971d-953c-3a239967f2bd'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2369, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2341, in completion
+    response = openai_chat_completions.completion(
+        model=model,
+    ...<16 lines>...
+        shared_session=shared_session,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 773, in completion
+    raise OpenAIError(
+    ...<4 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': 'fe154c7e-8a7c-971d-953c-3a239967f2bd'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 173, in process_instance
+    info = agent.run(task)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 87, in run
+    self.step()
+    ~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 73, in step
+    return super().step()
+           ~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 101, in step
+    return self.execute_actions(self.query())
+                                ~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 114, in query
+    message = self.model.query(self.messages)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 81, in query
+    for attempt in retry(logger=logger, abort_exceptions=self.abort_exceptions):
+                   ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 438, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 83, in query
+    response = self._query(self._prepare_messages_for_api(messages), **kwargs)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 73, in _query
+    raise e
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 65, in _query
+    return litellm.completion(
+           ~~~~~~~~~~~~~~~~~~^
+        model=self.config.model_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **(self.config.model_kwargs | kwargs),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 4080, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 494, in exception_type
+    raise AuthenticationError(
+    ...<5 lines>...
+    )
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error You can permanently set your API key with `mini-extra config set KEY VALUE`.
+2026-03-16 10:26:24,549 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-89101a9b -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-10:v1 sleep 2h
+2026-03-16 10:26:24,556 - minisweagent - ERROR - Error processing instance 7: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error You can permanently set your API key with `mini-extra config set KEY VALUE`.
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 762, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 690, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        openai_client=openai_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        logging_obj=logging_obj,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+        **data, timeout=timeout
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1204, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': 'e7cd3f67-b29d-9ab8-b230-207ed664fb73'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2369, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2341, in completion
+    response = openai_chat_completions.completion(
+        model=model,
+    ...<16 lines>...
+        shared_session=shared_session,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 773, in completion
+    raise OpenAIError(
+    ...<4 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': 'e7cd3f67-b29d-9ab8-b230-207ed664fb73'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 173, in process_instance
+    info = agent.run(task)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 87, in run
+    self.step()
+    ~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 73, in step
+    return super().step()
+           ~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 101, in step
+    return self.execute_actions(self.query())
+                                ~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 114, in query
+    message = self.model.query(self.messages)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 81, in query
+    for attempt in retry(logger=logger, abort_exceptions=self.abort_exceptions):
+                   ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 438, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 83, in query
+    response = self._query(self._prepare_messages_for_api(messages), **kwargs)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 73, in _query
+    raise e
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 65, in _query
+    return litellm.completion(
+           ~~~~~~~~~~~~~~~~~~^
+        model=self.config.model_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **(self.config.model_kwargs | kwargs),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 4080, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 494, in exception_type
+    raise AuthenticationError(
+    ...<5 lines>...
+    )
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error You can permanently set your API key with `mini-extra config set KEY VALUE`.
+2026-03-16 10:26:24,698 - minisweagent - ERROR - Error processing instance 6: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error You can permanently set your API key with `mini-extra config set KEY VALUE`.
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 762, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 690, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        openai_client=openai_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        logging_obj=logging_obj,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+        **data, timeout=timeout
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1204, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': 'a6efbf97-8817-9c31-9ca9-6965f337db7b'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2369, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2341, in completion
+    response = openai_chat_completions.completion(
+        model=model,
+    ...<16 lines>...
+        shared_session=shared_session,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 773, in completion
+    raise OpenAIError(
+    ...<4 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': 'a6efbf97-8817-9c31-9ca9-6965f337db7b'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 173, in process_instance
+    info = agent.run(task)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 87, in run
+    self.step()
+    ~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 73, in step
+    return super().step()
+           ~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 101, in step
+    return self.execute_actions(self.query())
+                                ~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 114, in query
+    message = self.model.query(self.messages)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 81, in query
+    for attempt in retry(logger=logger, abort_exceptions=self.abort_exceptions):
+                   ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 438, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 83, in query
+    response = self._query(self._prepare_messages_for_api(messages), **kwargs)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 73, in _query
+    raise e
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 65, in _query
+    return litellm.completion(
+           ~~~~~~~~~~~~~~~~~~^
+        model=self.config.model_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **(self.config.model_kwargs | kwargs),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 4080, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 494, in exception_type
+    raise AuthenticationError(
+    ...<5 lines>...
+    )
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error You can permanently set your API key with `mini-extra config set KEY VALUE`.
+2026-03-16 10:26:24,724 - minisweagent - ERROR - Error processing instance 2: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error You can permanently set your API key with `mini-extra config set KEY VALUE`.
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 762, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 690, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        openai_client=openai_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        logging_obj=logging_obj,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+        **data, timeout=timeout
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1204, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': 'cce5347e-0b62-9803-b5e0-005a763d60bf'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2369, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2341, in completion
+    response = openai_chat_completions.completion(
+        model=model,
+    ...<16 lines>...
+        shared_session=shared_session,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 773, in completion
+    raise OpenAIError(
+    ...<4 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': 'cce5347e-0b62-9803-b5e0-005a763d60bf'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 173, in process_instance
+    info = agent.run(task)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 87, in run
+    self.step()
+    ~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 73, in step
+    return super().step()
+           ~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 101, in step
+    return self.execute_actions(self.query())
+                                ~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 114, in query
+    message = self.model.query(self.messages)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 81, in query
+    for attempt in retry(logger=logger, abort_exceptions=self.abort_exceptions):
+                   ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 438, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 83, in query
+    response = self._query(self._prepare_messages_for_api(messages), **kwargs)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 73, in _query
+    raise e
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 65, in _query
+    return litellm.completion(
+           ~~~~~~~~~~~~~~~~~~^
+        model=self.config.model_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **(self.config.model_kwargs | kwargs),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 4080, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 494, in exception_type
+    raise AuthenticationError(
+    ...<5 lines>...
+    )
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error You can permanently set your API key with `mini-extra config set KEY VALUE`.
+2026-03-16 10:26:24,775 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/0/0.traj.json'
+2026-03-16 10:26:24,822 - minisweagent - ERROR - Error processing instance 1: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error You can permanently set your API key with `mini-extra config set KEY VALUE`.
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 762, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 690, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        openai_client=openai_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        logging_obj=logging_obj,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+        **data, timeout=timeout
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1204, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': '89ec0c0f-1a58-9178-887f-4467afc13e5c'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2369, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2341, in completion
+    response = openai_chat_completions.completion(
+        model=model,
+    ...<16 lines>...
+        shared_session=shared_session,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 773, in completion
+    raise OpenAIError(
+    ...<4 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': '89ec0c0f-1a58-9178-887f-4467afc13e5c'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 173, in process_instance
+    info = agent.run(task)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 87, in run
+    self.step()
+    ~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 73, in step
+    return super().step()
+           ~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 101, in step
+    return self.execute_actions(self.query())
+                                ~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 114, in query
+    message = self.model.query(self.messages)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 81, in query
+    for attempt in retry(logger=logger, abort_exceptions=self.abort_exceptions):
+                   ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 438, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 83, in query
+    response = self._query(self._prepare_messages_for_api(messages), **kwargs)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 73, in _query
+    raise e
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 65, in _query
+    return litellm.completion(
+           ~~~~~~~~~~~~~~~~~~^
+        model=self.config.model_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **(self.config.model_kwargs | kwargs),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 4080, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 494, in exception_type
+    raise AuthenticationError(
+    ...<5 lines>...
+    )
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error You can permanently set your API key with `mini-extra config set KEY VALUE`.
+2026-03-16 10:26:24,922 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/7/7.traj.json'
+2026-03-16 10:26:24,960 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/6/6.traj.json'
+2026-03-16 10:26:25,008 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/2/2.traj.json'
+2026-03-16 10:26:25,047 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-057fdd1e -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-11:v1 sleep 2h
+2026-03-16 10:26:25,092 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/1/1.traj.json'
+2026-03-16 10:26:25,098 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-c013c235 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-13:v1 sleep 2h
+2026-03-16 10:26:25,114 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-f6709c7b -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-14:v1 sleep 2h
+2026-03-16 10:26:25,123 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-ca2e588c -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-15:v1 sleep 2h
+2026-03-16 10:26:25,135 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-45b90f29 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-16:v1 sleep 2h
+2026-03-16 10:26:25,396 - minisweagent.environment - INFO - Started container minisweagent-89101a9b with ID ca0fbde529ac9130341b6ffe177937e70fe71a28fa91d18ab80182ae653f53cf
+2026-03-16 10:26:25,514 - minisweagent - ERROR - Error processing instance 10: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error You can permanently set your API key with `mini-extra config set KEY VALUE`.
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 762, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 690, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        openai_client=openai_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        logging_obj=logging_obj,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+        **data, timeout=timeout
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1204, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': '4af43e51-cb0d-9903-bf06-5f042d354337'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2369, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2341, in completion
+    response = openai_chat_completions.completion(
+        model=model,
+    ...<16 lines>...
+        shared_session=shared_session,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 773, in completion
+    raise OpenAIError(
+    ...<4 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': '4af43e51-cb0d-9903-bf06-5f042d354337'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 173, in process_instance
+    info = agent.run(task)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 87, in run
+    self.step()
+    ~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 73, in step
+    return super().step()
+           ~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 101, in step
+    return self.execute_actions(self.query())
+                                ~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 114, in query
+    message = self.model.query(self.messages)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 81, in query
+    for attempt in retry(logger=logger, abort_exceptions=self.abort_exceptions):
+                   ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 438, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 83, in query
+    response = self._query(self._prepare_messages_for_api(messages), **kwargs)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 73, in _query
+    raise e
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 65, in _query
+    return litellm.completion(
+           ~~~~~~~~~~~~~~~~~~^
+        model=self.config.model_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **(self.config.model_kwargs | kwargs),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 4080, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 494, in exception_type
+    raise AuthenticationError(
+    ...<5 lines>...
+    )
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error You can permanently set your API key with `mini-extra config set KEY VALUE`.
+2026-03-16 10:26:25,568 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/10/10.traj.json'
+2026-03-16 10:26:25,574 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-320a3707 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-17:v1 sleep 2h
+2026-03-16 10:26:25,652 - minisweagent - INFO - Cancelling all pending jobs. Press ^C again to exit immediately.
+2026-03-16 10:26:25,661 - minisweagent - ERROR - Error processing instance 17: Command '['docker', 'run', '-d', '--name', 'minisweagent-320a3707', '-w', '/workspace/vllm-project/vllm', '--rm', 'rtbench-instance-vllm-17:v1', 'sleep', '2h']' died with <Signals.SIGINT: 2>.
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 165, in process_instance
+    env = get_sb_environment(config, instance)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 107, in get_sb_environment
+    env = get_environment(env_config)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/environments/__init__.py", line 33, in get_environment
+    return get_environment_class(environment_class)(**config)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/environments/docker.py", line 59, in __init__
+    self._start_container()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/environments/docker.py", line 91, in _start_container
+    result = subprocess.run(
+        cmd,
+    ...<3 lines>...
+        check=True,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['docker', 'run', '-d', '--name', 'minisweagent-320a3707', '-w', '/workspace/vllm-project/vllm', '--rm', 'rtbench-instance-vllm-17:v1', 'sleep', '2h']' died with <Signals.SIGINT: 2>.
+2026-03-16 10:26:26,401 - minisweagent.environment - INFO - Started container minisweagent-057fdd1e with ID b43b1b0468d42198e76c68b2f027b42fa4c2cf164fe806bdfac7ebffb253ffc3
+2026-03-16 10:26:26,499 - minisweagent - ERROR - Error processing instance 11: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error You can permanently set your API key with `mini-extra config set KEY VALUE`.
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 762, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 690, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        openai_client=openai_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        logging_obj=logging_obj,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+        **data, timeout=timeout
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1204, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': 'a1467246-6434-9d38-9011-4ae9cce1c586'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2369, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2341, in completion
+    response = openai_chat_completions.completion(
+        model=model,
+    ...<16 lines>...
+        shared_session=shared_session,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 773, in completion
+    raise OpenAIError(
+    ...<4 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': 'a1467246-6434-9d38-9011-4ae9cce1c586'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 173, in process_instance
+    info = agent.run(task)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 87, in run
+    self.step()
+    ~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 73, in step
+    return super().step()
+           ~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 101, in step
+    return self.execute_actions(self.query())
+                                ~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 114, in query
+    message = self.model.query(self.messages)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 81, in query
+    for attempt in retry(logger=logger, abort_exceptions=self.abort_exceptions):
+                   ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 438, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 83, in query
+    response = self._query(self._prepare_messages_for_api(messages), **kwargs)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 73, in _query
+    raise e
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 65, in _query
+    return litellm.completion(
+           ~~~~~~~~~~~~~~~~~~^
+        model=self.config.model_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **(self.config.model_kwargs | kwargs),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 4080, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 494, in exception_type
+    raise AuthenticationError(
+    ...<5 lines>...
+    )
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error You can permanently set your API key with `mini-extra config set KEY VALUE`.
+2026-03-16 10:26:26,527 - minisweagent.environment - INFO - Started container minisweagent-ca2e588c with ID 9923ef471a4f1ee11b5e4968900181f70058e3896981ffed516f95f180ad4f50
+2026-03-16 10:26:26,547 - minisweagent.environment - INFO - Started container minisweagent-45b90f29 with ID e082a4aa382c278d80e5695c7a45a60c73f609472202f1793953e384f0d32458
+2026-03-16 10:26:26,554 - minisweagent.environment - INFO - Started container minisweagent-f6709c7b with ID 986e54f7296b977c50255d4e58f11e95d33648dfdaf8d448abea3d6bc702fc7b
+2026-03-16 10:26:26,560 - minisweagent.environment - INFO - Started container minisweagent-c013c235 with ID 4f87a11beb27280cb7763ebaced999db5f76362a3376a958e6d271bae92f20c1
+2026-03-16 10:26:26,565 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/11/11.traj.json'
+2026-03-16 10:27:08,230 - minisweagent - INFO - Instance filter: 56 -> 32 instances
+2026-03-16 10:27:08,231 - minisweagent - INFO - Skipping 9 existing instances
+2026-03-16 10:27:08,231 - minisweagent - INFO - Running on 23 instances...
+2026-03-16 10:27:08,232 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench_qwen.yaml']
+2026-03-16 10:27:12,208 - minisweagent - INFO - Cancelling all pending jobs. Press ^C again to exit immediately.
+2026-03-16 10:27:12,529 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-50de40fa -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-19:v1 sleep 2h
+2026-03-16 10:27:12,535 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-3a55b7d2 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-13:v1 sleep 2h
+2026-03-16 10:27:12,535 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-48072948 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-16:v1 sleep 2h
+2026-03-16 10:27:12,536 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-6913444f -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-15:v1 sleep 2h
+2026-03-16 10:27:12,536 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-c12bbde0 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-18:v1 sleep 2h
+2026-03-16 10:27:12,536 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-61c59e65 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-14:v1 sleep 2h
+2026-03-16 10:27:12,568 - minisweagent - ERROR - Error processing instance 19: Command '['docker', 'run', '-d', '--name', 'minisweagent-50de40fa', '-w', '/workspace/vllm-project/vllm', '--rm', 'rtbench-instance-vllm-19:v1', 'sleep', '2h']' died with <Signals.SIGINT: 2>.
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 165, in process_instance
+    env = get_sb_environment(config, instance)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 107, in get_sb_environment
+    env = get_environment(env_config)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/environments/__init__.py", line 33, in get_environment
+    return get_environment_class(environment_class)(**config)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/environments/docker.py", line 59, in __init__
+    self._start_container()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/environments/docker.py", line 91, in _start_container
+    result = subprocess.run(
+        cmd,
+    ...<3 lines>...
+        check=True,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['docker', 'run', '-d', '--name', 'minisweagent-50de40fa', '-w', '/workspace/vllm-project/vllm', '--rm', 'rtbench-instance-vllm-19:v1', 'sleep', '2h']' died with <Signals.SIGINT: 2>.
+2026-03-16 10:27:12,574 - minisweagent - ERROR - Error processing instance 13: Command '['docker', 'run', '-d', '--name', 'minisweagent-3a55b7d2', '-w', '/workspace/vllm-project/vllm', '--rm', 'rtbench-instance-vllm-13:v1', 'sleep', '2h']' died with <Signals.SIGINT: 2>.
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 165, in process_instance
+    env = get_sb_environment(config, instance)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 107, in get_sb_environment
+    env = get_environment(env_config)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/environments/__init__.py", line 33, in get_environment
+    return get_environment_class(environment_class)(**config)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/environments/docker.py", line 59, in __init__
+    self._start_container()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/environments/docker.py", line 91, in _start_container
+    result = subprocess.run(
+        cmd,
+    ...<3 lines>...
+        check=True,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['docker', 'run', '-d', '--name', 'minisweagent-3a55b7d2', '-w', '/workspace/vllm-project/vllm', '--rm', 'rtbench-instance-vllm-13:v1', 'sleep', '2h']' died with <Signals.SIGINT: 2>.
+2026-03-16 10:27:13,231 - minisweagent.environment - INFO - Started container minisweagent-61c59e65 with ID 5c07e2c8b771be110766768b675d4a7bf4411825f3270bcc31f8990645a06a34
+2026-03-16 10:27:13,372 - minisweagent.environment - INFO - Started container minisweagent-6913444f with ID 8cff266438cbd8a5d9035d701a43b690ca63cf94d0ccc70a7e579a19547322e2
+2026-03-16 10:27:13,418 - minisweagent.environment - INFO - Started container minisweagent-c12bbde0 with ID 4a14a71b0fa5074ddc7d0017975175857b5d71a767747796dd12bc40aa6619c2
+2026-03-16 10:27:13,420 - minisweagent.environment - INFO - Started container minisweagent-48072948 with ID 41b58208f66b52062e0c557e078fa49c94a888444a30f7072482a08d38a722f2
+2026-03-16 10:27:13,759 - minisweagent - ERROR - Error processing instance 16: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error You can permanently set your API key with `mini-extra config set KEY VALUE`.
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 762, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 690, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        openai_client=openai_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        logging_obj=logging_obj,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+        **data, timeout=timeout
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1204, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': '08c46366-2a42-9b85-98d4-f0492bb99f0f'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2369, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2341, in completion
+    response = openai_chat_completions.completion(
+        model=model,
+    ...<16 lines>...
+        shared_session=shared_session,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 773, in completion
+    raise OpenAIError(
+    ...<4 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': '08c46366-2a42-9b85-98d4-f0492bb99f0f'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 173, in process_instance
+    info = agent.run(task)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 87, in run
+    self.step()
+    ~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 73, in step
+    return super().step()
+           ~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 101, in step
+    return self.execute_actions(self.query())
+                                ~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 114, in query
+    message = self.model.query(self.messages)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 81, in query
+    for attempt in retry(logger=logger, abort_exceptions=self.abort_exceptions):
+                   ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 438, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 83, in query
+    response = self._query(self._prepare_messages_for_api(messages), **kwargs)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 73, in _query
+    raise e
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 65, in _query
+    return litellm.completion(
+           ~~~~~~~~~~~~~~~~~~^
+        model=self.config.model_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **(self.config.model_kwargs | kwargs),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 4080, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 494, in exception_type
+    raise AuthenticationError(
+    ...<5 lines>...
+    )
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error You can permanently set your API key with `mini-extra config set KEY VALUE`.
+2026-03-16 10:27:13,773 - minisweagent - ERROR - Error processing instance 18: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error You can permanently set your API key with `mini-extra config set KEY VALUE`.
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 762, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 690, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        openai_client=openai_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        logging_obj=logging_obj,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+        **data, timeout=timeout
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1204, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': '81db7522-615a-9505-a32a-b789cd97b6af'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2369, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2341, in completion
+    response = openai_chat_completions.completion(
+        model=model,
+    ...<16 lines>...
+        shared_session=shared_session,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 773, in completion
+    raise OpenAIError(
+    ...<4 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': '81db7522-615a-9505-a32a-b789cd97b6af'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 173, in process_instance
+    info = agent.run(task)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 87, in run
+    self.step()
+    ~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 73, in step
+    return super().step()
+           ~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 101, in step
+    return self.execute_actions(self.query())
+                                ~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 114, in query
+    message = self.model.query(self.messages)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 81, in query
+    for attempt in retry(logger=logger, abort_exceptions=self.abort_exceptions):
+                   ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 438, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 83, in query
+    response = self._query(self._prepare_messages_for_api(messages), **kwargs)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 73, in _query
+    raise e
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 65, in _query
+    return litellm.completion(
+           ~~~~~~~~~~~~~~~~~~^
+        model=self.config.model_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **(self.config.model_kwargs | kwargs),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 4080, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 494, in exception_type
+    raise AuthenticationError(
+    ...<5 lines>...
+    )
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error You can permanently set your API key with `mini-extra config set KEY VALUE`.
+2026-03-16 10:27:13,885 - minisweagent - ERROR - Error processing instance 15: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error You can permanently set your API key with `mini-extra config set KEY VALUE`.
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 762, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 690, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        openai_client=openai_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        logging_obj=logging_obj,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+        **data, timeout=timeout
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1204, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': '3f8b8fef-4d39-9f90-b217-81f596376ba6'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2369, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2341, in completion
+    response = openai_chat_completions.completion(
+        model=model,
+    ...<16 lines>...
+        shared_session=shared_session,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 773, in completion
+    raise OpenAIError(
+    ...<4 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': '3f8b8fef-4d39-9f90-b217-81f596376ba6'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 173, in process_instance
+    info = agent.run(task)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 87, in run
+    self.step()
+    ~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 73, in step
+    return super().step()
+           ~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 101, in step
+    return self.execute_actions(self.query())
+                                ~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 114, in query
+    message = self.model.query(self.messages)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 81, in query
+    for attempt in retry(logger=logger, abort_exceptions=self.abort_exceptions):
+                   ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 438, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 83, in query
+    response = self._query(self._prepare_messages_for_api(messages), **kwargs)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 73, in _query
+    raise e
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 65, in _query
+    return litellm.completion(
+           ~~~~~~~~~~~~~~~~~~^
+        model=self.config.model_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **(self.config.model_kwargs | kwargs),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 4080, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 494, in exception_type
+    raise AuthenticationError(
+    ...<5 lines>...
+    )
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error You can permanently set your API key with `mini-extra config set KEY VALUE`.
+2026-03-16 10:27:13,887 - minisweagent - ERROR - Error processing instance 14: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error You can permanently set your API key with `mini-extra config set KEY VALUE`.
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 762, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 690, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        openai_client=openai_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        logging_obj=logging_obj,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/logging_utils.py", line 237, in sync_wrapper
+    result = func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+        **data, timeout=timeout
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1204, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': 'cd976f9d-632b-924b-921d-991c0ed5132c'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2369, in completion
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 2341, in completion
+    response = openai_chat_completions.completion(
+        model=model,
+    ...<16 lines>...
+        shared_session=shared_session,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/llms/openai/openai.py", line 773, in completion
+    raise OpenAIError(
+    ...<4 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: Error code: 401 - {'error': {'message': 'Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}, 'request_id': 'cd976f9d-632b-924b-921d-991c0ed5132c'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 173, in process_instance
+    info = agent.run(task)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 87, in run
+    self.step()
+    ~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 73, in step
+    return super().step()
+           ~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 101, in step
+    return self.execute_actions(self.query())
+                                ~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/agents/default.py", line 114, in query
+    message = self.model.query(self.messages)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 81, in query
+    for attempt in retry(logger=logger, abort_exceptions=self.abort_exceptions):
+                   ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 438, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 83, in query
+    response = self._query(self._prepare_messages_for_api(messages), **kwargs)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 73, in _query
+    raise e
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/models/litellm_model.py", line 65, in _query
+    return litellm.completion(
+           ~~~~~~~~~~~~~~~~~~^
+        model=self.config.model_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **(self.config.model_kwargs | kwargs),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1405, in wrapper
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/utils.py", line 1274, in wrapper
+    result = original_function(*args, **kwargs)
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/main.py", line 4080, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2340, in exception_type
+    raise e
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 494, in exception_type
+    raise AuthenticationError(
+    ...<5 lines>...
+    )
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided. For details, see: https://help.aliyun.com/zh/model-studio/error-code#apikey-error You can permanently set your API key with `mini-extra config set KEY VALUE`.
+2026-03-16 10:27:13,960 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/18/18.traj.json'
+2026-03-16 10:27:13,960 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/16/16.traj.json'
+2026-03-16 10:27:14,052 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/15/15.traj.json'
+2026-03-16 10:27:14,053 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/14/14.traj.json'
+2026-03-16 10:27:53,481 - minisweagent - INFO - Instance filter: 56 -> 32 instances
+2026-03-16 10:27:53,481 - minisweagent - INFO - Running on 32 instances...
+2026-03-16 10:27:53,482 - minisweagent - INFO - Building agent config from specs: ['/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/config/benchmarks/swebench_gemini.yaml']
+2026-03-16 10:27:56,880 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-db78f07a -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-0:v1 sleep 2h
+2026-03-16 10:27:56,884 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-f6350bdd -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-7:v1 sleep 2h
+2026-03-16 10:27:56,885 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-db7d816f -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-6:v1 sleep 2h
+2026-03-16 10:27:56,885 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-72beb9a9 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-2:v1 sleep 2h
+2026-03-16 10:27:56,886 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-84da1d61 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-1:v1 sleep 2h
+2026-03-16 10:27:56,886 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-62371fef -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-9:v1 sleep 2h
+2026-03-16 10:27:57,567 - minisweagent.environment - INFO - Started container minisweagent-db7d816f with ID 3847e6ea27f39a88d34aa1194f685d7bbc8507d51a26851b56a0b22765551951
+2026-03-16 10:27:57,652 - minisweagent.environment - INFO - Started container minisweagent-db78f07a with ID b485366d61aac32d8fd24a3ec7c4cbd7a23282a7ed80bf2d813a3e622121eaa5
+2026-03-16 10:27:57,768 - minisweagent.environment - INFO - Started container minisweagent-84da1d61 with ID 2179ee5c98378625404f5477909b4431419e9fa9e39a46ce2ec3709a1519d3b7
+2026-03-16 10:27:57,815 - minisweagent.environment - INFO - Started container minisweagent-72beb9a9 with ID 13b76e72ed0121dc2245b92b6f5d45032f81294ddcd8b6300a03b0c444eabf05
+2026-03-16 10:27:57,838 - minisweagent.environment - INFO - Started container minisweagent-62371fef with ID 3d4455a914e9a1fff262ffdb72f1b88de6a7ee0abf8db6b6b78cd2236f91e3fe
+2026-03-16 10:27:57,849 - minisweagent.environment - INFO - Started container minisweagent-f6350bdd with ID 69ca30141d8aea23fe5695d8c59e2c29c997127a2f808d80050720415c3c4a3a
+2026-03-16 10:30:56,645 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/0/0.traj.json'
+2026-03-16 10:30:56,664 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-d1055354 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-10:v1 sleep 2h
+2026-03-16 10:30:57,222 - minisweagent.environment - INFO - Started container minisweagent-d1055354 with ID 1aa0f1d4f8e7f2c7db5999ebaaa92cc4ded77af19f86d18d33b6f70c1659f7ca
+2026-03-16 10:31:45,859 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/2/2.traj.json'
+2026-03-16 10:31:45,870 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-5f728de2 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-11:v1 sleep 2h
+2026-03-16 10:31:46,347 - minisweagent.environment - INFO - Started container minisweagent-5f728de2 with ID deb3af2f46e6313db272486e04557c5ccc730f1514c781598a63fcd1e3bfacdc
+2026-03-16 10:42:16,573 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/6/6.traj.json'
+2026-03-16 10:42:16,583 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-096b829a -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-13:v1 sleep 2h
+2026-03-16 10:42:18,625 - minisweagent.environment - INFO - Started container minisweagent-096b829a with ID 69ef4448697bf1c29d7f5d4db0d85e1a117329500d6cb58df1d494767395d09e
+2026-03-16 10:48:42,281 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/13/13.traj.json'
+2026-03-16 10:48:42,294 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-2c1e3bfb -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-14:v1 sleep 2h
+2026-03-16 10:48:43,703 - minisweagent.environment - INFO - Started container minisweagent-2c1e3bfb with ID fe001ed321b29b8f241db3c099b4d0ddb2a98d9962e3891695f443088c0fd888
+2026-03-16 10:50:43,576 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/10/10.traj.json'
+2026-03-16 10:50:43,584 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-a1ea7808 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-15:v1 sleep 2h
+2026-03-16 10:50:44,073 - minisweagent.environment - INFO - Started container minisweagent-a1ea7808 with ID 12b62efebdae3d78542f12f109e9e5e9ee1a61b6037593e90ed8f0da63196ef8
+2026-03-16 10:54:06,763 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/9/9.traj.json'
+2026-03-16 10:54:06,773 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-3ebfcc97 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-16:v1 sleep 2h
+2026-03-16 10:54:07,229 - minisweagent.environment - INFO - Started container minisweagent-3ebfcc97 with ID 6390a7e39c6e8d9d41bf22f147ba97b8bd10a1fe0ad9400620f07187532490b3
+2026-03-16 10:56:22,375 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/7/7.traj.json'
+2026-03-16 10:56:22,394 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-f9403e67 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-17:v1 sleep 2h
+2026-03-16 10:56:22,947 - minisweagent.environment - INFO - Started container minisweagent-f9403e67 with ID ef6cf7e19ab76e5895c1e38f3c88824b69ab39fbdde58d26711f37709d692a8c
+2026-03-16 10:59:34,708 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/11/11.traj.json'
+2026-03-16 10:59:34,719 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-90196f61 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-18:v1 sleep 2h
+2026-03-16 10:59:35,184 - minisweagent.environment - INFO - Started container minisweagent-90196f61 with ID a62fe8ef0d2cc6cbc09b06027bc3fe690c490c973a400afc6761d032110ff819
+2026-03-16 11:03:39,670 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/18/18.traj.json'
+2026-03-16 11:03:39,685 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-997206cd -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-19:v1 sleep 2h
+2026-03-16 11:03:40,364 - minisweagent.environment - INFO - Started container minisweagent-997206cd with ID 255ca96afaad2a1f415d6d4284d5311ee7a13b9430b4f1151ef412ae15614c1e
+2026-03-16 11:05:16,227 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/14/14.traj.json'
+2026-03-16 11:05:16,239 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-ed0955d9 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-20:v1 sleep 2h
+2026-03-16 11:05:16,754 - minisweagent.environment - INFO - Started container minisweagent-ed0955d9 with ID 60b7e47460b742149d91b369534e3b9a102d227ee07045a07d7f0edc62e4acef
+2026-03-16 11:05:20,217 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/16/16.traj.json'
+2026-03-16 11:05:20,228 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-a951001b -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-22:v1 sleep 2h
+2026-03-16 11:05:20,829 - minisweagent.environment - INFO - Started container minisweagent-a951001b with ID 3a6e02b7f28d9d11b0e0a22f5d4f3a0b29e0af638b43bbd38a163a59fa3d2e8e
+2026-03-16 11:07:50,169 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/1/1.traj.json'
+2026-03-16 11:07:50,182 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-3c58d8bd -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-25:v1 sleep 2h
+2026-03-16 11:07:50,978 - minisweagent.environment - INFO - Started container minisweagent-3c58d8bd with ID 3c7cbf12fd937b00abaa30927b1d2f6c02c31f25368ef3981c45b1c32962f5e2
+2026-03-16 11:09:13,112 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/20/20.traj.json'
+2026-03-16 11:09:13,121 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-68a4d4c5 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-26:v1 sleep 2h
+2026-03-16 11:09:13,681 - minisweagent.environment - INFO - Started container minisweagent-68a4d4c5 with ID 1308e7b09c49ba1da733f4e4aee8a23a3f6a47c76104910a71de6519a4fbbc36
+2026-03-16 11:10:29,365 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/15/15.traj.json'
+2026-03-16 11:10:29,376 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-54589f45 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-27:v1 sleep 2h
+2026-03-16 11:10:29,943 - minisweagent.environment - INFO - Started container minisweagent-54589f45 with ID da9835b6169cfb091896880a51e84c4e5ffebc8e2b9455ab35c8bcf9427804d7
+2026-03-16 11:14:40,574 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/25/25.traj.json'
+2026-03-16 11:14:40,585 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-a1e699fb -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-28:v1 sleep 2h
+2026-03-16 11:14:41,270 - minisweagent.environment - INFO - Started container minisweagent-a1e699fb with ID a77c1b98eac75c5c4f33d82d35487693a51ba4105cba877bf5dbaad68ed5022c
+2026-03-16 11:15:35,483 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/17/17.traj.json'
+2026-03-16 11:15:35,495 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-3d81ddda -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-29:v1 sleep 2h
+2026-03-16 11:15:36,045 - minisweagent.environment - INFO - Started container minisweagent-3d81ddda with ID 371cc417615412e01a102ac7b60976b50a73284d2835acc8da7a1b417ea6d6dc
+2026-03-16 11:16:08,005 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/22/22.traj.json'
+2026-03-16 11:16:08,019 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-7e2b192c -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-30:v1 sleep 2h
+2026-03-16 11:16:08,673 - minisweagent.environment - INFO - Started container minisweagent-7e2b192c with ID c74cbafb061e9688e5e1f601f6084cb57ead82c76c409e4bb7e1f2be7bb0aa91
+2026-03-16 11:16:53,469 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/26/26.traj.json'
+2026-03-16 11:16:53,479 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-c6865e7a -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-33:v1 sleep 2h
+2026-03-16 11:16:54,046 - minisweagent.environment - INFO - Started container minisweagent-c6865e7a with ID 173c9fd121449f6107c3ad727dbe9389d73f3da26a559448cf8d05b014e44c64
+2026-03-16 11:21:30,471 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/28/28.traj.json'
+2026-03-16 11:21:30,481 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-4a8d7e29 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-34:v1 sleep 2h
+2026-03-16 11:21:31,046 - minisweagent.environment - INFO - Started container minisweagent-4a8d7e29 with ID 4495da62497a5d2dbf73e5804031e5a281ec92aaede0b95d7d4c3913d38c5b24
+2026-03-16 11:22:40,675 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/33/33.traj.json'
+2026-03-16 11:22:40,688 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-45a39a05 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-36:v1 sleep 2h
+2026-03-16 11:22:41,249 - minisweagent.environment - INFO - Started container minisweagent-45a39a05 with ID 91e8f5d0c71d9a42ea2f6482d5a36ba104fa90baf2dbec994ceb62bd1b319100
+2026-03-16 11:23:18,973 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/29/29.traj.json'
+2026-03-16 11:23:18,982 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-0e3c0257 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-39:v1 sleep 2h
+2026-03-16 11:23:19,616 - minisweagent.environment - INFO - Started container minisweagent-0e3c0257 with ID 8b7d54aac2954c6933594a29bb4e746bda181b4d98f13406ff841dd69d4e700e
+2026-03-16 11:24:47,459 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/27/27.traj.json'
+2026-03-16 11:24:47,471 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-846271ce -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-44:v1 sleep 2h
+2026-03-16 11:24:48,051 - minisweagent.environment - INFO - Started container minisweagent-846271ce with ID c92bda5fc36e3a9ce5f01dccdb93da68a18fcba2f6af46e595bdeafea72dbe68
+2026-03-16 11:36:10,046 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/44/44.traj.json'
+2026-03-16 11:36:10,057 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-9068f593 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-49:v1 sleep 2h
+2026-03-16 11:36:10,606 - minisweagent.environment - INFO - Started container minisweagent-9068f593 with ID a252513d1bed23964da145aaec2277abcd0182c25552aad1b0ad42425452bf30
+2026-03-16 11:41:30,983 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/49/49.traj.json'
+2026-03-16 11:41:30,996 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-a9946455 -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-50:v1 sleep 2h
+2026-03-16 11:41:31,541 - minisweagent.environment - INFO - Started container minisweagent-a9946455 with ID 87b445a04ab58d0039c819d2a1628cff4fb083a755e9c074a16957eea1e3e695
+2026-03-16 11:44:46,890 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/30/30.traj.json'
+2026-03-16 11:44:46,901 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-7e6ebc4b -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-53:v1 sleep 2h
+2026-03-16 11:44:48,009 - minisweagent.environment - INFO - Started container minisweagent-7e6ebc4b with ID fc60b4f1e26a2f4c140ae6f3b5819edf16c583311125a58b5d8cc8f792351775
+2026-03-16 11:47:58,418 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/39/39.traj.json'
+2026-03-16 11:47:58,432 - minisweagent.environment - DEBUG - Starting container with command: docker run -d --name minisweagent-834dd04b -w /workspace/vllm-project/vllm --rm rtbench-instance-vllm-54:v1 sleep 2h
+2026-03-16 11:48:03,077 - minisweagent - ERROR - Error processing instance 54: Command '['docker', 'run', '-d', '--name', 'minisweagent-834dd04b', '-w', '/workspace/vllm-project/vllm', '--rm', 'rtbench-instance-vllm-54:v1', 'sleep', '2h']' returned non-zero exit status 125.
+Traceback (most recent call last):
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 165, in process_instance
+    env = get_sb_environment(config, instance)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/generate_miniswe.py", line 107, in get_sb_environment
+    env = get_environment(env_config)
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/environments/__init__.py", line 33, in get_environment
+    return get_environment_class(environment_class)(**config)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/environments/docker.py", line 59, in __init__
+    self._start_container()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/jinjunhuang/RTBench/RTBench/demo/mini-swe-agent/src/minisweagent/environments/docker.py", line 91, in _start_container
+    result = subprocess.run(
+        cmd,
+    ...<3 lines>...
+        check=True,
+    )
+  File "/home/jinjunhuang/miniconda/envs/run/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['docker', 'run', '-d', '--name', 'minisweagent-834dd04b', '-w', '/workspace/vllm-project/vllm', '--rm', 'rtbench-instance-vllm-54:v1', 'sleep', '2h']' returned non-zero exit status 125.
+2026-03-16 11:48:10,319 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/53/53.traj.json'
+2026-03-16 11:51:03,854 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/36/36.traj.json'
+2026-03-16 11:54:35,761 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/19/19.traj.json'
+2026-03-16 12:01:06,351 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/50/50.traj.json'
+2026-03-16 12:07:37,069 - minisweagent - INFO - Saved trajectory to 'results/RTbench_gemini-3.1-pro-preview_minisweagent/34/34.traj.json'
