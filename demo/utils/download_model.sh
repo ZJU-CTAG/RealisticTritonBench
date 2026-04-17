@@ -1,9 +1,6 @@
 # bin/bash
 set -euo pipefail
 
-export HF_ENDPOINT="https://hf-mirror.com"
-export HF_TOKEN="YOUR_HF_TOKEN"
-
 download() {
   local model="$1"
   echo "--------------------------------"

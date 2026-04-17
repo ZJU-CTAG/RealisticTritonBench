@@ -343,7 +343,7 @@ def main(args):
 if __name__ == "__main__":
     argparser = argparse.ArgumentParser(description="__doc__")
     argparser.add_argument("--repo_name", type=str, default="vllm-project/vllm",help="Name of the repository")
-    argparser.add_argument("--token", type=str, default="YOUR_GITHUB_TOKEN", help="GitHub token")
+    argparser.add_argument("--token", type=str, default="", help="GitHub token")
     argparser.add_argument(
         "--output", type=str, default="/home/jinjunhuang/RTBench/RTBench/data/filter_dataset.jsonl", help="Path to save the filtered dataset"
     )
