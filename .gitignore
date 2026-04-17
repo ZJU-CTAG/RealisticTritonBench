@@ -1,6 +1,8 @@
 __pycache__/
 .vscode/
 demo/.pytest_cache/
+demo/diff.txt
+replacements.txt
 demo/analysis/
 demo/logs/
 collect/__pycache__/
