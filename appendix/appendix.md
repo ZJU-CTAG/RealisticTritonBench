@@ -1,5 +1,19 @@
 # Appendix
 
+## Sensitivity of Evaluation Metrics
+
+Our task success criterion involves a tolerance threshold of $0.98$ on the end-to-end latency speedups, $S_{\text{TTFT}}$ and $S_{\text{TPOT}}$. To examine whether our conclusions are sensitive to this choice, we recompute the average success rate under different thresholds, as shown in the table below.
+
+Relaxing the threshold from $0.98$ to $0.95$ only increases the average success rate from 18.71% to 20.00%, while tightening the threshold to $0.99$ reduces the average success rate to 11.61%. This indicates that our results are robust to moderate threshold relaxation, while the stricter threshold $0.99$ is more affected by latency noise.
+
+**Table: Sensitivity of the average success rate to the latency speedup threshold.**
+
+| Threshold | Average Success Rate |
+|---:|---:|
+| 0.95 | 20.00% |
+| 0.98 | 18.71% |
+| 0.99 | 11.61% |
+
 ## Data Contamination Analysis
 
 Since RealisticTritonBench is constructed from historical PRs in public repositories, the evaluated models may have been exposed to the gold patches during pre-training. We analyze this risk from two perspectives: the potential contamination rate based on model training cutoffs and the textual similarity between generated patches and gold patches.
@@ -20,17 +34,5 @@ To further investigate the impact of memorization, we measure the textual simila
 | **Average** | -- | **99.19%** | **0.3164** |
 
 
-## Sensitivity of Evaluation Metrics
 
-Our task success criterion involves a tolerance threshold of $0.98$ on the end-to-end latency speedups, $S_{\text{TTFT}}$ and $S_{\text{TPOT}}$. To examine whether our conclusions are sensitive to this choice, we recompute the average success rate under different thresholds, as shown in the table below.
-
-Relaxing the threshold from $0.98$ to $0.95$ only increases the average success rate from 18.71% to 20.00%, while tightening the threshold to $0.99$ reduces the average success rate to 11.61%. This indicates that our results are robust to moderate threshold relaxation, while the stricter threshold $0.99$ is more affected by latency noise.
-
-**Table: Sensitivity of the average success rate to the latency speedup threshold.**
-
-| Threshold | Average Success Rate |
-|---:|---:|
-| 0.95 | 20.00% |
-| 0.98 | 18.71% |
-| 0.99 | 11.61% |
 
