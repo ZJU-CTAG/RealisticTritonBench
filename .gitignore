@@ -6,4 +6,5 @@ replacements.txt
 demo/analysis/
 demo/logs/
 collect/__pycache__/
+.DS_Store
 
