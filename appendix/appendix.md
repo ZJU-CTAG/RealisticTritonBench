@@ -1,5 +1,25 @@
 # Appendix
 
+## Impact of Agent Scaffold
+
+**Performance of GPT-5.4 with Codex on RealisticTritonBench**
+
+| Metric | Opt. | Mod. | New | Overall |
+|:--|--:|--:|--:|--:|
+| Success (%) | 38.46 | 57.14 | 27.27 | 38.71 |
+| Applied (%) | 100.00 | 100.00 | 100.00 | 100.00 |
+| FTP (%) | 92.31 | 71.43 | 63.64 | 77.42 |
+| UTP (%) | 99.31 | 74.29 | 63.64 | 81.00 |
+| NR (%) | 50.00 | 50.00 | 83.33 | 60.00 |
+| $S_{\text{TTFT}}$ | 1.3915 | 1.0341 | 0.8892 | 1.1900 |
+| $S_{\text{TPOT}}$ | 0.9709 | 1.0160 | 0.9517 | 0.9688 |
+
+In the main experiments, we use mini-SWE-agent as the fixed scaffold so that the comparison focuses on model capability. To examine the effect of a native scaffold—i.e., an agent scaffold developed by the model vendor and co-optimized with the model—we additionally evaluated GPT-5.4 using Codex. The table above shows the performance comparison.
+
+Compared with GPT-5.4 under mini-SWE-agent, using Codex improves GPT-5.4's overall success rate from 16.13% to 38.71%. This improvement may come from better model-scaffold alignment: the native harness may better match GPT-5.4's tool-use behavior and thinking pattern, enabling more effective environment interaction and execution feedback.
+
+However, even with Codex, the framework-level metrics remain weak: NR reaches only 60.00%, and $S_{\text{TPOT}}$ remains below 1 (0.9688), meaning that the generated kernels still degrade model accuracy and increase inference latency on many tasks. This indicates that realistic Triton development tasks remain challenging. Models still struggle to meet numerical robustness and end-to-end latency requirements. This supports the need for framework-level evaluation.
+
 ## Sensitivity of Evaluation Metrics
 
 Our task success criterion involves a tolerance threshold of $0.98$ on the end-to-end latency speedups, $S_{\text{TTFT}}$ and $S_{\text{TPOT}}$. To examine whether our conclusions are sensitive to this choice, we recompute the average success rate under different thresholds, as shown in the table below.
